@@ -1,0 +1,66 @@
+<!--android:layout_alignParentBottom="true" serve para deixar o toobar como bottom-->
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tb_bottom_quarteirao"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="#D14841"
+    android:gravity="bottom"
+    android:minHeight="?attr/actionBarSize"
+    app:theme="@style/ThemeOverlay.AppCompat.Light">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:layout_gravity="start"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_voltar_pergunta"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_skip_previous_white_36dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_voltar_pergunta"
+            android:layout_alignLeft="@+id/iv_voltar_pergunta"
+            android:layout_alignRight="@+id/iv_voltar_pergunta"
+
+            android:gravity="center"
+            android:text="Voltar"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:layout_gravity="end"
+        android:layout_marginEnd="5dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_concluir"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_done_white_36dp" />
+
+        <TextView
+            android:id="@+id/myImageViewText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_concluir"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="Concluir"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+
+</android.support.v7.widget.Toolbar>

@@ -1,0 +1,88 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.ifs.mt.zika_gamification.telas.MenuPrincipal">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#D14841"
+        android:elevation="4dp"
+        android:fitsSystemWindows="true"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Menu"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:id="@+id/textView" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:id="@+id/imageViewTreinamento"
+        android:src="@drawable/icone_treinamento2"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Treinamento"
+        android:id="@+id/textViewTreinamento"
+        android:layout_below="@+id/imageViewTreinamento"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageViewStatus"
+        android:src="@drawable/status2"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/textViewTreinamento"
+        android:layout_marginBottom="83dp" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageViewRanking"
+        android:src="@drawable/rank1"
+        android:layout_alignTop="@+id/imageViewStatus"
+        android:layout_toEndOf="@+id/textViewTreinamento" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Status"
+        android:id="@+id/textViewStatus"
+        android:layout_below="@+id/imageViewRanking"
+        android:layout_alignStart="@+id/imageViewStatus" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ranking"
+        android:id="@+id/textViewRanking"
+        android:layout_below="@+id/imageViewRanking"
+        android:layout_alignEnd="@+id/imageViewRanking" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/tv_usuario_logado"
+        android:layout_below="@+id/tb"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp" />
+
+</RelativeLayout>

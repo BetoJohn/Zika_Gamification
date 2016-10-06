@@ -1,0 +1,73 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#D14841"
+    android:orientation="vertical"
+    tools:context="com.ifs.mt.zika_gamification.telas.Login">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:src="@drawable/login" />
+
+    <EditText
+        android:id="@+id/editLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/styles_edit_text"
+        android:ems="10"
+        android:hint="Login"
+        android:inputType="textEmailAddress|textAutoComplete"
+        android:textColor="#000000"
+        android:textColorHint="#727272">
+        <requestFocus />
+    </EditText>
+
+
+    <EditText
+        android:id="@+id/editSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/styles_edit_text"
+        android:ems="10"
+        android:hint="Senha"
+        android:password="true"
+        android:imeOptions="actionGo"
+        android:inputType="textPassword"
+        android:textColor="#000000"
+        android:textColorHint="#727272">
+
+    </EditText>
+
+
+
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_height="30dp"
+        android:text="Entrar"
+        android:onClick="entrar"
+        android:id="@+id/btnLogin"
+        android:background="@android:color/white"
+        android:layout_gravity="center_horizontal" />
+
+
+
+</LinearLayout>
+
