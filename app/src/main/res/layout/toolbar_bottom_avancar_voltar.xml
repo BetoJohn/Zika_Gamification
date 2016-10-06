@@ -8,7 +8,8 @@
     android:background="#D14841"
     android:gravity="bottom"
     android:minHeight="?attr/actionBarSize"
-    app:theme="@style/ThemeOverlay.AppCompat.Light">
+    app:theme="@style/ThemeOverlay.AppCompat.Light"
+    android:layout_marginTop="5dp">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -29,7 +30,7 @@
             android:layout_alignBottom="@+id/iv_voltar_pergunta"
             android:layout_alignLeft="@+id/iv_voltar_pergunta"
             android:layout_alignRight="@+id/iv_voltar_pergunta"
-
+            android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="Voltar"
             android:textColor="@android:color/white"

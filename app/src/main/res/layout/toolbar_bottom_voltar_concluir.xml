@@ -8,7 +8,8 @@
     android:background="#D14841"
     android:gravity="bottom"
     android:minHeight="?attr/actionBarSize"
-    app:theme="@style/ThemeOverlay.AppCompat.Light">
+    app:theme="@style/ThemeOverlay.AppCompat.Light"
+    android:layout_marginTop="5dp">
 
     <RelativeLayout
         android:layout_width="wrap_content"
