@@ -26,4 +26,6 @@ dependencies {
     compile 'com.android.support:design:22.2.1'
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     compile 'com.google.android.gms:play-services:8.1.0'
+
+    compile 'com.github.bluejamesbond:textjustify-android:2.1.6'
 }

@@ -7,17 +7,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.telas.treinamento_c.C;
+import com.ifs.mt.zika_gamification.telas.treinamento_c.C1_teste;
 
 /**
  * Created by Betto Silva on 08/08/2016.
  */
 public class Pergunta2_C extends Fragment {
-private Toolbar tb_bottom_next;
-    String myString;
+    private Toolbar tb_bottom_next;
+    TextView b_received;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,7 +29,25 @@ private Toolbar tb_bottom_next;
         View fragment = inflater.inflate(R.layout.fragment_pergunta2_c,
                 container, false);
 
-        tb_bottom_next = (Toolbar)fragment.findViewById(R.id.tb_bottom_next);
+
+        //---------------------teste bundle-----------------------
+
+        b_received = (TextView)fragment.findViewById(R.id.b_received);
+        String myTag = getTag();
+
+        //quando o fragment é carregado ele recupera sua tag e seta no metodo  public void setTabFragmentB(String t) da AppCompatActivity
+        ((C)getActivity()).setTagFragmentB(myTag);
+
+        Toast.makeText(getActivity(),
+                "MyFragmentB.onCreateView(): " + myTag,
+                Toast.LENGTH_LONG).show();
+
+
+
+        //---------------------teste bundle-----------------------
+
+
+        tb_bottom_next = (Toolbar) fragment.findViewById(R.id.tb_bottom_next);
         tb_bottom_next.findViewById(R.id.iv_avancar_pergunta).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,24 +64,11 @@ private Toolbar tb_bottom_next;
         });
 
 
-
-
-        return  fragment;
+        return fragment;
 
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        //---------------------teste bundle-----------------------
-        Bundle bundle = this.getArguments();
-        if (bundle != null) {
-            myString = bundle.getString("CID");
-            System.out.println(myString);
-        }
-        System.out.println(myString);
-
-        //---------------------teste bundle-----------------------
+    public void b_updateText(String t){
+        b_received.setText(t);
     }
 }

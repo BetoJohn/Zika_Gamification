@@ -17,6 +17,19 @@ public class C extends AppCompatActivity {
     PagerTitleStrip pagerTitleStrip;
     CustomPagerAdapter mCustomPagerAdapter;
     ViewPager mViewPager;
+
+
+    String TagFragmentB;
+
+    public void setTagFragmentB(String t){
+        TagFragmentB = t;
+    }
+
+    public String getTagFragmentB(){
+        return TagFragmentB;
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

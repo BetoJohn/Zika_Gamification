@@ -50,6 +50,19 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" />
 
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/dvText"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                ext:documentView_textSize="20sp"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_insetPaddingLeft="10dp"
+                ext:documentView_insetPaddingRight="10dp"
+                ext:documentView_text="Sabe-se que a Microcefalia é identificada nos bebês quando a circunferência da cabeça da criança é inferior a 32cm. Qual item abaixo não é uma causa de Microcefalia?"
+                />
+
+
             <!-- <RadioGroup
                  android:id="@+id/radioGroup"
                  android:layout_width="wrap_content"
@@ -96,6 +109,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="It's Fragment A" />
+        <EditText
+            android:id="@+id/a_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
 
         <include
             android:id="@+id/tb_bottom_next"

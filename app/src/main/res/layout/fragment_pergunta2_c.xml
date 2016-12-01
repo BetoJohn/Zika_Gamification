@@ -89,6 +89,12 @@
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
 
+
+        <TextView
+            android:id="@+id/b_received"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <include
             android:id="@+id/tb_bottom_next"
             layout="@layout/toolbar_bottom_avancar_voltar" />
