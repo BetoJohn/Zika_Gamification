@@ -6,6 +6,7 @@ package com.ifs.mt.zika_gamification.model;
 public class UsuarioM {
 
     private int usuario_id;
+    private int historico_Id;
     private String usuario_nome;
     private String usuario_login;
     private String usuario_email;
@@ -54,6 +55,14 @@ public class UsuarioM {
     }
     public void setTipo_usuario_id(int tipo_usuario_id) {
         this.tipo_usuario_id = tipo_usuario_id;
+    }
+
+    public int getHistorico_Id() {
+        return historico_Id;
+    }
+
+    public void setHistorico_Id(int historico_Id) {
+        this.historico_Id = historico_Id;
     }
 }
 
