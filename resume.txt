@@ -1,0 +1,9 @@
+Dúvidas:
+01 - modulo > tem que ter uma etapa;
+etapa > uma lista de perguntas;
+Cada modulo terá uma lista de etapa com cada etapa com uma lista de perguntas;
+
+02 - historico não precisa de um id_respostas, historico so precisa do id_modulo;
+resposta vai ter apenas o id_pergunta, ou seja, cada pergunta com sua erspectiva resposta;
+
+03 - Criar uma tabela Gabarito para analise das respostas, onde gabarito vai ter uma lista de modulos
