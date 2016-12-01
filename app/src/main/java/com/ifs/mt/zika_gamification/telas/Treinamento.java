@@ -31,7 +31,7 @@ public class Treinamento extends AppCompatActivity {
                 C = true;
                 if(position == 2){
                     if(C)
-                    startActivity(new Intent(Treinamento.this, com.ifs.mt.zika_gamification.telas.perguntas.A.C.class));
+                    startActivity(new Intent(Treinamento.this, com.ifs.mt.zika_gamification.telas.treinamento_c.C.class));
                 }
 
 

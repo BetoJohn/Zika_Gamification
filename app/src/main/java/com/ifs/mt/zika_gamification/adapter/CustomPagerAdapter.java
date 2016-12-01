@@ -5,9 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.ifs.mt.zika_gamification.fragmentos.Pergunta1_C;
-import com.ifs.mt.zika_gamification.fragmentos.Pergunta2_C;
-import com.ifs.mt.zika_gamification.fragmentos.Pergunta3_C;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_c.Pergunta1_C;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_c.Pergunta2_C;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_c.Pergunta3_C;
 
 /**
  * Created by Betto Silva on 08/08/2016.

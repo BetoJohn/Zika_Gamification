@@ -1,4 +1,4 @@
-package com.ifs.mt.zika_gamification.telas.perguntas.A;
+package com.ifs.mt.zika_gamification.telas.treinamento_a;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,12 +8,12 @@ import android.view.MenuItem;
 
 import com.ifs.mt.zika_gamification.R;
 
-public class A1 extends AppCompatActivity {
+public class A extends AppCompatActivity {
 private Toolbar tb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_a1);
+        setContentView(R.layout.activity_a);
         tb = (Toolbar)findViewById(R.id.tb);
         setSupportActionBar(tb);
     }

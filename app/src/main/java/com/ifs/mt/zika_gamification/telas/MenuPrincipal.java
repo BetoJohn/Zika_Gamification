@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
-import com.ifs.mt.zika_gamification.telas.perguntas.A.C1_teste;
 
 public class MenuPrincipal extends AppCompatActivity {
 

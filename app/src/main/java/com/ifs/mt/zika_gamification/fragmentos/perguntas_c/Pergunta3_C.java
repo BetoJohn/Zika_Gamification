@@ -1,4 +1,4 @@
-package com.ifs.mt.zika_gamification.fragmentos;
+package com.ifs.mt.zika_gamification.fragmentos.perguntas_c;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,8 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
-import com.ifs.mt.zika_gamification.telas.perguntas.A.C;
-import com.ifs.mt.zika_gamification.telas.perguntas.A.C1_teste;
+import com.ifs.mt.zika_gamification.telas.treinamento_c.C;
 
 /**
  * Created by Betto Silva on 08/08/2016.

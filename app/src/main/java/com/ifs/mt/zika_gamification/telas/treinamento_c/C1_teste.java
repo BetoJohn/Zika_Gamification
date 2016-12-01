@@ -1,4 +1,4 @@
-package com.ifs.mt.zika_gamification.telas.perguntas.A;
+package com.ifs.mt.zika_gamification.telas.treinamento_c;
 
 import android.app.Activity;
 import android.graphics.Color;

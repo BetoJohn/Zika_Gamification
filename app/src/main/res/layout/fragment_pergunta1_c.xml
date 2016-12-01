@@ -9,15 +9,15 @@
         android:id="@+id/fragment_quarteirao"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignParentTop="false"
         android:layout_above="@+id/footer"
-        tools:context="com.ifs.mt.zika_gamification.fragmentos.Pergunta1_C">
+        android:layout_alignParentTop="false"
+        tools:context="com.ifs.mt.zika_gamification.fragmentos.perguntas_c.Pergunta1_C">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="top">
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -30,39 +30,26 @@
                 android:layout_marginTop="10dp"
                 android:src="@drawable/c_a" />
 
-            <TextView
+           <!-- <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/imageView2"
+                android:layout_gravity="center_horizontal|center"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text="Pergunta 01: Sabe- se que a Microcefalia é identificada nos  bebês quando a circunferência da cabeça da criança é inferior a 32cm. Qual item abaixo não é uma causa de Microcefalia?"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:gravity="center"
+                android:text="Pergunta 01: Sabe- se que a Microcefalia é identificada nos  bebês
+                quando a circunferência da cabeça da criança é inferior a 32cm. Qual item abaixo
+                 não é uma causa de Microcefalia?"
+                android:textAppearance="?android:attr/textAppearanceMedium" />-->
 
+            <WebView
+                android:id="@+id/webview"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
 
-            <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/imageView2"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:text="Pergunta 01: Sabe- se que a Microcefalia é identificada nos  bebês quando a circunferência da cabeça da criança é inferior a 32cm. Qual item abaixo não é uma causa de Microcefalia?"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/imageView2"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="Pergunta 01: Sabe- se que a Microcefalia é identificada nos  bebês quando a circunferência da cabeça da criança é inferior a 32cm. Qual item abaixo não é uma causa de Microcefalia?"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
             <!-- <RadioGroup
                  android:id="@+id/radioGroup"
                  android:layout_width="wrap_content"
@@ -100,15 +87,16 @@
              </RadioGroup>-->
 
 
-
-
         </LinearLayout>
     </ScrollView>
-    <LinearLayout android:id="@+id/footer"
+
+    <LinearLayout
+        android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
         <include
             android:id="@+id/tb_bottom_next"
             layout="@layout/toolbar_bottom_avancar" />

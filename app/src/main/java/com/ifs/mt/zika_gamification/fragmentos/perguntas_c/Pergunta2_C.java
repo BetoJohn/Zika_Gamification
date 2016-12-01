@@ -1,6 +1,7 @@
-package com.ifs.mt.zika_gamification.fragmentos;
+package com.ifs.mt.zika_gamification.fragmentos.perguntas_c;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -9,14 +10,15 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
-import com.ifs.mt.zika_gamification.telas.perguntas.A.C;
-import com.ifs.mt.zika_gamification.telas.perguntas.A.C1_teste;
+import com.ifs.mt.zika_gamification.telas.treinamento_c.C;
 
 /**
  * Created by Betto Silva on 08/08/2016.
  */
 public class Pergunta2_C extends Fragment {
 private Toolbar tb_bottom_next;
+    String myString;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -39,6 +41,26 @@ private Toolbar tb_bottom_next;
                 ((C) getActivity()).trocarPagina(0);
             }
         });
+
+
+
+
         return  fragment;
+
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        //---------------------teste bundle-----------------------
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            myString = bundle.getString("CID");
+            System.out.println(myString);
+        }
+        System.out.println(myString);
+
+        //---------------------teste bundle-----------------------
     }
 }
