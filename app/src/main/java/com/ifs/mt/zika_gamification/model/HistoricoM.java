@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class HistoricoM {
     private int historico_Id;
-    private int modulo_Id;
+    //private int modulo_Id;
     private List<ModuloM> modulos;
 
     public int getHistorico_Id() {
@@ -18,13 +18,13 @@ public class HistoricoM {
         this.historico_Id = historico_Id;
     }
 
-    public int getModulo_Id() {
+   /* public int getModulo_Id() {
         return modulo_Id;
     }
 
     public void setModulo_Id(int modulo_Id) {
         this.modulo_Id = modulo_Id;
-    }
+    }*/
 
     public List<ModuloM> getModulos() {
         return modulos;

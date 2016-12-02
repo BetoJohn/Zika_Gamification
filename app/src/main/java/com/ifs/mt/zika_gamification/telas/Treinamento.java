@@ -13,7 +13,7 @@ import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.adapter.ImageAdapter;
 
 public class Treinamento extends AppCompatActivity {
-    private boolean A=true,B=false,C=false,D=false,E=false,F=false;
+    private boolean A=false,B=false,C=false,D=false,E=false,F=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +28,10 @@ public class Treinamento extends AppCompatActivity {
                                     int position, long id) {
                 Toast.makeText(Treinamento.this, "" + position,
                         Toast.LENGTH_SHORT).show();
-                C = true;
-                if(position == 2){
-                    if(C)
-                    startActivity(new Intent(Treinamento.this, com.ifs.mt.zika_gamification.telas.treinamento_c.C.class));
+                A = true;
+                if(position == 0){
+                    if(A)
+                    startActivity(new Intent(Treinamento.this, com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1.class));
                 }
 
 

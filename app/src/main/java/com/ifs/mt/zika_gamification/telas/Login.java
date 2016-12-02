@@ -20,6 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
+import com.ifs.mt.zika_gamification.dao.Banco;
+import com.ifs.mt.zika_gamification.dao.UsuarioDao;
+import com.ifs.mt.zika_gamification.model.Tipo_StatusM;
+import com.ifs.mt.zika_gamification.model.Tipo_UsuarioM;
 import com.ifs.mt.zika_gamification.model.UsuarioM;
 import com.ifs.mt.zika_gamification.rest.UsuarioRest;
 import com.ifs.mt.zika_gamification.validacao.AutenticarLogin;
@@ -32,6 +36,7 @@ public class Login extends Activity {
     private EditText editLogin;
     private EditText editSenha;
     private Button btnLogin;
+    private Banco bancoUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,21 +73,48 @@ public class Login extends Activity {
         /*Parte de autenticação que foi comentada*/
         //TUDO OK, S PARA EVITAR FADIGA
         AutenticacaoThread thread = new AutenticacaoThread();
+
+        //------ Objeto para Teste --------------
+       /* Tipo_StatusM tipo_status = new Tipo_StatusM();
+        tipo_status.setTipo_Status_Id(1);
+        tipo_status.setTipo_Status_Nome("TesteStatus");
+        tipo_status.setTipo_Status_Valor("Ok");
+
+        Tipo_UsuarioM tipo_usuario = new Tipo_UsuarioM();
+        tipo_usuario.setTipo_Usuario_Id(1);
+        tipo_usuario.setTipo_Usuario_Nome("Comum");
+        tipo_usuario.setTipo_Usuario_Valor("N");
+
         UsuarioM usuario = new UsuarioM();
+        usuario.setUsuario_id(1);
+        usuario.setUsuario_email("mateus@mateus.com");
+        usuario.setTipo_status(tipo_status);
+        usuario.setTipo_usuario(tipo_usuario);*/
+
+        //------ Objeto para Teste --------------
+
 
 
         AutenticarLogin.validateNotNull(editLogin,
                 "Insira um email válido!");
         AutenticarLogin.validateNotNull(editSenha,
                 "Insira uma senha!");
-
+        UsuarioM usuario = new UsuarioM();
         usuario.setUsuario_login(editLogin.getText().toString());
         usuario.setUsuario_senha(editSenha.getText().toString());
         Log.i("Login", "Dados: " + usuario.getUsuario_login() + " - " + usuario.getUsuario_senha());
 
         //PARA TESTES
-        usuario.setUsuario_nome("Matheus Oliveira");
+        usuario.setUsuario_nome("Mateus Oliveira");
         setUsuarioLogado(usuario);
+
+        //-------------- Teste de Inserção do Usuario -----------
+       /* bancoUsuario = new Banco(this);
+        UsuarioDao dao = new UsuarioDao(bancoUsuario);
+        dao.insert(usuario);*/
+        //-------------- Teste de Inserção do Usuario -----------
+
+
         startActivity(new Intent(Login.this, MenuPrincipal.class));
        /* if (usuario.getUsuario_login().equals("demo") && usuario.getUsuario_senha().equals("demo")) {
             usuario.setUsuario_login("Matheus Oliveira");

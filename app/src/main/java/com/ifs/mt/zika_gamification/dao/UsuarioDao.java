@@ -22,27 +22,36 @@ public class UsuarioDao {
     }
 
     public void apagaRegistrosTabela() {
-        sqldb.execSQL(String.format("DELETE FROM %s", Banco.TB_AGENTE));
+        sqldb.execSQL(String.format("DELETE FROM %s", Banco.TB_USUARIO));
     }
 
     public void insert(UsuarioM usu) {
+        /**
+         * "usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha", "tipo_status_id",  "tipo_usuario_id"
+         *
+         **/
         ContentValues valores = new ContentValues();
-        valores.put("nome", usu.getUsuario_login());
-        valores.put("senha", usu.getUsuario_senha());
-        db.getWritableDatabase().insert(Banco.TB_AGENTE, null, valores);
-        System.out.println("Inseriu Agente");
+        valores.put("usuario_id", usu.getUsuario_id());
+        valores.put("usuario_nome", usu.getUsuario_nome());
+        valores.put("usuario_login", usu.getUsuario_login());
+        valores.put("usuario_email", usu.getUsuario_email());
+        valores.put("usuario_senha", usu.getUsuario_senha());
+        valores.put("tipo_status_id", usu.getTipo_status().getTipo_Status_Id());
+        valores.put("tipo_usuario_id", usu.getTipo_usuario().getTipo_Usuario_Id());
+        db.getWritableDatabase().insert(Banco.TB_USUARIO, null, valores);
+        System.out.println("Inseriu UsuarioM");
     }
     public boolean isEmptyTable() {
-        Cursor rs = db.getReadableDatabase().query(Banco.TB_AGENTE, Banco.COLUMNS_AGENTE, null,
+        Cursor rs = db.getReadableDatabase().query(Banco.TB_USUARIO, Banco.COLUMNS_USUARIO, null,
                 null, null, null, "nome");
         return !rs.moveToFirst();
     }
 
     //DANDO ERRO AO CONVERTER A SENHA
-   public UsuarioM autenticacao(UsuarioM agente) {
+   public UsuarioM autenticacao(UsuarioM usu) {
         //parametros = new String[]{agente.getLogin(), convertStringToMd5(agente.getSenha())};
-        parametros = new String[]{agente.getUsuario_login(), agente.getUsuario_senha()};
-        Cursor rs = db.getReadableDatabase().query(Banco.TB_AGENTE, Banco.COLUMNS_AGENTE, "login = ? and senha = ?",
+        parametros = new String[]{usu.getUsuario_login(), usu.getUsuario_senha()};
+        Cursor rs = db.getReadableDatabase().query(Banco.TB_USUARIO, Banco.COLUMNS_USUARIO, "login = ? and senha = ?",
                 parametros, null, null, "nome");
         List<UsuarioM> list = cursorToList(rs);
         System.out.println("List na Autenticação "+list.size());

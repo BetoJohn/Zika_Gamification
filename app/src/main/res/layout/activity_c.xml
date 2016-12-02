@@ -34,7 +34,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:swipeable="false"
-        tools:context="com.ifs.mt.zika_gamification.telas.treinamento_c.C"
+        tools:context="com.ifs.mt.zika_gamification.telas.treinamento_modulo3.C"
         android:layout_below="@+id/appbar">
 
 

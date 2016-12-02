@@ -1,9 +1,12 @@
 package com.ifs.mt.zika_gamification.telas;
 
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 import com.ifs.mt.zika_gamification.R;
 
@@ -13,6 +16,14 @@ public class Teste extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teste);
+
+        MediaController mc= new MediaController(this);
+        VideoView view = (VideoView)findViewById(R.id.videoView);
+        String path = "android.resource://" + getPackageName() + "/raw/m1e1p5";// + R.raw.m1e1p5;
+        System.out.println("Path: "+path);
+        view.setVideoURI(Uri.parse(path));
+        view.setMediaController(mc);
+        //view.start();
     }
 
     @Override

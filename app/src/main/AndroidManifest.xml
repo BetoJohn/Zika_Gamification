@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <!--
      To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect
@@ -32,6 +33,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".telas.Teste"
+            android:label="@string/title_activity_menu_principal"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name=".telas.MenuPrincipal"
             android:label="@string/title_activity_menu_principal"
             android:screenOrientation="portrait" >
@@ -41,18 +47,21 @@
             android:label="@string/title_activity_treinamento"
             android:screenOrientation="portrait" >
         </activity>
-
         <activity
-            android:name=".telas.treinamento_c.C"
+            android:name=".telas.treinamento_modulo3.C"
             android:label="@string/title_activity_c1" >
         </activity>
         <activity
-            android:name=".telas.treinamento_c.C1_teste"
+            android:name=".telas.treinamento_modulo3.C1_teste"
             android:label="@string/title_activity_c1_teste" >
         </activity>
         <activity
-            android:name=".telas.treinamento_b.B"
+            android:name=".telas.treinamento_modulo2.B"
             android:label="@string/title_activity_b" >
+        </activity>
+        <activity
+            android:name=".telas.treinamento_modulo1.etapa_1.M1E1"
+            android:label="@string/title_activity_m1_e1" >
         </activity>
     </application>
 

@@ -11,7 +11,7 @@
         android:layout_height="fill_parent"
         android:layout_above="@+id/footer"
         android:layout_alignParentTop="false"
-        tools:context="com.ifs.mt.zika_gamification.fragmentos.perguntas_c.Pergunta1_C">
+        tools:context="com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.Pergunta1_C">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"

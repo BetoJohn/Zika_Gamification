@@ -11,35 +11,23 @@ public class Banco extends SQLiteOpenHelper {
     private SQLiteDatabase db;
 
     public static int VERSAO = 2;
-    public final static String DB_ENDEMIA = "dbendemia";
+    public final static String DB_ZIKA = "dbzika";
+    /**
+     *
+     private int usuario_id;
+     private String usuario_nome;
+     private String usuario_login;
+     private String usuario_email;
+     private String usuario_senha;
+     private int tipo_status_id;
+     private int tipo_usuario_id;
+     *
+     * **/
 
-    //Admnistrador
-    public final static String TB_ADMIN = "admin";
-    public final static String CREATE_TB_ADMIN = "create table IF NOT EXISTS admin (idadmin integer,  nome text,login text, senha text)";
-    public final static String[] COLUMNS_ADMIN = {"idadmin", "nome", "login", "senha"};
-
-    //Servidor
-   /* public final static String TB_SERVIDOR = "servidor";
-    public final static String CREATE_TB_SERVIDOR = "create table IF NOT EXISTS servidor (idservidor integer primary key autoincrement,  ip text)";
-    public final static String[] COLUMNS_SERVIDOR = {"idservidor", "ip"};*/
-
-    //Agente
-    public final static String TB_AGENTE = "agente";
-    public final static String CREATE_TB_AGENTE = "create table IF NOT EXISTS agente (idagente integer, idequipe integer, nome text, cargo text,  login text, senha text)";
-    public final static String[] COLUMNS_AGENTE = {"idagente", "idequipe", "nome", "cargo", "login",
-            "senha"};
-
-    //Quarteirao
-    public final static String TB_QUARTEIRAO = "quarteirao";
-    public final static String CREATE_TB_QUARTEIRAO = "create table IF NOT EXISTS quarteirao (idqua integer, idzona integer, numero integer, sequencia text)";
-    public final static String[] COLUMNS_QUARTEIRAO = {"idqua", "idzona", "numero", "sequencia"};
-
-
-    //Imovel
-    public final static String TB_IMOVEL = "imovel";
-    public final static String CREATE_TB_IMOVEL = "create table IF NOT EXISTS imovel (idimovel integer, idquarteirao integer, numero text, logradouro text, sequencia text, complemento text, tipo text, latitude REAL, longitude REAL, lado integer )";
-    public final static String[] COLUMNS_IMOVEL = {"idimovel", "idquarteirao", "numero", "logradouro", "sequencia", "complemento", "tipo", "latitude", "longitude",
-            "lado"};
+    //UsuarioM
+    public final static String TB_USUARIO = "usuario";
+    public final static String CREATE_TB_USUARIO = "create table IF NOT EXISTS usuario (usuario_id integer, usuario_nome text, usuario_login text,  usuario_email text, usuario_senha text, tipo_status_id integer, tipo_usuario_id integer)";
+    public final static String[] COLUMNS_USUARIO = {"usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha", "tipo_status_id",  "tipo_usuario_id"};
 
     //Visita
     public final static String TB_VISITA = "visita";
@@ -50,38 +38,18 @@ public class Banco extends SQLiteOpenHelper {
     public final static String[] COLUMNS_VISITA = {"idvis", "idagente",
             "idimovel", "isli", "data", "hora", "tipoatividade", "ciclo", "cicloano", "tipovis", "tipopendencia", "qtdhabitantes"};
 
-    //deposito
-    public final static String TB_DEPOSITO = "deposito";
-    public final static String CREATE_TB_DEPOSITO = "create table deposito (iddep integer primary key autoincrement,"
-            + " idvis integer, tipo text, acao text,"
-            + "tipofocal text, cargafocal double, qtdlitros integer)";
-    public final static String[] COLUMNS_DEPOSITO = {"iddep", "idvis", "tipo",
-            "acao", "tipofocal", "cargafocal", "qtdlitros"};
-
-    //Tubito
-    public final static String TB_TUBITO = "tubito";
-    public final static String CREATE_TB_TUBITO = "create table tubito (idtub integer primary key autoincrement,"
-            + "iddep integer, numamostra text, numlarvas text)";
-    public final static String[] COLUMNS_TUBITO = {"idtub", "iddep",
-            "numamostra", "numlarvas"};
-
     public Banco(Context context) {
         // TODO Auto-generated constructor stub
-        super(context, DB_ENDEMIA, null, VERSAO);
+        super(context, DB_ZIKA, null, VERSAO);
         db = this.getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
-        db.execSQL(CREATE_TB_ADMIN);
-       // db.execSQL(CREATE_TB_SERVIDOR);
-        db.execSQL(CREATE_TB_AGENTE);
-        db.execSQL(CREATE_TB_QUARTEIRAO);
-        db.execSQL(CREATE_TB_IMOVEL);
+        db.execSQL(CREATE_TB_USUARIO);
         db.execSQL(CREATE_TB_VISITA);
-        db.execSQL(CREATE_TB_DEPOSITO);
-        db.execSQL(CREATE_TB_TUBITO);
+
     }
 
     public boolean tabelaExists(String tabela) {
@@ -100,8 +68,6 @@ public class Banco extends SQLiteOpenHelper {
 
 
     public void limparDadosVisitas() {
-        db.execSQL(String.format("DELETE FROM %s", Banco.TB_TUBITO));
-        db.execSQL(String.format("DELETE FROM %s", Banco.TB_DEPOSITO));
         db.execSQL(String.format("DELETE FROM %s", Banco.TB_VISITA));
     }
 

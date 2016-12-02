@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/fragment_quarteirao"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/footer"
+        android:layout_alignParentTop="false"
+        tools:context="com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P3M1E1">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tb"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/a_a" />
+
+
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/dvText"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                ext:documentView_textSize="20sp"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_insetPaddingLeft="10dp"
+                ext:documentView_insetPaddingRight="10dp"
+                ext:documentView_text="A imagem abaixo demonstra o ciclo de vida do Aedes, uma femêa pode dar origem a aproximadamente quantos mosquitos?"
+                />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/tb"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/m1e1p3" />
+
+            <!-- <RadioGroup
+                 android:id="@+id/radioGroup"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@+id/textView2"
+                 android:layout_marginLeft="30dp"
+                 android:layout_marginTop="20dp"
+                 android:orientation="vertical">
+
+                 <RadioButton
+                     android:id="@+id/rbMalformacao"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:checked="true"
+                     android:text="Malformação" />
+
+                 <RadioButton
+                     android:id="@+id/rbDrogas"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Drogas" />
+
+                 <RadioButton
+                     android:id="@+id/rbFenilcetonuria"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Fenilcetonúria" />
+
+                 <RadioButton
+                     android:id="@+id/rbDesnutricao"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Desnutrição" />
+
+             </RadioGroup>-->
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+
+
+
+        <TextView
+            android:id="@+id/b_received"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+        <include
+            android:id="@+id/tb_bottom_next"
+            layout="@layout/toolbar_bottom_avancar_voltar" />
+    </LinearLayout>
+</RelativeLayout>
+
+
+
