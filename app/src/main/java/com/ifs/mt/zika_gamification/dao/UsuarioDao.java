@@ -47,7 +47,7 @@ public class UsuarioDao {
         return !rs.moveToFirst();
     }
 
-    //DANDO ERRO AO CONVERTER A SENHA
+    //DANDO ERRO AO CONVERTER  SENHA
    public UsuarioM autenticacao(UsuarioM usu) {
         //parametros = new String[]{agente.getLogin(), convertStringToMd5(agente.getSenha())};
         parametros = new String[]{usu.getUsuario_login(), usu.getUsuario_senha()};

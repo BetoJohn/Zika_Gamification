@@ -34,7 +34,8 @@ android:orientation="vertical">
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     app:swipeable="false"
     tools:context="com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1"
-    android:layout_below="@+id/appbar">
+    android:layout_below="@+id/appbar"
+    >
 
 
     <android.support.v4.view.PagerTitleStrip

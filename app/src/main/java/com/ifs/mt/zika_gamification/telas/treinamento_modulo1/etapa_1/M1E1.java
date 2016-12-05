@@ -43,6 +43,7 @@ public class M1E1 extends AppCompatActivity {
         setSupportActionBar(tb);
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager.setOffscreenPageLimit(1);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragments = new ArrayList<>();
         fragments.add(new P1M1E1());

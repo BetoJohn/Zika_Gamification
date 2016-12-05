@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.adapter.ImageAdapter;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1_ScrollAll;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.P5M1E1_Video;
 
 public class Treinamento extends AppCompatActivity {
     private boolean A=false,B=false,C=false,D=false,E=false,F=false;
@@ -31,7 +34,7 @@ public class Treinamento extends AppCompatActivity {
                 A = true;
                 if(position == 0){
                     if(A)
-                    startActivity(new Intent(Treinamento.this, com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1.class));
+                    startActivity(new Intent(Treinamento.this, M1E1.class));
                 }
 
 

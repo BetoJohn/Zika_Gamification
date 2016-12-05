@@ -25,21 +25,6 @@ public class FragmentCustomPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         //as you see from the below this is how we tell the Viewpager which fragment (page) to be shown//
         Fragment fragment = fragments.get(position);
-        /*if (position == 0) {
-            fragment = fragments.get(0);
-        }
-        if (position == 1) {
-            fragment = fragments.get(1);
-        }
-        if (position == 2) {
-            fragment = fragments.get(2);
-        }
-        if (position == 3) {
-            fragment = fragments.get(3);
-        }
-        if (position == 4) {
-            fragment = fragments.get(4);
-        }*/
         return fragment;
     }
 

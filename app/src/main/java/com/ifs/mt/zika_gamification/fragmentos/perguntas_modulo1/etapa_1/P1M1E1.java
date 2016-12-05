@@ -52,7 +52,7 @@ public class P1M1E1 extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getActivity().getApplicationContext(), "Muda pagina", Toast.LENGTH_SHORT).show();
 
-                String textPassToB = A_input.getText().toString();
+//                String textPassToB = A_input.getText().toString();
 
                 String TagOfFragmentB = ((M1E1) getActivity()).getTagFragmentP2();
 
@@ -60,7 +60,7 @@ public class P1M1E1 extends Fragment {
                         .getSupportFragmentManager()
                         .findFragmentByTag(TagOfFragmentB);
 
-                P2M1E1.b_updateText(textPassToB);
+//                P2M1E1.b_updateText(textPassToB);
 
               /*  Toast.makeText(getActivity(),
                         "text sent to Fragment B:\n " + TagOfFragmentB,

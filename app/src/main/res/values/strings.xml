@@ -15,4 +15,13 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_b">B</string>
     <string name="title_activity_m1_e1"></string>
+    <string name="title_activity_p5_m1_e1__video">P5M1E1_Video</string>
+    <string name="title_activity_m1_e1__scroll_all">M1E1_ScrollAll</string>
+
+    <string name="hello">
+        <html><head>
+        </head><body style="text-align:justify;color:gray;background-color:black;">   Lorem ipsum dolor sit amet, consectetur  adipiscing elit. Nunc pellentesque, urna nec hendrerit pellentesque, risus massa </body>
+        </html>
+    </string>
+
 </resources>
