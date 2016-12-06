@@ -9,6 +9,7 @@
     <string name="title_activity_a1">A1</string>
     <string name="title_activity_c1"></string>
     <string name="title_activity_c1_teste"></string>
+    <string name="tipo_usuario">Tipo Usuário</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -26,8 +26,8 @@ public class Banco extends SQLiteOpenHelper {
 
     //UsuarioM
     public final static String TB_USUARIO = "usuario";
-    public final static String CREATE_TB_USUARIO = "create table IF NOT EXISTS usuario (usuario_id integer, usuario_nome text, usuario_login text,  usuario_email text, usuario_senha text, tipo_status_id integer, tipo_usuario_id integer)";
-    public final static String[] COLUMNS_USUARIO = {"usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha", "tipo_status_id",  "tipo_usuario_id"};
+    public final static String CREATE_TB_USUARIO = "create table IF NOT EXISTS usuario (usuario_id integer, usuario_nome text, usuario_login text,  usuario_email text, usuario_senha text,  tipo_usuario text)";
+    public final static String[] COLUMNS_USUARIO = {"usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha",  "tipo_usuario"};
 
     //Visita
     public final static String TB_VISITA = "visita";

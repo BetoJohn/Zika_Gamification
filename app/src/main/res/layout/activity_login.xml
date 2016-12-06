@@ -1,73 +1,230 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="#D14841"
-    android:orientation="vertical"
-    tools:context="com.ifs.mt.zika_gamification.telas.Login">
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="60dp"
-        android:src="@drawable/login" />
-
-    <EditText
-        android:id="@+id/editLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/styles_edit_text"
-        android:ems="10"
-        android:hint="Login"
-        android:inputType="textEmailAddress|textAutoComplete"
-        android:textColor="#000000"
-        android:textColorHint="#727272">
-        <requestFocus />
-    </EditText>
-
-
-    <EditText
-        android:id="@+id/editSenha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/styles_edit_text"
-        android:ems="10"
-        android:hint="Senha"
-        android:password="true"
-        android:imeOptions="actionGo"
-        android:inputType="textPassword"
-        android:textColor="#000000"
-        android:textColorHint="#727272">
-
-    </EditText>
-
-
-
-
-    <Button
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/fragment_quarteirao"
         android:layout_width="fill_parent"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="15dp"
-        android:layout_height="30dp"
-        android:text="Entrar"
-        android:onClick="entrar"
-        android:id="@+id/btnLogin"
-        android:background="@android:color/white"
-        android:layout_gravity="center_horizontal" />
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/footer"
+        android:layout_alignParentTop="false">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:orientation="vertical">//Esse Layout pesa 50% do Layout total
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="220dp"
+                android:layout_height="110dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/zika" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/login_label" />
+
+            <EditText
+                android:id="@+id/editLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/styles_edit_text"
+                android:ems="10"
+                android:hint="Login"
+                android:inputType="textEmailAddress|textAutoComplete"
+                android:textColor="#000000"
+                android:textColorHint="#727272">
+
+                <requestFocus />
+            </EditText>
+
+
+            <EditText
+                android:id="@+id/editSenha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/styles_edit_text"
+                android:ems="10"
+                android:hint="Senha"
+                android:imeOptions="actionGo"
+                android:inputType="textPassword"
+                android:password="true"
+                android:textColor="#000000"
+                android:textColorHint="#727272">
+
+            </EditText>
+
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="15dp"
+                android:background="@android:color/white"
+                android:onClick="entrar"
+                android:text="Entrar" />
 
 
 
-</LinearLayout>
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/cadastro" />
 
+
+            <EditText
+                android:id="@+id/editNomeCadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/styles_edit_text"
+                android:ems="10"
+                android:hint="Nome"
+                android:inputType="textEmailAddress|textAutoComplete"
+                android:textColor="#000000"
+                android:textColorHint="#727272">
+
+                <requestFocus />
+            </EditText>
+
+
+
+            <EditText
+                android:id="@+id/editLoginCadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/styles_edit_text"
+                android:ems="10"
+                android:hint="Login"
+                android:inputType="textEmailAddress|textAutoComplete"
+                android:textColor="#000000"
+                android:textColorHint="#727272">
+            </EditText>
+
+            <EditText
+                android:id="@+id/editEmailCadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/styles_edit_text"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress|textAutoComplete"
+                android:textColor="#000000"
+                android:textColorHint="#727272">
+            </EditText>
+
+
+            <EditText
+                android:id="@+id/editSenhaCadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/styles_edit_text"
+                android:ems="10"
+                android:hint="Senha"
+                android:imeOptions="actionGo"
+                android:inputType="textPassword"
+                android:password="true"
+                android:textColor="#000000"
+                android:textColorHint="#727272">
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/editConfirmarSenhaCadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/styles_edit_text"
+                android:ems="10"
+                android:hint="Confirmar Senha"
+                android:imeOptions="actionGo"
+                android:inputType="textPassword"
+                android:password="true"
+                android:textColor="#000000"
+                android:textColorHint="#727272">
+
+            </EditText>
+
+            <TextView
+                android:id="@+id/textViewTipoUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:text="Tipo de Usuário"
+                android:textColor="@android:color/white"
+                android:textSize="17sp" />
+
+            <Spinner
+                android:spinnerMode="dropdown"
+                android:id="@+id/spinnerTipoUsuario"
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:textColor="#000000"
+                android:prompt="@string/tipo_usuario"
+                />
+
+            <Button
+                android:id="@+id/btnCadastro"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@android:color/white"
+                android:onClick="entrar"
+                android:text="Cadastrar" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+    <!--
+    </LinearLayout>
+    -->
+</RelativeLayout>

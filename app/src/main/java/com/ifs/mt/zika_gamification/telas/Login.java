@@ -14,8 +14,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,9 @@ import com.ifs.mt.zika_gamification.model.UsuarioM;
 import com.ifs.mt.zika_gamification.rest.UsuarioRest;
 import com.ifs.mt.zika_gamification.validacao.AutenticarLogin;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Login extends Activity {
 
@@ -35,6 +40,14 @@ public class Login extends Activity {
     private Button entrar;
     private EditText editLogin;
     private EditText editSenha;
+    private EditText editNomeCadastro;
+    private EditText editLoginCadastro;
+    private EditText editEmailCadastro;
+    private EditText editSenhaCadastro;
+    private EditText editConfirmarSenhaCadastro;
+    private Spinner spinnerTipoUsuario;
+
+
     private Button btnLogin;
     private Banco bancoUsuario;
 
@@ -63,6 +76,17 @@ public class Login extends Activity {
                 return false;
             }
         });
+
+        editNomeCadastro = (EditText) findViewById(R.id.editNomeCadastro);
+        editLoginCadastro = (EditText) findViewById(R.id.editLoginCadastro);
+        editEmailCadastro = (EditText) findViewById(R.id.editEmailCadastro);
+        editSenhaCadastro = (EditText) findViewById(R.id.editSenhaCadastro);
+        editConfirmarSenhaCadastro = (EditText) findViewById(R.id.editConfirmarSenhaCadastro);
+
+
+        spinnerTipoUsuario = (Spinner) findViewById(R.id.spinnerTipoUsuario);
+        preencherSpinnerTipoUsuario(spinnerTipoUsuario);
+        spinnerTipoUsuario.setBackgroundResource(R.drawable.spinner_edit);
     }
     public void entrar(View v){
         //Esconde o teclado ao clicar no botão entrar
@@ -247,5 +271,18 @@ public class Login extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void preencherSpinnerTipoUsuario(Spinner spinerTpUsuario) {
+        List<String> tpLarvicida = new ArrayList<String>();
+        tpLarvicida.add("Agente");
+        tpLarvicida.add("Supervisor");
+        tpLarvicida.add("Coordenador");
+
+        ArrayAdapter<String> adapterTpLarvicida = new ArrayAdapter<String>(
+                this, R.layout.spinner_itens, tpLarvicida);
+        adapterTpLarvicida
+                .setDropDownViewResource(R.layout.spinner_dropdown_itens);
+        spinerTpUsuario.setAdapter(adapterTpLarvicida);
     }
 }

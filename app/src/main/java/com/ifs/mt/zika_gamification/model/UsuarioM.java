@@ -10,8 +10,7 @@ public class UsuarioM {
     private String usuario_login;
     private String usuario_email;
     private String usuario_senha;
-    private String usuario_tipo_status;
-    private String usuario_tipo_usuario;
+    private String usuario_tipo;
 
     public int getUsuario_id() {
         return usuario_id;
@@ -44,20 +43,12 @@ public class UsuarioM {
         this.usuario_senha = usuario_senha;
     }
 
-    public String getUsuario_tipo_status() {
-        return usuario_tipo_status;
+    public String getUsuario_tipo() {
+        return usuario_tipo;
     }
 
-    public void setUsuario_tipo_status(String usuario_tipo_status) {
-        this.usuario_tipo_status = usuario_tipo_status;
-    }
-
-    public String getUsuario_tipo_usuario() {
-        return usuario_tipo_usuario;
-    }
-
-    public void setUsuario_tipo_usuario(String usuario_tipo_usuario) {
-        this.usuario_tipo_usuario = usuario_tipo_usuario;
+    public void setUsuario_tipo(String usuario_tipo) {
+        this.usuario_tipo = usuario_tipo;
     }
 }
 

@@ -27,7 +27,7 @@ public class UsuarioDao {
 
     public void insert(UsuarioM usu) {
         /**
-         * "usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha", "tipo_status_id",  "tipo_usuario_id"
+         * "usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha", "tipo_usuario"
          *
          **/
         ContentValues valores = new ContentValues();
@@ -36,8 +36,7 @@ public class UsuarioDao {
         valores.put("usuario_login", usu.getUsuario_login());
         valores.put("usuario_email", usu.getUsuario_email());
         valores.put("usuario_senha", usu.getUsuario_senha());
-        valores.put("tipo_status_id", usu.getTipo_status().getTipo_Status_Id());
-        valores.put("tipo_usuario_id", usu.getTipo_usuario().getTipo_Usuario_Id());
+        valores.put("tipo_usuario", usu.getUsuario_tipo());
         db.getWritableDatabase().insert(Banco.TB_USUARIO, null, valores);
         System.out.println("Inseriu UsuarioM");
     }
