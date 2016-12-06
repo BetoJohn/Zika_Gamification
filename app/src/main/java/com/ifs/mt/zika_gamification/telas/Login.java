@@ -28,6 +28,7 @@ import com.ifs.mt.zika_gamification.model.Tipo_StatusM;
 import com.ifs.mt.zika_gamification.model.Tipo_UsuarioM;
 import com.ifs.mt.zika_gamification.model.UsuarioM;
 import com.ifs.mt.zika_gamification.rest.UsuarioRest;
+import com.ifs.mt.zika_gamification.validacao.AutenticarCadastro;
 import com.ifs.mt.zika_gamification.validacao.AutenticarLogin;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ import java.util.List;
 public class Login extends Activity {
 
     private static UsuarioM usuarioLogado;
-    private Button entrar;
+    private Button entrar, cadastrar;
     private EditText editLogin;
     private EditText editSenha;
     private EditText editNomeCadastro;
@@ -87,11 +88,16 @@ public class Login extends Activity {
         spinnerTipoUsuario = (Spinner) findViewById(R.id.spinnerTipoUsuario);
         preencherSpinnerTipoUsuario(spinnerTipoUsuario);
         spinnerTipoUsuario.setBackgroundResource(R.drawable.spinner_edit);
+
+
+        String tipoUsuario = String.valueOf(spinnerTipoUsuario.getSelectedItem());
+        System.out.println("Tipo usuário: "+tipoUsuario);
     }
     public void entrar(View v){
         //Esconde o teclado ao clicar no botão entrar
         InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+
 
 
         /*Parte de autenticação que foi comentada*/
@@ -162,6 +168,45 @@ public class Login extends Activity {
         } else {
            // btnLogin.setProgress(-1);
         }*/
+    }
+
+    public void cadastrar(View v){
+
+        String tipoUsuario = String.valueOf(spinnerTipoUsuario.getSelectedItem());
+        System.out.println("Tipo usuário: " + tipoUsuario);
+
+        AutenticarLogin.validateNotNull(editNomeCadastro,
+                "Insira um nome válido!");
+        AutenticarLogin.validateNotNull(editLoginCadastro,
+                "Insira um login!");
+        AutenticarLogin.validateNotNull(editEmailCadastro,
+                "Insira um email válido!");
+        AutenticarLogin.validateNotNull(editSenhaCadastro,
+                "Insira uma senha!");
+        AutenticarCadastro.validarConfirmacaoSenha(editSenhaCadastro, editConfirmarSenhaCadastro,
+                "As senha não são idênticas!");
+
+
+
+        UsuarioM usuario = new UsuarioM();
+        usuario.setUsuario_nome(editNomeCadastro.getText().toString());
+        usuario.setUsuario_login(editLoginCadastro.getText().toString());
+        usuario.setUsuario_login(editEmailCadastro.getText().toString());
+        usuario.setUsuario_senha(editSenhaCadastro.getText().toString());
+        usuario.setUsuario_senha(editConfirmarSenhaCadastro.getText().toString());
+        Log.i("Login", "Dados: " + usuario.getUsuario_login() + " - " + usuario.getUsuario_senha());
+
+        //PARA TESTES
+        setUsuarioLogado(usuario);
+
+        //-------------- Teste de Inserção do Usuario -----------
+       /* bancoUsuario = new Banco(this);
+        UsuarioDao dao = new UsuarioDao(bancoUsuario);
+        dao.insert(usuario);*/
+        //-------------- Teste de Inserção do Usuario -----------
+
+
+        //startActivity(new Intent(Login.this, MenuPrincipal.class));
     }
 
     class AutenticacaoThread extends AsyncTask<UsuarioM, Void, UsuarioM> {
