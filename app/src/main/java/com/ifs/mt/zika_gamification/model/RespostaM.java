@@ -4,6 +4,7 @@ package com.ifs.mt.zika_gamification.model;
  * Created by Betto Silva on 01/12/2016.
  */
 public class RespostaM {
+
     private int resposta_Id;
     private String resposta_Item;
     private boolean resposta_Correta;

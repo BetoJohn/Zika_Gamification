@@ -56,10 +56,10 @@ public class P5M1E1 extends Fragment {
                 container, false);
 
 
-        dvText = (DocumentView) fragment.findViewById(R.id.dvText);
+        /*dvText = (DocumentView) fragment.findViewById(R.id.dvText);
         dvText.getDocumentLayoutParams().setTextAlignment(TextAlignment.JUSTIFIED);
         dvText.getDocumentLayoutParams().setHyphenator(DefaultHyphenator.getInstance(DefaultHyphenator.HyphenPattern.PT));
-        dvText.getDocumentLayoutParams().setHyphenated(false);
+        dvText.getDocumentLayoutParams().setHyphenated(false);*/
 
         imageViewPlay = (ImageView) fragment.findViewById(R.id.imageViewPlay);
         imageViewPlay.setOnClickListener(new View.OnClickListener() {

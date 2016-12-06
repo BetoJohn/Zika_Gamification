@@ -31,7 +31,7 @@
                 android:src="@drawable/a_a" />
 
 
-            <com.bluejamesbond.text.DocumentView
+           <!-- <com.bluejamesbond.text.DocumentView
                 xmlns:ext="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/dvText"
                 android:layout_width="fill_parent"
@@ -41,7 +41,7 @@
                 ext:documentView_insetPaddingLeft="10dp"
                 ext:documentView_insetPaddingRight="10dp"
                 ext:documentView_text="A partir dos anos 90, com a classificação da dengue como doença endêmica ela passou a estar mais anualmente em evidência. Através da chegada do(a) ___________, quando a maior intensidade de chuvas favorece sua reprodução?"
-                />
+                />-->
 
 
             <!-- <RadioGroup

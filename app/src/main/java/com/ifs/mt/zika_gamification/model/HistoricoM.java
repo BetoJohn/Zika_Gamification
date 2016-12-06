@@ -6,6 +6,8 @@ import java.util.List;
  * Created by Betto Silva on 01/12/2016.
  */
 public class HistoricoM {
+
+    private UsuarioM usuarioM;
     private int historico_Id;
     //private int modulo_Id;
     private List<ModuloM> modulos;
@@ -32,5 +34,13 @@ public class HistoricoM {
 
     public void setModulos(List<ModuloM> modulos) {
         this.modulos = modulos;
+    }
+
+    public UsuarioM getUsuarioM() {
+        return usuarioM;
+    }
+
+    public void setUsuarioM(UsuarioM usuarioM) {
+        this.usuarioM = usuarioM;
     }
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bluejamesbond.text.DocumentView;
@@ -24,6 +25,7 @@ import com.ifs.mt.zika_gamification.telas.treinamento_modulo3.C;
 public class P1M1E1 extends Fragment {
     private Toolbar tb_bottom_next;
     private DocumentView dvText;
+    private TextView textView;
 
 
     EditText A_input;
@@ -38,13 +40,14 @@ public class P1M1E1 extends Fragment {
 
         //---------------------teste bundle-----------------------
         A_input = (EditText) fragment.findViewById(R.id.a_input);
-
         //---------------------teste bundle-----------------------
 
-        dvText = (DocumentView) fragment.findViewById(R.id.dvText);
+        /*dvText = (DocumentView) fragment.findViewById(R.id.dvText);
         dvText.getDocumentLayoutParams().setTextAlignment(TextAlignment.JUSTIFIED);
         dvText.getDocumentLayoutParams().setHyphenator(DefaultHyphenator.getInstance(DefaultHyphenator.HyphenPattern.PT));
-        dvText.getDocumentLayoutParams().setHyphenated(false);
+        dvText.getDocumentLayoutParams().setHyphenated(false);*/
+
+        textView = (TextView) fragment.findViewById(R.id.dvText);
 
         tb_bottom_next = (Toolbar) fragment.findViewById(R.id.tb_bottom_next);
         tb_bottom_next.findViewById(R.id.iv_avancar_pergunta).setOnClickListener(new View.OnClickListener() {
@@ -52,7 +55,7 @@ public class P1M1E1 extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getActivity().getApplicationContext(), "Muda pagina", Toast.LENGTH_SHORT).show();
 
-//                String textPassToB = A_input.getText().toString();
+                String textPassToB = A_input.getText().toString();
 
                 String TagOfFragmentB = ((M1E1) getActivity()).getTagFragmentP2();
 
@@ -60,7 +63,7 @@ public class P1M1E1 extends Fragment {
                         .getSupportFragmentManager()
                         .findFragmentByTag(TagOfFragmentB);
 
-//                P2M1E1.b_updateText(textPassToB);
+                P2M1E1.b_updateText(textPassToB);
 
               /*  Toast.makeText(getActivity(),
                         "text sent to Fragment B:\n " + TagOfFragmentB,

@@ -32,7 +32,7 @@
                 android:src="@drawable/a_a" />
 
 
-            <com.bluejamesbond.text.DocumentView
+           <!-- <com.bluejamesbond.text.DocumentView
                 xmlns:ext="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/dvText"
                 android:layout_width="fill_parent"
@@ -42,7 +42,7 @@
                 ext:documentView_insetPaddingLeft="10dp"
                 ext:documentView_insetPaddingRight="10dp"
                 ext:documentView_text="De acordo com o vídeo selecione a opção correta."
-                />
+                />-->
 
             <ImageView
                 android:id="@+id/imageViewPlay"

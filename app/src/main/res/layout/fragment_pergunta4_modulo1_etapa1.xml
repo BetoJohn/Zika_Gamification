@@ -31,7 +31,7 @@
                 android:src="@drawable/a_a" />
 
 
-            <com.bluejamesbond.text.DocumentView
+            <!--<com.bluejamesbond.text.DocumentView
                 xmlns:ext="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/dvText"
                 android:layout_width="fill_parent"
@@ -41,7 +41,7 @@
                 ext:documentView_insetPaddingLeft="10dp"
                 ext:documentView_insetPaddingRight="10dp"
                 ext:documentView_text="Qual das imagens abaixo não é um sintoma da dengue?"
-                />
+                />-->
 
             <ImageView
                 android:id="@+id/imageView3"

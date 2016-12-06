@@ -31,7 +31,16 @@
                 android:src="@drawable/a_a" />
 
 
-            <com.bluejamesbond.text.DocumentView
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="O mosquito transmissor da Dengue, Aedes Aegypti, espalhou-se em diversas regiões do País e através da urbanização acelerada, deficiência de abastecimento de água e da limpeza urbana os casos de dengue aumentaram bruscamente. De acordo com a afirmação acima qual item não se encaixa como fator predominante para o aumento dos casos da dengue?"
+                android:labelFor="@id/a_input"/>
+
+           <!-- <com.bluejamesbond.text.DocumentView
                 xmlns:ext="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/dvText"
                 android:layout_width="fill_parent"
@@ -41,7 +50,7 @@
                 ext:documentView_insetPaddingLeft="10dp"
                 ext:documentView_insetPaddingRight="10dp"
                 ext:documentView_text="O mosquito transmissor da Dengue, Aedes Aegypti, espalhou-se em diversas regiões do País e através da urbanização acelerada, deficiência de abastecimento de água e da limpeza urbana os casos de dengue aumentaram bruscamente. De acordo com a afirmação acima qual item não se encaixa como fator predominante para o aumento dos casos da dengue?"
-                />
+                />-->
 
 
              <!--<RadioGroup
@@ -81,6 +90,8 @@
              </RadioGroup>-->
 
 
+
+
         </LinearLayout>
     </ScrollView>
 
@@ -91,24 +102,28 @@
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
 
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="It's Fragment A" />
-        <!--<EditText
+            android:text="It's Fragment A"
+            android:labelFor="@id/a_input"/>
+
+
+        <EditText
             android:id="@+id/a_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />-->
-
-
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+           />
 
 
         <include
             android:id="@+id/tb_bottom_next"
             layout="@layout/toolbar_bottom_avancar" />
     </LinearLayout>
+
+
 </RelativeLayout>
 
 
