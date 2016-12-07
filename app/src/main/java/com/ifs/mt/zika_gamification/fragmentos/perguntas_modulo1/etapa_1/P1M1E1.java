@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.Pergunta2_C;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo3.C;
+import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
 
 /**
  * Created by Betto Silva on 08/08/2016.
@@ -26,6 +28,7 @@ public class P1M1E1 extends Fragment {
     private Toolbar tb_bottom_next;
     private DocumentView dvText;
     private TextView textView;
+    private RadioGroup radioGroupP1M1E1;
 
 
     EditText A_input;
@@ -42,6 +45,7 @@ public class P1M1E1 extends Fragment {
         A_input = (EditText) fragment.findViewById(R.id.a_input);
         //---------------------teste bundle-----------------------
 
+
         /*dvText = (DocumentView) fragment.findViewById(R.id.dvText);
         dvText.getDocumentLayoutParams().setTextAlignment(TextAlignment.JUSTIFIED);
         dvText.getDocumentLayoutParams().setHyphenator(DefaultHyphenator.getInstance(DefaultHyphenator.HyphenPattern.PT));
@@ -49,16 +53,14 @@ public class P1M1E1 extends Fragment {
 
         textView = (TextView) fragment.findViewById(R.id.dvText);
 
+        radioGroupP1M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP1M1E1);
+
         tb_bottom_next = (Toolbar) fragment.findViewById(R.id.tb_bottom_next);
         tb_bottom_next.findViewById(R.id.iv_avancar_pergunta).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(), "Muda pagina", Toast.LENGTH_SHORT).show();
-
                 String textPassToB = A_input.getText().toString();
-
                 String TagOfFragmentB = ((M1E1) getActivity()).getTagFragmentP2();
-
                 P2M1E1 fragmentB = (P2M1E1) getActivity()
                         .getSupportFragmentManager()
                         .findFragmentByTag(TagOfFragmentB);
@@ -69,7 +71,11 @@ public class P1M1E1 extends Fragment {
                         "text sent to Fragment B:\n " + TagOfFragmentB,
                         Toast.LENGTH_LONG).show();*/
 
-                ((M1E1) getActivity()).trocarPagina(1);
+                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP1M1E1, "Selecione uma resposta!", getActivity().getApplicationContext());
+                if (ok) {
+                    ((M1E1) getActivity()).trocarPagina(1);
+                }
+
             }
         });
 

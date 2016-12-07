@@ -32,12 +32,15 @@
 
 
             <TextView
+                android:id="@+id/tvP1M1E1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="O mosquito transmissor da Dengue, Aedes Aegypti, espalhou-se em diversas regiões do País e através da urbanização acelerada, deficiência de abastecimento de água e da limpeza urbana os casos de dengue aumentaram bruscamente. De acordo com a afirmação acima qual item não se encaixa como fator predominante para o aumento dos casos da dengue?"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:text="@string/p1m1e1"
                 android:labelFor="@id/a_input"/>
 
            <!-- <com.bluejamesbond.text.DocumentView
@@ -53,41 +56,44 @@
                 />-->
 
 
-             <!--<RadioGroup
-                 android:id="@+id/radioGroup"
+             <RadioGroup
+                 android:id="@+id/radioGroupP1M1E1"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 android:layout_below="@+id/textView2"
+                 android:layout_marginTop="15dp"
+                 android:layout_marginRight="30dp"
                  android:layout_marginLeft="30dp"
-                 android:layout_marginTop="20dp"
                  android:orientation="vertical">
 
                  <RadioButton
-                     android:id="@+id/rbMalformacao"
+                     android:id="@+id/rbOp01"
+                     android:textSize="18sp"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:checked="true"
-                     android:text="Malformação" />
+                     android:text="Materiais biodegradáveis" />
 
                  <RadioButton
-                     android:id="@+id/rbDrogas"
+                     android:id="@+id/rbOp02"
+                     android:textSize="18sp"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="Drogas" />
+                     android:text="Recipientes de plástico descartáveis" />
 
                  <RadioButton
-                     android:id="@+id/rbFenilcetonuria"
+                     android:id="@+id/rbOp03"
+                     android:textSize="18sp"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="Fenilcetonúria" />
+                     android:text="Mudanças climáticas" />
 
                  <RadioButton
-                     android:id="@+id/rbDesnutricao"
+                     android:id="@+id/rbOp04"
+                     android:textSize="18sp"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="Desnutrição" />
+                     android:text="Nenhuma das alternativas" />
 
-             </RadioGroup>-->
+             </RadioGroup>
 
 
 

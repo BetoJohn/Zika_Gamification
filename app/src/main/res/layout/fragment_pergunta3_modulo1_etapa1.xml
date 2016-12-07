@@ -30,8 +30,18 @@
                 android:layout_marginTop="10dp"
                 android:src="@drawable/a_a" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:text="@string/p3m1e1"
+                android:labelFor="@id/a_input"/>
 
-            <com.bluejamesbond.text.DocumentView
+           <!-- <com.bluejamesbond.text.DocumentView
                 xmlns:ext="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/dvText"
                 android:layout_width="fill_parent"
@@ -41,7 +51,7 @@
                 ext:documentView_insetPaddingLeft="10dp"
                 ext:documentView_insetPaddingRight="10dp"
                 ext:documentView_text="A imagem abaixo demonstra o ciclo de vida do Aedes, uma femêa pode dar origem a aproximadamente quantos mosquitos?"
-                />
+                />-->
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -54,41 +64,46 @@
                 android:layout_marginTop="10dp"
                 android:src="@drawable/m1e1p3" />
 
-            <!-- <RadioGroup
-                 android:id="@+id/radioGroup"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_below="@+id/textView2"
-                 android:layout_marginLeft="30dp"
-                 android:layout_marginTop="20dp"
-                 android:orientation="vertical">
 
-                 <RadioButton
-                     android:id="@+id/rbMalformacao"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:checked="true"
-                     android:text="Malformação" />
+            <RadioGroup
+                android:id="@+id/radioGroupP3M1E1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:orientation="vertical">
 
-                 <RadioButton
-                     android:id="@+id/rbDrogas"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="Drogas" />
+                <RadioButton
+                    android:id="@+id/rbOp01"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="500 e 600 mosquitos" />
 
-                 <RadioButton
-                     android:id="@+id/rbFenilcetonuria"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="Fenilcetonúria" />
+                <RadioButton
+                    android:id="@+id/rbOp02"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="700 e 900 mosquitos" />
 
-                 <RadioButton
-                     android:id="@+id/rbDesnutricao"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="Desnutrição" />
+                <RadioButton
+                    android:id="@+id/rbOp03"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1.000 e 1.300 mosquitos" />
 
-             </RadioGroup>-->
+                <RadioButton
+                    android:id="@+id/rbOp04"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1.400 e 1.800 mosquitos" />
+
+            </RadioGroup>
 
 
         </LinearLayout>

@@ -26,7 +26,7 @@ public class Banco extends SQLiteOpenHelper {
 
     //UsuarioM
     public final static String TB_USUARIO = "usuario";
-    public final static String CREATE_TB_USUARIO = "create table IF NOT EXISTS usuario (usuario_id integer, usuario_nome text, usuario_login text,  usuario_email text, usuario_senha text,  tipo_usuario text)";
+    public final static String CREATE_TB_USUARIO = "create table IF NOT EXISTS usuario (usuario_id integer PRIMARY KEY AUTOINCREMENT, usuario_nome text, usuario_login text,  usuario_email text, usuario_senha text,  tipo_usuario text)";
     public final static String[] COLUMNS_USUARIO = {"usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha",  "tipo_usuario"};
 
     //Visita
@@ -68,7 +68,7 @@ public class Banco extends SQLiteOpenHelper {
 
 
     public void limparDadosVisitas() {
-        db.execSQL(String.format("DELETE FROM %s", Banco.TB_VISITA));
+        db.execSQL(String.format("DELETE FROM %s", Banco.TB_USUARIO));
     }
 
     @Override

@@ -43,51 +43,66 @@
                 ext:documentView_text="Qual das imagens abaixo não é um sintoma da dengue?"
                 />-->
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:text="@string/p4m1e1"
+                android:labelFor="@id/a_input"/>
+
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tb"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:src="@drawable/m1e1p4" />
 
-            <!-- <RadioGroup
-                 android:id="@+id/radioGroup"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_below="@+id/textView2"
-                 android:layout_marginLeft="30dp"
-                 android:layout_marginTop="20dp"
-                 android:orientation="vertical">
+            <RadioGroup
+                android:id="@+id/radioGroupP4M1E1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:orientation="vertical">
 
-                 <RadioButton
-                     android:id="@+id/rbMalformacao"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:checked="true"
-                     android:text="Malformação" />
+                <RadioButton
+                    android:id="@+id/rbOp01"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Febre alta (acima de 38ºC) e Dor de Cabeça" />
 
-                 <RadioButton
-                     android:id="@+id/rbDrogas"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="Drogas" />
+                <RadioButton
+                    android:id="@+id/rbOp02"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dor no fundo dos olhos e Sem resfriado ou coriza" />
 
-                 <RadioButton
-                     android:id="@+id/rbFenilcetonuria"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="Fenilcetonúria" />
+                <RadioButton
+                    android:id="@+id/rbOp03"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fraqueza e desânimo - Dor no corpo e nas juntas" />
 
-                 <RadioButton
-                     android:id="@+id/rbDesnutricao"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="Desnutrição" />
+                <RadioButton
+                    android:id="@+id/rbOp04"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nenhuma das alternativas" />
 
-             </RadioGroup>-->
+            </RadioGroup>
+
 
 
         </LinearLayout>

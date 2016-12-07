@@ -1,10 +1,13 @@
 package com.ifs.mt.zika_gamification.telas;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -17,6 +20,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +42,7 @@ import java.util.List;
 public class Login extends Activity {
 
     private static UsuarioM usuarioLogado;
-    private Button entrar, cadastrar;
+    private TextView clickCadastro, textViewTipoUsuario;
     private EditText editLogin;
     private EditText editSenha;
     private EditText editNomeCadastro;
@@ -47,6 +51,8 @@ public class Login extends Activity {
     private EditText editSenhaCadastro;
     private EditText editConfirmarSenhaCadastro;
     private Spinner spinnerTipoUsuario;
+    private ImageView imageViewCadastro;
+    private Button btnCadastro;
 
 
     private Button btnLogin;
@@ -79,134 +85,173 @@ public class Login extends Activity {
         });
 
         editNomeCadastro = (EditText) findViewById(R.id.editNomeCadastro);
+        editNomeCadastro.setVisibility(View.INVISIBLE);
         editLoginCadastro = (EditText) findViewById(R.id.editLoginCadastro);
+        editLoginCadastro.setVisibility(View.INVISIBLE);
         editEmailCadastro = (EditText) findViewById(R.id.editEmailCadastro);
+        editEmailCadastro.setVisibility(View.INVISIBLE);
         editSenhaCadastro = (EditText) findViewById(R.id.editSenhaCadastro);
+        editSenhaCadastro.setVisibility(View.INVISIBLE);
         editConfirmarSenhaCadastro = (EditText) findViewById(R.id.editConfirmarSenhaCadastro);
+        editConfirmarSenhaCadastro.setVisibility(View.INVISIBLE);
 
 
         spinnerTipoUsuario = (Spinner) findViewById(R.id.spinnerTipoUsuario);
         preencherSpinnerTipoUsuario(spinnerTipoUsuario);
         spinnerTipoUsuario.setBackgroundResource(R.drawable.spinner_edit);
+        spinnerTipoUsuario.setVisibility(View.INVISIBLE);
 
+        imageViewCadastro = (ImageView) findViewById(R.id.imageViewCadastro);
+        imageViewCadastro.setVisibility(View.INVISIBLE);
+
+        btnCadastro = (Button) findViewById(R.id.btnCadastro);
+        btnCadastro.setVisibility(View.INVISIBLE);
+
+        textViewTipoUsuario = (TextView) findViewById(R.id.textViewTipoUsuario);
+        textViewTipoUsuario.setVisibility(View.INVISIBLE);
+
+        clickCadastro = (TextView) findViewById(R.id.clickCadastro);
+        clickCadastro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setVisible();
+
+            }
+        });
 
         String tipoUsuario = String.valueOf(spinnerTipoUsuario.getSelectedItem());
-        System.out.println("Tipo usuário: "+tipoUsuario);
+        System.out.println("Tipo usuário: " + tipoUsuario);
     }
-    public void entrar(View v){
+
+    public void entrar(View v) {
         //Esconde o teclado ao clicar no botão entrar
         InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
 
+        editLogin.setText("mateus");
+        editSenha.setText("123");
 
-
-        /*Parte de autenticação que foi comentada*/
-        //TUDO OK, S PARA EVITAR FADIGA
-        AutenticacaoThread thread = new AutenticacaoThread();
-
-        //------ Objeto para Teste --------------
-       /* Tipo_StatusM tipo_status = new Tipo_StatusM();
-        tipo_status.setTipo_Status_Id(1);
-        tipo_status.setTipo_Status_Nome("TesteStatus");
-        tipo_status.setTipo_Status_Valor("Ok");
-
-        Tipo_UsuarioM tipo_usuario = new Tipo_UsuarioM();
-        tipo_usuario.setTipo_Usuario_Id(1);
-        tipo_usuario.setTipo_Usuario_Nome("Comum");
-        tipo_usuario.setTipo_Usuario_Valor("N");
-
-        UsuarioM usuario = new UsuarioM();
-        usuario.setUsuario_id(1);
-        usuario.setUsuario_email("mateus@mateus.com");
-        usuario.setTipo_status(tipo_status);
-        usuario.setTipo_usuario(tipo_usuario);*/
-
-        //------ Objeto para Teste --------------
-
-
-
-        AutenticarLogin.validateNotNull(editLogin,
-                "Insira um email válido!");
-        AutenticarLogin.validateNotNull(editSenha,
+        boolean login = AutenticarLogin.validateNotNull(editLogin,
+                "Insira um login válido!");
+       boolean senha =  AutenticarLogin.validateNotNull(editSenha,
                 "Insira uma senha!");
         UsuarioM usuario = new UsuarioM();
         usuario.setUsuario_login(editLogin.getText().toString());
         usuario.setUsuario_senha(editSenha.getText().toString());
         Log.i("Login", "Dados: " + usuario.getUsuario_login() + " - " + usuario.getUsuario_senha());
 
-        //PARA TESTES
-        usuario.setUsuario_nome("Mateus Oliveira");
         setUsuarioLogado(usuario);
 
         //-------------- Teste de Inserção do Usuario -----------
-       /* bancoUsuario = new Banco(this);
+        /*bancoUsuario = new Banco(this);
         UsuarioDao dao = new UsuarioDao(bancoUsuario);
-        dao.insert(usuario);*/
+        //this.deleteDatabase("dbzika");
+        //dao.apagaRegistrosTabela();
+        List<UsuarioM> usuarios = dao.getAll();
+        System.out.println("Quantidade de usuários: "+usuarios.size());
+        for(UsuarioM usu: usuarios){
+            System.out.println("Usuário Id: "+ usu.getUsuario_id()+" - "+usu.getUsuario_nome()+" - "+usu.getUsuario_email()+" - "+usu.getUsuario_login()+" - "+usu.getUsuario_tipo());
+        }*/
         //-------------- Teste de Inserção do Usuario -----------
 
 
-        startActivity(new Intent(Login.this, MenuPrincipal.class));
-       /* if (usuario.getUsuario_login().equals("demo") && usuario.getUsuario_senha().equals("demo")) {
-            usuario.setUsuario_login("Matheus Oliveira");
-            usuarioLogado = usuario;
-            startActivity(new Intent(Login.this, MenuPrincipal.class));
-        }else{
-            Toast.makeText(Login.this,"Login ou Senha inválido(s)!",Toast.LENGTH_SHORT).show();
-        }*/
 
-        /*// se passar na valida��o chama a thread
-        if (AutenticarLogin.validarNome(editLogin.getText().toString())
-                && AutenticarLogin.validarSenha(editSenha.getText()
-                .toString())) {
+      /*AutenticacaoThread thread = new AutenticacaoThread();
+        thread.execute(usuario);*/
 
-            if (usuario.getLogin().equals("admin@admin.com") && usuario.getSenha().equals("admin")) {
-               // startActivity(new Intent(Login.this, LoginAdmin.class));
-            } else {
-                thread.execute(usuario);
+        if(login && senha){
+            bancoUsuario = new Banco(getApplicationContext());
+            UsuarioDao dao = new UsuarioDao(bancoUsuario);
+            usuario = dao.autenticacao(usuario);
+            try {
+                if (null != usuario) {
+
+                    System.out.println("Usuario result: " + usuario.getUsuario_login() + " - " + usuario.getUsuario_senha());
+
+                    Intent intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    //agenteLogado vai receber os dados do agente que se logou
+                    usuarioLogado = usuario;
+                    intent.putExtra("dados", bundle);
+                    // se deu tudo certo chama a classe MenuApp
+                    intent.setClass(Login.this, MenuPrincipal.class);
+                    startActivity(intent);
+
+
+                } else {
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(Login.this);
+                    alertDialog.setTitle("Erro!");
+                    alertDialog.setMessage("Não foi encontrado nenhum usuário com esse Login e Senha. Deseja efetuar um cadastro?");
+                    alertDialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            editLoginCadastro.setText(editLogin.getText().toString());
+                            setVisible();
+
+                        }
+                    });
+                    alertDialog.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    // alertDialog.setIcon(R.drawable.dengue_10dp);
+                    alertDialog.show();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+        }
 
-        } else {
-           // btnLogin.setProgress(-1);
-        }*/
+
     }
 
-    public void cadastrar(View v){
+    public void cadastrar(View v) {
 
         String tipoUsuario = String.valueOf(spinnerTipoUsuario.getSelectedItem());
         System.out.println("Tipo usuário: " + tipoUsuario);
 
         AutenticarLogin.validateNotNull(editNomeCadastro,
-                "Insira um nome válido!");
+                "Insira um nome!");
         AutenticarLogin.validateNotNull(editLoginCadastro,
                 "Insira um login!");
-        AutenticarLogin.validateNotNull(editEmailCadastro,
-                "Insira um email válido!");
+        AutenticarLogin.validarEmail(editEmailCadastro, "Insira um email válido!");
+
         AutenticarLogin.validateNotNull(editSenhaCadastro,
                 "Insira uma senha!");
         AutenticarCadastro.validarConfirmacaoSenha(editSenhaCadastro, editConfirmarSenhaCadastro,
                 "As senha não são idênticas!");
 
 
-
         UsuarioM usuario = new UsuarioM();
         usuario.setUsuario_nome(editNomeCadastro.getText().toString());
         usuario.setUsuario_login(editLoginCadastro.getText().toString());
-        usuario.setUsuario_login(editEmailCadastro.getText().toString());
+        usuario.setUsuario_email(editEmailCadastro.getText().toString());
         usuario.setUsuario_senha(editSenhaCadastro.getText().toString());
-        usuario.setUsuario_senha(editConfirmarSenhaCadastro.getText().toString());
+        usuario.setUsuario_tipo(tipoUsuario);
         Log.i("Login", "Dados: " + usuario.getUsuario_login() + " - " + usuario.getUsuario_senha());
 
         //PARA TESTES
         setUsuarioLogado(usuario);
 
         //-------------- Teste de Inserção do Usuario -----------
-       /* bancoUsuario = new Banco(this);
+        bancoUsuario = new Banco(this);
         UsuarioDao dao = new UsuarioDao(bancoUsuario);
-        dao.insert(usuario);*/
+        dao.insert(usuario);
         //-------------- Teste de Inserção do Usuario -----------
+        setUsuarioLogado(usuario);
+        startActivity(new Intent(Login.this, MenuPrincipal.class));
+    }
 
-
-        //startActivity(new Intent(Login.this, MenuPrincipal.class));
+    public void setVisible() {
+        editNomeCadastro.setVisibility(View.VISIBLE);
+        editLoginCadastro.setVisibility(View.VISIBLE);
+        editEmailCadastro.setVisibility(View.VISIBLE);
+        editSenhaCadastro.setVisibility(View.VISIBLE);
+        editConfirmarSenhaCadastro.setVisibility(View.VISIBLE);
+        spinnerTipoUsuario.setVisibility(View.VISIBLE);
+        imageViewCadastro.setVisibility(View.VISIBLE);
+        btnCadastro.setVisibility(View.VISIBLE);
+        textViewTipoUsuario.setVisibility(View.VISIBLE);
     }
 
     class AutenticacaoThread extends AsyncTask<UsuarioM, Void, UsuarioM> {
@@ -216,7 +261,7 @@ public class Login extends Activity {
             // TODO Auto-generated method stub
             super.onPreExecute();
             // pgBar.setVisibility(View.VISIBLE);
-           // btnLogin.setProgress(1);
+            // btnLogin.setProgress(1);
             Log.i("Thread", "entrou no onPreExecute()");
         }
 
@@ -227,41 +272,41 @@ public class Login extends Activity {
             try {
                /* Log.i("Thread", "entrou no onPostExecute()");
                 Log.i("Thread", "valor do result " + result);*/
-                boolean autenticado = false;
+
                 // pgBar.setVisibility(View.INVISIBLE);
                 if (null != result) {
-                /*    if (result.getIdAgente() != 0) {
 
-                        System.out.println("Agente result: " + result.getLogin() + " - " + result.getSenha());
+                    System.out.println("Usuario result: " + result.getUsuario_login() + " - " + result.getUsuario_senha());
+
+                    Intent intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    //agenteLogado vai receber os dados do agente que se logou
+                    usuarioLogado = result;
+                    intent.putExtra("dados", bundle);
+                    // se deu tudo certo chama a classe MenuApp
+                    intent.setClass(Login.this, MenuPrincipal.class);
+                    startActivity(intent);
 
 
-                      //  btnLogin.setProgress(100);
-                        // SystemClock.sleep(3000);
+                } else {
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(Login.this);
+                    alertDialog.setTitle("Erro!");
+                    alertDialog.setMessage("Não foi encontrado nenhum usuário com esse Login e Senha. Deseja efetuar um cadastro?");
+                    alertDialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            editLoginCadastro.setText(editLogin.getText().toString());
+                            setVisible();
 
-                        Intent intent = new Intent();
-                        Bundle bundle = new Bundle();
-                        //agenteLogado vai receber os dados do agente que se logou
-                        usuarioLogado = result;
-  //                      bundle.putSerializable("agenteLogado", result);
-                        intent.putExtra("dados", bundle);
-                        // se deu tudo certo chama a classe MenuApp
-                        intent.setClass(Login.this, MenuPrincipal.class);
-                        autenticado = true;
-                        startActivity(intent);
-                    }*/
-
+                        }
+                    });
+                    alertDialog.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    // alertDialog.setIcon(R.drawable.dengue_10dp);
+                    alertDialog.show();
                 }
-                if (!autenticado) {
-
-   //                 String ipRetorno = recuperaIpServidor(Login.this);
-   //                 System.out.println("Ip retorno preference: " + ipRetorno);
-   //                 if (ipRetorno.equals("") || ipRetorno.equals("0") || ipRetorno.equals(null)) {
-   //                     Toast.makeText(Login.this, "Verifique com o Administrador se foi cadastrado o IP para o Servidor", Toast.LENGTH_SHORT).show();
-   //                 }
-
-                  //  btnLogin.setProgress(-1);
-                }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -272,18 +317,21 @@ public class Login extends Activity {
             // faz a chamada do webService em background
 
             UsuarioRest agtRest = new UsuarioRest();
-            UsuarioM agente = params[0];
-            System.out.println("Valor do AgentT no doInBackground " + agente);
+            UsuarioM usu = params[0];
+            System.out.println("Valor do Usuario no doInBackground " + usu);
             try {
                 //vai verificar se a tabela local esta vazia, se estiver faz a consulta via webService
                 //popula a tabela local com o resultado da consulta e assim autentica o LOgin retornando
                 //o agente.
-                agente = agtRest.autenticar(agente, getApplicationContext());
-                System.out.println("Valor retornado para AgentT no doInBackground " + agente);
+
+                bancoUsuario = new Banco(getApplicationContext());
+                UsuarioDao dao = new UsuarioDao(bancoUsuario);
+                usu = dao.autenticacao(usu);
+                System.out.println("Valor retornado para AgentT no doInBackground " + usu);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return agente;
+            return usu;
         }
 
     }

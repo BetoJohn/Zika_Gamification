@@ -64,6 +64,10 @@
             android:label="@string/title_activity_m1_e1" >
         </activity>
         <activity
+            android:name=".telas.treinamento_modulo1.etapa_1.M1"
+            android:label="@string/title_activity_m1_e1" >
+        </activity>
+        <activity
             android:name=".telas.treinamento_modulo1.etapa_1.P5M1E1_Video"
             android:label="" >
         </activity>

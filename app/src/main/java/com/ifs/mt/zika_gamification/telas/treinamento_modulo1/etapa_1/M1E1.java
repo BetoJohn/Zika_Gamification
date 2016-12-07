@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.adapter.FragmentCustomPagerAdapter;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class M1E1 extends AppCompatActivity {
-    private Toolbar tb;
+    private Toolbar tb_perguntas;
     private ViewPager mViewPager;
     private String TagFragmentP2;
     List<Fragment> fragments;
@@ -39,8 +40,13 @@ public class M1E1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_m1_e1);
 
-        tb = (Toolbar) findViewById(R.id.tb);
-        setSupportActionBar(tb);
+        tb_perguntas = (Toolbar) findViewById(R.id.tb_perguntas);
+        tb_perguntas.findViewById(R.id.iv_voltar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setOffscreenPageLimit(1);

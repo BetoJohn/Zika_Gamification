@@ -14,14 +14,13 @@
         android:fitsSystemWindows="true"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Menu"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:id="@+id/textView" />
+        <ImageView
+            android:id="@+id/iv_logo_menu_principal"
+            android:layout_width="95dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/zika" />
+
 
     </android.support.v7.widget.Toolbar>
 

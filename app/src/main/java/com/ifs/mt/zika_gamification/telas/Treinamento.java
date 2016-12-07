@@ -3,6 +3,7 @@ package com.ifs.mt.zika_gamification.telas;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,17 +12,27 @@ import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.adapter.ImageAdapter;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1_ScrollAll;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.P5M1E1_Video;
 
 public class Treinamento extends AppCompatActivity {
-    private boolean A=false,B=false,C=false,D=false,E=false,F=false;
+    private Toolbar tb_treinamento;
+    private boolean A = false, B = false, C = false, D = false, E = false, F = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treinamento);
+
+        tb_treinamento = (Toolbar) findViewById(R.id.tb_treinamento);
+        tb_treinamento.findViewById(R.id.iv_voltar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         GridView gridview = (GridView) findViewById(R.id.gridview);
         gridview.setAdapter(new ImageAdapter(this));
@@ -32,9 +43,9 @@ public class Treinamento extends AppCompatActivity {
                 Toast.makeText(Treinamento.this, "" + position,
                         Toast.LENGTH_SHORT).show();
                 A = true;
-                if(position == 0){
-                    if(A)
-                    startActivity(new Intent(Treinamento.this, M1E1.class));
+                if (position == 0) {
+                    if (A)
+                        startActivity(new Intent(Treinamento.this, M1.class));
                 }
 
 

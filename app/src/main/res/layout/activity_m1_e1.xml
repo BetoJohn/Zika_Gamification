@@ -5,7 +5,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 android:orientation="vertical">
 
 <android.support.v7.widget.Toolbar
-    android:id="@+id/tb"
+    android:id="@+id/tb_perguntas"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="#D14841"
@@ -13,13 +13,41 @@ android:orientation="vertical">
     android:fitsSystemWindows="true"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-    <TextView
+    <ImageView
+        android:id="@+id/iv_voltar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_reply_white_24dp" />
+
+    <!--    <ImageView
+            android:id="@+id/iv_logo_menu_principal"
+            android:layout_width="95dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/zika" />-->
+
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Treinamento"
-        android:textSize="20sp"
-        android:textColor="@android:color/white"
-        android:id="@+id/textView" />
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/zika" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_logo"
+            android:text="Treinamento"
+            android:textColor="#FEFEFE"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
 
 </android.support.v7.widget.Toolbar>
 
@@ -34,7 +62,7 @@ android:orientation="vertical">
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     app:swipeable="false"
     tools:context="com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1"
-    android:layout_below="@+id/appbar"
+
     >
 
 

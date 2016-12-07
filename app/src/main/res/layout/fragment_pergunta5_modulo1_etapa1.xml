@@ -30,7 +30,16 @@
                 android:layout_marginRight="100dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/a_a" />
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@android:color/black"
+                android:text="@string/p5m1e1"
+                android:textSize="18sp"
+                android:labelFor="@id/a_input"/>
 
            <!-- <com.bluejamesbond.text.DocumentView
                 xmlns:ext="http://schemas.android.com/apk/res-auto"
@@ -48,48 +57,51 @@
                 android:id="@+id/imageViewPlay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/dvText"
-                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="100dp"
                 android:layout_marginRight="100dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/play_video" />
 
-            <!-- <RadioGroup
-                 android:id="@+id/radioGroup"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_below="@+id/textView2"
-                 android:layout_marginLeft="30dp"
-                 android:layout_marginTop="20dp"
-                 android:orientation="vertical">
+            <RadioGroup
+                android:id="@+id/radioGroupP5M1E1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:orientation="vertical">
 
-                 <RadioButton
-                     android:id="@+id/rbMalformacao"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:checked="true"
-                     android:text="Malformação" />
+                <RadioButton
+                    android:id="@+id/rbOp01"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Na fase pulpa a fêmea transmite o vírus zika ou dengue" />
 
-                 <RadioButton
-                     android:id="@+id/rbDrogas"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="Drogas" />
+                <RadioButton
+                    android:id="@+id/rbOp02"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Se um mosquito macho picar uma pessoa infectada e depois de alguns dias picar uma pessoa saudável poderá transmitir algum tipo de doença" />
 
-                 <RadioButton
-                     android:id="@+id/rbFenilcetonuria"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="Fenilcetonúria" />
+                <RadioButton
+                    android:id="@+id/rbOp03"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O mosquito macho e fêmea se alimenta das flores" />
 
-                 <RadioButton
-                     android:id="@+id/rbDesnutricao"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="Desnutrição" />
+                <RadioButton
+                    android:id="@+id/rbOp04"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nenhuma das alternativas" />
 
-             </RadioGroup>-->
+            </RadioGroup>
+
 
 
         </LinearLayout>

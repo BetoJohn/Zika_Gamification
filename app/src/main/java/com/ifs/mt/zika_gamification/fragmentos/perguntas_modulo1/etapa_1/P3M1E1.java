@@ -35,10 +35,10 @@ public class P3M1E1 extends Fragment {
                 container, false);
 
 
-        dvText = (DocumentView) fragment.findViewById(R.id.dvText);
+       /* dvText = (DocumentView) fragment.findViewById(R.id.dvText);
         dvText.getDocumentLayoutParams().setTextAlignment(TextAlignment.JUSTIFIED);
         dvText.getDocumentLayoutParams().setHyphenator(DefaultHyphenator.getInstance(DefaultHyphenator.HyphenPattern.PT));
-        dvText.getDocumentLayoutParams().setHyphenated(false);
+        dvText.getDocumentLayoutParams().setHyphenated(false);*/
 
         tb_bottom_next = (Toolbar) fragment.findViewById(R.id.tb_bottom_next);
         tb_bottom_next.findViewById(R.id.iv_avancar_pergunta).setOnClickListener(new View.OnClickListener() {

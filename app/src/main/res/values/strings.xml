@@ -1,6 +1,29 @@
 <resources>
-    <string name="app_name">Zika_Gamification</string>
 
+    <!-- ==== Módulo 01 / Etapa 01 ==== -->
+    <string name="p1m1e1">O mosquito transmissor da Dengue, Aedes Aegypti, espalhou-se em diversas regiões do País e através da urbanização acelerada, deficiência de abastecimento de água e da limpeza urbana os casos de dengue aumentaram bruscamente. De acordo com a afirmação acima qual item não se encaixa como fator predominante para o aumento dos casos da dengue?</string>
+    <string name="p2m1e1">A partir dos anos 90, com a classificação da dengue como doença endêmica ela passou a estar mais anualmente em evidência. Através da chegada do(a) ___________, quando a maior intensidade de chuvas favorece sua reprodução?</string>
+    <string name="p3m1e1">A imagem abaixo demonstra o ciclo de vida do Aedes, uma femêa pode dar origem a aproximadamente quantos mosquitos?</string>
+    <string name="p4m1e1">Qual das imagens abaixo não é um sintoma da dengue?</string>
+    <string name="p5m1e1">De acordo com o vídeo, selecione a opção correta.</string>
+
+    <!-- ==== Módulo 01 / Etapa 02 ==== -->
+    <string name="p1m1e2"></string>
+    <string name="p2m1e2"></string>
+    <string name="p3m1e2"></string>
+    <string name="p4m1e2"></string>
+    <string name="p5m1e2"></string>
+
+
+    <!-- ==== Módulo 01 / Etapa 03 ==== -->
+    <string name="p1m1e3"></string>
+    <string name="p2m1e3"></string>
+    <string name="p3m1e3"></string>
+    <string name="p4m1e3"></string>
+    <string name="p5m1e3"></string>
+
+
+    <string name="app_name">Zika_Gamification</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_sair">Sair</string>
     <string name="title_activity_menu_principal"></string>
@@ -11,7 +34,7 @@
     <string name="title_activity_c1_teste"></string>
     <string name="tipo_usuario">Tipo Usuário</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_b">B</string>

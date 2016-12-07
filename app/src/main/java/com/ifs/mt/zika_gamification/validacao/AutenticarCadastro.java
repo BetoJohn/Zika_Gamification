@@ -34,9 +34,9 @@ public class AutenticarCadastro {
 
 				}
 			}
-			edTextSenha1.setError(pMessage);
+			/*edTextSenha1.setError(pMessage);
 			edTextSenha1.setFocusable(true);
-			edTextSenha1.requestFocus();
+			edTextSenha1.requestFocus();*/
 			edTextSenha2.setError(pMessage);
 			edTextSenha2.setFocusable(true);
 			edTextSenha2.requestFocus();
