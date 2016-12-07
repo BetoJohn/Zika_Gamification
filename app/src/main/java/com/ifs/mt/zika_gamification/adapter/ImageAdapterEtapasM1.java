@@ -12,10 +12,10 @@ import com.ifs.mt.zika_gamification.R;
 /**
  * Created by Beto on 05/08/2016.
  */
-public class ImageAdapter extends BaseAdapter {
+public class ImageAdapterEtapasM1 extends BaseAdapter {
     private Context mContext;
     public ImageView imageView;
-    public ImageAdapter(Context c) {
+    public ImageAdapterEtapasM1(Context c) {
         mContext = c;
     }
 
@@ -32,7 +32,7 @@ public class ImageAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        mThumbIds[2] = R.drawable.c_a;
+//        mThumbIds[2] = R.drawable.c_a;
         imageView.setImageResource(mThumbIds[position]);
 
         return imageView;
@@ -40,9 +40,7 @@ public class ImageAdapter extends BaseAdapter {
 
     // references to our images
     public Integer[] mThumbIds = {
-            R.drawable.a_a, R.drawable.b_i,
-            R.drawable.c_i,R.drawable.d_i,
-            R.drawable.e_i,R.drawable.f_i
+            R.drawable.emblema1_a, R.drawable.emblema2_i
 
     };
 

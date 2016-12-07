@@ -76,7 +76,6 @@
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="Na fase pulpa a fêmea transmite o vírus zika ou dengue" />
 
                 <RadioButton

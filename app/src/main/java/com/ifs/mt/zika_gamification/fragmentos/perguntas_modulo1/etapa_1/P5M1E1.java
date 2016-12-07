@@ -21,6 +21,7 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -32,6 +33,7 @@ import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.telas.Teste;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.P5M1E1_Video;
+import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
 
 
 /**
@@ -41,7 +43,7 @@ public class P5M1E1 extends Fragment {
     private Toolbar tb_bottom_next;
     private VideoView videoView;
     TextView b_received;
-    private DocumentView dvText;
+    private RadioGroup radioGroupP5M1E1;
     private static final String TAG = "VideoPlayer";
     private ImageView imageViewPlay;
     private MediaPlayer mMediaPlayer;
@@ -55,7 +57,7 @@ public class P5M1E1 extends Fragment {
         final View fragment = inflater.inflate(R.layout.fragment_pergunta5_modulo1_etapa1,
                 container, false);
 
-
+        radioGroupP5M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP5M1E1);
         /*dvText = (DocumentView) fragment.findViewById(R.id.dvText);
         dvText.getDocumentLayoutParams().setTextAlignment(TextAlignment.JUSTIFIED);
         dvText.getDocumentLayoutParams().setHyphenator(DefaultHyphenator.getInstance(DefaultHyphenator.HyphenPattern.PT));
@@ -73,14 +75,18 @@ public class P5M1E1 extends Fragment {
         tb_bottom_next.findViewById(R.id.iv_concluir).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(), "Concluir", Toast.LENGTH_SHORT).show();
+
+                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP5M1E1, "Selecione uma resposta!", getActivity().getApplicationContext());
+                if (ok) {
+                    Toast.makeText(getActivity().getApplicationContext(), "Concluir", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
         tb_bottom_next.findViewById(R.id.iv_voltar_pergunta).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(), "Muda pagina", Toast.LENGTH_SHORT).show();
+
                 ((M1E1) getActivity()).trocarPagina(3);
             }
         });

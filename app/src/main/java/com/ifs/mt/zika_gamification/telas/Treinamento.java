@@ -11,11 +11,8 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
-import com.ifs.mt.zika_gamification.adapter.ImageAdapter;
+import com.ifs.mt.zika_gamification.adapter.ImageAdapterModulos;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1;
-import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
-import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1_ScrollAll;
-import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.P5M1E1_Video;
 
 public class Treinamento extends AppCompatActivity {
     private Toolbar tb_treinamento;
@@ -35,7 +32,7 @@ public class Treinamento extends AppCompatActivity {
         });
 
         GridView gridview = (GridView) findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapter(this));
+        gridview.setAdapter(new ImageAdapterModulos(this));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,

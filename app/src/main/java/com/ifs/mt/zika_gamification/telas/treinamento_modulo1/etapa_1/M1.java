@@ -1,67 +1,56 @@
 package com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
-import com.ifs.mt.zika_gamification.adapter.FragmentCustomPagerAdapter;
-import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P1M1E1;
-import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P2M1E1;
-import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P3M1E1;
-import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P4M1E1;
-import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P5M1E1;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.ifs.mt.zika_gamification.adapter.ImageAdapterEtapasM1;
+import com.ifs.mt.zika_gamification.adapter.ImageAdapterModulos;
 
 public class M1 extends AppCompatActivity {
-    private Toolbar tb_perguntas;
-    private ViewPager mViewPager;
-    private String TagFragmentP2;
-    List<Fragment> fragments;
+    private Toolbar tb_etapa;
+    private boolean A = false, B = false;
 
-    public void setTagFragmentP2(String t) {
-        TagFragmentP2 = t;
-    }
 
-    public String getTagFragmentP2() {
-        return TagFragmentP2;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_m1);
 
-        tb_perguntas = (Toolbar) findViewById(R.id.tb_perguntas);
-        tb_perguntas.findViewById(R.id.iv_voltar).setOnClickListener(new View.OnClickListener() {
+        tb_etapa = (Toolbar) findViewById(R.id.tb_etapa);
+        tb_etapa.findViewById(R.id.iv_voltar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
 
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setOffscreenPageLimit(1);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragments = new ArrayList<>();
-        fragments.add(new P1M1E1());
-        fragments.add(new P2M1E1());
-        fragments.add(new P3M1E1());
-        fragments.add(new P4M1E1());
-        fragments.add(new P5M1E1());
-        mViewPager.setAdapter(new FragmentCustomPagerAdapter(fragmentManager, fragments));
-    }
+        GridView gridview = (GridView) findViewById(R.id.gridview);
+        gridview.setAdapter(new ImageAdapterEtapasM1(this));
 
-    public void trocarPagina(int index) {
-        mViewPager.setCurrentItem(index);
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                Toast.makeText(M1.this, "" + position,
+                        Toast.LENGTH_SHORT).show();
+                A = true;
+                if (position == 0) {
+                    if (A)
+                        startActivity(new Intent(M1.this, M1E1.class));
+                }
+
+
+            }
+        });
     }
 
     @Override

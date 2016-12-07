@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.Pergunta2_C;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo3.C;
+import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
 
 /**
  * Created by Betto Silva on 08/08/2016.
@@ -25,7 +27,7 @@ import com.ifs.mt.zika_gamification.telas.treinamento_modulo3.C;
 public class P2M1E1 extends Fragment {
     private Toolbar tb_bottom_next;
     static  TextView b_received;
-    private DocumentView dvText;
+    private RadioGroup radioGroupP2M1E1;
 
 
 
@@ -46,6 +48,8 @@ public class P2M1E1 extends Fragment {
         //quando o fragment é carregado ele recupera sua tag e seta no metodo  public void setTabFragmentB(String t) da AppCompatActivity
         ((M1E1)getActivity()).setTagFragmentP2(myTag);
 
+        radioGroupP2M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP2M1E1);
+
        /* Toast.makeText(getActivity(),
                 "MyFragmentB.onCreateView(): " + myTag,
                 Toast.LENGTH_LONG).show();*/
@@ -61,14 +65,17 @@ public class P2M1E1 extends Fragment {
         tb_bottom_next.findViewById(R.id.iv_avancar_pergunta).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(), "Muda pagina", Toast.LENGTH_SHORT).show();
-                ((M1E1) getActivity()).trocarPagina(2);
+                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP2M1E1, "Selecione uma resposta!", getActivity().getApplicationContext());
+                if (ok) {
+                    ((M1E1) getActivity()).trocarPagina(2);
+                }
+
             }
         });
         tb_bottom_next.findViewById(R.id.iv_voltar_pergunta).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(), "Muda pagina", Toast.LENGTH_SHORT).show();
+
                 ((M1E1) getActivity()).trocarPagina(0);
             }
         });

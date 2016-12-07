@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.Pergunta2_C;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo3.C;
+import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
 
 /**
  * Created by Betto Silva on 08/08/2016.
@@ -24,7 +26,7 @@ import com.ifs.mt.zika_gamification.telas.treinamento_modulo3.C;
 public class P3M1E1 extends Fragment {
     private Toolbar tb_bottom_next;
     TextView b_received;
-    private DocumentView dvText;
+    private RadioGroup radioGroupP3M1E1;
 
 
     @Override
@@ -34,6 +36,7 @@ public class P3M1E1 extends Fragment {
         View fragment = inflater.inflate(R.layout.fragment_pergunta3_modulo1_etapa1,
                 container, false);
 
+        radioGroupP3M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP3M1E1);
 
        /* dvText = (DocumentView) fragment.findViewById(R.id.dvText);
         dvText.getDocumentLayoutParams().setTextAlignment(TextAlignment.JUSTIFIED);
@@ -44,14 +47,18 @@ public class P3M1E1 extends Fragment {
         tb_bottom_next.findViewById(R.id.iv_avancar_pergunta).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(), "Muda pagina", Toast.LENGTH_SHORT).show();
-                ((M1E1) getActivity()).trocarPagina(3);
+
+                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP3M1E1, "Selecione uma resposta!", getActivity().getApplicationContext());
+                if (ok) {
+                    ((M1E1) getActivity()).trocarPagina(3);
+                }
+
             }
         });
         tb_bottom_next.findViewById(R.id.iv_voltar_pergunta).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(), "Muda pagina", Toast.LENGTH_SHORT).show();
+
                 ((M1E1) getActivity()).trocarPagina(1);
             }
         });
