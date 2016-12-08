@@ -79,28 +79,28 @@
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="500 e 600 mosquitos" />
+                    android:text="@string/op1p3m1e1" />
 
                 <RadioButton
                     android:id="@+id/rbOp02"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="700 e 900 mosquitos" />
+                    android:text="@string/op2p3m1e1" />
 
                 <RadioButton
                     android:id="@+id/rbOp03"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1.000 e 1.300 mosquitos" />
+                    android:text="@string/op3p3m1e1" />
 
                 <RadioButton
                     android:id="@+id/rbOp04"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1.400 e 1.800 mosquitos" />
+                    android:text="@string/op4p3m1e1" />
 
             </RadioGroup>
 

@@ -76,28 +76,28 @@
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Na fase pulpa a fêmea transmite o vírus zika ou dengue" />
+                    android:text="@string/op1p5m1e1" />
 
                 <RadioButton
                     android:id="@+id/rbOp02"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Se um mosquito macho picar uma pessoa infectada e depois de alguns dias picar uma pessoa saudável poderá transmitir algum tipo de doença" />
+                    android:text="@string/op2p5m1e1" />
 
                 <RadioButton
                     android:id="@+id/rbOp03"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="O mosquito macho e fêmea se alimenta das flores" />
+                    android:text="@string/op3p5m1e1" />
 
                 <RadioButton
                     android:id="@+id/rbOp04"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nenhuma das alternativas" />
+                    android:text="@string/op4p5m1e1" />
 
             </RadioGroup>
 

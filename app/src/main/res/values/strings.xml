@@ -2,25 +2,58 @@
 
     <!-- ==== Módulo 01 / Etapa 01 ==== -->
     <string name="p1m1e1">O mosquito transmissor da Dengue, Aedes Aegypti, espalhou-se em diversas regiões do País e através da urbanização acelerada, deficiência de abastecimento de água e da limpeza urbana os casos de dengue aumentaram bruscamente. De acordo com a afirmação acima qual item não se encaixa como fator predominante para o aumento dos casos da dengue?</string>
+    <string name="op1p1m1e1">A) Materiais biodegradáveis</string>
+    <string name="op2p1m1e1">B) Recipientes de plástico descartáveis</string>
+    <string name="op3p1m1e1">C) Mudanças climáticas</string>
+    <string name="op4p1m1e1">D) Nenhuma das alternativas</string>
+
     <string name="p2m1e1">A partir dos anos 90, com a classificação da dengue como doença endêmica ela passou a estar mais anualmente em evidência. Através da chegada do(a) ___________, quando a maior intensidade de chuvas favorece sua reprodução?</string>
+    <string name="op1p2m1e1">A)	Primavera</string>
+    <string name="op2p2m1e1">B)	Verão</string>
+    <string name="op3p2m1e1">C)	Outono</string>
+    <string name="op4p2m1e1">D)	Inverno</string>
+
     <string name="p3m1e1">A imagem abaixo demonstra o ciclo de vida do Aedes, uma femêa pode dar origem a aproximadamente quantos mosquitos?</string>
+    <string name="op1p3m1e1">A)	500 e 600 mosquitos</string>
+    <string name="op2p3m1e1">B)	700 e 900 mosquitos</string>
+    <string name="op3p3m1e1">C)	1.000 e 1.300 mosquitos</string>
+    <string name="op4p3m1e1">D)	1.400 e 1.800 mosquitos</string>
+
     <string name="p4m1e1">Qual das imagens abaixo não é um sintoma da dengue?</string>
+    <string name="op1p4m1e1">A)	Febre alta (acima de 38ºC) e Dor de Cabeça</string>
+    <string name="op2p4m1e1">B)	Dor no fundo dos olhos e Sem resfriado ou coriza</string>
+    <string name="op3p4m1e1">C)	Fraqueza e desânimo - Dor no corpo e nas juntas</string>
+    <string name="op4p4m1e1">D)	Nenhuma das alternativas</string>
+
     <string name="p5m1e1">De acordo com o vídeo, selecione a opção correta.</string>
+    <string name="op1p5m1e1">A)	Na fase pulpa a fêmea transmite o vírus zika ou dengue</string>
+    <string name="op2p5m1e1">B)	Se um mosquito macho picar uma pessoa infectada e depois de alguns dias picar uma pessoa saudável poderá transmitir algum tipo de doença</string>
+    <string name="op3p5m1e1">C)	O mosquito macho e fêmea se alimenta das flores</string>
+    <string name="op4p5m1e1">D)	Nenhuma das alternativas</string>
 
     <!-- ==== Módulo 01 / Etapa 02 ==== -->
-    <string name="p1m1e2"></string>
-    <string name="p2m1e2"></string>
-    <string name="p3m1e2"></string>
-    <string name="p4m1e2"></string>
-    <string name="p5m1e2"></string>
+    <string name="p1m1e2">Em 1762 ele foi descrito pela primeira vez, mas em qual ano foi estabelecido o nome Aedes Aegypti.</string>
+    <string name="op1p1m1e2">A)	1762</string>
+    <string name="op2p1m1e2">B)	1818</string>
+    <string name="op3p1m1e2">C)	1932</string>
+    <string name="op4p1m1e2">D)	1986</string>
+    <string name="p2m1e2">Os primeiros relatos de dengue no Brasil foram em Curitiba (PR) no final do século XIX e em Niterói (RJ) no início do século XX mas em qual ano foi verificado o retorno do	 mosquito.</string>
+    <string name="p3m1e2">Sabe-se que fêmea tem características totalmente diferente do Macho, a seguir marque a opção correta. </string>
+    <string name="p4m1e2">Os primeiros surtos de dengue foram relatados no final do século XVIII na Ásia, África e América do Norte. A dengue era conhecida pela intensidade da mialgia e artralgia presentes nos pacientes, porém era conhecida como:</string>
+    <string name="p5m1e2">De Acordo com a história do mosquito Aedes Aegypti em quais regiões houveram os primeiros relatos de dengue no Brasil.</string>
 
 
-    <!-- ==== Módulo 01 / Etapa 03 ==== -->
-    <string name="p1m1e3"></string>
-    <string name="p2m1e3"></string>
-    <string name="p3m1e3"></string>
-    <string name="p4m1e3"></string>
-    <string name="p5m1e3"></string>
+
+    <!-- ==== Módulo 02 / Etapa 01 ==== -->
+    <string name="p1m2e1"></string>
+    <string name="p2m2e1"></string>
+    <string name="p3m2e1"></string>
+    <string name="p4m2e1"></string>
+    <string name="p5m2e1"></string>
+    <string name="op1p1m2e1">A) Primavera</string>
+    <string name="op2p1m2e1">B) Outono</string>
+    <string name="op3p1m2e1">C) Verão</string>
+    <string name="op4p1m2e1">D) Inverno</string>
 
 
     <string name="app_name">Zika_Gamification</string>

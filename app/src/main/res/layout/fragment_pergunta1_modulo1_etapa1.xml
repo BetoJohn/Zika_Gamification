@@ -43,20 +43,8 @@
                 android:text="@string/p1m1e1"
                 android:labelFor="@id/a_input"/>
 
-           <!-- <com.bluejamesbond.text.DocumentView
-                xmlns:ext="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/dvText"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                ext:documentView_textSize="20sp"
-                ext:documentView_textAlignment="justified"
-                ext:documentView_insetPaddingLeft="10dp"
-                ext:documentView_insetPaddingRight="10dp"
-                ext:documentView_text="O mosquito transmissor da Dengue, Aedes Aegypti, espalhou-se em diversas regiões do País e através da urbanização acelerada, deficiência de abastecimento de água e da limpeza urbana os casos de dengue aumentaram bruscamente. De acordo com a afirmação acima qual item não se encaixa como fator predominante para o aumento dos casos da dengue?"
-                />-->
-
-
              <RadioGroup
+                 xmlns:android="http://schemas.android.com/apk/res/android"
                  android:id="@+id/radioGroupP1M1E1"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
@@ -70,28 +58,28 @@
                      android:textSize="18sp"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="Materiais biodegradáveis" />
+                     android:text="@string/op1p1m1e1" />
 
                  <RadioButton
                      android:id="@+id/rbOp02"
                      android:textSize="18sp"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="Recipientes de plástico descartáveis" />
+                     android:text="@string/op2p1m1e1" />
 
                  <RadioButton
                      android:id="@+id/rbOp03"
                      android:textSize="18sp"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="Mudanças climáticas" />
+                     android:text="@string/op3p1m1e1" />
 
                  <RadioButton
                      android:id="@+id/rbOp04"
                      android:textSize="18sp"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="Nenhuma das alternativas" />
+                     android:text="@string/op4p1m1e1" />
 
              </RadioGroup>
 
