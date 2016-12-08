@@ -14,8 +14,12 @@ import com.bluejamesbond.text.DocumentView;
 import com.bluejamesbond.text.hyphen.DefaultHyphenator;
 import com.bluejamesbond.text.style.TextAlignment;
 import com.ifs.mt.zika_gamification.R;
+import com.ifs.mt.zika_gamification.model.RespostaM;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
 import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Betto Silva on 08/08/2016.
@@ -24,6 +28,8 @@ public class P4M1E1 extends Fragment {
     private Toolbar tb_bottom_next;
     TextView b_received;
     private RadioGroup radioGroupP4M1E1;
+    private static List<RespostaM> listResposta;
+    private RespostaM resposta;
 
 
     @Override
@@ -33,11 +39,37 @@ public class P4M1E1 extends Fragment {
         View fragment = inflater.inflate(R.layout.fragment_pergunta4_modulo1_etapa1,
                 container, false);
 
+
+        resposta = new RespostaM();
+        resposta.setResposta_Id("P4M1E1");
+
         radioGroupP4M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP4M1E1);
-       /* dvText = (DocumentView) fragment.findViewById(R.id.dvText);
-        dvText.getDocumentLayoutParams().setTextAlignment(TextAlignment.JUSTIFIED);
-        dvText.getDocumentLayoutParams().setHyphenator(DefaultHyphenator.getInstance(DefaultHyphenator.HyphenPattern.PT));
-        dvText.getDocumentLayoutParams().setHyphenated(false);*/
+        radioGroupP4M1E1
+                .setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup group, int checkedId) {
+                        switch (checkedId) {
+                            case R.id.rbOpAP4M1E1:
+                                System.out.println("Opção A");
+                                resposta.setResposta_Item("A");
+                                break;
+                            case R.id.rbOpBP4M1E1:
+                                System.out.println("Opção B");
+                                resposta.setResposta_Item("B");
+                                break;
+                            case R.id.rbOpCP4M1E1:
+                                System.out.println("Opção C");
+                                resposta.setResposta_Item("C");
+                                break;
+                            case R.id.rbOpDP4M1E1:
+                                System.out.println("Opção D");
+                                resposta.setResposta_Item("D");
+                                break;
+                        }
+
+                    }
+                });
+
 
         tb_bottom_next = (Toolbar) fragment.findViewById(R.id.tb_bottom_next);
         tb_bottom_next.findViewById(R.id.iv_avancar_pergunta).setOnClickListener(new View.OnClickListener() {
@@ -46,6 +78,13 @@ public class P4M1E1 extends Fragment {
 
                 boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP4M1E1, "Selecione uma resposta!", getActivity().getApplicationContext());
                 if (ok) {
+
+                    if (getListResposta().size() == 4){
+                        getListResposta().remove(3);
+                    }
+
+                    getListResposta().add(3, resposta);
+                    P5M1E1.setListResposta(listResposta);
                     ((M1E1) getActivity()).trocarPagina(4);
                 }
 
@@ -55,6 +94,12 @@ public class P4M1E1 extends Fragment {
             @Override
             public void onClick(View v) {
 
+
+
+                if (getListResposta().size() == 4){
+                    getListResposta().remove(3);
+                }
+                P3M1E1.setListResposta(listResposta);
                 ((M1E1) getActivity()).trocarPagina(2);
             }
         });
@@ -63,8 +108,17 @@ public class P4M1E1 extends Fragment {
         return fragment;
     }
 
-    public void b_updateText(String t){
-        b_received.setText(t);
+    public static void setListResposta(List<RespostaM> respostas) {
+        listResposta = new ArrayList<>();
+        listResposta = respostas;
+    }
+
+    public List<RespostaM> getListResposta() {
+        if(null == listResposta){
+            listResposta = new ArrayList<>();
+            return listResposta;
+        }
+        return listResposta;
     }
 
 }

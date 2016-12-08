@@ -1,6 +1,7 @@
 package com.ifs.mt.zika_gamification.telas;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,8 +18,9 @@ import com.ifs.mt.zika_gamification.R;
 public class MenuPrincipal extends AppCompatActivity {
 
     private Toolbar tb;
-    private ImageView  imageViewTreinamento, imageViewStatus, imageViewRanking;
-    private TextView tv_usuario_logado;
+    private ImageView imageViewTreinamento, imageViewStatus, imageViewRanking;
+    private TextView tv_usuario_logado, textViewTreinamento, textViewStatus, textViewRanking;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,10 +29,21 @@ public class MenuPrincipal extends AppCompatActivity {
         tb = (Toolbar) findViewById(R.id.tb);
         setSupportActionBar(tb);
 
+
         tv_usuario_logado = (TextView) findViewById(R.id.tv_usuario_logado);
         tv_usuario_logado.setText("Bem Vindo, " + Login.getUsuarioLogado().getUsuario_nome());
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
+        tv_usuario_logado.setTypeface(font);
 
-        imageViewTreinamento = (ImageView)findViewById(R.id.imageViewTreinamento);
+        textViewTreinamento = (TextView) findViewById(R.id.textViewTreinamento);
+        textViewTreinamento.setTypeface(font);
+        textViewStatus = (TextView) findViewById(R.id.textViewStatus);
+        textViewStatus.setTypeface(font);
+        textViewRanking = (TextView) findViewById(R.id.textViewRanking);
+        textViewRanking.setTypeface(font);
+
+
+        imageViewTreinamento = (ImageView) findViewById(R.id.imageViewTreinamento);
         imageViewTreinamento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,19 +51,19 @@ public class MenuPrincipal extends AppCompatActivity {
             }
         });
 
-        imageViewStatus = (ImageView)findViewById(R.id.imageViewStatus);
+        imageViewStatus = (ImageView) findViewById(R.id.imageViewStatus);
         imageViewStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MenuPrincipal.this, "imageViewStatus",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MenuPrincipal.this, "imageViewStatus", Toast.LENGTH_SHORT).show();
             }
         });
 
-        imageViewRanking = (ImageView)findViewById(R.id.imageViewRanking);
+        imageViewRanking = (ImageView) findViewById(R.id.imageViewRanking);
         imageViewRanking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MenuPrincipal.this, "imageViewRanking",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MenuPrincipal.this, "imageViewRanking", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -75,7 +88,7 @@ public class MenuPrincipal extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        switch (id){
+        switch (id) {
             case R.id.action_sair:
                 startActivity(new Intent(MenuPrincipal.this, Login.class));
                 return true;

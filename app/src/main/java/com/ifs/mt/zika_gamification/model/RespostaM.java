@@ -5,15 +5,15 @@ package com.ifs.mt.zika_gamification.model;
  */
 public class RespostaM {
 
-    private int resposta_Id;
+    private String resposta_Id;
     private String resposta_Item;
     private boolean resposta_Correta;
 
-    public int getResposta_Id() {
+    public String getResposta_Id() {
         return resposta_Id;
     }
 
-    public void setResposta_Id(int resposta_Id) {
+    public void setResposta_Id(String resposta_Id) {
         this.resposta_Id = resposta_Id;
     }
 

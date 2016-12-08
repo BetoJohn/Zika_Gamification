@@ -1,6 +1,7 @@
 package com.ifs.mt.zika_gamification.telas;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
@@ -16,12 +18,18 @@ import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1;
 
 public class Treinamento extends AppCompatActivity {
     private Toolbar tb_treinamento;
+    private TextView tv_treinamento;
     private boolean A = false, B = false, C = false, D = false, E = false, F = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treinamento);
+
+
+        tv_treinamento = (TextView) findViewById(R.id.tv_treinamento);
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
+        tv_treinamento.setTypeface(font);
 
         tb_treinamento = (Toolbar) findViewById(R.id.tb_treinamento);
         tb_treinamento.findViewById(R.id.iv_voltar).setOnClickListener(new View.OnClickListener() {

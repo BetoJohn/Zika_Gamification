@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -42,7 +43,7 @@ import java.util.List;
 public class Login extends Activity {
 
     private static UsuarioM usuarioLogado;
-    private TextView clickCadastro, textViewTipoUsuario;
+    private TextView clickCadastro, textViewTipoUsuario, tv_login, tv_cadastro;
     private EditText editLogin;
     private EditText editSenha;
     private EditText editNomeCadastro;
@@ -53,8 +54,6 @@ public class Login extends Activity {
     private Spinner spinnerTipoUsuario;
     private ImageView imageViewCadastro;
     private Button btnCadastro;
-
-
     private Button btnLogin;
     private Banco bancoUsuario;
 
@@ -70,6 +69,22 @@ public class Login extends Activity {
         setContentView(R.layout.activity_login);
         //Aparece o teclado ao iniciar a tela
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
+
+
+        tv_login = (TextView) findViewById(R.id.tv_login);
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
+        tv_login.setTypeface(font);
+
+        btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnLogin.setTypeface(font);
+
+        btnCadastro = (Button) findViewById(R.id.btnCadastro);
+        btnCadastro.setTypeface(font);
+
+        tv_cadastro = (TextView) findViewById(R.id.tv_cadastro);
+        tv_cadastro.setTypeface(font);
+        tv_cadastro.setVisibility(View.INVISIBLE);
 
         editLogin = (EditText) findViewById(R.id.editLogin);
         editLogin.requestFocus();
@@ -101,8 +116,8 @@ public class Login extends Activity {
         spinnerTipoUsuario.setBackgroundResource(R.drawable.spinner_edit);
         spinnerTipoUsuario.setVisibility(View.INVISIBLE);
 
-        imageViewCadastro = (ImageView) findViewById(R.id.imageViewCadastro);
-        imageViewCadastro.setVisibility(View.INVISIBLE);
+       /* imageViewCadastro = (ImageView) findViewById(R.id.imageViewCadastro);
+        imageViewCadastro.setVisibility(View.INVISIBLE);*/
 
         btnCadastro = (Button) findViewById(R.id.btnCadastro);
         btnCadastro.setVisibility(View.INVISIBLE);
@@ -115,9 +130,10 @@ public class Login extends Activity {
             @Override
             public void onClick(View v) {
                 setVisible();
-
             }
         });
+        clickCadastro.setTypeface(font);
+
 
         String tipoUsuario = String.valueOf(spinnerTipoUsuario.getSelectedItem());
         System.out.println("Tipo usuário: " + tipoUsuario);
@@ -249,9 +265,10 @@ public class Login extends Activity {
         editSenhaCadastro.setVisibility(View.VISIBLE);
         editConfirmarSenhaCadastro.setVisibility(View.VISIBLE);
         spinnerTipoUsuario.setVisibility(View.VISIBLE);
-        imageViewCadastro.setVisibility(View.VISIBLE);
+//        imageViewCadastro.setVisibility(View.VISIBLE);
         btnCadastro.setVisibility(View.VISIBLE);
         textViewTipoUsuario.setVisibility(View.VISIBLE);
+        tv_cadastro.setVisibility(View.VISIBLE);
     }
 
     class AutenticacaoThread extends AsyncTask<UsuarioM, Void, UsuarioM> {

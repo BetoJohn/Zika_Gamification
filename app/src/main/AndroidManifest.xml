@@ -52,10 +52,6 @@
             android:label="@string/title_activity_c1" >
         </activity>
         <activity
-            android:name=".telas.treinamento_modulo3.C1_teste"
-            android:label="@string/title_activity_c1_teste" >
-        </activity>
-        <activity
             android:name=".telas.treinamento_modulo2.B"
             android:label="@string/title_activity_b" >
         </activity>

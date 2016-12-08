@@ -29,7 +29,7 @@
                 android:layout_marginTop="10dp"
                 android:src="@drawable/zika" />
 
-            <ImageView
+         <!--   <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="60dp"
                 android:layout_height="40dp"
@@ -37,7 +37,19 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="60dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/login_label" />
+                android:src="@drawable/login_label" />-->
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:text="Login"
+                android:id="@+id/tv_login"
+                android:textColor="#FEFEFE"
+                android:textSize="25sp" />
 
             <EditText
                 android:id="@+id/editLogin"
@@ -83,6 +95,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="15dp"
+                android:textSize="20sp"
                 android:background="@android:color/white"
                 android:onClick="entrar"
                 android:text="Entrar" />
@@ -93,13 +106,14 @@
                 android:layout_height="wrap_content"
                 android:text="Clique aqui para se Cadastrar."
                 android:textColor="@android:color/white"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 android:paddingTop="15dp"
                 android:paddingRight="25dp"
+                android:textStyle="bold"
                 android:id="@+id/clickCadastro"
                 android:layout_gravity="right" />
 
-            <ImageView
+            <!--<ImageView
                 android:id="@+id/imageViewCadastro"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
@@ -107,7 +121,18 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="60dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/cadastro" />
+                android:src="@drawable/cadastro" />-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="30dp"
+                android:text="Cadastro"
+                android:id="@+id/tv_cadastro"
+                android:textColor="#FEFEFE"
+                android:textSize="25sp" />
 
 
             <EditText
@@ -228,7 +253,8 @@
                 android:layout_marginBottom="15dp"
                 android:background="@android:color/white"
                 android:onClick="cadastrar"
-                android:text="Cadastrar" />
+                android:textSize="20sp"
+                android:text="Cadastrar"/>
 
         </LinearLayout>
 

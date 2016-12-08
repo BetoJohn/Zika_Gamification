@@ -36,6 +36,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Treinamento"
+        android:textColor="@android:color/black"
+        android:textSize="23sp"
         android:id="@+id/textViewTreinamento"
         android:layout_below="@+id/imageViewTreinamento"
         android:layout_centerHorizontal="true" />
@@ -62,6 +64,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Status"
+        android:textColor="@android:color/black"
+        android:textSize="23sp"
         android:id="@+id/textViewStatus"
         android:layout_below="@+id/imageViewRanking"
         android:layout_alignStart="@+id/imageViewStatus" />
@@ -71,6 +75,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Ranking"
+        android:textColor="@android:color/black"
+        android:textSize="23sp"
         android:id="@+id/textViewRanking"
         android:layout_below="@+id/imageViewRanking"
         android:layout_alignEnd="@+id/imageViewRanking" />
@@ -81,6 +87,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/tv_usuario_logado"
         android:layout_below="@+id/tb"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp" />
 

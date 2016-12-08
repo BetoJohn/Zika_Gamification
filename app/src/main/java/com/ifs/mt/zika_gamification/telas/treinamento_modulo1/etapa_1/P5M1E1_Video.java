@@ -1,6 +1,5 @@
 package com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,7 +18,7 @@ public class P5M1E1_Video extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_p5_m1_e1__video);
+        setContentView(R.layout.activity_p5_m1_e1_video);
         MediaController mc= new MediaController(this);
         VideoView view = (VideoView)findViewById(R.id.videoView);
         String path = "android.resource://" + getPackageName() + "/raw/m1e1p5";// + R.raw.m1e1p5;

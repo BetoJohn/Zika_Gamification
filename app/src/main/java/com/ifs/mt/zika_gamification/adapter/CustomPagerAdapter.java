@@ -5,9 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.Pergunta1_C;
-import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.Pergunta2_C;
-import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.Pergunta3_C;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.P1M2E1;
 
 import java.util.List;
 
@@ -26,14 +24,14 @@ public class CustomPagerAdapter extends FragmentPagerAdapter {
         //as you see from the below this is how we tell the Viewpager which fragment (page) to be shown//
         Fragment fragment = null;
         if (position == 0) {
-            fragment = new Pergunta1_C();
+            fragment = new P1M2E1();
         }
-        if (position == 1) {
+       /* if (position == 1) {
             fragment = new Pergunta2_C();
         }
         if (position == 2) {
             fragment = new Pergunta3_C();
-        }
+        }*/
         return fragment;
     }
 

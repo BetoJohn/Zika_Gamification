@@ -75,28 +75,28 @@
                 android:orientation="vertical">
 
                 <RadioButton
-                    android:id="@+id/rbOp01"
+                    android:id="@+id/rbOpAP3M1E1"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/op1p3m1e1" />
 
                 <RadioButton
-                    android:id="@+id/rbOp02"
+                    android:id="@+id/rbOpBP3M1E1"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/op2p3m1e1" />
 
                 <RadioButton
-                    android:id="@+id/rbOp03"
+                    android:id="@+id/rbOpCP3M1E1"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/op3p3m1e1" />
 
                 <RadioButton
-                    android:id="@+id/rbOp04"
+                    android:id="@+id/rbOpDP3M1E1"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

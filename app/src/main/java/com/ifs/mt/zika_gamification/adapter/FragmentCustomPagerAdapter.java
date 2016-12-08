@@ -4,10 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.Pergunta1_C;
-import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.Pergunta2_C;
-import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.Pergunta3_C;
-
 import java.util.List;
 
 /**
