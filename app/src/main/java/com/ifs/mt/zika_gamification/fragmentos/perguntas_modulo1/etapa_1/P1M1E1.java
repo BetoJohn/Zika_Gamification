@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.bluejamesbond.text.DocumentView;
 import com.ifs.mt.zika_gamification.R;
+import com.ifs.mt.zika_gamification.model.EtapaM;
+import com.ifs.mt.zika_gamification.model.ModuloM;
+import com.ifs.mt.zika_gamification.model.PerguntaM;
 import com.ifs.mt.zika_gamification.model.RespostaM;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
 import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
@@ -27,8 +30,10 @@ public class P1M1E1 extends Fragment {
     private DocumentView dvText;
     private TextView textView;
     private RadioGroup radioGroupP1M1E1;
-    private static List<RespostaM> listResposta;
+    private static List<PerguntaM> listPerguntaResposta;
     private RespostaM resposta;
+    private PerguntaM perguntaM;
+
 
 
     EditText A_input;
@@ -40,13 +45,14 @@ public class P1M1E1 extends Fragment {
         // Inflate the layout for this fragment
         View fragment = inflater.inflate(R.layout.fragment_pergunta1_modulo1_etapa1,
                 container, false);
-        resposta = new RespostaM();
-        resposta.setResposta_Id("P1M1E1");
-        //---------------------teste bundle-----------------------
-        A_input = (EditText) fragment.findViewById(R.id.a_input);
-        //---------------------teste bundle-----------------------
 
-        textView = (TextView) fragment.findViewById(R.id.dvText);
+        perguntaM = new PerguntaM();
+        perguntaM.setPergunta_Id("P1M1E1");
+        perguntaM.setPergunta_Nome("Pergunta 01");
+        perguntaM.setPergunta_Status(true);
+
+        resposta = new RespostaM();
+        resposta.setResposta_Id("R1P1M1E1");
 
         radioGroupP1M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP1M1E1);
         radioGroupP1M1E1
@@ -90,36 +96,38 @@ public class P1M1E1 extends Fragment {
                 boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP1M1E1, "Selecione uma resposta!", getActivity().getApplicationContext());
                 if (ok) {
 
-                    listResposta = new ArrayList<>();
+                    listPerguntaResposta = new ArrayList<>();
                     if (getListResposta().size() == 1){
                         getListResposta().remove(0);
                     }
-                    getListResposta().add(0, resposta);
-                    P2M1E1.setListResposta(listResposta);
+                    perguntaM.setRespostaM(resposta);
+                    getListResposta().add(0, perguntaM);
+                    P2M1E1.setListResposta(listPerguntaResposta);
                     ((M1E1) getActivity()).trocarPagina(1);
                 }
 
             }
         });
 
+        perguntaM.setRespostaM(resposta);
 
         return fragment;
     }
 
-    public static void setListResposta(List<RespostaM> respostas) {
-        listResposta = new ArrayList<>();
-        listResposta = respostas;
-        for(RespostaM res: listResposta){
-            System.out.println("itens: "+res.getResposta_Item());
+    public static void setListResposta(List<PerguntaM> perguntas) {
+        listPerguntaResposta = new ArrayList<>();
+        listPerguntaResposta = perguntas;
+        for(PerguntaM res: listPerguntaResposta){
+            System.out.println("itens: "+res.getRespostaM().getResposta_Item());
         }
 
     }
 
-    public List<RespostaM> getListResposta() {
-        if(null == listResposta){
-            listResposta = new ArrayList<>();
-            return listResposta;
+    public List<PerguntaM> getListResposta() {
+        if(null == listPerguntaResposta){
+            listPerguntaResposta = new ArrayList<>();
+            return listPerguntaResposta;
         }
-        return listResposta;
+        return listPerguntaResposta;
     }
 }

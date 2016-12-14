@@ -8,6 +8,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.ifs.mt.zika_gamification.R;
+import com.ifs.mt.zika_gamification.util.MySharedPreferencesController;
 
 /**
  * Created by Beto on 05/08/2016.
@@ -15,6 +16,8 @@ import com.ifs.mt.zika_gamification.R;
 public class ImageAdapterEtapasM1 extends BaseAdapter {
     private Context mContext;
     public ImageView imageView;
+    private MySharedPreferencesController mySharedPreferencesController;
+
     public ImageAdapterEtapasM1(Context c) {
         mContext = c;
     }
@@ -32,7 +35,11 @@ public class ImageAdapterEtapasM1 extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-//        mThumbIds[2] = R.drawable.c_a;
+        mySharedPreferencesController = MySharedPreferencesController.getInstance(mContext);
+        if(mySharedPreferencesController.getData(MySharedPreferencesController.M1_E2)){
+                    mThumbIds[1] = R.drawable.emblema2_a;
+        }
+
         imageView.setImageResource(mThumbIds[position]);
 
         return imageView;

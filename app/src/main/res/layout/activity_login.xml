@@ -10,7 +10,6 @@
         android:id="@+id/fragment_quarteirao"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@+id/footer"
         android:layout_alignParentTop="false">
 
         <LinearLayout
@@ -98,6 +97,8 @@
                 android:textSize="20sp"
                 android:background="@android:color/white"
                 android:onClick="entrar"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_green_dark"
                 android:text="Entrar" />
 
 
@@ -250,16 +251,20 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="150dp"
                 android:background="@android:color/white"
                 android:onClick="cadastrar"
                 android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_green_dark"
                 android:text="Cadastrar"/>
 
         </LinearLayout>
 
 
+
     </ScrollView>
+
     <!--
     </LinearLayout>
     -->

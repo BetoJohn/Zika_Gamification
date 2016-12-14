@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.ifs.mt.zika_gamification.R;
+import com.ifs.mt.zika_gamification.model.PerguntaM;
 import com.ifs.mt.zika_gamification.model.RespostaM;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
 import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
@@ -25,8 +26,10 @@ public class P2M1E1 extends Fragment {
     private Toolbar tb_bottom_next;
     static TextView b_received;
     private RadioGroup radioGroupP2M1E1;
-    private static List<RespostaM> listResposta;
+    private static List<PerguntaM> listPerguntaResposta;
     private RespostaM resposta;
+    private PerguntaM perguntaM;
+
 
 
     EditText A_input;
@@ -39,13 +42,16 @@ public class P2M1E1 extends Fragment {
         View fragment = inflater.inflate(R.layout.fragment_pergunta2_modulo1_etapa1,
                 container, false);
 
+        perguntaM = new PerguntaM();
+        perguntaM.setPergunta_Id("P2M1E1");
+        perguntaM.setPergunta_Nome("Pergunta 02");
+        perguntaM.setPergunta_Status(true);
+
         resposta = new RespostaM();
-        resposta.setResposta_Id("P2M1E1");
-        //---------------------teste bundle-----------------------
-        b_received = (TextView) fragment.findViewById(R.id.b_received);
-        String myTag = getTag();
+        resposta.setResposta_Id("R2P2M1E1");
 
         //quando o fragment é carregado ele recupera sua tag e seta no metodo  public void setTabFragmentB(String t) da AppCompatActivity
+        String myTag = getTag();
         ((M1E1) getActivity()).setTagFragmentP2(myTag);
 
         radioGroupP2M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP2M1E1);
@@ -87,8 +93,10 @@ public class P2M1E1 extends Fragment {
                     if (getListResposta().size() == 2){
                         getListResposta().remove(1);
                     }
-                    getListResposta().add(1, resposta);
-                    P3M1E1.setListResposta(listResposta);
+
+                    perguntaM.setRespostaM(resposta);
+                    getListResposta().add(1, perguntaM);
+                    P3M1E1.setListResposta(listPerguntaResposta);
                     ((M1E1) getActivity()).trocarPagina(2);
                 }
 
@@ -105,7 +113,7 @@ public class P2M1E1 extends Fragment {
                 if (getListResposta().size() == 2){
                     getListResposta().remove(1);
                 }
-                P1M1E1.setListResposta(listResposta);
+                P1M1E1.setListResposta(listPerguntaResposta);
                 ((M1E1) getActivity()).trocarPagina(0);
             }
         });
@@ -115,25 +123,23 @@ public class P2M1E1 extends Fragment {
     }
 
 
-    public static void setListResposta(List<RespostaM> respostas) {
-        listResposta = new ArrayList<>();
-        listResposta = respostas;
-        System.out.println("Posiçao 0: "+ listResposta.get(0).getResposta_Item());
+    public static void setListResposta(List<PerguntaM> perguntas) {
+        listPerguntaResposta = new ArrayList<>();
+        listPerguntaResposta = perguntas;
+        System.out.println("Posiçao 0: " + listPerguntaResposta.get(0).getRespostaM().getResposta_Item());
 
-        if(listResposta.size() > 2){
-            System.out.println("Posiçao 1: " + listResposta.get(1).getResposta_Item());
-            System.out.println("Posiçao 2: " + listResposta.get(2).getResposta_Item());
+        for(PerguntaM res: listPerguntaResposta){
+            System.out.println("itens: "+res.getRespostaM().getResposta_Item());
         }
 
-        b_received.setText(listResposta.get(0).getResposta_Item());
     }
 
-    public List<RespostaM> getListResposta() {
-        if (null == listResposta) {
-            listResposta = new ArrayList<>();
-            return listResposta;
+    public List<PerguntaM> getListResposta() {
+        if (null == listPerguntaResposta) {
+            listPerguntaResposta = new ArrayList<>();
+            return listPerguntaResposta;
         }
-        return listResposta;
+        return listPerguntaResposta;
     }
 
 

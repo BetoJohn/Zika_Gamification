@@ -1,4 +1,4 @@
-package com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1;
+package com.ifs.mt.zika_gamification.telas.treinamento_modulo1;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -15,14 +15,17 @@ import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.adapter.ImageAdapterEtapasM1;
-import com.ifs.mt.zika_gamification.adapter.ImageAdapterModulos;
+import com.ifs.mt.zika_gamification.telas.MenuPrincipal;
+import com.ifs.mt.zika_gamification.telas.Treinamento;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_2.M1E2;
+import com.ifs.mt.zika_gamification.util.MySharedPreferencesController;
 
 public class M1 extends AppCompatActivity {
     private Toolbar tb_etapa;
     private TextView tv_treinamento;
     private boolean A = false, B = false;
-
-
+    private MySharedPreferencesController mySharedPreferencesController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,7 @@ public class M1 extends AppCompatActivity {
         tb_etapa.findViewById(R.id.iv_voltar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                startActivity(new Intent(M1.this, Treinamento.class));
             }
         });
 
@@ -49,17 +52,42 @@ public class M1 extends AppCompatActivity {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                Toast.makeText(M1.this, "" + position,
-                        Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(M1.this, "" + position,
+                        Toast.LENGTH_SHORT).show();*/
+
+                mySharedPreferencesController = MySharedPreferencesController.getInstance(getApplicationContext());
+               // mySharedPreferencesController.clearData();
+
                 A = true;
+                B = mySharedPreferencesController.getData(MySharedPreferencesController.M1_E2);
                 if (position == 0) {
                     if (A)
                         startActivity(new Intent(M1.this, M1E1.class));
                 }
 
+                switch(position){
+                    case 0:
+                        if (A){
+                            startActivity(new Intent(M1.this, M1E1.class));
+                        }
+                        break;
+                    case 1:
+                        if (B){
+                            startActivity(new Intent(M1.this, M1E2.class));
+                        }
+                        break;
+
+
+                }
+
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(M1.this, Treinamento.class));
     }
 
     @Override

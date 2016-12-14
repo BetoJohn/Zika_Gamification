@@ -14,6 +14,7 @@ import com.bluejamesbond.text.DocumentView;
 import com.bluejamesbond.text.hyphen.DefaultHyphenator;
 import com.bluejamesbond.text.style.TextAlignment;
 import com.ifs.mt.zika_gamification.R;
+import com.ifs.mt.zika_gamification.model.PerguntaM;
 import com.ifs.mt.zika_gamification.model.RespostaM;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
 import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
@@ -28,8 +29,9 @@ public class P4M1E1 extends Fragment {
     private Toolbar tb_bottom_next;
     TextView b_received;
     private RadioGroup radioGroupP4M1E1;
-    private static List<RespostaM> listResposta;
+    private static List<PerguntaM> listPerguntaResposta;
     private RespostaM resposta;
+    private PerguntaM perguntaM;
 
 
     @Override
@@ -39,9 +41,13 @@ public class P4M1E1 extends Fragment {
         View fragment = inflater.inflate(R.layout.fragment_pergunta4_modulo1_etapa1,
                 container, false);
 
+        perguntaM = new PerguntaM();
+        perguntaM.setPergunta_Id("P4M1E1");
+        perguntaM.setPergunta_Nome("Pergunta 04");
+        perguntaM.setPergunta_Status(true);
 
         resposta = new RespostaM();
-        resposta.setResposta_Id("P4M1E1");
+        resposta.setResposta_Id("R4P4M1E1");
 
         radioGroupP4M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP4M1E1);
         radioGroupP4M1E1
@@ -83,8 +89,9 @@ public class P4M1E1 extends Fragment {
                         getListResposta().remove(3);
                     }
 
-                    getListResposta().add(3, resposta);
-                    P5M1E1.setListResposta(listResposta);
+                    perguntaM.setRespostaM(resposta);
+                    getListResposta().add(3, perguntaM);
+                    P5M1E1.setListResposta(listPerguntaResposta);
                     ((M1E1) getActivity()).trocarPagina(4);
                 }
 
@@ -99,7 +106,7 @@ public class P4M1E1 extends Fragment {
                 if (getListResposta().size() == 4){
                     getListResposta().remove(3);
                 }
-                P3M1E1.setListResposta(listResposta);
+                P3M1E1.setListResposta(listPerguntaResposta);
                 ((M1E1) getActivity()).trocarPagina(2);
             }
         });
@@ -108,17 +115,20 @@ public class P4M1E1 extends Fragment {
         return fragment;
     }
 
-    public static void setListResposta(List<RespostaM> respostas) {
-        listResposta = new ArrayList<>();
-        listResposta = respostas;
+    public static void setListResposta(List<PerguntaM> perguntas) {
+        listPerguntaResposta = new ArrayList<>();
+        listPerguntaResposta = perguntas;
+        for(PerguntaM res: listPerguntaResposta){
+            System.out.println("itens: " + res.getRespostaM().getResposta_Item());
+        }
     }
 
-    public List<RespostaM> getListResposta() {
-        if(null == listResposta){
-            listResposta = new ArrayList<>();
-            return listResposta;
+    public List<PerguntaM> getListResposta() {
+        if(null == listPerguntaResposta){
+            listPerguntaResposta = new ArrayList<>();
+            return listPerguntaResposta;
         }
-        return listResposta;
+        return listPerguntaResposta;
     }
 
 }

@@ -1,9 +1,7 @@
-package com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1;
+package com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_2;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -17,10 +15,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.ifs.mt.zika_gamification.R;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P4M1E1;
 import com.ifs.mt.zika_gamification.model.EtapaM;
 import com.ifs.mt.zika_gamification.model.ModuloM;
 import com.ifs.mt.zika_gamification.model.PerguntaM;
@@ -28,6 +26,8 @@ import com.ifs.mt.zika_gamification.model.RespostaM;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.M1;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.P5M1E1_Video;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_2.M1E2;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_2.P5M1E2_Video;
 import com.ifs.mt.zika_gamification.util.MySharedPreferencesController;
 import com.ifs.mt.zika_gamification.util.Util;
 import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
@@ -39,16 +39,12 @@ import java.util.List;
 /**
  * Created by Betto Silva on 08/08/2016.
  */
-public class P5M1E1 extends Fragment {
+public class P5M1E2 extends Fragment {
     private Toolbar tb_bottom_next;
-    private VideoView videoView;
     private TextView textViewResultado;
-    private RadioGroup radioGroupP5M1E1;
+    private RadioGroup radioGroupP5M1E2;
     private static final String TAG = "VideoPlayer";
     private ImageView imageViewPlay, imageViewEmblema;
-    private MediaPlayer mMediaPlayer;
-    private SurfaceHolder mActiveSurface;
-    private int mPosition;
     private static List<PerguntaM> listPerguntaResposta;
     private RespostaM resposta;
     private PerguntaM perguntaM;
@@ -61,37 +57,37 @@ public class P5M1E1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View fragment = inflater.inflate(R.layout.fragment_pergunta5_modulo1_etapa1,
+        final View fragment = inflater.inflate(R.layout.fragment_pergunta5_modulo1_etapa2,
                 container, false);
         font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/agency_fb.ttf");
 
         perguntaM = new PerguntaM();
-        perguntaM.setPergunta_Id("P5M1E1");
+        perguntaM.setPergunta_Id("P5M1E2");
         perguntaM.setPergunta_Nome("Pergunta 05");
         perguntaM.setPergunta_Status(true);
 
         resposta = new RespostaM();
-        resposta.setResposta_Id("R5P5M1E1");
+        resposta.setResposta_Id("R5P5M1E2");
 
-        radioGroupP5M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP5M1E1);
-        radioGroupP5M1E1
+        radioGroupP5M1E2 = (RadioGroup) fragment.findViewById(R.id.radioGroupP5M1E2);
+        radioGroupP5M1E2
                 .setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
                         switch (checkedId) {
-                            case R.id.rbOpAP5M1E1:
+                            case R.id.rbOpAP5M1E2:
                                 System.out.println("Opção A");
                                 resposta.setResposta_Item("A");
                                 break;
-                            case R.id.rbOpBP5M1E1:
+                            case R.id.rbOpBP5M1E2:
                                 System.out.println("Opção B");
                                 resposta.setResposta_Item("B");
                                 break;
-                            case R.id.rbOpCP5M1E1:
+                            case R.id.rbOpCP5M1E2:
                                 System.out.println("Opção C");
                                 resposta.setResposta_Item("C");
                                 break;
-                            case R.id.rbOpDP5M1E1:
+                            case R.id.rbOpDP5M1E2:
                                 System.out.println("Opção D");
                                 resposta.setResposta_Item("D");
                                 break;
@@ -105,7 +101,7 @@ public class P5M1E1 extends Fragment {
         imageViewPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), P5M1E1_Video.class));
+                startActivity(new Intent(getActivity(), P5M1E2_Video.class));
             }
         });
 
@@ -115,7 +111,7 @@ public class P5M1E1 extends Fragment {
             @Override
             public void onClick(View v) {
 
-                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP5M1E1, "Selecione uma resposta!", getActivity().getApplicationContext());
+                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP5M1E2, "Selecione uma resposta!", getActivity().getApplicationContext());
                 if (ok) {
                    /* Toast.makeText(getActivity().getApplicationContext(), "Concluir", Toast.LENGTH_SHORT).show();*/
                     perguntaM.setRespostaM(resposta);
@@ -147,22 +143,15 @@ public class P5M1E1 extends Fragment {
                     modulo.setModulo_Status(true);
 
                     etapa = new EtapaM();
-                    etapa.setEtapa_Id("E1");
-                    etapa.setEtapa_Nome("Etapa 01");
-                    etapa.setEtapa_Descricao("Introdução");
+                    etapa.setEtapa_Id("E2");
+                    etapa.setEtapa_Nome("Etapa 02");
+                    etapa.setEtapa_Descricao("História");
                     etapa.setEtapa_Status(true);
                     etapa.setPerguntas(perguntas);
 
                     //============== Adiciono valores no SharePreferences =======
-                   /* SharedPreferences pref = getActivity().getSharedPreferences("MySharedPreferencesController", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putBoolean("M1E2", true);           // Saving boolean - true/false
-
-                    // Save the changes in SharedPreferences
-                    editor.commit(); // commit changes*/
-
                     mySharedPreferencesController = MySharedPreferencesController.getInstance(getActivity());
-                    mySharedPreferencesController.saveData(MySharedPreferencesController.M1_E2, true);
+                    //mySharedPreferencesController.saveData(MySharedPreferencesController.M1_E2, true);
 
                     //FAÇO A INSERÇÃO NO BANCO
                     //==========================================================
@@ -183,10 +172,6 @@ public class P5M1E1 extends Fragment {
                     textViewResultado.setText(numAcertos + "/5");
                     textViewResultado.setTypeface(font);
                     // set the custom dialog components - text, image and button
-                    /*TextView text = (TextView) dialog.findViewById(R.id.text);
-                    text.setText("Android custom dialog example!");
-                    ImageView image = (ImageView) dialog.findViewById(R.id.image);
-                    image.setImageResource(R.drawable.emblema_menor_que_3);*/
 
                     Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
                     dialogButton.setTypeface(font);
@@ -216,8 +201,8 @@ public class P5M1E1 extends Fragment {
             @Override
             public void onClick(View v) {
 
-                P4M1E1.setListResposta(listPerguntaResposta);
-                ((M1E1) getActivity()).trocarPagina(3);
+                P4M1E2.setListResposta(listPerguntaResposta);
+                ((M1E2) getActivity()).trocarPagina(3);
             }
         });
 

@@ -1,14 +1,14 @@
-package com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1;
+package com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_2;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,29 +22,27 @@ import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P2M1E1;
 import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P3M1E1;
 import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P4M1E1;
 import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P5M1E1;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_2.P1M1E2;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_2.P2M1E2;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_2.P3M1E2;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_2.P4M1E2;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_2.P5M1E2;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.M1;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class M1E1 extends AppCompatActivity {
+public class M1E2 extends AppCompatActivity {
     private Toolbar tb_perguntas;
     private ViewPager mViewPager;
-    private String TagFragmentP2;
     private TextView tv_treinamento;
     List<Fragment> fragments;
 
-    public void setTagFragmentP2(String t) {
-        TagFragmentP2 = t;
-    }
-    public String getTagFragmentP2() {
-        return TagFragmentP2;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_m1_e1);
+        setContentView(R.layout.activity_m1_e2);
 
 
         tv_treinamento = (TextView) findViewById(R.id.tv_treinamento);
@@ -55,7 +53,7 @@ public class M1E1 extends AppCompatActivity {
         tb_perguntas.findViewById(R.id.iv_voltar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(M1E1.this);
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(M1E2.this);
                 alertDialog.setTitle("Tem certeza de que quer sair?");
                 alertDialog.setMessage("Todo o progresso dessa etapa será perdido.");
 
@@ -66,7 +64,7 @@ public class M1E1 extends AppCompatActivity {
                 });
                 alertDialog.setPositiveButton("Sair", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                       startActivity(new Intent(M1E1.this, M1.class));
+                       startActivity(new Intent(M1E2.this, M1.class));
                     }
                 });
                 // alertDialog.setIcon(R.drawable.dengue_10dp);
@@ -81,11 +79,11 @@ public class M1E1 extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragments = new ArrayList<>();
-        fragments.add(new P1M1E1());
-        fragments.add(new P2M1E1());
-        fragments.add(new P3M1E1());
-        fragments.add(new P4M1E1());
-        fragments.add(new P5M1E1());
+        fragments.add(new P1M1E2());
+        fragments.add(new P2M1E2());
+        fragments.add(new P3M1E2());
+        fragments.add(new P4M1E2());
+        fragments.add(new P5M1E2());
         mViewPager.setAdapter(new FragmentCustomPagerAdapter(fragmentManager, fragments));
     }
 
@@ -93,10 +91,9 @@ public class M1E1 extends AppCompatActivity {
         mViewPager.setCurrentItem(index);
     }
 
-
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(M1E1.this);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(M1E2.this);
         alertDialog.setTitle("Tem certeza de que quer sair?");
         alertDialog.setMessage("Todo o progresso dessa etapa será perdido.");
 
@@ -107,7 +104,7 @@ public class M1E1 extends AppCompatActivity {
         });
         alertDialog.setPositiveButton("Sair", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                startActivity(new Intent(M1E1.this, M1.class));
+                startActivity(new Intent(M1E2.this, M1.class));
             }
         });
         // alertDialog.setIcon(R.drawable.dengue_10dp);
@@ -136,7 +133,4 @@ public class M1E1 extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public int getCurrentPage(){
-        return mViewPager.getCurrentItem();
-    }
 }

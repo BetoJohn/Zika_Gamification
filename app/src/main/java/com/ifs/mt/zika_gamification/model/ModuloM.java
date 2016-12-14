@@ -6,17 +6,17 @@ import java.util.List;
  * Created by Betto Silva on 01/12/2016.
  */
 public class ModuloM {
-    private int modulo_Id;
+    private String modulo_Id;
     private String modulo_Nome;
     private String modulo_Desricao;
     private boolean modulo_Status;
-    private List<EtapaM> etapas;
+    private EtapaM etapa;
 
-    public int getModulo_Id() {
+    public String getModulo_Id() {
         return modulo_Id;
     }
 
-    public void setModulo_Id(int modulo_Id) {
+    public void setModulo_Id(String modulo_Id) {
         this.modulo_Id = modulo_Id;
     }
 
@@ -44,11 +44,11 @@ public class ModuloM {
         this.modulo_Status = modulo_Status;
     }
 
-    public List<EtapaM> getEtapas() {
-        return etapas;
+    public EtapaM getEtapa() {
+        return etapa;
     }
 
-    public void setEtapas(List<EtapaM> etapas) {
-        this.etapas = etapas;
+    public void setEtapa(EtapaM etapas) {
+        this.etapa = etapas;
     }
 }

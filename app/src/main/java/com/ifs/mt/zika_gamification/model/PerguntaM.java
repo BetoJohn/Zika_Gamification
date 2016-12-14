@@ -1,22 +1,23 @@
 package com.ifs.mt.zika_gamification.model;
 
+import java.util.Objects;
+
 /**
  * Created by Betto Silva on 01/12/2016.
  */
 public class PerguntaM {
 
-    private int pergunta_Id;
-    private int resposta_Id;
+    private String pergunta_Id;
     private String pergunta_Nome;
-    private String pergunta_Questao;
     private int pergunta_Pontuacao;
-    private String pergunta_Status;
+    private boolean pergunta_Status;
+    private RespostaM respostaM;
 
-    public int getPergunta_Id() {
+    public String getPergunta_Id() {
         return pergunta_Id;
     }
 
-    public void setPergunta_Id(int pergunta_Id) {
+    public void setPergunta_Id(String pergunta_Id) {
         this.pergunta_Id = pergunta_Id;
     }
 
@@ -28,14 +29,6 @@ public class PerguntaM {
         this.pergunta_Nome = pergunta_Nome;
     }
 
-    public String getPergunta_Questao() {
-        return pergunta_Questao;
-    }
-
-    public void setPergunta_Questao(String pergunta_Questao) {
-        this.pergunta_Questao = pergunta_Questao;
-    }
-
     public int getPergunta_Pontuacao() {
         return pergunta_Pontuacao;
     }
@@ -44,19 +37,41 @@ public class PerguntaM {
         this.pergunta_Pontuacao = pergunta_Pontuacao;
     }
 
-    public String getPergunta_Status() {
-        return pergunta_Status;
-    }
-
-    public void setPergunta_Status(String pergunta_Status) {
+    public void setPergunta_Status(boolean pergunta_Status) {
         this.pergunta_Status = pergunta_Status;
     }
 
-    public int getResposta_Id() {
-        return resposta_Id;
+    public boolean isPergunta_Status() {
+        return pergunta_Status;
     }
 
-    public void setResposta_Id(int resposta_Id) {
-        this.resposta_Id = resposta_Id;
+    public RespostaM getRespostaM() {
+        return respostaM;
+    }
+
+    public void setRespostaM(RespostaM respostaM) {
+        this.respostaM = respostaM;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        System.out.println("Entrou no equals!!!!!!");
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final RespostaM other = (RespostaM) obj;
+        if (!Objects.equals(this.getRespostaM().getResposta_Id(), other.getResposta_Id())) {
+            return false;
+        }
+        if (!Objects.equals(this.getRespostaM().getResposta_Item(), other.getResposta_Item())) {
+            return false;
+        }
+        return true;
     }
 }

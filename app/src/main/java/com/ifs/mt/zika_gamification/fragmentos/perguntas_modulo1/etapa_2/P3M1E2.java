@@ -1,4 +1,4 @@
-package com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1;
+package com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_2;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,9 +10,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.ifs.mt.zika_gamification.R;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P2M1E1;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P4M1E1;
 import com.ifs.mt.zika_gamification.model.PerguntaM;
 import com.ifs.mt.zika_gamification.model.RespostaM;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_2.M1E2;
 import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
 
 import java.util.ArrayList;
@@ -21,10 +24,9 @@ import java.util.List;
 /**
  * Created by Betto Silva on 08/08/2016.
  */
-public class P3M1E1 extends Fragment {
+public class P3M1E2 extends Fragment {
     private Toolbar tb_bottom_next;
-    TextView b_received;
-    private RadioGroup radioGroupP3M1E1;
+    private RadioGroup radioGroupP3M1E2;
     private static List<PerguntaM> listPerguntaResposta;
     private RespostaM resposta;
     private PerguntaM perguntaM;
@@ -34,36 +36,36 @@ public class P3M1E1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View fragment = inflater.inflate(R.layout.fragment_pergunta3_modulo1_etapa1,
+        View fragment = inflater.inflate(R.layout.fragment_pergunta3_modulo1_etapa2,
                 container, false);
 
         perguntaM = new PerguntaM();
-        perguntaM.setPergunta_Id("P3M1E1");
+        perguntaM.setPergunta_Id("P3M1E2");
         perguntaM.setPergunta_Nome("Pergunta 03");
         perguntaM.setPergunta_Status(true);
 
         resposta = new RespostaM();
-        resposta.setResposta_Id("R3P3M1E1");
+        resposta.setResposta_Id("R3P3M1E2");
 
-        radioGroupP3M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP3M1E1);
-        radioGroupP3M1E1
+        radioGroupP3M1E2 = (RadioGroup) fragment.findViewById(R.id.radioGroupP3M1E2);
+        radioGroupP3M1E2
                 .setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
                         switch (checkedId) {
-                            case R.id.rbOpAP3M1E1:
+                            case R.id.rbOpAP3M1E2:
                                 System.out.println("Opção A");
                                 resposta.setResposta_Item("A");
                                 break;
-                            case R.id.rbOpBP3M1E1:
+                            case R.id.rbOpBP3M1E2:
                                 System.out.println("Opção B");
                                 resposta.setResposta_Item("B");
                                 break;
-                            case R.id.rbOpCP3M1E1:
+                            case R.id.rbOpCP3M1E2:
                                 System.out.println("Opção C");
                                 resposta.setResposta_Item("C");
                                 break;
-                            case R.id.rbOpDP3M1E1:
+                            case R.id.rbOpDP3M1E2:
                                 System.out.println("Opção D");
                                 resposta.setResposta_Item("D");
                                 break;
@@ -77,7 +79,7 @@ public class P3M1E1 extends Fragment {
             @Override
             public void onClick(View v) {
 
-                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP3M1E1, "Selecione uma resposta!", getActivity().getApplicationContext());
+                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP3M1E2, "Selecione uma resposta!", getActivity().getApplicationContext());
                 if (ok) {
 
                     if (getListResposta().size() == 3){
@@ -86,8 +88,8 @@ public class P3M1E1 extends Fragment {
 
                     perguntaM.setRespostaM(resposta);
                     getListResposta().add(2, perguntaM);
-                    P4M1E1.setListResposta(listPerguntaResposta);
-                    ((M1E1) getActivity()).trocarPagina(3);
+                    P4M1E2.setListResposta(listPerguntaResposta);
+                    ((M1E2) getActivity()).trocarPagina(3);
                 }
 
             }
@@ -101,8 +103,8 @@ public class P3M1E1 extends Fragment {
                 if (getListResposta().size() == 3){
                     getListResposta().remove(2);
                 }
-                P2M1E1.setListResposta(listPerguntaResposta);
-                ((M1E1) getActivity()).trocarPagina(1);
+                P2M1E2.setListResposta(listPerguntaResposta);
+                ((M1E2) getActivity()).trocarPagina(1);
             }
         });
 

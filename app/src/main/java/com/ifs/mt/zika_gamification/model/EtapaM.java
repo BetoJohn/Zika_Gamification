@@ -6,17 +6,17 @@ import java.util.List;
  * Created by Betto Silva on 01/12/2016.
  */
 public class EtapaM {
-    private int etapa_Id;
+    private String etapa_Id;
     private String etapa_Nome;
     private String etapa_Descricao;
-    private String etapa_Status;
+    private boolean etapa_Status;
     private List<PerguntaM> perguntas;
 
-    public int getEtapa_Id() {
+    public String getEtapa_Id() {
         return etapa_Id;
     }
 
-    public void setEtapa_Id(int etapa_Id) {
+    public void setEtapa_Id(String etapa_Id) {
         this.etapa_Id = etapa_Id;
     }
 
@@ -36,11 +36,19 @@ public class EtapaM {
         this.etapa_Descricao = etapa_Descricao;
     }
 
-    public String getEtapa_Status() {
+    public void setEtapa_Status(boolean etapa_Status) {
+        this.etapa_Status = etapa_Status;
+    }
+
+    public boolean isEtapa_Status() {
         return etapa_Status;
     }
 
-    public void setEtapa_Status(String etapa_Status) {
-        this.etapa_Status = etapa_Status;
+    public List<PerguntaM> getPerguntas() {
+        return perguntas;
+    }
+
+    public void setPerguntas(List<PerguntaM> perguntas) {
+        this.perguntas = perguntas;
     }
 }

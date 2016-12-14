@@ -11,7 +11,7 @@
         android:layout_height="fill_parent"
         android:layout_above="@+id/footer"
         android:layout_alignParentTop="false"
-        tools:context="com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P3M1E1">
+        tools:context="com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_2.P3M1E2">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
@@ -28,7 +28,7 @@
                 android:layout_marginLeft="100dp"
                 android:layout_marginRight="100dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/a_a" />
+                android:src="@drawable/b_a" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -38,20 +38,8 @@
                 android:paddingRight="10dp"
                 android:textSize="18sp"
                 android:textColor="@android:color/black"
-                android:text="@string/p3m1e1"
+                android:text="@string/p3m1e2"
                 android:labelFor="@id/a_input"/>
-
-           <!-- <com.bluejamesbond.text.DocumentView
-                xmlns:ext="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/dvText"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                ext:documentView_textSize="20sp"
-                ext:documentView_textAlignment="justified"
-                ext:documentView_insetPaddingLeft="10dp"
-                ext:documentView_insetPaddingRight="10dp"
-                ext:documentView_text="A imagem abaixo demonstra o ciclo de vida do Aedes, uma femêa pode dar origem a aproximadamente quantos mosquitos?"
-                />-->
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -62,11 +50,11 @@
                 android:layout_marginLeft="60dp"
                 android:layout_marginRight="60dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/m1e1p3" />
+                android:src="@drawable/m1e2p3" />
 
 
             <RadioGroup
-                android:id="@+id/radioGroupP3M1E1"
+                android:id="@+id/radioGroupP3M1E2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -76,32 +64,32 @@
                 android:orientation="vertical">
 
                 <RadioButton
-                    android:id="@+id/rbOpAP3M1E1"
+                    android:id="@+id/rbOpAP3M1E2"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/op1p3m1e1" />
+                    android:text="@string/op1p3m1e2" />
 
                 <RadioButton
-                    android:id="@+id/rbOpBP3M1E1"
+                    android:id="@+id/rbOpBP3M1E2"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/op2p3m1e1" />
+                    android:text="@string/op2p3m1e2" />
 
                 <RadioButton
-                    android:id="@+id/rbOpCP3M1E1"
+                    android:id="@+id/rbOpCP3M1E2"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/op3p3m1e1" />
+                    android:text="@string/op3p3m1e2" />
 
                 <RadioButton
-                    android:id="@+id/rbOpDP3M1E1"
+                    android:id="@+id/rbOpDP3M1E2"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/op4p3m1e1" />
+                    android:text="@string/op4p3m1e2" />
 
             </RadioGroup>
 

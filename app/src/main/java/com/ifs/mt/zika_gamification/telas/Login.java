@@ -68,7 +68,7 @@ public class Login extends Activity {
 
         setContentView(R.layout.activity_login);
         //Aparece o teclado ao iniciar a tela
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+       // this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
 
 
@@ -141,8 +141,8 @@ public class Login extends Activity {
 
     public void entrar(View v) {
         //Esconde o teclado ao clicar no botão entrar
-        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+       /* InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);*/
 
         editLogin.setText("mateus");
         editSenha.setText("123");
@@ -394,5 +394,9 @@ public class Login extends Activity {
         adapterTpLarvicida
                 .setDropDownViewResource(R.layout.spinner_dropdown_itens);
         spinerTpUsuario.setAdapter(adapterTpLarvicida);
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.adapter.ImageAdapterModulos;
-import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.M1;
 
 public class Treinamento extends AppCompatActivity {
     private Toolbar tb_treinamento;
@@ -35,7 +35,7 @@ public class Treinamento extends AppCompatActivity {
         tb_treinamento.findViewById(R.id.iv_voltar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                startActivity(new Intent(Treinamento.this, MenuPrincipal.class));
             }
         });
 
@@ -56,6 +56,11 @@ public class Treinamento extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(Treinamento.this, MenuPrincipal.class));
     }
 
     @Override

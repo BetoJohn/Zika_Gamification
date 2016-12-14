@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.ifs.mt.zika_gamification.model.RespostaM;
 import com.ifs.mt.zika_gamification.model.UsuarioM;
 
 import java.util.ArrayList;
@@ -28,16 +29,15 @@ public class UsuarioDao {
 
     public void insert(UsuarioM usu) {
         /**
-         * "usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha", "tipo_usuario"
+         * "usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha", "usuario_tipo"
          *
          **/
         ContentValues valores = new ContentValues();
-        //valores.put("usuario_id", usu.getUsuario_id());
         valores.put("usuario_nome", usu.getUsuario_nome());
         valores.put("usuario_login", usu.getUsuario_login());
         valores.put("usuario_email", usu.getUsuario_email());
         valores.put("usuario_senha", usu.getUsuario_senha());
-        valores.put("tipo_usuario", usu.getUsuario_tipo());
+        valores.put("usuario_tipo", usu.getUsuario_tipo());
         db.getWritableDatabase().insert(Banco.TB_USUARIO, null, valores);
         System.out.println("Inseriu UsuarioM");
     }
@@ -86,6 +86,8 @@ public class UsuarioDao {
         rs.close();
         return list;
     }
+
+
 
     /*private String convertStringToMd5(String valor) {
         MessageDigest mDigest;
