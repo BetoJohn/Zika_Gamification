@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.adapter.FragmentCustomPagerAdapter;
+import com.ifs.mt.zika_gamification.adapter.ZoomOutPageTransformer;
 import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P1M1E1;
 import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P2M1E1;
 import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P3M1E1;
@@ -76,6 +77,7 @@ public class M1E1 extends AppCompatActivity {
         });
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager.setPageTransformer(true, new ZoomOutPageTransformer());
         mViewPager.setOffscreenPageLimit(1);
 
 

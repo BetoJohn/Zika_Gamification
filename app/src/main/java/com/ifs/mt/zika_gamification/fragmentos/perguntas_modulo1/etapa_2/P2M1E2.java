@@ -86,13 +86,13 @@ public class P2M1E2 extends Fragment {
             public void onClick(View v) {
                 boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP2M1E2, "Selecione uma resposta!", getActivity().getApplicationContext());
                 if (ok) {
-                    if (getListResposta().size() == 2){
-                        getListResposta().remove(1);
+                    if (getListPergunta().size() == 2){
+                        getListPergunta().remove(1);
                     }
 
                     perguntaM.setRespostaM(resposta);
-                    getListResposta().add(1, perguntaM);
-                    P3M1E2.setListResposta(listPerguntaResposta);
+                    getListPergunta().add(1, perguntaM);
+                    P3M1E2.setListPergunta(listPerguntaResposta);
                     ((M1E2) getActivity()).trocarPagina(2);
                 }
 
@@ -106,10 +106,10 @@ public class P2M1E2 extends Fragment {
                     getListResposta().remove(1);
                 }*/
 
-                if (getListResposta().size() == 2){
-                    getListResposta().remove(1);
+                if (getListPergunta().size() == 2){
+                    getListPergunta().remove(1);
                 }
-                P1M1E2.setListResposta(listPerguntaResposta);
+                P1M1E2.setListPergunta(listPerguntaResposta);
                 ((M1E2) getActivity()).trocarPagina(0);
             }
         });
@@ -119,7 +119,7 @@ public class P2M1E2 extends Fragment {
     }
 
 
-    public static void setListResposta(List<PerguntaM> perguntas) {
+    public static void setListPergunta(List<PerguntaM> perguntas) {
         listPerguntaResposta = new ArrayList<>();
         listPerguntaResposta = perguntas;
         System.out.println("Posiçao 0: " + listPerguntaResposta.get(0).getRespostaM().getResposta_Item());
@@ -130,7 +130,7 @@ public class P2M1E2 extends Fragment {
 
     }
 
-    public List<PerguntaM> getListResposta() {
+    public List<PerguntaM> getListPergunta() {
         if (null == listPerguntaResposta) {
             listPerguntaResposta = new ArrayList<>();
             return listPerguntaResposta;

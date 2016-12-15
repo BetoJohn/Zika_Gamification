@@ -1,29 +1,41 @@
 package com.ifs.mt.zika_gamification.telas;
 
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.MediaController;
-import android.widget.VideoView;
 
 import com.ifs.mt.zika_gamification.R;
+import com.ifs.mt.zika_gamification.adapter.ModuloRecyclerViewAdapter;
 
 public class Teste extends AppCompatActivity {
 
+    private StaggeredGridLayoutManager gaggeredGridLayoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teste);
 
-        MediaController mc= new MediaController(this);
+        /*MediaController mc= new MediaController(this);
         VideoView view = (VideoView)findViewById(R.id.videoView);
         String path = "android.resource://" + getPackageName() + "/raw/m1e1p5";// + R.raw.m1e1p5;
         System.out.println("Path: "+path);
         view.setVideoURI(Uri.parse(path));
         view.setMediaController(mc);
-        //view.start();
+        //view.start();*/
+
+
+        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+        gaggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        gaggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
+        recyclerView.setLayoutManager(gaggeredGridLayoutManager);
+        recyclerView.setHasFixedSize(true);
+        ModuloRecyclerViewAdapter rcAdapter = new ModuloRecyclerViewAdapter(Teste.this);
+        recyclerView.setAdapter(rcAdapter);
+
+
     }
 
     @Override

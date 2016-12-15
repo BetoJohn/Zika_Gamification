@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-
-import com.bluejamesbond.text.DocumentView;
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.model.EtapaM;
 import com.ifs.mt.zika_gamification.model.ModuloM;
@@ -27,16 +25,10 @@ import java.util.List;
  */
 public class P1M1E1 extends Fragment {
     private Toolbar tb_bottom_next;
-    private DocumentView dvText;
-    private TextView textView;
     private RadioGroup radioGroupP1M1E1;
     private static List<PerguntaM> listPerguntaResposta;
     private RespostaM resposta;
     private PerguntaM perguntaM;
-
-
-
-    EditText A_input;
 
 
     @Override
@@ -86,23 +78,18 @@ public class P1M1E1 extends Fragment {
         tb_bottom_next.findViewById(R.id.iv_avancar_pergunta).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* String textPassToB = A_input.getText().toString();
-                String TagOfFragmentB = ((M1E1) getActivity()).getTagFragmentP2();
-                P2M1E1 fragmentB = (P2M1E1) getActivity()
-                        .getSupportFragmentManager()
-                        .findFragmentByTag(TagOfFragmentB);*/
 
 
                 boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP1M1E1, "Selecione uma resposta!", getActivity().getApplicationContext());
                 if (ok) {
 
                     listPerguntaResposta = new ArrayList<>();
-                    if (getListResposta().size() == 1){
-                        getListResposta().remove(0);
+                    if (getListPergunta().size() == 1){
+                        getListPergunta().remove(0);
                     }
                     perguntaM.setRespostaM(resposta);
-                    getListResposta().add(0, perguntaM);
-                    P2M1E1.setListResposta(listPerguntaResposta);
+                    getListPergunta().add(0, perguntaM);
+                    P2M1E1.setListPergunta(listPerguntaResposta);
                     ((M1E1) getActivity()).trocarPagina(1);
                 }
 
@@ -114,7 +101,7 @@ public class P1M1E1 extends Fragment {
         return fragment;
     }
 
-    public static void setListResposta(List<PerguntaM> perguntas) {
+    public static void setListPergunta(List<PerguntaM> perguntas) {
         listPerguntaResposta = new ArrayList<>();
         listPerguntaResposta = perguntas;
         for(PerguntaM res: listPerguntaResposta){
@@ -123,7 +110,7 @@ public class P1M1E1 extends Fragment {
 
     }
 
-    public List<PerguntaM> getListResposta() {
+    public List<PerguntaM> getListPergunta() {
         if(null == listPerguntaResposta){
             listPerguntaResposta = new ArrayList<>();
             return listPerguntaResposta;

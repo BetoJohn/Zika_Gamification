@@ -7,10 +7,9 @@ import java.util.List;
  */
 public class HistoricoM {
 
-    private UsuarioM usuarioM;
     private int historico_Id;
-    //private int modulo_Id;
-    private List<ModuloM> modulos;
+    private UsuarioM usuarioM;
+    private ModuloM moduloM;
 
     public int getHistorico_Id() {
         return historico_Id;
@@ -20,20 +19,12 @@ public class HistoricoM {
         this.historico_Id = historico_Id;
     }
 
-   /* public int getModulo_Id() {
-        return modulo_Id;
+    public ModuloM getModuloM() {
+        return moduloM;
     }
 
-    public void setModulo_Id(int modulo_Id) {
-        this.modulo_Id = modulo_Id;
-    }*/
-
-    public List<ModuloM> getModulos() {
-        return modulos;
-    }
-
-    public void setModulos(List<ModuloM> modulos) {
-        this.modulos = modulos;
+    public void setModuloM(ModuloM moduloM) {
+        this.moduloM = moduloM;
     }
 
     public UsuarioM getUsuarioM() {

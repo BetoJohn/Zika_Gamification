@@ -9,10 +9,6 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.bluejamesbond.text.DocumentView;
-import com.bluejamesbond.text.hyphen.DefaultHyphenator;
-import com.bluejamesbond.text.style.TextAlignment;
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo3.C;
 
@@ -21,8 +17,6 @@ import com.ifs.mt.zika_gamification.telas.treinamento_modulo3.C;
  */
 public class P1M2E1 extends Fragment {
     private Toolbar tb_bottom_next;
-    private WebView webview;
-    private DocumentView dvText;
 
 
     EditText A_input;
@@ -50,10 +44,6 @@ public class P1M2E1 extends Fragment {
 
         webview.loadData(text, "text/html;charset=UTF-8", null);*/
 
-        dvText = (DocumentView) fragment.findViewById(R.id.dvText);
-        dvText.getDocumentLayoutParams().setTextAlignment(TextAlignment.JUSTIFIED);
-        dvText.getDocumentLayoutParams().setHyphenator(DefaultHyphenator.getInstance(DefaultHyphenator.HyphenPattern.PT));
-        dvText.getDocumentLayoutParams().setHyphenated(false);
 
         tb_bottom_next = (Toolbar) fragment.findViewById(R.id.tb_bottom_next);
         tb_bottom_next.findViewById(R.id.iv_avancar_pergunta).setOnClickListener(new View.OnClickListener() {

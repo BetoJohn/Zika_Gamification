@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
@@ -14,12 +16,14 @@ import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.adapter.ImageAdapterModulos;
+import com.ifs.mt.zika_gamification.adapter.ModuloRecyclerViewAdapter;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.M1;
 
 public class Treinamento extends AppCompatActivity {
     private Toolbar tb_treinamento;
     private TextView tv_treinamento;
-    private boolean A = false, B = false, C = false, D = false, E = false, F = false;
+    private StaggeredGridLayoutManager gaggeredGridLayoutManager;
+    private boolean m1 = true, m2 = false, m3 = false, m4 = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,23 +43,13 @@ public class Treinamento extends AppCompatActivity {
             }
         });
 
-        GridView gridview = (GridView) findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapterModulos(this));
-
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
-                Toast.makeText(Treinamento.this, "" + position,
-                        Toast.LENGTH_SHORT).show();
-                A = true;
-                if (position == 0) {
-                    if (A)
-                        startActivity(new Intent(Treinamento.this, M1.class));
-                }
-
-
-            }
-        });
+        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler_view_treinamento);
+        gaggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        gaggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
+        recyclerView.setLayoutManager(gaggeredGridLayoutManager);
+        recyclerView.setHasFixedSize(true);
+        ModuloRecyclerViewAdapter rcAdapter = new ModuloRecyclerViewAdapter(Treinamento.this);
+        recyclerView.setAdapter(rcAdapter);
     }
 
     @Override

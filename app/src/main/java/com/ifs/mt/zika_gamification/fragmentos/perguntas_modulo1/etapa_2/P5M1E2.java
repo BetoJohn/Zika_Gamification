@@ -115,7 +115,7 @@ public class P5M1E2 extends Fragment {
                 if (ok) {
                    /* Toast.makeText(getActivity().getApplicationContext(), "Concluir", Toast.LENGTH_SHORT).show();*/
                     perguntaM.setRespostaM(resposta);
-                    getListResposta().add(4, perguntaM);
+                    getListPergunta().add(4, perguntaM);
 
                     /**
                      * Faço a comparação com o gabarito, dou um sleep e mostro o resultado
@@ -123,11 +123,11 @@ public class P5M1E2 extends Fragment {
                      * 2/5 ou 4/5)depois chamo a tela de treinamento já com a proxima etapa
                      * desbloqueada
                      **/
-                    for (PerguntaM res : getListResposta()) {
+                    for (PerguntaM res : getListPergunta()) {
                         System.out.println("itens: " + res.getRespostaM().getResposta_Item());
                     }
                     Util util = new Util();
-                    List<PerguntaM> perguntas = util.validaResposta(getListResposta());
+                    List<PerguntaM> perguntas = util.validaResposta(getListPergunta());
 
                     int numAcertos = 0;
                     for (PerguntaM respo : perguntas) {
@@ -151,9 +151,14 @@ public class P5M1E2 extends Fragment {
 
                     //============== Adiciono valores no SharePreferences =======
                     mySharedPreferencesController = MySharedPreferencesController.getInstance(getActivity());
-                    //mySharedPreferencesController.saveData(MySharedPreferencesController.M1_E2, true);
+                    //Etapa 02 concluída, desbloqueio o Módulo 2 já que é a última etapa do Módulo 01
+                    mySharedPreferencesController.saveData(MySharedPreferencesController.M2, true);
 
                     //FAÇO A INSERÇÃO NO BANCO
+                    //==========================================================
+
+
+                    //APRESENTO O RESULTADO DA ETAPA
                     //==========================================================
                     // custom dialog
                     final Dialog dialog = new Dialog(getActivity());
@@ -179,16 +184,12 @@ public class P5M1E2 extends Fragment {
                     dialogButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
-                            //POSSIVEL ARQUIVO LOCAL PARA SALVAR AS INFORMAÇÕES SOBRE ICONES ATIVOS OU NÃO
-                            //QUANDO VOLTAR A TELA TEM QUE TER O ICONE DA SEGUNDA ETAPA ATIVO;
                             dialog.dismiss();
                             startActivity(new Intent(getActivity(), M1.class));
                         }
                     });
-
+                    dialog.setCanceledOnTouchOutside(false);
                     dialog.show();
-
 
                     //Salvo no banco essas respostas referenteS ao m1e1
                     System.out.println("Acertou: " + numAcertos);
@@ -201,7 +202,7 @@ public class P5M1E2 extends Fragment {
             @Override
             public void onClick(View v) {
 
-                P4M1E2.setListResposta(listPerguntaResposta);
+                P4M1E2.setListPergunta(listPerguntaResposta);
                 ((M1E2) getActivity()).trocarPagina(3);
             }
         });
@@ -211,7 +212,7 @@ public class P5M1E2 extends Fragment {
     }
 
 
-    public static void setListResposta(List<PerguntaM> perguntas) {
+    public static void setListPergunta(List<PerguntaM> perguntas) {
         listPerguntaResposta = new ArrayList<>();
         listPerguntaResposta = perguntas;
         for (PerguntaM res : listPerguntaResposta) {
@@ -219,7 +220,7 @@ public class P5M1E2 extends Fragment {
         }
     }
 
-    public List<PerguntaM> getListResposta() {
+    public List<PerguntaM> getListPergunta() {
         if (null == listPerguntaResposta) {
             listPerguntaResposta = new ArrayList<>();
             return listPerguntaResposta;

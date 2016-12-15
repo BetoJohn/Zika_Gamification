@@ -80,13 +80,13 @@ public class P3M1E1 extends Fragment {
                 boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP3M1E1, "Selecione uma resposta!", getActivity().getApplicationContext());
                 if (ok) {
 
-                    if (getListResposta().size() == 3){
-                        getListResposta().remove(2);
+                    if (getListPergunta().size() == 3){
+                        getListPergunta().remove(2);
                     }
 
                     perguntaM.setRespostaM(resposta);
-                    getListResposta().add(2, perguntaM);
-                    P4M1E1.setListResposta(listPerguntaResposta);
+                    getListPergunta().add(2, perguntaM);
+                    P4M1E1.setListPergunta(listPerguntaResposta);
                     ((M1E1) getActivity()).trocarPagina(3);
                 }
 
@@ -98,10 +98,10 @@ public class P3M1E1 extends Fragment {
 
 
 
-                if (getListResposta().size() == 3){
-                    getListResposta().remove(2);
+                if (getListPergunta().size() == 3){
+                    getListPergunta().remove(2);
                 }
-                P2M1E1.setListResposta(listPerguntaResposta);
+                P2M1E1.setListPergunta(listPerguntaResposta);
                 ((M1E1) getActivity()).trocarPagina(1);
             }
         });
@@ -110,7 +110,7 @@ public class P3M1E1 extends Fragment {
         return fragment;
     }
 
-    public static void setListResposta(List<PerguntaM> perguntas) {
+    public static void setListPergunta(List<PerguntaM> perguntas) {
         listPerguntaResposta = new ArrayList<>();
         listPerguntaResposta = perguntas;
         System.out.println("Posiçao 0: " + listPerguntaResposta.get(0).getRespostaM().getResposta_Item());
@@ -121,7 +121,7 @@ public class P3M1E1 extends Fragment {
 
     }
 
-    public List<PerguntaM> getListResposta() {
+    public List<PerguntaM> getListPergunta() {
         if (null == listPerguntaResposta) {
             listPerguntaResposta = new ArrayList<>();
             return listPerguntaResposta;

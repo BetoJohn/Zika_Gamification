@@ -83,13 +83,13 @@ public class P4M1E2 extends Fragment {
                 boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP4M1E2, "Selecione uma resposta!", getActivity().getApplicationContext());
                 if (ok) {
 
-                    if (getListResposta().size() == 4){
-                        getListResposta().remove(3);
+                    if (getListPergunta().size() == 4){
+                        getListPergunta().remove(3);
                     }
 
                     perguntaM.setRespostaM(resposta);
-                    getListResposta().add(3, perguntaM);
-                    P5M1E2.setListResposta(listPerguntaResposta);
+                    getListPergunta().add(3, perguntaM);
+                    P5M1E2.setListPergunta(listPerguntaResposta);
                     ((M1E2) getActivity()).trocarPagina(4);
                 }
 
@@ -101,10 +101,10 @@ public class P4M1E2 extends Fragment {
 
 
 
-                if (getListResposta().size() == 4){
-                    getListResposta().remove(3);
+                if (getListPergunta().size() == 4){
+                    getListPergunta().remove(3);
                 }
-                P3M1E2.setListResposta(listPerguntaResposta);
+                P3M1E2.setListPergunta(listPerguntaResposta);
                 ((M1E2) getActivity()).trocarPagina(2);
             }
         });
@@ -113,7 +113,7 @@ public class P4M1E2 extends Fragment {
         return fragment;
     }
 
-    public static void setListResposta(List<PerguntaM> perguntas) {
+    public static void setListPergunta(List<PerguntaM> perguntas) {
         listPerguntaResposta = new ArrayList<>();
         listPerguntaResposta = perguntas;
         for(PerguntaM res: listPerguntaResposta){
@@ -121,7 +121,7 @@ public class P4M1E2 extends Fragment {
         }
     }
 
-    public List<PerguntaM> getListResposta() {
+    public List<PerguntaM> getListPergunta() {
         if(null == listPerguntaResposta){
             listPerguntaResposta = new ArrayList<>();
             return listPerguntaResposta;

@@ -53,7 +53,7 @@ android:orientation="vertical">
 </android.support.v7.widget.Toolbar>
 
 
-    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    <!--<GridView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/gridview"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
@@ -67,7 +67,12 @@ android:orientation="vertical">
         android:horizontalSpacing="35dp"
         android:stretchMode="columnWidth"
         android:gravity="center"
-        />
+        />-->
 
-
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/tb_treinamento"
+        android:id="@+id/recycler_view_etapa"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
 </LinearLayout>

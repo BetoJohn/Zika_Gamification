@@ -8,9 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.TextView;
-
-import com.bluejamesbond.text.DocumentView;
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P2M1E1;
 import com.ifs.mt.zika_gamification.model.PerguntaM;
@@ -86,12 +83,12 @@ public class P1M1E2 extends Fragment {
                 if (ok) {
 
                     listPerguntaResposta = new ArrayList<>();
-                    if (getListResposta().size() == 1){
-                        getListResposta().remove(0);
+                    if (getListPergunta().size() == 1){
+                        getListPergunta().remove(0);
                     }
                     perguntaM.setRespostaM(resposta);
-                    getListResposta().add(0, perguntaM);
-                    P2M1E2.setListResposta(listPerguntaResposta);
+                    getListPergunta().add(0, perguntaM);
+                    P2M1E2.setListPergunta(listPerguntaResposta);
                     ((M1E2) getActivity()).trocarPagina(1);
                 }
 
@@ -103,7 +100,7 @@ public class P1M1E2 extends Fragment {
         return fragment;
     }
 
-    public static void setListResposta(List<PerguntaM> perguntas) {
+    public static void setListPergunta(List<PerguntaM> perguntas) {
         listPerguntaResposta = new ArrayList<>();
         listPerguntaResposta = perguntas;
         for(PerguntaM res: listPerguntaResposta){
@@ -112,7 +109,7 @@ public class P1M1E2 extends Fragment {
 
     }
 
-    public List<PerguntaM> getListResposta() {
+    public List<PerguntaM> getListPergunta() {
         if(null == listPerguntaResposta){
             listPerguntaResposta = new ArrayList<>();
             return listPerguntaResposta;

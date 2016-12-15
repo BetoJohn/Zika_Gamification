@@ -8,8 +8,10 @@ import android.content.SharedPreferences;
  */
 public class MySharedPreferencesController {
 
+    public static final String M1 = "M1";
     public static final String M1_E1 = "M1E1";
     public static final String M1_E2 = "M1E2";
+    public static final String M2 = "M2";
 
     private static MySharedPreferencesController myPreference;
     private SharedPreferences sharedPreferences;

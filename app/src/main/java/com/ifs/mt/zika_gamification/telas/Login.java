@@ -4,11 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -17,20 +15,16 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.dao.Banco;
 import com.ifs.mt.zika_gamification.dao.UsuarioDao;
-import com.ifs.mt.zika_gamification.model.Tipo_StatusM;
-import com.ifs.mt.zika_gamification.model.Tipo_UsuarioM;
 import com.ifs.mt.zika_gamification.model.UsuarioM;
 import com.ifs.mt.zika_gamification.rest.UsuarioRest;
 import com.ifs.mt.zika_gamification.validacao.AutenticarCadastro;
@@ -68,8 +62,7 @@ public class Login extends Activity {
 
         setContentView(R.layout.activity_login);
         //Aparece o teclado ao iniciar a tela
-       // this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-
+        // this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
 
         tv_login = (TextView) findViewById(R.id.tv_login);
@@ -149,7 +142,7 @@ public class Login extends Activity {
 
         boolean login = AutenticarLogin.validateNotNull(editLogin,
                 "Insira um login válido!");
-       boolean senha =  AutenticarLogin.validateNotNull(editSenha,
+        boolean senha = AutenticarLogin.validateNotNull(editSenha,
                 "Insira uma senha!");
         UsuarioM usuario = new UsuarioM();
         usuario.setUsuario_login(editLogin.getText().toString());
@@ -175,7 +168,7 @@ public class Login extends Activity {
       /*AutenticacaoThread thread = new AutenticacaoThread();
         thread.execute(usuario);*/
 
-        if(login && senha){
+        if (login && senha) {
             bancoUsuario = new Banco(getApplicationContext());
             UsuarioDao dao = new UsuarioDao(bancoUsuario);
             usuario = dao.autenticacao(usuario);
@@ -245,9 +238,6 @@ public class Login extends Activity {
         usuario.setUsuario_senha(editSenhaCadastro.getText().toString());
         usuario.setUsuario_tipo(tipoUsuario);
         Log.i("Login", "Dados: " + usuario.getUsuario_login() + " - " + usuario.getUsuario_senha());
-
-        //PARA TESTES
-        setUsuarioLogado(usuario);
 
         //-------------- Teste de Inserção do Usuario -----------
         bancoUsuario = new Banco(this);
