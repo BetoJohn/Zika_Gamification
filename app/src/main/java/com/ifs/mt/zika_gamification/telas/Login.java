@@ -19,6 +19,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
+import android.widget.Scroller;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -50,6 +52,7 @@ public class Login extends Activity {
     private Button btnCadastro;
     private Button btnLogin;
     private Banco bancoUsuario;
+    private ScrollView scrollLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +95,7 @@ public class Login extends Activity {
             }
         });
 
+        scrollLogin = (ScrollView) findViewById(R.id.scrollLogin);
         editNomeCadastro = (EditText) findViewById(R.id.editNomeCadastro);
         editNomeCadastro.setVisibility(View.INVISIBLE);
         editLoginCadastro = (EditText) findViewById(R.id.editLoginCadastro);
@@ -122,7 +126,15 @@ public class Login extends Activity {
         clickCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                scrollLogin.post(new Runnable() {
+                    public void run() {
+                        scrollLogin.smoothScrollTo(0, scrollLogin.getBottom());
+                    }
+                });
+
                 setVisible();
+
             }
         });
         clickCadastro.setTypeface(font);
@@ -216,6 +228,7 @@ public class Login extends Activity {
 
     public void cadastrar(View v) {
 
+
         String tipoUsuario = String.valueOf(spinnerTipoUsuario.getSelectedItem());
         System.out.println("Tipo usuário: " + tipoUsuario);
 
@@ -254,11 +267,23 @@ public class Login extends Activity {
         editEmailCadastro.setVisibility(View.VISIBLE);
         editSenhaCadastro.setVisibility(View.VISIBLE);
         editConfirmarSenhaCadastro.setVisibility(View.VISIBLE);
+        editConfirmarSenhaCadastro.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_GO)
+                    btnCadastro.setFocusableInTouchMode(true);
+                cadastrar(v);
+                return false;
+            }
+        });
         spinnerTipoUsuario.setVisibility(View.VISIBLE);
+
 //        imageViewCadastro.setVisibility(View.VISIBLE);
         btnCadastro.setVisibility(View.VISIBLE);
         textViewTipoUsuario.setVisibility(View.VISIBLE);
         tv_cadastro.setVisibility(View.VISIBLE);
+
+
     }
 
     class AutenticacaoThread extends AsyncTask<UsuarioM, Void, UsuarioM> {

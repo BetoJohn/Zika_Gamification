@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ifs.mt.zika_gamification" >
+    package="com.ifs.mt.zika_gamification">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -21,11 +21,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".telas.Login"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,51 +35,39 @@
         <activity
             android:name=".telas.Teste"
             android:label="@string/title_activity_menu_principal"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".telas.MenuPrincipal"
             android:label="@string/title_activity_menu_principal"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".telas.Treinamento"
             android:label="@string/title_activity_treinamento"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".telas.treinamento_modulo3.C"
-            android:label="@string/title_activity_c1" >
-        </activity>
+            android:label="@string/title_activity_c1"></activity>
         <activity
             android:name=".telas.treinamento_modulo2.B"
-            android:label="@string/title_activity_b" >
-        </activity>
-
+            android:label="@string/title_activity_b"></activity>
         <activity
             android:name=".telas.treinamento_modulo1.M1"
             android:label="@string/title_activity_m1_e1"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".telas.treinamento_modulo1.etapa_1.M1E1"
             android:label="@string/title_activity_m1_e1"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".telas.treinamento_modulo1.etapa_1.P5M1E1_Video"
-            android:label="" >
-        </activity>
+            android:label=""></activity>
         <activity
             android:name=".telas.treinamento_modulo1.etapa_2.M1E2"
             android:label="@string/title_activity_m1_e2"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".telas.treinamento_modulo1.etapa_2.P5M1E2_Video"
-            android:label="" >
-        </activity>
-
+            android:label=""></activity>
     </application>
 
 </manifest>
