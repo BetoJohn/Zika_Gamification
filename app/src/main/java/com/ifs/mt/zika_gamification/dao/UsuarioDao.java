@@ -27,7 +27,7 @@ public class UsuarioDao {
         sqldb.execSQL(String.format("DELETE FROM %s", Banco.TB_USUARIO));
     }
 
-    public void insert(UsuarioM usu) {
+    public int insert(UsuarioM usu) {
         /**
          * "usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha", "usuario_tipo"
          *
@@ -38,8 +38,11 @@ public class UsuarioDao {
         valores.put("usuario_email", usu.getUsuario_email());
         valores.put("usuario_senha", usu.getUsuario_senha());
         valores.put("usuario_tipo", usu.getUsuario_tipo());
-        db.getWritableDatabase().insert(Banco.TB_USUARIO, null, valores);
+        int result = (int) db.getWritableDatabase().insert(Banco.TB_USUARIO, null, valores);
+        System.out.println("Id tubito no insert: " + result);
         System.out.println("Inseriu UsuarioM");
+
+        return result;
     }
 
     public boolean isEmptyTable() {

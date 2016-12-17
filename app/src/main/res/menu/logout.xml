@@ -1,6 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.ifs.mt.zika_gamification.telas.MenuPrincipal">
-    <item android:id="@+id/action_sair" android:title="@string/action_sair"
-        android:orderInCategory="100" android:showAsAction="never" />
+
+    <item android:id="@+id/action_sair"
+        android:title="@string/action_sair"
+        app:showAsAction="never" />
 </menu>

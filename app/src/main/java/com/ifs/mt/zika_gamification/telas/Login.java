@@ -149,8 +149,8 @@ public class Login extends Activity {
        /* InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);*/
 
-        editLogin.setText("mateus");
-        editSenha.setText("123");
+     /*   editLogin.setText("mateus");
+        editSenha.setText("123");*/
 
         boolean login = AutenticarLogin.validateNotNull(editLogin,
                 "Insira um login válido!");
@@ -255,7 +255,7 @@ public class Login extends Activity {
         //-------------- Teste de Inserção do Usuario -----------
         bancoUsuario = new Banco(this);
         UsuarioDao dao = new UsuarioDao(bancoUsuario);
-        dao.insert(usuario);
+        usuario.setUsuario_id(dao.insert(usuario));
         //-------------- Teste de Inserção do Usuario -----------
         setUsuarioLogado(usuario);
         startActivity(new Intent(Login.this, MenuPrincipal.class));

@@ -16,10 +16,26 @@
         <!-- You can also set colorControlNormal, colorControlActivated
              colorControlHighlight, and colorSwitchThumbNormal. -->
         <item name="colorControlNormal">@android:color/white</item>
+
+    </style>
+
+
+    <style name="Theme.MyThemeBottom" parent="AppTheme">
+        <!-- colorPrimary is used for the default action bar background -->
+        <item name="colorPrimary">@android:color/transparent</item>
+    </style>
+
+    <!-- Style to replace actionbar overflow icon. set item 'android:actionOverflowButtonStyle' in AppTheme -->
+    <style name="MyActionButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_more_vert_white_24dp</item>
+        <item name="android:background">?android:attr/actionBarItemBackground</item>
+        <item name="android:contentDescription">"Lala"</item>
     </style>
 
     <declare-styleable name="MyViewPager">
         <attr name="swipeable" format="boolean" />
     </declare-styleable>
+
+
 
 </resources>
