@@ -6,6 +6,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.ifs.mt.zika_gamification.model.PerguntaM;
+
+import java.util.List;
+
 public class Banco extends SQLiteOpenHelper {
 
     private SQLiteDatabase db;
@@ -22,12 +26,31 @@ public class Banco extends SQLiteOpenHelper {
      private int tipo_status_id;
      private int tipo_usuario_id;
      *
+     * FOREIGN KEY(trackartist) REFERENCES artist(artistid)
      * **/
 
     //UsuarioM
     public final static String TB_USUARIO = "usuario";
     public final static String CREATE_TB_USUARIO = "create table IF NOT EXISTS usuario (usuario_id integer PRIMARY KEY AUTOINCREMENT, usuario_nome text, usuario_login text,  usuario_email text, usuario_senha text,  usuario_tipo text)";
     public final static String[] COLUMNS_USUARIO = {"usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha",  "usuario_tipo"};
+
+
+    //HistoricoM
+    public final static String TB_HISTORICO = "historico";
+    public final static String CREATE_TB_HISTORICO = "create table IF NOT EXISTS historico (historico_id integer PRIMARY KEY AUTOINCREMENT, usuario_id integer, modulo_id text, FOREIGN KEY(usuario_id) REFERENCES usuario(usuario_id))";
+    public final static String[] COLUMNS_HISTORICO = {"historico_id", "usuario_id", "modulo_id"};
+
+    //ModuloM
+    public final static String TB_MODULO = "modulo";
+    public final static String CREATE_TB_MODULO = "create table IF NOT EXISTS modulo (modulo_id text, modulo_nome text, modulo_desricao text, modulo_status boolean, etapa_id text, FOREIGN KEY(etapa_id) REFERENCES etapa(etapa_id))";
+    public final static String[] COLUMNS_MODULO = {"modulo_id", "modulo_nome", "modulo_desricao", "modulo_status", "etapa_id"};
+
+
+    //EtapaM
+    public final static String TB_ETAPA = "etapa";
+    public final static String CREATE_TB_ETAPA = "create table IF NOT EXISTS etapa (etapa_id text, etapa_nome text, etapa_desricao text, etapa_status boolean, pergunta_id text, FOREIGN KEY(pergunta_id) REFERENCES pergunta(pergunta_id))";
+    public final static String[] COLUMNS_ETAPA = {"etapa_id", "etapa_nome", "etapa_desricao", "etapa_status", "pergunta_id"};
+
 
     //Visita
     public final static String TB_VISITA = "visita";
@@ -48,7 +71,7 @@ public class Banco extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
         db.execSQL(CREATE_TB_USUARIO);
-        db.execSQL(CREATE_TB_VISITA);
+        db.execSQL(CREATE_TB_HISTORICO);
 
     }
 

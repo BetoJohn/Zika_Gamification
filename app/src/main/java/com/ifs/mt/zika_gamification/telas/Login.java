@@ -277,8 +277,6 @@ public class Login extends Activity {
             }
         });
         spinnerTipoUsuario.setVisibility(View.VISIBLE);
-
-//        imageViewCadastro.setVisibility(View.VISIBLE);
         btnCadastro.setVisibility(View.VISIBLE);
         textViewTipoUsuario.setVisibility(View.VISIBLE);
         tv_cadastro.setVisibility(View.VISIBLE);

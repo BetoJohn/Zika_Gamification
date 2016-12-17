@@ -87,7 +87,7 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"b
+        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/tv_usuario_logado"
         android:layout_below="@+id/tb"
