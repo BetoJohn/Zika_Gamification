@@ -1,10 +1,13 @@
 package com.ifs.mt.zika_gamification.util;
 
+import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.model.PerguntaM;
 import com.ifs.mt.zika_gamification.model.RespostaM;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.ifs.mt.zika_gamification.R.id.imageViewEmblema;
 
 /**
  * Created by Betto Silva on 09/12/2016.
@@ -32,6 +35,35 @@ public class Util {
         }
         return resultado;
 
+    }
+    public boolean validaSingleResposta(RespostaM respostaM) {
+
+        List<RespostaM> respostaGab = gabarito();
+            for (RespostaM respostaGabarito : respostaGab) {
+                if (respostaM.getResposta_Id().equals(respostaGabarito.getResposta_Id())) {
+                    if (respostaM.getResposta_Item().equals(respostaGabarito.getResposta_Item())) {
+                        return  true;
+                    } else {
+                        return  false;
+                    }
+                }
+            }
+
+        return false;
+
+    }
+
+    public int getEmblema(int num){
+        int valor = 0;
+        if (num < 2) {
+            valor = R.drawable.emblema_menor_que_3;//android:src="@drawable/emblema_menor_que_3"
+        } else if (num == 2 || num == 3) {
+            valor = R.drawable.emblema_maior_igual_a_3_menor_igual_a_7;
+        } else if (num > 3) {
+            valor = R.drawable.emblema_maior_que_7;
+        }
+
+        return valor;
     }
 
     public List<RespostaM> gabarito() {

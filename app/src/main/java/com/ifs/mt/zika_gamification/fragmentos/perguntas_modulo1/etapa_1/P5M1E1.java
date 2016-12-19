@@ -22,7 +22,11 @@ import android.widget.VideoView;
 
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.dao.Banco;
+import com.ifs.mt.zika_gamification.dao.EtapaDao;
 import com.ifs.mt.zika_gamification.dao.HistoricoDao;
+import com.ifs.mt.zika_gamification.dao.ModuloDao;
+import com.ifs.mt.zika_gamification.dao.PerguntaDao;
+import com.ifs.mt.zika_gamification.dao.RespostaDao;
 import com.ifs.mt.zika_gamification.model.EtapaM;
 import com.ifs.mt.zika_gamification.model.HistoricoM;
 import com.ifs.mt.zika_gamification.model.ModuloM;
@@ -59,7 +63,7 @@ public class P5M1E1 extends Fragment {
     private ModuloM modulo;
     private EtapaM etapa;
     private Typeface font;
-    private Banco bancoHistorico;
+    private Banco banco;
     private MySharedPreferencesController mySharedPreferencesController;
 
     @Override
@@ -74,6 +78,7 @@ public class P5M1E1 extends Fragment {
         perguntaM.setPergunta_Id("P5M1E1");
         perguntaM.setPergunta_Nome("Pergunta 05");
         perguntaM.setPergunta_Status(true);
+
 
         resposta = new RespostaM();
         resposta.setResposta_Id("R5P5M1E1");
@@ -124,27 +129,10 @@ public class P5M1E1 extends Fragment {
                     boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP5M1E1, "Selecione uma resposta!", getActivity().getApplicationContext());
                     if (ok) {
                    /* Toast.makeText(getActivity().getApplicationContext(), "Concluir", Toast.LENGTH_SHORT).show();*/
+                        Util util = new Util();
+                        resposta.setResposta_Correta(util.validaSingleResposta(resposta));
                         perguntaM.setRespostaM(resposta);
                         getListPergunta().add(4, perguntaM);
-
-                        /**
-                         * Faço a comparação com o gabarito, dou um sleep e mostro o resultado
-                         * ou coloco um dialog com o resultado (o ribbon e embaixo o resultado tipo:
-                         * 2/5 ou 4/5)depois chamo a tela de treinamento já com a proxima etapa
-                         * desbloqueada
-                         **/
-                        for (PerguntaM res : getListPergunta()) {
-                            System.out.println("itens: " + res.getRespostaM().getResposta_Item());
-                        }
-                        Util util = new Util();
-                        List<PerguntaM> perguntas = util.validaResposta(getListPergunta());
-
-                        int numAcertos = 0;
-                        for (PerguntaM respo : perguntas) {
-                            if (respo.getRespostaM().isResposta_Correta()) {
-                                numAcertos++;
-                            }
-                        }
                         //==========================================================
                         modulo = new ModuloM();
                         modulo.setModulo_Id("M1");
@@ -156,8 +144,17 @@ public class P5M1E1 extends Fragment {
                         etapa.setEtapa_Id("E1");
                         etapa.setEtapa_Nome("Etapa 01");
                         etapa.setEtapa_Descricao("Introdução");
+
+                        int numAcertos = 0;
+
+                        for (PerguntaM respo : getListPergunta()) {
+                            if (respo.getRespostaM().isResposta_Correta()) {
+                                numAcertos++;
+                            }
+                        }
+                        etapa.setEtapa_Pontuacao(numAcertos);
                         etapa.setEtapa_Status(true);
-                        etapa.setPerguntas(perguntas);
+                        //  etapa.setPerguntas(perguntas);
 
 
                         //FAÇO A INSERÇÃO NO BANCO
@@ -165,19 +162,46 @@ public class P5M1E1 extends Fragment {
                         //A inserção vai seguir essa sequencia: Carrego aqui o Objeto HistoricoM passando o id do usuario logado,
                         //depois o id do modulo. ModuloM tem dependencia de EtapaM que dependa da PerguntaM e assim por diante
                         HistoricoM historicoM = new HistoricoM();
-                        historicoM.setModuloM(modulo);
                         historicoM.setUsuarioM(Login.getUsuarioLogado());
+                        historicoM.setModuloM(modulo);
+                        modulo.setEtapa(etapa);
+
+                        banco = new Banco(getActivity().getApplicationContext());
+                        ModuloDao moduloDao = new ModuloDao(banco);
+                        HistoricoDao historicoDao = new HistoricoDao(banco);
+                        EtapaDao etapaDao = new EtapaDao(banco);
+                        RespostaDao respostaDao = new RespostaDao(banco);
+                        PerguntaDao perguntaDao = new PerguntaDao(banco);
+
+                        historicoDao.getStatusModuloEtapaByUsuario(Login.getUsuarioLogado(), etapa);
 
 
-                        bancoHistorico = new Banco(getActivity().getApplicationContext());
-                        HistoricoDao historicoDao = new HistoricoDao(bancoHistorico);
 
+/*
+
+
+                        for (PerguntaM pergunta : getListPergunta()) {
+                            pergunta.setEtapaM(etapa);
+                            int resultResposta = respostaDao.insert(pergunta.getRespostaM());
+                            int resultPergunta = perguntaDao.insert(pergunta);
+                        }
+
+
+                        int rowIdInsertEtapa = etapaDao.insert(etapa);
+                        int rowIdInsertModulo = moduloDao.insert(modulo);
                         int rowIdInsertHistorico = historicoDao.insert(historicoM);
 
+                        etapaDao.getStatus(etapa);
+                        //==========================================================
                         //============== Adiciono valores no SharePreferences =======
                         mySharedPreferencesController = MySharedPreferencesController.getInstance(getActivity());
                         //Etapa 01 concluida desbloqueio a Etapa 02
                         mySharedPreferencesController.saveData(MySharedPreferencesController.M1_E2, true);
+*/
+
+
+
+
 
                         //APRESENTO O RESULTADO
                         //==========================================================
@@ -187,13 +211,7 @@ public class P5M1E1 extends Fragment {
                         // dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                         textViewResultado = (TextView) dialog.findViewById(R.id.textViewResultado);
                         imageViewEmblema = (ImageView) dialog.findViewById(R.id.imageViewEmblema);
-                        if (numAcertos < 2) {
-                            imageViewEmblema.setImageResource(R.drawable.emblema_menor_que_3);//android:src="@drawable/emblema_menor_que_3"
-                        } else if (numAcertos == 2 || numAcertos == 3) {
-                            imageViewEmblema.setImageResource(R.drawable.emblema_maior_igual_a_3_menor_igual_a_7);
-                        } else if (numAcertos > 3) {
-                            imageViewEmblema.setImageResource(R.drawable.emblema_maior_que_7);
-                        }
+                        imageViewEmblema.setImageResource(util.getEmblema(numAcertos));
 
                         textViewResultado.setText(numAcertos + "/5");
                         textViewResultado.setTypeface(font);
@@ -214,8 +232,8 @@ public class P5M1E1 extends Fragment {
                         System.out.println("Acertou: " + numAcertos);
 
                     }
-                }catch (Exception e){
-                    System.out.println("Exception: "+e.getMessage());
+                } catch (Exception e) {
+                    System.out.println("Exception: " + e.getMessage());
                 }
 
 

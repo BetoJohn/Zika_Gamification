@@ -9,8 +9,8 @@ public class PerguntaM {
 
     private String pergunta_Id;
     private String pergunta_Nome;
-    private int pergunta_Pontuacao;
     private boolean pergunta_Status;
+    private EtapaM etapaM;
     private RespostaM respostaM;
 
     public String getPergunta_Id() {
@@ -29,16 +29,16 @@ public class PerguntaM {
         this.pergunta_Nome = pergunta_Nome;
     }
 
-    public int getPergunta_Pontuacao() {
-        return pergunta_Pontuacao;
-    }
-
-    public void setPergunta_Pontuacao(int pergunta_Pontuacao) {
-        this.pergunta_Pontuacao = pergunta_Pontuacao;
-    }
-
     public void setPergunta_Status(boolean pergunta_Status) {
         this.pergunta_Status = pergunta_Status;
+    }
+
+    public EtapaM getEtapaM() {
+        return etapaM;
+    }
+
+    public void setEtapaM(EtapaM etapaM) {
+        this.etapaM = etapaM;
     }
 
     public boolean isPergunta_Status() {

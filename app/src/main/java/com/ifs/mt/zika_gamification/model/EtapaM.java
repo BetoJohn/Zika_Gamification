@@ -9,8 +9,9 @@ public class EtapaM {
     private String etapa_Id;
     private String etapa_Nome;
     private String etapa_Descricao;
+    private int etapa_Pontuacao;
     private boolean etapa_Status;
-    private List<PerguntaM> perguntas;
+   // private List<PerguntaM> perguntas;
 
     public String getEtapa_Id() {
         return etapa_Id;
@@ -36,6 +37,14 @@ public class EtapaM {
         this.etapa_Descricao = etapa_Descricao;
     }
 
+    public int getEtapa_Pontuacao() {
+        return etapa_Pontuacao;
+    }
+
+    public void setEtapa_Pontuacao(int etapa_Pontuacao) {
+        this.etapa_Pontuacao = etapa_Pontuacao;
+    }
+
     public void setEtapa_Status(boolean etapa_Status) {
         this.etapa_Status = etapa_Status;
     }
@@ -44,11 +53,11 @@ public class EtapaM {
         return etapa_Status;
     }
 
-    public List<PerguntaM> getPerguntas() {
+  /*  public List<PerguntaM> getPerguntas() {
         return perguntas;
     }
 
     public void setPerguntas(List<PerguntaM> perguntas) {
         this.perguntas = perguntas;
-    }
+    }*/
 }

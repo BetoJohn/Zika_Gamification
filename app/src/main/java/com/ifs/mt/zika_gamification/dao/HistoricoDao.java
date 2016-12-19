@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.ifs.mt.zika_gamification.model.EtapaM;
 import com.ifs.mt.zika_gamification.model.HistoricoM;
 import com.ifs.mt.zika_gamification.model.UsuarioM;
 
@@ -33,7 +34,7 @@ public class HistoricoDao {
          **/
         ContentValues valores = new ContentValues();
         valores.put("usuario_id", historico.getUsuarioM().getUsuario_id());
-        valores.put("modulo_id",historico.getModuloM().getModulo_Id());
+        valores.put("modulo_id", historico.getModuloM().getModulo_Id());
         int result = (int) db.getWritableDatabase().insert(Banco.TB_HISTORICO, null, valores);
         System.out.println("Id TB_HISTORICO no insert: " + result);
         System.out.println("Inseriu TB_HISTORICO");
@@ -45,6 +46,26 @@ public class HistoricoDao {
         Cursor rs = db.getReadableDatabase().query(Banco.TB_HISTORICO, Banco.COLUMNS_HISTORICO, null,
                 null, null, null, "historico_id");
         return !rs.moveToFirst();
+    }
+
+    /***
+     * USUARIO - "usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha", "usuario_tipo"
+     * HISTORICO - "historico_id","usuario_id","modulo_id"
+     * MODULO - "modulo_id","modulo_nome","modulo_desricao","modulo_status","etapa_id"
+     * ETAPA - "etapa_id", "etapa_nome", "etapa_desricao", "etapa_pontuacao", "etapa_status"
+     * private final String MY_QUERY = "SELECT * FROM table_a a INNER JOIN table_b b ON a.id=b.other_id WHERE b.property_id=?";
+     * db.rawQuery(MY_QUERY, new String[]{String.valueOf(propertyId)});
+     */
+    public void getStatusModuloEtapaByUsuario(UsuarioM usu, EtapaM etapa) {
+        String query = "select m.modulo_status, m.modulo_nome, e.etapa_status, e.etapa_nome from historico h INNER JOIN modulo m ON h.modulo_id = m.modulo_id INNER JOIN etapa e ON e.etapa_id = m.etapa_id WHERE h.usuario_id = ?";
+        Cursor rs = db.getReadableDatabase().rawQuery(query, new String[]{String.valueOf(usu.getUsuario_id())});
+        rs.moveToFirst();
+        int statusModulo = rs.getInt(0);
+        String moduloName = rs.getString(1);
+        int statusEtapa = rs.getInt(2);
+        String etapaName = rs.getString(3);
+        rs.close();
+
     }
 
   /*  //DANDO ERRO AO CONVERTER  SENHA

@@ -146,8 +146,10 @@ public class P5M1E2 extends Fragment {
                     etapa.setEtapa_Id("E2");
                     etapa.setEtapa_Nome("Etapa 02");
                     etapa.setEtapa_Descricao("História");
+                    etapa.setEtapa_Pontuacao(numAcertos);
                     etapa.setEtapa_Status(true);
-                    etapa.setPerguntas(perguntas);
+                    perguntaM.setEtapaM(etapa);
+                   // etapa.setPerguntas(perguntas);
 
                     //============== Adiciono valores no SharePreferences =======
                     mySharedPreferencesController = MySharedPreferencesController.getInstance(getActivity());

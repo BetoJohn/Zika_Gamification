@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@android:color/white"
     android:orientation="vertical">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -75,6 +76,7 @@
                 <RadioButton
                     android:id="@+id/rbOpAP5M1E1"
                     android:textSize="18sp"
+                    android:button="@drawable/abc_btn_check_material"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/op1p5m1e1" />
@@ -82,6 +84,7 @@
                 <RadioButton
                     android:id="@+id/rbOpBP5M1E1"
                     android:textSize="18sp"
+                    android:button="@drawable/abc_btn_check_material"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/op2p5m1e1" />
@@ -89,6 +92,7 @@
                 <RadioButton
                     android:id="@+id/rbOpCP5M1E1"
                     android:textSize="18sp"
+                    android:button="@drawable/abc_btn_check_material"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/op3p5m1e1" />
@@ -96,6 +100,7 @@
                 <RadioButton
                     android:id="@+id/rbOpDP5M1E1"
                     android:textSize="18sp"
+                    android:button="@drawable/abc_btn_check_material"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/op4p5m1e1" />

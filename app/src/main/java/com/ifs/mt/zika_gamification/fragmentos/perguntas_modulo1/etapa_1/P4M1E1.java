@@ -12,6 +12,7 @@ import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.model.PerguntaM;
 import com.ifs.mt.zika_gamification.model.RespostaM;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
+import com.ifs.mt.zika_gamification.util.Util;
 import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
 
 import java.util.ArrayList;
@@ -83,7 +84,8 @@ public class P4M1E1 extends Fragment {
                     if (getListPergunta().size() == 4){
                         getListPergunta().remove(3);
                     }
-
+                    Util util = new Util();
+                    resposta.setResposta_Correta(util.validaSingleResposta(resposta));
                     perguntaM.setRespostaM(resposta);
                     getListPergunta().add(3, perguntaM);
                     P5M1E1.setListPergunta(listPerguntaResposta);

@@ -1,48 +1,52 @@
 package com.ifs.mt.zika_gamification.dao;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.ifs.mt.zika_gamification.model.HistoricoM;
-import com.ifs.mt.zika_gamification.model.ModuloM;
+import com.ifs.mt.zika_gamification.model.EtapaM;
+import com.ifs.mt.zika_gamification.model.PerguntaM;
 
-public class ModuloDao {
+public class PerguntaDao {
 
     private SQLiteDatabase sqldb;
     private SQLiteOpenHelper db;
     private String[] parametros;
 
-    public ModuloDao(SQLiteOpenHelper db) {
+    public PerguntaDao(SQLiteOpenHelper db) {
         this.db = db;
         this.sqldb = db.getWritableDatabase();
     }
 
     public void apagaRegistrosTabela() {
         //sqldb.execSQL("DROP TABLE IF EXISTS " +  Banco.TB_USUARIO);
-        sqldb.execSQL(String.format("DELETE FROM %s", Banco.TB_MODULO));
+        sqldb.execSQL(String.format("DELETE FROM %s", Banco.TB_PERGUNTA));
     }
 
-    public int insert(ModuloM moduloM) {
+    public int insert(PerguntaM perguntaM) {
         /**
-         * "modulo_id", "modulo_nome", "modulo_desricao", "modulo_status", "etapa_id"
+         * ""pergunta_id", "pergunta_nome", , "pergunta_status", "resposta_id", etapa_id
          **/
+        Banco bancoPergunta;
         ContentValues valores = new ContentValues();
-        valores.put("modulo_id", moduloM.getModulo_Id());
-        valores.put("modulo_nome",moduloM.getModulo_Nome());
-        valores.put("modulo_desricao",moduloM.getModulo_Desricao());
-        valores.put("modulo_status",moduloM.isModulo_Status()? 1 : 0);
-        valores.put("etapa_id",moduloM.getEtapa().getEtapa_Id());
-        int result = (int) db.getWritableDatabase().insert(Banco.TB_MODULO, null, valores);
-        System.out.println("Id TB_MODULO no insert: " + result);
+        valores.put("pergunta_id", perguntaM.getPergunta_Id());
+        valores.put("pergunta_nome", perguntaM.getPergunta_Nome());
+        valores.put("pergunta_status", perguntaM.isPergunta_Status() ? 1 : 0);
+        valores.put("resposta_id", perguntaM.getRespostaM().getResposta_Id());
+        valores.put("etapa_id", perguntaM.getEtapaM().getEtapa_Id());
+
+
+        int resultPergunta = (int) db.getWritableDatabase().insert(Banco.TB_PERGUNTA, null, valores);
+        System.out.println("Id TB_PERGUNTA no insert: " + resultPergunta );
         System.out.println("Inseriu TB_HISTORICO");
 
-        return result;
+        return resultPergunta;
     }
 
     public boolean isEmptyTable() {
-        Cursor rs = db.getReadableDatabase().query(Banco.TB_MODULO, Banco.COLUMNS_MODULO, null,
+        Cursor rs = db.getReadableDatabase().query(Banco.TB_PERGUNTA, Banco.COLUMNS_PERGUNTA, null,
                 null, null, null, "historico_id");
         return !rs.moveToFirst();
     }

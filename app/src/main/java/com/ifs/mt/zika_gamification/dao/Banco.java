@@ -16,23 +16,11 @@ public class Banco extends SQLiteOpenHelper {
 
     public static int VERSAO = 2;
     public final static String DB_ZIKA = "dbzika";
-    /**
-     *
-     private int usuario_id;
-     private String usuario_nome;
-     private String usuario_login;
-     private String usuario_email;
-     private String usuario_senha;
-     private int tipo_status_id;
-     private int tipo_usuario_id;
-     *
-     * FOREIGN KEY(trackartist) REFERENCES artist(artistid)
-     * **/
 
     //UsuarioM
     public final static String TB_USUARIO = "usuario";
     public final static String CREATE_TB_USUARIO = "create table IF NOT EXISTS usuario (usuario_id integer PRIMARY KEY AUTOINCREMENT, usuario_nome text, usuario_login text,  usuario_email text, usuario_senha text,  usuario_tipo text)";
-    public final static String[] COLUMNS_USUARIO = {"usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha",  "usuario_tipo"};
+    public final static String[] COLUMNS_USUARIO = {"usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha", "usuario_tipo"};
 
 
     //HistoricoM
@@ -42,24 +30,26 @@ public class Banco extends SQLiteOpenHelper {
 
     //ModuloM
     public final static String TB_MODULO = "modulo";
-    public final static String CREATE_TB_MODULO = "create table IF NOT EXISTS modulo (modulo_id text, modulo_nome text, modulo_desricao text, modulo_status boolean, etapa_id text, FOREIGN KEY(etapa_id) REFERENCES etapa(etapa_id))";
+    public final static String CREATE_TB_MODULO = "create table IF NOT EXISTS modulo (modulo_id text, modulo_nome text, modulo_desricao text, modulo_status BOOLEAN NOT NULL CHECK (modulo_status IN (0,1)), etapa_id text, FOREIGN KEY(etapa_id) REFERENCES etapa(etapa_id))";
     public final static String[] COLUMNS_MODULO = {"modulo_id", "modulo_nome", "modulo_desricao", "modulo_status", "etapa_id"};
 
 
     //EtapaM
     public final static String TB_ETAPA = "etapa";
-    public final static String CREATE_TB_ETAPA = "create table IF NOT EXISTS etapa (etapa_id text, etapa_nome text, etapa_desricao text, etapa_status boolean, pergunta_id text, FOREIGN KEY(pergunta_id) REFERENCES pergunta(pergunta_id))";
-    public final static String[] COLUMNS_ETAPA = {"etapa_id", "etapa_nome", "etapa_desricao", "etapa_status", "pergunta_id"};
+    public final static String CREATE_TB_ETAPA = "create table IF NOT EXISTS etapa (etapa_id text, etapa_nome text, etapa_desricao text, etapa_pontuacao integer, etapa_status BOOLEAN NOT NULL CHECK (etapa_status IN (0,1)))";
+    public final static String[] COLUMNS_ETAPA = {"etapa_id", "etapa_nome", "etapa_desricao", "etapa_pontuacao", "etapa_status"};
+
+    //PerguntaM
+    public final static String TB_PERGUNTA = "pergunta";
+    public final static String CREATE_TB_PERGUNTA = "create table IF NOT EXISTS pergunta (pergunta_id text, pergunta_nome text, pergunta_status BOOLEAN NOT NULL CHECK (pergunta_status IN (0,1)), resposta_id text, etapa_id text)";
+    public final static String[] COLUMNS_PERGUNTA = {"pergunta_id", "pergunta_nome", "pergunta_status", "resposta_id", "etapa_id"};
 
 
-    //Visita
-    public final static String TB_VISITA = "visita";
-    public final static String CREATE_TB_VISITA = "create table visita (idvis integer primary key autoincrement,"
-            + "idimovel integer, idagente integer,"
-            + "isli BOOLEAN NOT NULL CHECK (isli IN (0,1)), data text, hora text, tipoatividade integer, ciclo text, "
-            + "cicloano text, tipovis text, tipopendencia text, qtdhabitantes text)";
-    public final static String[] COLUMNS_VISITA = {"idvis", "idagente",
-            "idimovel", "isli", "data", "hora", "tipoatividade", "ciclo", "cicloano", "tipovis", "tipopendencia", "qtdhabitantes"};
+    //RespostaM
+    public final static String TB_RESPOSTA = "resposta";
+    public final static String CREATE_TB_RESPOSTA = "create table IF NOT EXISTS resposta (resposta_id text, resposta_item text, resposta_correta boolean)";
+    public final static String[] COLUMNS_RESPOSTA = {"resposta_id", "resposta_item", "resposta_correta"};
+
 
     public Banco(Context context) {
         // TODO Auto-generated constructor stub
@@ -72,7 +62,10 @@ public class Banco extends SQLiteOpenHelper {
         // TODO Auto-generated method stub
         db.execSQL(CREATE_TB_USUARIO);
         db.execSQL(CREATE_TB_HISTORICO);
-
+        db.execSQL(CREATE_TB_ETAPA);
+        db.execSQL(CREATE_TB_RESPOSTA);
+        db.execSQL(CREATE_TB_MODULO);
+        db.execSQL(CREATE_TB_PERGUNTA);
     }
 
     public boolean tabelaExists(String tabela) {
