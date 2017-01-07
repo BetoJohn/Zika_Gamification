@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.ifs.mt.zika_gamification.model.EtapaM;
 import com.ifs.mt.zika_gamification.model.HistoricoM;
+import com.ifs.mt.zika_gamification.model.ModuloM;
 import com.ifs.mt.zika_gamification.model.UsuarioM;
 
 import java.util.ArrayList;
@@ -55,17 +56,27 @@ public class HistoricoDao {
      * ETAPA - "etapa_id", "etapa_nome", "etapa_desricao", "etapa_pontuacao", "etapa_status"
      * private final String MY_QUERY = "SELECT * FROM table_a a INNER JOIN table_b b ON a.id=b.other_id WHERE b.property_id=?";
      * db.rawQuery(MY_QUERY, new String[]{String.valueOf(propertyId)});
+     * <p>
+     * <p>
+     * -- CONSULTA PELO ID DO USÚARIO E ID DO M.ÓDULO SE O MESMO JÁ FOI CONCLUÍDO PELO USÚARIO
+     * select m.modulo_status, m.modulo_nome from historico h INNER JOIN modulo m ON h.modulo_id = m.modulo_id WHERE h.usuario_id = 1
+     * <p>
+     * -- CONSULTA PELO ID DO USÚARIO, ID DA ETAPA E ID DO MODULO SE A ETAPA JÁ FOI CONCLUÍDA PELO USÚARIO
+     * select e.etapa_status, e.etapa_nome
+     * from historico h INNER JOIN modulo m ON h.modulo_id = m.modulo_id INNER JOIN etapa e ON e.etapa_id = m.etapa_id
+     * WHERE h.usuario_id = 1 and e.etapa_id = 'E1' and m.modulo_id = 'M1'
      */
-    public void getStatusModuloEtapaByUsuario(UsuarioM usu, EtapaM etapa) {
-        String query = "select m.modulo_status, m.modulo_nome, e.etapa_status, e.etapa_nome from historico h INNER JOIN modulo m ON h.modulo_id = m.modulo_id INNER JOIN etapa e ON e.etapa_id = m.etapa_id WHERE h.usuario_id = ?";
-        Cursor rs = db.getReadableDatabase().rawQuery(query, new String[]{String.valueOf(usu.getUsuario_id())});
+    public int getStatusEtapaByUsuario(int usu_id, String etapa_id, String modulo_id) {
+        String query = "select e.etapa_status, e.etapa_nome from historico h INNER JOIN modulo m ON h.modulo_id = m.modulo_id INNER JOIN etapa e ON e.etapa_id = m.etapa_id WHERE h.usuario_id = ? and e.etapa_id = ? and m.modulo_id = ?";
+        Cursor rs = db.getReadableDatabase().rawQuery(query, new String[]{String.valueOf(usu_id), String.valueOf(etapa_id), String.valueOf(modulo_id)});
         rs.moveToFirst();
-        int statusModulo = rs.getInt(0);
-        String moduloName = rs.getString(1);
-        int statusEtapa = rs.getInt(2);
-        String etapaName = rs.getString(3);
+        int statusEtapa = rs.getInt(0);
+        //String etapaName = rs.getString(1);
+
+        //System.out.println("Status: " + statusEtapa + " Etapa: " + etapaName);
         rs.close();
 
+        return statusEtapa;
     }
 
   /*  //DANDO ERRO AO CONVERTER  SENHA

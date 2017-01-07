@@ -138,11 +138,13 @@ public class P5M1E1 extends Fragment {
                         modulo.setModulo_Id("M1");
                         modulo.setModulo_Desricao("História do Aedes Aegypti no Brasil");
                         modulo.setModulo_Nome("Modulo 01");
-                        modulo.setModulo_Status(true);
+                        //Só irei setar true na última etapa
+                        //modulo.setModulo_Status(true);
 
                         etapa = new EtapaM();
+                        //alterar para E1M1
                         etapa.setEtapa_Id("E1");
-                        etapa.setEtapa_Nome("Etapa 01");
+                        etapa.setEtapa_Nome("Etapa 01 Módulo 01");
                         etapa.setEtapa_Descricao("Introdução");
 
                         int numAcertos = 0;
@@ -173,7 +175,10 @@ public class P5M1E1 extends Fragment {
                         RespostaDao respostaDao = new RespostaDao(banco);
                         PerguntaDao perguntaDao = new PerguntaDao(banco);
 
-                        historicoDao.getStatusModuloEtapaByUsuario(Login.getUsuarioLogado(), etapa);
+
+
+                        //TESTES
+                        //historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado(), etapa, modulo);
 
 
 
