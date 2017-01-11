@@ -7,17 +7,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ifs.mt.zika_gamification.R;
+import com.ifs.mt.zika_gamification.dao.Banco;
+import com.ifs.mt.zika_gamification.dao.HistoricoDao;
+import com.ifs.mt.zika_gamification.dao.ModuloDao;
+import com.ifs.mt.zika_gamification.telas.Login;
 import com.ifs.mt.zika_gamification.util.MySharedPreferencesController;
 
 /**
  * Created by Betto Silva on 14/12/2016.
  */
-public class Etapa1M1RecyclerViewAdapter extends RecyclerView.Adapter<EtapasM1ViewHolders> {
+public class EtapasM1RecyclerViewAdapter extends RecyclerView.Adapter<EtapasM1ViewHolders> {
 
     private Context context;
+    private Banco banco;
     private MySharedPreferencesController mySharedPreferencesController;
 
-    public Etapa1M1RecyclerViewAdapter(Context context) {
+    public EtapasM1RecyclerViewAdapter(Context context) {
         this.context = context;
     }
 
@@ -25,6 +30,7 @@ public class Etapa1M1RecyclerViewAdapter extends RecyclerView.Adapter<EtapasM1Vi
     public EtapasM1ViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.modulos_list_card, null);
+        //Faz as chamadas dos cliques
         EtapasM1ViewHolders rcv = new EtapasM1ViewHolders(layoutView);
         return rcv;
     }
@@ -32,21 +38,21 @@ public class Etapa1M1RecyclerViewAdapter extends RecyclerView.Adapter<EtapasM1Vi
     @Override
     public void onBindViewHolder(EtapasM1ViewHolders holder, int position) {
         mySharedPreferencesController = MySharedPreferencesController.getInstance(context);
-        if(mySharedPreferencesController.getData(MySharedPreferencesController.M1_E2)){
+        banco = new Banco(context);
+        HistoricoDao historicoDao = new HistoricoDao(banco);
+        int statusEtapa01 = historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E1M1", "M1");
+       //Se o modulo
+        if(statusEtapa01 == 1){
             mThumbIds[1] = R.drawable.emblema2_a;
         }
 
         holder.currentItem = position;
         holder.imageViewEtapa.setImageResource(mThumbIds[position]);
-      //holder.countryName.setText(itemList.get(position).getName());
-
     }
 
     // references to our images
     public Integer[] mThumbIds = {
             R.drawable.emblema1_a, R.drawable.emblema2_i
-
-
     };
 
     @Override

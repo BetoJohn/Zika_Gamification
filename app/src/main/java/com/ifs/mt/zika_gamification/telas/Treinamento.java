@@ -9,15 +9,10 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
-import com.ifs.mt.zika_gamification.adapter.ImageAdapterModulos;
-import com.ifs.mt.zika_gamification.adapter.ModuloRecyclerViewAdapter;
-import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.M1;
+import com.ifs.mt.zika_gamification.adapter.ModulosRecyclerViewAdapter;
 
 public class Treinamento extends AppCompatActivity {
     private Toolbar tb_treinamento;
@@ -48,7 +43,7 @@ public class Treinamento extends AppCompatActivity {
         gaggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         recyclerView.setLayoutManager(gaggeredGridLayoutManager);
         recyclerView.setHasFixedSize(true);
-        ModuloRecyclerViewAdapter rcAdapter = new ModuloRecyclerViewAdapter(Treinamento.this);
+        ModulosRecyclerViewAdapter rcAdapter = new ModulosRecyclerViewAdapter(Treinamento.this);
         recyclerView.setAdapter(rcAdapter);
     }
 

@@ -29,45 +29,45 @@ public class EtapasM1ViewHolders extends RecyclerView.ViewHolder {
     private MySharedPreferencesController mySharedPreferencesController;
     private Banco banco;
     private boolean A = false, B = false;
-    private Context context;
 
 
     public EtapasM1ViewHolders(View v) {
         super(v);
         view = v;
-        // countryName = (TextView) itemView.findViewById(R.id.country_name);
         imageViewEtapa = (ImageView) view.findViewById(R.id.imageView);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                mySharedPreferencesController = MySharedPreferencesController.getInstance(v.getContext());
-                // mySharedPreferencesController.clearData();
+                //mySharedPreferencesController = MySharedPreferencesController.getInstance(v.getContext());
+                //mySharedPreferencesController.clearData();
 
-                A = true;
-                B = mySharedPreferencesController.getData(MySharedPreferencesController.M1_E2);
+                //A = true;
+                //B = mySharedPreferencesController.getData(MySharedPreferencesController.M1_E2);
 
                 banco = new Banco(v.getContext());
-                ModuloDao moduloDao = new ModuloDao(banco);
                 HistoricoDao historicoDao = new HistoricoDao(banco);
-                int statusEtapa01 = historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E1", "M1");
 
-
-                switch(currentItem){
+                switch (currentItem) {
                     case 0:
-                        if (statusEtapa01 != 1){
+                        int statusEtapa01 = historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E1M1", "M1");
+                        if (statusEtapa01 != 1) {
                             v.getContext().startActivity(new Intent(v.getContext(), M1E1.class));
                             break;
-                        }else{
+                        } else {
                             Toast.makeText(v.getContext(), "Etapa Concluída", Toast.LENGTH_SHORT).show();
                             break;
                         }
 
                     case 1:
-                        if (B)
+                        int statusEtapa02 = historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E2M1", "M1");
+                        if (statusEtapa02 != 1) {
                             v.getContext().startActivity(new Intent(v.getContext(), M1E2.class));
-                        break;
-
+                            break;
+                        } else {
+                            Toast.makeText(v.getContext(), "Etapa Concluída", Toast.LENGTH_SHORT).show();
+                            break;
+                        }
 
                 }
 

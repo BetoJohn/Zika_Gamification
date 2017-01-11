@@ -10,19 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
-import com.ifs.mt.zika_gamification.adapter.Etapa1M1RecyclerViewAdapter;
-import com.ifs.mt.zika_gamification.adapter.ImageAdapterEtapasM1;
-import com.ifs.mt.zika_gamification.adapter.ModuloRecyclerViewAdapter;
-import com.ifs.mt.zika_gamification.telas.MenuPrincipal;
+import com.ifs.mt.zika_gamification.adapter.EtapasM1RecyclerViewAdapter;
 import com.ifs.mt.zika_gamification.telas.Treinamento;
-import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
-import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_2.M1E2;
 import com.ifs.mt.zika_gamification.util.MySharedPreferencesController;
 
 public class M1 extends AppCompatActivity {
@@ -88,7 +80,8 @@ public class M1 extends AppCompatActivity {
         gaggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         recyclerView.setLayoutManager(gaggeredGridLayoutManager);
         recyclerView.setHasFixedSize(true);
-        Etapa1M1RecyclerViewAdapter rcAdapter = new Etapa1M1RecyclerViewAdapter(M1.this);
+        //Apresenta os icones das etapas
+        EtapasM1RecyclerViewAdapter rcAdapter = new EtapasM1RecyclerViewAdapter(M1.this);
         recyclerView.setAdapter(rcAdapter);
     }
 

@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ifs.mt.zika_gamification.R;
-import com.ifs.mt.zika_gamification.adapter.ModuloRecyclerViewAdapter;
+import com.ifs.mt.zika_gamification.adapter.ModulosRecyclerViewAdapter;
 
 public class Teste extends AppCompatActivity {
 
@@ -32,7 +32,7 @@ public class Teste extends AppCompatActivity {
         gaggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         recyclerView.setLayoutManager(gaggeredGridLayoutManager);
         recyclerView.setHasFixedSize(true);
-        ModuloRecyclerViewAdapter rcAdapter = new ModuloRecyclerViewAdapter(Teste.this);
+        ModulosRecyclerViewAdapter rcAdapter = new ModulosRecyclerViewAdapter(Teste.this);
         recyclerView.setAdapter(rcAdapter);
 
 

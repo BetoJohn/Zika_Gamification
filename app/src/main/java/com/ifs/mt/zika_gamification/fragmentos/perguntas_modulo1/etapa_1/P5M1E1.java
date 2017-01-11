@@ -143,7 +143,7 @@ public class P5M1E1 extends Fragment {
 
                         etapa = new EtapaM();
                         //alterar para E1M1
-                        etapa.setEtapa_Id("E1");
+                        etapa.setEtapa_Id("E1M1");
                         etapa.setEtapa_Nome("Etapa 01 Módulo 01");
                         etapa.setEtapa_Descricao("Introdução");
 
@@ -181,10 +181,6 @@ public class P5M1E1 extends Fragment {
                         //historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado(), etapa, modulo);
 
 
-
-/*
-
-
                         for (PerguntaM pergunta : getListPergunta()) {
                             pergunta.setEtapaM(etapa);
                             int resultResposta = respostaDao.insert(pergunta.getRespostaM());
@@ -196,13 +192,12 @@ public class P5M1E1 extends Fragment {
                         int rowIdInsertModulo = moduloDao.insert(modulo);
                         int rowIdInsertHistorico = historicoDao.insert(historicoM);
 
-                        etapaDao.getStatus(etapa);
+                        //etapaDao.getStatus(etapa);
                         //==========================================================
                         //============== Adiciono valores no SharePreferences =======
-                        mySharedPreferencesController = MySharedPreferencesController.getInstance(getActivity());
+                        //mySharedPreferencesController = MySharedPreferencesController.getInstance(getActivity());
                         //Etapa 01 concluida desbloqueio a Etapa 02
-                        mySharedPreferencesController.saveData(MySharedPreferencesController.M1_E2, true);
-*/
+                        //mySharedPreferencesController.saveData(MySharedPreferencesController.M1_E2, true);
 
 
 

@@ -47,6 +47,22 @@ public class ModuloDao {
         return !rs.moveToFirst();
     }
 
+    public int getStatusModuloByUsuario(int usu_id, String modulo_id) {
+        String query = "select m.modulo_status from historico h INNER JOIN modulo m ON h.modulo_id = m.modulo_id WHERE h.usuario_id = ? and m.modulo_id = ?";
+        Cursor rs = db.getReadableDatabase().rawQuery(query, new String[]{String.valueOf(usu_id), String.valueOf(modulo_id)});
+        //rs.moveToFirst();
+        int statusModulo = 0;
+        rs.moveToFirst();
+        while (!rs.isAfterLast()) {
+            statusModulo = rs.getInt(0);
+            rs.moveToNext();
+        }
+        //String etapaName = rs.getString(1);
+        //System.out.println("Status: " + statusEtapa + " Etapa: " + etapaName);
+        rs.close();
+        return statusModulo;
+    }
+
   /*  //DANDO ERRO AO CONVERTER  SENHA
     public UsuarioM autenticacao(UsuarioM usu) {
         //parametros = new String[]{agente.getLogin(), convertStringToMd5(agente.getSenha())};

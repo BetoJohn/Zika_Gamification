@@ -7,38 +7,45 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ifs.mt.zika_gamification.R;
+import com.ifs.mt.zika_gamification.dao.Banco;
+import com.ifs.mt.zika_gamification.dao.ModuloDao;
+import com.ifs.mt.zika_gamification.telas.Login;
 import com.ifs.mt.zika_gamification.util.MySharedPreferencesController;
 
 /**
  * Created by Betto Silva on 14/12/2016.
  */
-public class ModuloRecyclerViewAdapter extends RecyclerView.Adapter<ModuloViewHolders> {
+public class ModulosRecyclerViewAdapter extends RecyclerView.Adapter<ModulosViewHolders> {
 
     private Context context;
+    private Banco banco;
     private MySharedPreferencesController mySharedPreferencesController;
 
-    public ModuloRecyclerViewAdapter(Context context) {
+    public ModulosRecyclerViewAdapter(Context context) {
         this.context = context;
     }
 
     @Override
-    public ModuloViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ModulosViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.modulos_list_card, null);
-        ModuloViewHolders rcv = new ModuloViewHolders(layoutView);
+        ModulosViewHolders rcv = new ModulosViewHolders(layoutView);
         return rcv;
     }
 
     @Override
-    public void onBindViewHolder(ModuloViewHolders holder, int position) {
+    public void onBindViewHolder(ModulosViewHolders holder, int position) {
         mySharedPreferencesController = MySharedPreferencesController.getInstance(context);
-        if (mySharedPreferencesController.getData(MySharedPreferencesController.M2)) {
+        banco = new Banco(context);
+        ModuloDao moduloDao = new ModuloDao(banco);
+        int statusModulo01 = moduloDao.getStatusModuloByUsuario(Login.getUsuarioLogado().getUsuario_id(),  "M1");
+        //Se o modulo
+        if(statusModulo01 == 1){
             mThumbIds[1] = R.drawable.modulo_02_a;
         }
 
         holder.currentItem = position;
         holder.countryPhoto.setImageResource(mThumbIds[position]);
-      //holder.countryName.setText(itemList.get(position).getName());
 
     }
 
