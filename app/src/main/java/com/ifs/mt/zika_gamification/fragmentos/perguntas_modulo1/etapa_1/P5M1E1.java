@@ -227,6 +227,8 @@ public class P5M1E1 extends Fragment {
                             }
                         });
                         dialog.setCanceledOnTouchOutside(false);
+                        dialog.setCancelable(false);
+                        dialog.onBackPressed();
                         dialog.show();
                         //Salvo no banco essas respostas referenteS ao m1e1
                         System.out.println("Acertou: " + numAcertos);
@@ -268,6 +270,7 @@ public class P5M1E1 extends Fragment {
         }
         return listPerguntaResposta;
     }
+
 
     @Override
     public void onPause() {

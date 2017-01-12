@@ -45,7 +45,7 @@ public class ModulosViewHolders extends RecyclerView.ViewHolder {
                             v.getContext().startActivity(new Intent(v.getContext(), M1.class));
                             break;
                         } else {
-                            Toast.makeText(v.getContext(), "Módulo Concluído", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(v.getContext(), "Módulo 01 Concluído", Toast.LENGTH_SHORT).show();
                             break;
                         }
 

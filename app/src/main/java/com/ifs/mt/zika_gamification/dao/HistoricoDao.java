@@ -67,6 +67,7 @@ public class HistoricoDao {
      * WHERE h.usuario_id = 1 and e.etapa_id = 'E1' and m.modulo_id = 'M1'
      */
     public int getStatusEtapaByUsuario(int usu_id, String etapa_id, String modulo_id) {
+        System.out.println("Id do Usuário: "+usu_id);
         String query = "select e.etapa_status from historico h INNER JOIN modulo m ON h.modulo_id = m.modulo_id INNER JOIN etapa e ON e.etapa_id = m.etapa_id WHERE h.usuario_id = ? and e.etapa_id = ? and m.modulo_id = ?";
         Cursor rs = db.getReadableDatabase().rawQuery(query, new String[]{String.valueOf(usu_id), String.valueOf(etapa_id), String.valueOf(modulo_id)});
         int statusEtapa = 0;

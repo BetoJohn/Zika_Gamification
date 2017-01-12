@@ -48,24 +48,28 @@ public class EtapasM1ViewHolders extends RecyclerView.ViewHolder {
                 banco = new Banco(v.getContext());
                 HistoricoDao historicoDao = new HistoricoDao(banco);
 
+                int statusEtapa01 = 0;
+                int statusEtapa02 = 0;
                 switch (currentItem) {
                     case 0:
-                        int statusEtapa01 = historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E1M1", "M1");
+                        //Primeira etapa por padrão tem que estar ativa
+                        statusEtapa01 = historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E1M1", "M1");
                         if (statusEtapa01 != 1) {
                             v.getContext().startActivity(new Intent(v.getContext(), M1E1.class));
                             break;
                         } else {
-                            Toast.makeText(v.getContext(), "Etapa Concluída", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(v.getContext(), "Etapa 01 Concluída", Toast.LENGTH_SHORT).show();
                             break;
                         }
 
                     case 1:
-                        int statusEtapa02 = historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E2M1", "M1");
-                        if (statusEtapa02 != 1) {
+                        statusEtapa01 = historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E1M1", "M1");
+                        statusEtapa02 = historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E2M1", "M1");
+                        if (statusEtapa02 != 1 && statusEtapa01 == 1) {
                             v.getContext().startActivity(new Intent(v.getContext(), M1E2.class));
                             break;
-                        } else {
-                            Toast.makeText(v.getContext(), "Etapa Concluída", Toast.LENGTH_SHORT).show();
+                        } if (statusEtapa02 == 1){
+                            Toast.makeText(v.getContext(), "Etapa 02 Concluída", Toast.LENGTH_SHORT).show();
                             break;
                         }
 
