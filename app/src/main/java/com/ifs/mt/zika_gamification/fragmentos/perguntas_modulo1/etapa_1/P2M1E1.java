@@ -44,12 +44,12 @@ public class P2M1E1 extends Fragment {
                 container, false);
 
         perguntaM = new PerguntaM();
-        perguntaM.setPergunta_Id("P2M1E1");
+        //perguntaM.setPergunta_Id("P2M1E1");
         perguntaM.setPergunta_Nome("Pergunta 02");
         perguntaM.setPergunta_Status(true);
 
         resposta = new RespostaM();
-        resposta.setResposta_Id("R2P2M1E1");
+        resposta.setIdent("R2P2M1E1");
 
         //quando o fragment é carregado ele recupera sua tag e seta no metodo  public void setTabFragmentB(String t) da AppCompatActivity
         String myTag = getTag();

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.dao.Banco;
+import com.ifs.mt.zika_gamification.dao.EtapaDao;
 import com.ifs.mt.zika_gamification.dao.HistoricoDao;
 import com.ifs.mt.zika_gamification.dao.ModuloDao;
 import com.ifs.mt.zika_gamification.telas.Login;
@@ -46,14 +47,14 @@ public class EtapasM1ViewHolders extends RecyclerView.ViewHolder {
                 //B = mySharedPreferencesController.getData(MySharedPreferencesController.M1_E2);
 
                 banco = new Banco(v.getContext());
-                HistoricoDao historicoDao = new HistoricoDao(banco);
+                EtapaDao etapaDao = new EtapaDao(banco);
 
                 int statusEtapa01 = 0;
                 int statusEtapa02 = 0;
                 switch (currentItem) {
                     case 0:
                         //Primeira etapa por padrão tem que estar ativa
-                        statusEtapa01 = historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E1M1", "M1");
+                        statusEtapa01 = etapaDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E1M1", "M1");
                         if (statusEtapa01 != 1) {
                             v.getContext().startActivity(new Intent(v.getContext(), M1E1.class));
                             break;
@@ -63,8 +64,8 @@ public class EtapasM1ViewHolders extends RecyclerView.ViewHolder {
                         }
 
                     case 1:
-                        statusEtapa01 = historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E1M1", "M1");
-                        statusEtapa02 = historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E2M1", "M1");
+                        statusEtapa01 = etapaDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E1M1", "M1");
+                        statusEtapa02 = etapaDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E2M1", "M1");
                         if (statusEtapa02 != 1 && statusEtapa01 == 1) {
                             v.getContext().startActivity(new Intent(v.getContext(), M1E2.class));
                             break;

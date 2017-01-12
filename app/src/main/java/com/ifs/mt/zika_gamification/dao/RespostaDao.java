@@ -32,7 +32,7 @@ public class RespostaDao {
          **/
 
         ContentValues valores = new ContentValues();
-        valores.put("resposta_id", respostaM.getResposta_Id());
+       // valores.put("resposta_id", respostaM.getResposta_Id());
         valores.put("resposta_item",respostaM.getResposta_Item());
         valores.put("resposta_correta", respostaM.isResposta_Correta());
 

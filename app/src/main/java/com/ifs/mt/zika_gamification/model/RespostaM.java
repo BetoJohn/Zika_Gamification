@@ -5,16 +5,25 @@ import java.util.Objects;
  */
 public class RespostaM {
 
-    private String resposta_Id;
+    private int resposta_Id;
+    private String ident;
     private String resposta_Item;
     private boolean resposta_Correta;
 
-    public String getResposta_Id() {
+    public int getResposta_Id() {
         return resposta_Id;
     }
 
-    public void setResposta_Id(String resposta_Id) {
+    public void setResposta_Id(int resposta_Id) {
         this.resposta_Id = resposta_Id;
+    }
+
+    public String getIdent() {
+        return ident;
+    }
+
+    public void setIdent(String ident) {
+        this.ident = ident;
     }
 
     public String getResposta_Item() {

@@ -29,7 +29,7 @@ public class ModuloDao {
          * "modulo_id", "modulo_nome", "modulo_desricao", "modulo_status", "etapa_id"
          **/
         ContentValues valores = new ContentValues();
-        valores.put("modulo_id", moduloM.getModulo_Id());
+       // valores.put("modulo_id", moduloM.getModulo_Id());
         valores.put("modulo_nome",moduloM.getModulo_Nome());
         valores.put("modulo_desricao",moduloM.getModulo_Desricao());
         valores.put("modulo_status",moduloM.isModulo_Status()? 1 : 0);
@@ -47,9 +47,9 @@ public class ModuloDao {
         return !rs.moveToFirst();
     }
 
-    public int getStatusModuloByUsuario(int usu_id, String modulo_id) {
-        String query = "select m.modulo_status from historico h INNER JOIN modulo m ON h.modulo_id = m.modulo_id WHERE h.usuario_id = ? and m.modulo_id = ?";
-        Cursor rs = db.getReadableDatabase().rawQuery(query, new String[]{String.valueOf(usu_id), String.valueOf(modulo_id)});
+    public int getStatusModuloByUsuario(int usu_id, String modulo_nome) {
+        String query = "select m.modulo_status from historico h INNER JOIN modulo m ON h.modulo_id = m.modulo_id WHERE h.usuario_id = ? and m.modulo_nome = ?";
+        Cursor rs = db.getReadableDatabase().rawQuery(query, new String[]{String.valueOf(usu_id), String.valueOf(modulo_nome)});
         //rs.moveToFirst();
         int statusModulo = 0;
         rs.moveToFirst();

@@ -30,24 +30,24 @@ public class Banco extends SQLiteOpenHelper {
 
     //ModuloM
     public final static String TB_MODULO = "modulo";
-    public final static String CREATE_TB_MODULO = "create table IF NOT EXISTS modulo (modulo_id text, modulo_nome text, modulo_desricao text, modulo_status BOOLEAN NOT NULL CHECK (modulo_status IN (0,1)), etapa_id text, FOREIGN KEY(etapa_id) REFERENCES etapa(etapa_id))";
+    public final static String CREATE_TB_MODULO = "create table IF NOT EXISTS modulo (modulo_id integer PRIMARY KEY AUTOINCREMENT, modulo_nome text, modulo_desricao text, modulo_status BOOLEAN NOT NULL CHECK (modulo_status IN (0,1)), etapa_id text, FOREIGN KEY(etapa_id) REFERENCES etapa(etapa_id))";
     public final static String[] COLUMNS_MODULO = {"modulo_id", "modulo_nome", "modulo_desricao", "modulo_status", "etapa_id"};
 
 
     //EtapaM
     public final static String TB_ETAPA = "etapa";
-    public final static String CREATE_TB_ETAPA = "create table IF NOT EXISTS etapa (etapa_id text, etapa_nome text, etapa_desricao text, etapa_pontuacao integer, etapa_status BOOLEAN NOT NULL CHECK (etapa_status IN (0,1)))";
+    public final static String CREATE_TB_ETAPA = "create table IF NOT EXISTS etapa (etapa_id integer PRIMARY KEY AUTOINCREMENT, etapa_nome text, etapa_desricao text, etapa_pontuacao integer, etapa_status BOOLEAN NOT NULL CHECK (etapa_status IN (0,1)))";
     public final static String[] COLUMNS_ETAPA = {"etapa_id", "etapa_nome", "etapa_desricao", "etapa_pontuacao", "etapa_status"};
 
     //PerguntaM
     public final static String TB_PERGUNTA = "pergunta";
-    public final static String CREATE_TB_PERGUNTA = "create table IF NOT EXISTS pergunta (pergunta_id text, pergunta_nome text, pergunta_status BOOLEAN NOT NULL CHECK (pergunta_status IN (0,1)), resposta_id text, etapa_id text)";
+    public final static String CREATE_TB_PERGUNTA = "create table IF NOT EXISTS pergunta (pergunta_id integer PRIMARY KEY AUTOINCREMENT, pergunta_nome text, pergunta_status BOOLEAN NOT NULL CHECK (pergunta_status IN (0,1)), resposta_id text, etapa_id text)";
     public final static String[] COLUMNS_PERGUNTA = {"pergunta_id", "pergunta_nome", "pergunta_status", "resposta_id", "etapa_id"};
 
 
     //RespostaM
     public final static String TB_RESPOSTA = "resposta";
-    public final static String CREATE_TB_RESPOSTA = "create table IF NOT EXISTS resposta (resposta_id text, resposta_item text, resposta_correta boolean)";
+    public final static String CREATE_TB_RESPOSTA = "create table IF NOT EXISTS resposta (resposta_id integer PRIMARY KEY AUTOINCREMENT, resposta_item text, resposta_correta boolean)";
     public final static String[] COLUMNS_RESPOSTA = {"resposta_id", "resposta_item", "resposta_correta"};
 
 

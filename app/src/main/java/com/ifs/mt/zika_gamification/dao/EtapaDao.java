@@ -36,7 +36,7 @@ public class EtapaDao {
          **/
         ContentValues valoresEtapa = new ContentValues();
        // Banco bancoPergunta;
-            valoresEtapa.put("etapa_id", etapaM.getEtapa_Id());
+           // valoresEtapa.put("etapa_id", etapaM.getEtapa_Id());
             valoresEtapa.put("etapa_nome", etapaM.getEtapa_Nome());
             valoresEtapa.put("etapa_desricao",etapaM.getEtapa_Descricao());
             valoresEtapa.put("etapa_pontuacao",etapaM.getEtapa_Pontuacao());
@@ -48,18 +48,39 @@ public class EtapaDao {
 
     }
 
-    public EtapaM getStatus(EtapaM etapaM) {
-        try {
-            parametros = new String[]{"E1"};
-            Cursor rs = db.getReadableDatabase().query(Banco.TB_ETAPA, Banco.COLUMNS_ETAPA, "etapa_id = ?",
-                    parametros, null, null, null);
-            List<EtapaM> list = cursorToList(rs);
-            rs.close();
-            return list.size() > 0 ? list.get(0) : null;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    /***
+     * USUARIO - "usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha", "usuario_tipo"
+     * HISTORICO - "historico_id","usuario_id","modulo_id"
+     * MODULO - "modulo_id","modulo_nome","modulo_desricao","modulo_status","etapa_id"
+     * ETAPA - "etapa_id", "etapa_nome", "etapa_desricao", "etapa_pontuacao", "etapa_status"
+     * private final String MY_QUERY = "SELECT * FROM table_a a INNER JOIN table_b b ON a.id=b.other_id WHERE b.property_id=?";
+     * db.rawQuery(MY_QUERY, new String[]{String.valueOf(propertyId)});
+     * <p>
+     * <p>
+     * -- CONSULTA PELO ID DO USÚARIO E ID DO M.ÓDULO SE O MESMO JÁ FOI CONCLUÍDO PELO USÚARIO
+     * select m.modulo_status, m.modulo_nome from historico h INNER JOIN modulo m ON h.modulo_id = m.modulo_id WHERE h.usuario_id = 1
+     * <p>
+     * -- CONSULTA PELO ID DO USÚARIO, ID DA ETAPA E ID DO MODULO SE A ETAPA JÁ FOI CONCLUÍDA PELO USÚARIO
+     * select e.etapa_status, e.etapa_nome
+     * from historico h INNER JOIN modulo m ON h.modulo_id = m.modulo_id INNER JOIN etapa e ON e.etapa_id = m.etapa_id
+     * WHERE h.usuario_id = 1 and e.etapa_id = 'E1' and m.modulo_id = 'M1'
+     */
+    public int getStatusEtapaByUsuario(int usu_id, String etapa_nome, String modulo_nome) {
+        System.out.println("Id do Usuário: "+usu_id);
+        String query = "select e.etapa_status from historico h INNER JOIN modulo m ON h.modulo_id = m.modulo_id INNER JOIN etapa e ON e.etapa_id = m.etapa_id WHERE h.usuario_id = ? and e.etapa_nome = ? and m.modulo_nome = ?";
+        Cursor rs = db.getReadableDatabase().rawQuery(query, new String[]{String.valueOf(usu_id), String.valueOf(etapa_nome), String.valueOf(modulo_nome)});
+        int statusEtapa = 0;
+        rs.moveToFirst();
+        while (!rs.isAfterLast()) {
+            statusEtapa = rs.getInt(0);
+            rs.moveToNext();
         }
-        return null;
+        //String etapaName = rs.getString(1);
+
+        //System.out.println("Status: " + statusEtapa + " Etapa: " + etapaName);
+        rs.close();
+
+        return statusEtapa;
     }
 
     private List<EtapaM> cursorToList(Cursor rs) {
@@ -68,7 +89,7 @@ public class EtapaDao {
             rs.moveToFirst();
             while (!rs.isAfterLast()) {
                 EtapaM etapaM = new EtapaM();
-                etapaM.setEtapa_Id(rs.getString(0));
+                etapaM.setEtapa_Id(rs.getInt(0));
                 etapaM.setEtapa_Nome(rs.getString(1));
                 etapaM.setEtapa_Descricao(rs.getString(2));
                 etapaM.setEtapa_Pontuacao(rs.getInt(3));

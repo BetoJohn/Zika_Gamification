@@ -42,12 +42,12 @@ public class P2M1E2 extends Fragment {
                 container, false);
 
         perguntaM = new PerguntaM();
-        perguntaM.setPergunta_Id("P2M1E2");
+        //perguntaM.setPergunta_Id("P2M1E2");
         perguntaM.setPergunta_Nome("Pergunta 02");
         perguntaM.setPergunta_Status(true);
 
         resposta = new RespostaM();
-        resposta.setResposta_Id("R2P2M1E2");
+        resposta.setIdent("R2P2M1E2");
 
 
         radioGroupP2M1E2 = (RadioGroup) fragment.findViewById(R.id.radioGroupP2M1E2);

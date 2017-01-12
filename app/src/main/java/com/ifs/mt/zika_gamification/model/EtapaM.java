@@ -6,18 +6,19 @@ import java.util.List;
  * Created by Betto Silva on 01/12/2016.
  */
 public class EtapaM {
-    private String etapa_Id;
+    private int etapa_Id;
     private String etapa_Nome;
     private String etapa_Descricao;
     private int etapa_Pontuacao;
     private boolean etapa_Status;
    // private List<PerguntaM> perguntas;
 
-    public String getEtapa_Id() {
+
+    public int getEtapa_Id() {
         return etapa_Id;
     }
 
-    public void setEtapa_Id(String etapa_Id) {
+    public void setEtapa_Id(int etapa_Id) {
         this.etapa_Id = etapa_Id;
     }
 

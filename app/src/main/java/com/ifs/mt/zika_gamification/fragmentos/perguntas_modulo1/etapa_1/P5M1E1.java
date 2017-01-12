@@ -75,13 +75,13 @@ public class P5M1E1 extends Fragment {
         font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/agency_fb.ttf");
 
         perguntaM = new PerguntaM();
-        perguntaM.setPergunta_Id("P5M1E1");
+       //perguntaM.setPergunta_Id("P5M1E1");
         perguntaM.setPergunta_Nome("Pergunta 05");
         perguntaM.setPergunta_Status(true);
 
 
         resposta = new RespostaM();
-        resposta.setResposta_Id("R5P5M1E1");
+        resposta.setIdent("R5P5M1E1");
 
         radioGroupP5M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP5M1E1);
         radioGroupP5M1E1
@@ -128,27 +128,25 @@ public class P5M1E1 extends Fragment {
                 try {
                     boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP5M1E1, "Selecione uma resposta!", getActivity().getApplicationContext());
                     if (ok) {
-                   /* Toast.makeText(getActivity().getApplicationContext(), "Concluir", Toast.LENGTH_SHORT).show();*/
                         Util util = new Util();
                         resposta.setResposta_Correta(util.validaSingleResposta(resposta));
                         perguntaM.setRespostaM(resposta);
                         getListPergunta().add(4, perguntaM);
                         //==========================================================
                         modulo = new ModuloM();
-                        modulo.setModulo_Id("M1");
+                        //modulo.setModulo_Id("M1");
                         modulo.setModulo_Desricao("História do Aedes Aegypti no Brasil");
-                        modulo.setModulo_Nome("Modulo 01");
+                        modulo.setModulo_Nome("M1");
                         //Só irei setar true na última etapa
                         //modulo.setModulo_Status(true);
 
                         etapa = new EtapaM();
                         //alterar para E1M1
-                        etapa.setEtapa_Id("E1M1");
-                        etapa.setEtapa_Nome("Etapa 01 Módulo 01");
+                        //etapa.setEtapa_Id("E1M1");
+                        etapa.setEtapa_Nome("E1M1");
                         etapa.setEtapa_Descricao("Introdução");
 
                         int numAcertos = 0;
-
                         for (PerguntaM respo : getListPergunta()) {
                             if (respo.getRespostaM().isResposta_Correta()) {
                                 numAcertos++;
@@ -163,10 +161,6 @@ public class P5M1E1 extends Fragment {
                         //==========================================================
                         //A inserção vai seguir essa sequencia: Carrego aqui o Objeto HistoricoM passando o id do usuario logado,
                         //depois o id do modulo. ModuloM tem dependencia de EtapaM que dependa da PerguntaM e assim por diante
-                        HistoricoM historicoM = new HistoricoM();
-                        historicoM.setUsuarioM(Login.getUsuarioLogado());
-                        historicoM.setModuloM(modulo);
-                        modulo.setEtapa(etapa);
 
                         banco = new Banco(getActivity().getApplicationContext());
                         ModuloDao moduloDao = new ModuloDao(banco);
@@ -180,16 +174,25 @@ public class P5M1E1 extends Fragment {
                         //TESTES
                         //historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado(), etapa, modulo);
 
+                        int rowIdInsertEtapa = etapaDao.insert(etapa);
+                        etapa.setEtapa_Id(rowIdInsertEtapa);
 
                         for (PerguntaM pergunta : getListPergunta()) {
                             pergunta.setEtapaM(etapa);
                             int resultResposta = respostaDao.insert(pergunta.getRespostaM());
+                            resposta.setResposta_Id(resultResposta);
+                            pergunta.setRespostaM(resposta);
                             int resultPergunta = perguntaDao.insert(pergunta);
                         }
 
 
-                        int rowIdInsertEtapa = etapaDao.insert(etapa);
+                        HistoricoM historicoM = new HistoricoM();
+                        historicoM.setUsuarioM(Login.getUsuarioLogado());
+                        modulo.setEtapa(etapa);
                         int rowIdInsertModulo = moduloDao.insert(modulo);
+                        modulo.setModulo_Id(rowIdInsertModulo);
+                        historicoM.setModuloM(modulo);
+
                         int rowIdInsertHistorico = historicoDao.insert(historicoM);
 
                         //etapaDao.getStatus(etapa);
@@ -241,6 +244,7 @@ public class P5M1E1 extends Fragment {
 
             }
         });
+
         tb_bottom_next.findViewById(R.id.iv_voltar_pergunta).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

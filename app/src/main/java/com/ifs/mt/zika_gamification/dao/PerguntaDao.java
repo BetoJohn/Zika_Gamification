@@ -31,7 +31,7 @@ public class PerguntaDao {
          **/
         Banco bancoPergunta;
         ContentValues valores = new ContentValues();
-        valores.put("pergunta_id", perguntaM.getPergunta_Id());
+        //valores.put("pergunta_id", perguntaM.getPergunta_Id());
         valores.put("pergunta_nome", perguntaM.getPergunta_Nome());
         valores.put("pergunta_status", perguntaM.isPergunta_Status() ? 1 : 0);
         valores.put("resposta_id", perguntaM.getRespostaM().getResposta_Id());

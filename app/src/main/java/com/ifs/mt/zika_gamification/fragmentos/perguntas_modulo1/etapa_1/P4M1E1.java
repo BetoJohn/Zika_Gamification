@@ -38,12 +38,12 @@ public class P4M1E1 extends Fragment {
                 container, false);
 
         perguntaM = new PerguntaM();
-        perguntaM.setPergunta_Id("P4M1E1");
+        //perguntaM.setPergunta_Id("P4M1E1");
         perguntaM.setPergunta_Nome("Pergunta 04");
         perguntaM.setPergunta_Status(true);
 
         resposta = new RespostaM();
-        resposta.setResposta_Id("R4P4M1E1");
+        resposta.setIdent("R4P4M1E1");
 
         radioGroupP4M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP4M1E1);
         radioGroupP4M1E1

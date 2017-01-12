@@ -49,40 +49,7 @@ public class HistoricoDao {
         return !rs.moveToFirst();
     }
 
-    /***
-     * USUARIO - "usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha", "usuario_tipo"
-     * HISTORICO - "historico_id","usuario_id","modulo_id"
-     * MODULO - "modulo_id","modulo_nome","modulo_desricao","modulo_status","etapa_id"
-     * ETAPA - "etapa_id", "etapa_nome", "etapa_desricao", "etapa_pontuacao", "etapa_status"
-     * private final String MY_QUERY = "SELECT * FROM table_a a INNER JOIN table_b b ON a.id=b.other_id WHERE b.property_id=?";
-     * db.rawQuery(MY_QUERY, new String[]{String.valueOf(propertyId)});
-     * <p>
-     * <p>
-     * -- CONSULTA PELO ID DO USÚARIO E ID DO M.ÓDULO SE O MESMO JÁ FOI CONCLUÍDO PELO USÚARIO
-     * select m.modulo_status, m.modulo_nome from historico h INNER JOIN modulo m ON h.modulo_id = m.modulo_id WHERE h.usuario_id = 1
-     * <p>
-     * -- CONSULTA PELO ID DO USÚARIO, ID DA ETAPA E ID DO MODULO SE A ETAPA JÁ FOI CONCLUÍDA PELO USÚARIO
-     * select e.etapa_status, e.etapa_nome
-     * from historico h INNER JOIN modulo m ON h.modulo_id = m.modulo_id INNER JOIN etapa e ON e.etapa_id = m.etapa_id
-     * WHERE h.usuario_id = 1 and e.etapa_id = 'E1' and m.modulo_id = 'M1'
-     */
-    public int getStatusEtapaByUsuario(int usu_id, String etapa_id, String modulo_id) {
-        System.out.println("Id do Usuário: "+usu_id);
-        String query = "select e.etapa_status from historico h INNER JOIN modulo m ON h.modulo_id = m.modulo_id INNER JOIN etapa e ON e.etapa_id = m.etapa_id WHERE h.usuario_id = ? and e.etapa_id = ? and m.modulo_id = ?";
-        Cursor rs = db.getReadableDatabase().rawQuery(query, new String[]{String.valueOf(usu_id), String.valueOf(etapa_id), String.valueOf(modulo_id)});
-        int statusEtapa = 0;
-        rs.moveToFirst();
-        while (!rs.isAfterLast()) {
-            statusEtapa = rs.getInt(0);
-            rs.moveToNext();
-        }
-        //String etapaName = rs.getString(1);
 
-        //System.out.println("Status: " + statusEtapa + " Etapa: " + etapaName);
-        rs.close();
-
-        return statusEtapa;
-    }
 
   /*  //DANDO ERRO AO CONVERTER  SENHA
     public UsuarioM autenticacao(UsuarioM usu) {

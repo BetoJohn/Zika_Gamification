@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.dao.Banco;
+import com.ifs.mt.zika_gamification.dao.EtapaDao;
 import com.ifs.mt.zika_gamification.dao.HistoricoDao;
 import com.ifs.mt.zika_gamification.dao.ModuloDao;
 import com.ifs.mt.zika_gamification.telas.Login;
@@ -39,9 +40,8 @@ public class EtapasM1RecyclerViewAdapter extends RecyclerView.Adapter<EtapasM1Vi
     public void onBindViewHolder(EtapasM1ViewHolders holder, int position) {
         mySharedPreferencesController = MySharedPreferencesController.getInstance(context);
         banco = new Banco(context);
-        HistoricoDao historicoDao = new HistoricoDao(banco);
-        int statusEtapa01 = historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E1M1", "M1");
-       //Se o modulo
+        EtapaDao etapaDao = new EtapaDao(banco);
+        int statusEtapa01 = etapaDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E1M1", "M1");
         if(statusEtapa01 == 1){
             mThumbIds[1] = R.drawable.emblema2_a;
         }

@@ -7,17 +7,17 @@ import java.util.Objects;
  */
 public class PerguntaM {
 
-    private String pergunta_Id;
+    private int pergunta_Id;
     private String pergunta_Nome;
     private boolean pergunta_Status;
     private EtapaM etapaM;
     private RespostaM respostaM;
 
-    public String getPergunta_Id() {
+    public int getPergunta_Id() {
         return pergunta_Id;
     }
 
-    public void setPergunta_Id(String pergunta_Id) {
+    public void setPergunta_Id(int pergunta_Id) {
         this.pergunta_Id = pergunta_Id;
     }
 

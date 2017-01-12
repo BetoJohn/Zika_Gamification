@@ -14,7 +14,7 @@ import static com.ifs.mt.zika_gamification.R.id.imageViewEmblema;
  */
 public class Util {
 
-    public List<PerguntaM> validaResposta(List<PerguntaM> usu) {
+   /* public List<PerguntaM> validaResposta(List<PerguntaM> usu) {
 
         List<PerguntaM> resultado = new ArrayList<>();
         List<RespostaM> respostaGab = gabarito();
@@ -35,12 +35,12 @@ public class Util {
         }
         return resultado;
 
-    }
+    }*/
     public boolean validaSingleResposta(RespostaM respostaM) {
 
         List<RespostaM> respostaGab = gabarito();
             for (RespostaM respostaGabarito : respostaGab) {
-                if (respostaM.getResposta_Id().equals(respostaGabarito.getResposta_Id())) {
+                if (respostaM.getIdent().equals(respostaGabarito.getIdent())) {
                     if (respostaM.getResposta_Item().equals(respostaGabarito.getResposta_Item())) {
                         return  true;
                     } else {
@@ -88,53 +88,53 @@ public class Util {
         //=============== Módulo 01 Etapa 01 =============
         List<RespostaM> list = new ArrayList<>();
         RespostaM m1e1p1 = new RespostaM();
-        m1e1p1.setResposta_Id("R1P1M1E1");
+        m1e1p1.setIdent("R1P1M1E1");
         m1e1p1.setResposta_Item("A");
         list.add(m1e1p1);
 
         RespostaM m1e1p2 = new RespostaM();
-        m1e1p2.setResposta_Id("R2P2M1E1");
+        m1e1p2.setIdent("R2P2M1E1");
         m1e1p2.setResposta_Item("B");
         list.add(m1e1p2);
 
         RespostaM m1e1p3 = new RespostaM();
-        m1e1p3.setResposta_Id("R3P3M1E1");
+        m1e1p3.setIdent("R3P3M1E1");
         m1e1p3.setResposta_Item("D");
         list.add(m1e1p3);
 
         RespostaM m1e1p4 = new RespostaM();
-        m1e1p4.setResposta_Id("R4P4M1E1");
+        m1e1p4.setIdent("R4P4M1E1");
         m1e1p4.setResposta_Item("D");
         list.add(m1e1p4);
 
         RespostaM m1e1p5 = new RespostaM();
-        m1e1p5.setResposta_Id("R5P5M1E1");
+        m1e1p5.setIdent("R5P5M1E1");
         m1e1p5.setResposta_Item("D");
         list.add(m1e1p5);
         
         //=============== Módulo 02 Etapa 02 =============
         RespostaM m1e2p1 = new RespostaM();
-        m1e2p1.setResposta_Id("R1P1M1E2");
+        m1e2p1.setIdent("R1P1M1E2");
         m1e2p1.setResposta_Item("B");
         list.add(m1e2p1);
 
         RespostaM m1e2p2 = new RespostaM();
-        m1e2p2.setResposta_Id("R2P2M1E2");
+        m1e2p2.setIdent("R2P2M1E2");
         m1e2p2.setResposta_Item("D");
         list.add(m1e2p2);
 
         RespostaM m1e2p3 = new RespostaM();
-        m1e2p3.setResposta_Id("R3P3M1E2");
+        m1e2p3.setIdent("R3P3M1E2");
         m1e2p3.setResposta_Item("B");
         list.add(m1e2p3);
 
         RespostaM m1e2p4 = new RespostaM();
-        m1e2p4.setResposta_Id("R4P4M1E2");
+        m1e2p4.setIdent("R4P4M1E2");
         m1e2p4.setResposta_Item("A");
         list.add(m1e2p4);
 
         RespostaM m1e2p5 = new RespostaM();
-        m1e2p5.setResposta_Id("R5P5M1E2");
+        m1e2p5.setIdent("R5P5M1E2");
         m1e2p5.setResposta_Item("C");
         list.add(m1e2p5);
 
