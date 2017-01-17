@@ -30,8 +30,8 @@ public class Banco extends SQLiteOpenHelper {
 
     //ModuloM
     public final static String TB_MODULO = "modulo";
-    public final static String CREATE_TB_MODULO = "create table IF NOT EXISTS modulo (modulo_id integer PRIMARY KEY AUTOINCREMENT, modulo_nome text, modulo_desricao text, modulo_status BOOLEAN NOT NULL CHECK (modulo_status IN (0,1)), etapa_id text, FOREIGN KEY(etapa_id) REFERENCES etapa(etapa_id))";
-    public final static String[] COLUMNS_MODULO = {"modulo_id", "modulo_nome", "modulo_desricao", "modulo_status", "etapa_id"};
+    public final static String CREATE_TB_MODULO = "create table IF NOT EXISTS modulo (modulo_id integer PRIMARY KEY AUTOINCREMENT, modulo_nome text, modulo_descricao text, modulo_status BOOLEAN NOT NULL CHECK (modulo_status IN (0,1)), etapa_id text, FOREIGN KEY(etapa_id) REFERENCES etapa(etapa_id))";
+    public final static String[] COLUMNS_MODULO = {"modulo_id", "modulo_nome", "modulo_descricao", "modulo_status", "etapa_id"};
 
 
     //EtapaM

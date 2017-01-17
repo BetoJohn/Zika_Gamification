@@ -26,12 +26,12 @@ public class ModuloDao {
 
     public int insert(ModuloM moduloM) {
         /**
-         * "modulo_id", "modulo_nome", "modulo_desricao", "modulo_status", "etapa_id"
+         * "modulo_id", "modulo_nome", "modulo_descricao", "modulo_status", "etapa_id"
          **/
         ContentValues valores = new ContentValues();
        // valores.put("modulo_id", moduloM.getModulo_Id());
         valores.put("modulo_nome",moduloM.getModulo_Nome());
-        valores.put("modulo_desricao",moduloM.getModulo_Desricao());
+        valores.put("modulo_descricao",moduloM.getModulo_Desricao());
         valores.put("modulo_status",moduloM.isModulo_Status()? 1 : 0);
         valores.put("etapa_id",moduloM.getEtapa().getEtapa_Id());
         int result = (int) db.getWritableDatabase().insert(Banco.TB_MODULO, null, valores);
