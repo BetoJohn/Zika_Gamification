@@ -14,6 +14,7 @@ import com.ifs.mt.zika_gamification.model.PerguntaM;
 import com.ifs.mt.zika_gamification.model.RespostaM;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_2.M1E2;
+import com.ifs.mt.zika_gamification.util.Util;
 import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
 
 import java.util.ArrayList;
@@ -86,10 +87,13 @@ public class P1M1E2 extends Fragment {
                     if (getListPergunta().size() == 1){
                         getListPergunta().remove(0);
                     }
+                    Util util = new Util();
+                    resposta.setResposta_Correta(util.validaSingleResposta(resposta));
                     perguntaM.setRespostaM(resposta);
                     getListPergunta().add(0, perguntaM);
                     P2M1E2.setListPergunta(listPerguntaResposta);
                     ((M1E2) getActivity()).trocarPagina(1);
+
                 }
 
             }
