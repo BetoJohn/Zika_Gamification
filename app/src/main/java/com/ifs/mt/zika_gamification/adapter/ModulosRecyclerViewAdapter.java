@@ -42,6 +42,7 @@ public class ModulosRecyclerViewAdapter extends RecyclerView.Adapter<ModulosView
         //Se o modulo
         if(statusModulo01 == 1){
             mThumbIds[1] = R.drawable.modulo_02_a;
+            mThumbIds[0] = R.drawable.modulo_01_c;
         }
 
         holder.currentItem = position;

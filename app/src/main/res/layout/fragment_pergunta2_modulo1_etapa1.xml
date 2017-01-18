@@ -26,10 +26,13 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tb"
                 android:layout_centerHorizontal="true"
-                android:layout_marginLeft="100dp"
-                android:layout_marginRight="100dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/a_a" />
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:scaleType="fitXY"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/m1_e1"/>
 
 
             <TextView

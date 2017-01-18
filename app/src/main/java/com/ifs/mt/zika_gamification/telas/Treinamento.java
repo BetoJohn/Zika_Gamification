@@ -43,6 +43,7 @@ public class Treinamento extends AppCompatActivity {
         gaggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         recyclerView.setLayoutManager(gaggeredGridLayoutManager);
         recyclerView.setHasFixedSize(true);
+        //ÍCONES DOS MÓDULOS
         ModulosRecyclerViewAdapter rcAdapter = new ModulosRecyclerViewAdapter(Treinamento.this);
         recyclerView.setAdapter(rcAdapter);
     }
