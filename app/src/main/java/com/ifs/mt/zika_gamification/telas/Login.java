@@ -113,6 +113,7 @@ public class Login extends Activity {
         spinnerTipoUsuario.setBackgroundResource(R.drawable.spinner_edit);
         spinnerTipoUsuario.setVisibility(View.INVISIBLE);
 
+
        /* imageViewCadastro = (ImageView) findViewById(R.id.imageViewCadastro);
         imageViewCadastro.setVisibility(View.INVISIBLE);*/
 
@@ -126,20 +127,16 @@ public class Login extends Activity {
         clickCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 scrollLogin.post(new Runnable() {
                     public void run() {
-                        scrollLogin.smoothScrollTo(0, scrollLogin.getBottom());
+                        scrollLogin.smoothScrollTo(0, btnLogin.getBottom());
                     }
                 });
-
                 setVisible();
-
+                editNomeCadastro.requestFocus();
             }
         });
         clickCadastro.setTypeface(font);
-
-
         String tipoUsuario = String.valueOf(spinnerTipoUsuario.getSelectedItem());
         System.out.println("Tipo usuário: " + tipoUsuario);
     }
@@ -205,8 +202,16 @@ public class Login extends Activity {
                     alertDialog.setMessage("Não foi encontrado nenhum usuário com esse Login e Senha. Deseja efetuar um cadastro?");
                     alertDialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+
+                            scrollLogin.post(new Runnable() {
+                                public void run() {
+                                    scrollLogin.smoothScrollTo(0, btnLogin.getBottom());
+                                }
+                            });
+
                             editLoginCadastro.setText(editLogin.getText().toString());
                             setVisible();
+                            editNomeCadastro.requestFocus();
 
                         }
                     });
