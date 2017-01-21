@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.util.ColorTool;
 
@@ -35,6 +36,7 @@ public class MenuPrincipal extends AppCompatActivity  implements View.OnTouchLis
         setSupportActionBar(tb);
 
         tv_usuario_logado = (TextView) findViewById(R.id.tv_usuario_logado);
+        //Posso esta recperando o usuário da sessão com o Firebase
         tv_usuario_logado.setText("Bem Vindo, " + Login.getUsuarioLogado().getUsuario_nome());
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
         tv_usuario_logado.setTypeface(font);
@@ -210,6 +212,7 @@ public class MenuPrincipal extends AppCompatActivity  implements View.OnTouchLis
 
         switch (id) {
             case R.id.action_sair:
+                FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(MenuPrincipal.this, Login.class));
                 return true;
         }

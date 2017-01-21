@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "907577508727",
+    "firebase_url": "https://zika-gamification.firebaseio.com",
+    "project_id": "zika-gamification",
+    "storage_bucket": "zika-gamification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907577508727:android:36ee6a22ad73722f",
+        "android_client_info": {
+          "package_name": "com.ifs.mt.zika_gamification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "907577508727-l50epbl4qofk1db3p3ejq82itemg2auh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANjzI1J-j8rGsBdJoX_scuVKl-qNGhwmY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
