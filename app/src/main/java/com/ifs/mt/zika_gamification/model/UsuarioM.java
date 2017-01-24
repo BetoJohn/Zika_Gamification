@@ -8,7 +8,7 @@ public class UsuarioM {
     private int usuario_id;
     private String usuario_nome;
     private String usuario_login;
-    private String usuario_email;
+  /*  private String usuario_email;*/
     private String usuario_senha;
     private String usuario_tipo;
 
@@ -30,12 +30,12 @@ public class UsuarioM {
     public void setUsuario_login(String usuario_login) {
         this.usuario_login = usuario_login;
     }
-    public String getUsuario_email() {
+   /* public String getUsuario_email() {
         return usuario_email;
     }
     public void setUsuario_email(String usuario_email) {
         this.usuario_email = usuario_email;
-    }
+    }*/
     public String getUsuario_senha() {
         return usuario_senha;
     }

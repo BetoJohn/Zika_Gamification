@@ -59,7 +59,7 @@
                 android:layout_marginRight="25dp"
                 android:background="@drawable/styles_edit_text"
                 android:ems="10"
-                android:hint="Login"
+                android:hint="Login (exemplo@exemplo.com)"
                 android:inputType="textEmailAddress|textAutoComplete"
                 android:textColor="#000000"
                 android:textColorHint="#727272">
@@ -164,13 +164,13 @@
                 android:layout_marginRight="25dp"
                 android:background="@drawable/styles_edit_text"
                 android:ems="10"
-                android:hint="Login"
+                android:hint="Login (exemplo@exemplo.com)"
                 android:inputType="textEmailAddress|textAutoComplete"
                 android:textColor="#000000"
                 android:textColorHint="#727272">
             </EditText>
 
-            <EditText
+            <!--<EditText
                 android:id="@+id/editEmailCadastro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -183,7 +183,7 @@
                 android:inputType="textEmailAddress|textAutoComplete"
                 android:textColor="#000000"
                 android:textColorHint="#727272">
-            </EditText>
+            </EditText>-->
 
 
             <EditText
@@ -251,7 +251,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="200dp"
+                android:layout_marginBottom="350dp"
                 android:background="@android:color/white"
                 android:onClick="cadastrar"
                 android:textSize="20sp"

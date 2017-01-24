@@ -17,6 +17,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.dao.Banco;
 import com.ifs.mt.zika_gamification.dao.EtapaDao;
@@ -24,12 +28,14 @@ import com.ifs.mt.zika_gamification.dao.HistoricoDao;
 import com.ifs.mt.zika_gamification.dao.ModuloDao;
 import com.ifs.mt.zika_gamification.dao.PerguntaDao;
 import com.ifs.mt.zika_gamification.dao.RespostaDao;
+import com.ifs.mt.zika_gamification.dao.StatusDao;
 import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P4M1E1;
 import com.ifs.mt.zika_gamification.model.EtapaM;
 import com.ifs.mt.zika_gamification.model.HistoricoM;
 import com.ifs.mt.zika_gamification.model.ModuloM;
 import com.ifs.mt.zika_gamification.model.PerguntaM;
 import com.ifs.mt.zika_gamification.model.RespostaM;
+import com.ifs.mt.zika_gamification.model.StatusM;
 import com.ifs.mt.zika_gamification.telas.Login;
 import com.ifs.mt.zika_gamification.telas.Treinamento;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.M1;
@@ -42,7 +48,9 @@ import com.ifs.mt.zika_gamification.util.Util;
 import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -61,7 +69,10 @@ public class P5M1E2 extends Fragment {
     private EtapaM etapa;
     private Typeface font;
     private Banco banco;
-    private MySharedPreferencesController mySharedPreferencesController;
+
+    private DatabaseReference mDatabase;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -116,6 +127,8 @@ public class P5M1E2 extends Fragment {
         });
 
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
         tb_bottom_next = (Toolbar) fragment.findViewById(R.id.tb_bottom_next);
         tb_bottom_next.findViewById(R.id.iv_concluir).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,7 +181,7 @@ public class P5M1E2 extends Fragment {
                     EtapaDao etapaDao = new EtapaDao(banco);
                     RespostaDao respostaDao = new RespostaDao(banco);
                     PerguntaDao perguntaDao = new PerguntaDao(banco);
-
+                    StatusDao statusDao = new StatusDao(banco);
 
 
                     //TESTES
@@ -194,6 +207,25 @@ public class P5M1E2 extends Fragment {
                     historicoM.setModuloM(modulo);
 
                     int rowIdInsertHistorico = historicoDao.insert(historicoM);
+
+                    StatusM statusM = new StatusM();
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    if (user != null) {
+                        String userId = user.getUid();
+                        statusM.setUsuario_id(Login.getUsuarioLogado().getUsuario_id());
+                        statusM.setModulo_01_status(true);
+                        statusM.setStatus_id(statusDao.update(statusM));
+
+                        statusM.setPontuacao(0);
+                        statusM.setNivel(0);
+                        statusM.setExperiencia(0);
+
+                        DatabaseReference ref = mDatabase.child("usuarios-status").child(userId);
+                        Map<String, Object> updates = new HashMap<>();
+                        updates.put("modulo_01_status", statusM.isModulo_01_status());
+                        ref.updateChildren(updates);
+                    }
+
 
 
                     //APRESENTO O RESULTADO DA ETAPA
@@ -238,6 +270,8 @@ public class P5M1E2 extends Fragment {
                 ((M1E2) getActivity()).trocarPagina(3);
             }
         });
+
+
 
 
         return fragment;

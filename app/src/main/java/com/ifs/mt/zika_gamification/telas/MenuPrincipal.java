@@ -18,7 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.ifs.mt.zika_gamification.R;
+import com.ifs.mt.zika_gamification.dao.Banco;
+import com.ifs.mt.zika_gamification.dao.StatusDao;
+import com.ifs.mt.zika_gamification.model.StatusM;
 import com.ifs.mt.zika_gamification.util.ColorTool;
 
 public class MenuPrincipal extends AppCompatActivity  implements View.OnTouchListener {
@@ -26,6 +30,7 @@ public class MenuPrincipal extends AppCompatActivity  implements View.OnTouchLis
     private Toolbar tb;
     private ImageView imageViewTreinamento, imageViewStatus, imageViewRanking;
     private TextView tv_usuario_logado, textViewTreinamento, textViewStatus, textViewRanking;
+    private Banco banco;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +77,8 @@ public class MenuPrincipal extends AppCompatActivity  implements View.OnTouchLis
                 Toast.makeText(MenuPrincipal.this, "imageViewRanking", Toast.LENGTH_SHORT).show();
             }
         });*/
+
+
 
         ImageView iv = (ImageView) findViewById(R.id.iv_menu_principal_back);
         if (iv != null) {

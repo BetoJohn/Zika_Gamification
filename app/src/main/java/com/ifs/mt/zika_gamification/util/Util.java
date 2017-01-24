@@ -1,6 +1,8 @@
 package com.ifs.mt.zika_gamification.util;
 
 import com.ifs.mt.zika_gamification.R;
+import com.ifs.mt.zika_gamification.model.EtapaM;
+import com.ifs.mt.zika_gamification.model.ModuloM;
 import com.ifs.mt.zika_gamification.model.PerguntaM;
 import com.ifs.mt.zika_gamification.model.RespostaM;
 
@@ -14,46 +16,83 @@ import static com.ifs.mt.zika_gamification.R.id.imageViewEmblema;
  */
 public class Util {
 
-   /* public List<PerguntaM> validaResposta(List<PerguntaM> usu) {
-
-        List<PerguntaM> resultado = new ArrayList<>();
-        List<RespostaM> respostaGab = gabarito();
-        for (PerguntaM respostaUsuario : usu) {
-            for (RespostaM respostaGabarito : respostaGab) {
-                if (respostaUsuario.getRespostaM().getResposta_Id().equals(respostaGabarito.getResposta_Id())) {
-
-                    if (respostaUsuario.getRespostaM().getResposta_Item().equals(respostaGabarito.getResposta_Item())) {
-                        respostaUsuario.getRespostaM().setResposta_Correta(true);
-                        resultado.add(respostaUsuario);
-                    } else {
-                        respostaUsuario.getRespostaM().setResposta_Correta(false);
-                        resultado.add(respostaUsuario);
-                    }
-
-                }
-            }
+    public int getNivel(int pontos) {
+        int nivel = 0;
+        if (pontos <= 5) {
+            nivel = 1;
         }
-        return resultado;
+        if (pontos >= 6 && pontos <= 10) {
+            nivel = 2;
+        }
+        if (pontos > 10 && pontos <= 15) {
+            nivel = 3;
+        }
+        if (pontos > 15 && pontos <= 20) {
+            nivel = 4;
+        }
+        if (pontos > 20 && pontos <= 25) {
+            nivel = 5;
+        }
+        if (pontos > 25 && pontos <= 30) {
+            nivel = 6;
+        }
+        if (pontos > 30 && pontos <= 35) {
+            nivel = 7;
+        }
+        if (pontos > 35 && pontos <= 40) {
+            nivel = 8;
+        }
 
-    }*/
+        return nivel;
+    }
+
+    public int getExperiencia(int pontos, EtapaM etapaM) {
+        int experiencia = 0;
+
+        if (etapaM.getEtapa_Nome().equals("E1M1") || etapaM.getEtapa_Nome().equals("E2M1")) {
+            experiencia = pontos * 2;
+        }
+        if (etapaM.getEtapa_Nome().equals("E1M2") || etapaM.getEtapa_Nome().equals("E2M2")) {
+            experiencia = pontos * 3;
+        }
+        if (etapaM.getEtapa_Nome().equals("E3M2")) {
+            experiencia = pontos * 5;
+        }
+        if (etapaM.getEtapa_Nome().equals("E1M3") || etapaM.getEtapa_Nome().equals("E2M3")) {
+            experiencia = pontos * 6;
+        }
+        if (etapaM.getEtapa_Nome().equals("E1M4")) {
+            experiencia = pontos * 7;
+        }
+        if (etapaM.getEtapa_Nome().equals("E2M4")) {
+            experiencia = pontos * 8;
+        }
+        if (etapaM.getEtapa_Nome().equals("E3M4")) {
+            experiencia = pontos * 9;
+        }
+
+
+        return experiencia;
+    }
+
     public boolean validaSingleResposta(RespostaM respostaM) {
 
         List<RespostaM> respostaGab = gabarito();
-            for (RespostaM respostaGabarito : respostaGab) {
-                if (respostaM.getIdent().equals(respostaGabarito.getIdent())) {
-                    if (respostaM.getResposta_Item().equals(respostaGabarito.getResposta_Item())) {
-                        return  true;
-                    } else {
-                        return  false;
-                    }
+        for (RespostaM respostaGabarito : respostaGab) {
+            if (respostaM.getIdent().equals(respostaGabarito.getIdent())) {
+                if (respostaM.getResposta_Item().equals(respostaGabarito.getResposta_Item())) {
+                    return true;
+                } else {
+                    return false;
                 }
             }
+        }
 
         return false;
 
     }
 
-    public int getEmblema(int num){
+    public int getEmblema(int num) {
         int valor = 0;
         if (num < 2) {
             valor = R.drawable.emblema_menor_que_3;//android:src="@drawable/emblema_menor_que_3"
@@ -111,7 +150,7 @@ public class Util {
         m1e1p5.setIdent("R5P5M1E1");
         m1e1p5.setResposta_Item("D");
         list.add(m1e1p5);
-        
+
         //=============== Módulo 02 Etapa 02 =============
         RespostaM m1e2p1 = new RespostaM();
         m1e2p1.setIdent("R1P1M1E2");

@@ -19,8 +19,8 @@ public class Banco extends SQLiteOpenHelper {
 
     //UsuarioM
     public final static String TB_USUARIO = "usuario";
-    public final static String CREATE_TB_USUARIO = "create table IF NOT EXISTS usuario (usuario_id integer PRIMARY KEY AUTOINCREMENT, usuario_nome text, usuario_login text,  usuario_email text, usuario_senha text,  usuario_tipo text)";
-    public final static String[] COLUMNS_USUARIO = {"usuario_id", "usuario_nome", "usuario_login", "usuario_email", "usuario_senha", "usuario_tipo"};
+    public final static String CREATE_TB_USUARIO = "create table IF NOT EXISTS usuario (usuario_id integer PRIMARY KEY AUTOINCREMENT, usuario_nome text, usuario_login text,   usuario_senha text,  usuario_tipo text)";
+    public final static String[] COLUMNS_USUARIO = {"usuario_id", "usuario_nome", "usuario_login",  "usuario_senha", "usuario_tipo"};
 
 
     //HistoricoM
@@ -50,6 +50,11 @@ public class Banco extends SQLiteOpenHelper {
     public final static String CREATE_TB_RESPOSTA = "create table IF NOT EXISTS resposta (resposta_id integer PRIMARY KEY AUTOINCREMENT, resposta_item text, resposta_correta boolean)";
     public final static String[] COLUMNS_RESPOSTA = {"resposta_id", "resposta_item", "resposta_correta"};
 
+    //StatusM
+    public final static String TB_STATUS = "status";
+    public final static String CREATE_TB_STATUS = "create table IF NOT EXISTS status (status_id integer PRIMARY KEY AUTOINCREMENT, usuario_id integer, usuario_nome text, pontuacao integer, nivel integer, experiencia integer, modulo_01_status BOOLEAN NOT NULL CHECK (modulo_01_status IN (0,1)), modulo_02_status BOOLEAN NOT NULL CHECK (modulo_02_status IN (0,1)), modulo_03_status BOOLEAN NOT NULL CHECK (modulo_03_status IN (0,1)), modulo_04_status BOOLEAN NOT NULL CHECK (modulo_04_status IN (0,1)))";
+    public final static String[] COLUMNS_STATUS = {"status_id", "usuario_id", "usuario_nome", "pontuacao", "nivel", "experiencia", "modulo_01_status", "modulo_02_status", "modulo_03_status", "modulo_04_status"};
+
 
     public Banco(Context context) {
         // TODO Auto-generated constructor stub
@@ -66,6 +71,7 @@ public class Banco extends SQLiteOpenHelper {
         db.execSQL(CREATE_TB_RESPOSTA);
         db.execSQL(CREATE_TB_MODULO);
         db.execSQL(CREATE_TB_PERGUNTA);
+        db.execSQL(CREATE_TB_STATUS);
     }
 
     public boolean tabelaExists(String tabela) {

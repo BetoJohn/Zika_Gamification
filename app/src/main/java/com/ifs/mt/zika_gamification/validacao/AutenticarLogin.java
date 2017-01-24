@@ -42,7 +42,23 @@ public class AutenticarLogin {
 			if (text != null) {
 				String strText = text.toString();
 				if (!TextUtils.isEmpty(strText)) {
-					//Log.i("validateNotNull", "REtornou true");
+					return true;
+				}
+			}
+			edText.setError(pMessage);
+			edText.setFocusable(true);
+			edText.requestFocus();
+			return false;
+		}
+		return false;
+	}
+	public static boolean validarSenha(View pView, String pMessage) {
+		if (pView instanceof EditText) {
+			EditText edText = (EditText) pView;
+			Editable text = edText.getText();
+			if (text != null) {
+				String strText = text.toString();
+				if (strText.length() > 6) {
 					return true;
 				}
 			}
