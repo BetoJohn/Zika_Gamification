@@ -329,9 +329,9 @@ public class Login extends Activity {
                                 StatusDao statusDao = new StatusDao(bancoUsuario);
                                 statusM.setUsuario_id(usuario.getUsuario_id());
                                 statusM.setUsuario_nome(usuario.getUsuario_nome());
-                                statusM.setPontuacao(0);
-                                statusM.setNivel(0);
                                 statusM.setExperiencia(0);
+                                statusM.setNivel(0);
+                                statusM.setPontuacao(0);
                                 statusM.setStatus_id(statusDao.insert(statusM));
                                 mDatabase.child("usuarios-status").child(userId).setValue(statusM);
 

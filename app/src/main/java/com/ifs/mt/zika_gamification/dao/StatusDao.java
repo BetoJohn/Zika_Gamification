@@ -43,7 +43,7 @@ public class StatusDao {
         valores.put("modulo_03_status", status.isModulo_03_status() ? 1 : 0);
         valores.put("modulo_04_status", status.isModulo_04_status() ? 1 : 0);
         int result = (int) db.getWritableDatabase().insert(Banco.TB_STATUS, null, valores);
-        System.out.println("Inseriu StatusM");
+        System.out.println("Inseriu StatusM id: "+result);
 
         return result;
     }
@@ -52,6 +52,9 @@ public class StatusDao {
         try {
             parametros = new String[]{String.valueOf(statusM.getUsuario_id())};
             ContentValues valores = new ContentValues();
+            valores.put("pontuacao", statusM.getPontuacao());
+            valores.put("nivel", statusM.getNivel());
+            valores.put("experiencia", statusM.getExperiencia());
             valores.put("modulo_01_status", statusM.isModulo_01_status() ? 1 : 0);
             valores.put("modulo_02_status", statusM.isModulo_02_status() ? 1 : 0);
             valores.put("modulo_03_status", statusM.isModulo_03_status() ? 1 : 0);
@@ -65,7 +68,7 @@ public class StatusDao {
         } catch (Exception e) {
             System.out.println("Exceção do updateStatus: " + e.getMessage());
         }
-        return  0;
+        return 0;
     }
 
 
@@ -93,6 +96,10 @@ public class StatusDao {
 
 
     private List<StatusM> cursorToList(Cursor rs) {
+        /**
+         "status_id", "usuario_id", "usuario_nome", "pontuacao", "nivel", "experiencia", "modulo_01_status", "modulo_02_status", "modulo_03_status", "modulo_04_status"
+
+         **/
         List<StatusM> list = new ArrayList<StatusM>();
         rs.moveToFirst();
         while (!rs.isAfterLast()) {
@@ -102,7 +109,7 @@ public class StatusDao {
             statusM.setUsuario_nome(rs.getString(2));
             statusM.setPontuacao(rs.getInt(3));
             statusM.setNivel(rs.getInt(4));
-            statusM.setPontuacao(rs.getInt(5));
+            statusM.setExperiencia(rs.getInt(5));
             statusM.setModulo_01_status(rs.getInt(6) == 0 ? false : true);
             statusM.setModulo_02_status(rs.getInt(7) == 0 ? false : true);
             statusM.setModulo_03_status(rs.getInt(8) == 0 ? false : true);

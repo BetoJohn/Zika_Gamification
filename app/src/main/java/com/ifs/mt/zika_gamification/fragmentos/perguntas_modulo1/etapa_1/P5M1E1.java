@@ -20,6 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.dao.Banco;
 import com.ifs.mt.zika_gamification.dao.EtapaDao;
@@ -27,11 +31,13 @@ import com.ifs.mt.zika_gamification.dao.HistoricoDao;
 import com.ifs.mt.zika_gamification.dao.ModuloDao;
 import com.ifs.mt.zika_gamification.dao.PerguntaDao;
 import com.ifs.mt.zika_gamification.dao.RespostaDao;
+import com.ifs.mt.zika_gamification.dao.StatusDao;
 import com.ifs.mt.zika_gamification.model.EtapaM;
 import com.ifs.mt.zika_gamification.model.HistoricoM;
 import com.ifs.mt.zika_gamification.model.ModuloM;
 import com.ifs.mt.zika_gamification.model.PerguntaM;
 import com.ifs.mt.zika_gamification.model.RespostaM;
+import com.ifs.mt.zika_gamification.model.StatusM;
 import com.ifs.mt.zika_gamification.telas.Login;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.M1;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
@@ -41,7 +47,9 @@ import com.ifs.mt.zika_gamification.util.Util;
 import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -65,6 +73,7 @@ public class P5M1E1 extends Fragment {
     private Typeface font;
     private Banco banco;
     private MySharedPreferencesController mySharedPreferencesController;
+    private DatabaseReference mDatabase;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -168,7 +177,7 @@ public class P5M1E1 extends Fragment {
                         EtapaDao etapaDao = new EtapaDao(banco);
                         RespostaDao respostaDao = new RespostaDao(banco);
                         PerguntaDao perguntaDao = new PerguntaDao(banco);
-
+                        StatusDao statusDao = new StatusDao(banco);
 
 
                         //TESTES
@@ -194,6 +203,31 @@ public class P5M1E1 extends Fragment {
                         historicoM.setModuloM(modulo);
 
                         int rowIdInsertHistorico = historicoDao.insert(historicoM);
+
+                        mDatabase = FirebaseDatabase.getInstance().getReference();
+                        StatusM statusM = new StatusM();
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        if (user != null) {
+                            String userId = user.getUid();
+                            statusM.setUsuario_id(Login.getUsuarioLogado().getUsuario_id());
+                            StatusM statusBanco = statusDao.getStatusByUsuario(statusM.getUsuario_id());
+                            statusM.setPontuacao(numAcertos + statusBanco.getPontuacao());
+                            statusM.setNivel(util.getNivel(numAcertos + statusBanco.getNivel()));
+                            int experiencia = util.getExperiencia(numAcertos, etapa);
+                            System.out.println("Experiencia no P5M1E1: "+experiencia);
+                            statusM.setExperiencia( experiencia + statusBanco.getExperiencia());
+                            System.out.println("Experiencia atualizada no P5M1E1: "+statusM.getExperiencia());
+                            //Atualização local
+                            statusM.setStatus_id(statusDao.update(statusM));
+
+                            DatabaseReference ref = mDatabase.child("usuarios-status").child(userId);
+                            Map<String, Object> updates = new HashMap<>();
+                            updates.put("pontuacao", statusM.getPontuacao());
+                            updates.put("nivel", statusM.getNivel());
+                            updates.put("experiencia", statusM.getExperiencia());
+                            //Atualização remota
+                            ref.updateChildren(updates);
+                        }
 
                         //etapaDao.getStatus(etapa);
                         //==========================================================

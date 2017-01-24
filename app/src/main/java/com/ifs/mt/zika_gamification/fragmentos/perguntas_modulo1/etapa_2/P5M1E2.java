@@ -150,7 +150,6 @@ public class P5M1E2 extends Fragment {
                     modulo.setModulo_Status(true);
 
                     etapa = new EtapaM();
-                    //etapa.setEtapa_Id("E2M1");
                     etapa.setEtapa_Nome("E2M1");
                     etapa.setEtapa_Descricao("História");
 
@@ -213,16 +212,25 @@ public class P5M1E2 extends Fragment {
                     if (user != null) {
                         String userId = user.getUid();
                         statusM.setUsuario_id(Login.getUsuarioLogado().getUsuario_id());
+                        StatusM statusBanco = statusDao.getStatusByUsuario(statusM.getUsuario_id());
+                        statusM.setPontuacao(numAcertos + statusBanco.getPontuacao());
+                        statusM.setNivel(util.getNivel(numAcertos + statusBanco.getNivel()));
+                        int experiencia = util.getExperiencia(numAcertos, etapa);
+                        System.out.println("Experiencia no P5M1E2: "+experiencia);
+                        statusM.setExperiencia( experiencia + statusBanco.getExperiencia());
+                        System.out.println("Experiencia atualizada no P5M1E1: "+statusM.getExperiencia());
                         statusM.setModulo_01_status(true);
+                        //Atualização local
                         statusM.setStatus_id(statusDao.update(statusM));
-
-                        statusM.setPontuacao(0);
-                        statusM.setNivel(0);
-                        statusM.setExperiencia(0);
 
                         DatabaseReference ref = mDatabase.child("usuarios-status").child(userId);
                         Map<String, Object> updates = new HashMap<>();
+                        updates.put("pontuacao", statusM.getPontuacao());
+                        updates.put("nivel", statusM.getNivel());
+                        updates.put("experiencia", statusM.getExperiencia());
+                        //Somente na última etapa do módulo que atualiza o módulo
                         updates.put("modulo_01_status", statusM.isModulo_01_status());
+                        //Atualização remota
                         ref.updateChildren(updates);
                     }
 

@@ -48,25 +48,31 @@ public class Util {
 
     public int getExperiencia(int pontos, EtapaM etapaM) {
         int experiencia = 0;
-
+        //20
         if (etapaM.getEtapa_Nome().equals("E1M1") || etapaM.getEtapa_Nome().equals("E2M1")) {
             experiencia = pontos * 2;
         }
+        //30
         if (etapaM.getEtapa_Nome().equals("E1M2") || etapaM.getEtapa_Nome().equals("E2M2")) {
             experiencia = pontos * 3;
         }
+        //30
         if (etapaM.getEtapa_Nome().equals("E3M2")) {
-            experiencia = pontos * 5;
+            experiencia = pontos * 6;
         }
+        //60
         if (etapaM.getEtapa_Nome().equals("E1M3") || etapaM.getEtapa_Nome().equals("E2M3")) {
             experiencia = pontos * 6;
         }
+        //35
         if (etapaM.getEtapa_Nome().equals("E1M4")) {
             experiencia = pontos * 7;
         }
+        //40
         if (etapaM.getEtapa_Nome().equals("E2M4")) {
             experiencia = pontos * 8;
         }
+        //45
         if (etapaM.getEtapa_Nome().equals("E3M4")) {
             experiencia = pontos * 9;
         }
