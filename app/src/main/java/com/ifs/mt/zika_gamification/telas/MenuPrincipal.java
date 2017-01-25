@@ -105,7 +105,7 @@ public class MenuPrincipal extends AppCompatActivity  implements View.OnTouchLis
                 if (ct.closeMatch(Color.RED, touchColor, tolerance))
                     startActivity(new Intent(MenuPrincipal.this, Treinamento.class));
                 else if (ct.closeMatch(Color.BLUE, touchColor, tolerance))
-                    toast("Ranking");
+                    startActivity(new Intent(MenuPrincipal.this, Ranking.class));
                 else if (ct.closeMatch(Color.YELLOW, touchColor, tolerance))
                     startActivity(new Intent(MenuPrincipal.this, Status.class));
                /* else if (ct.closeMatch(Color.WHITE, touchColor, tolerance))
