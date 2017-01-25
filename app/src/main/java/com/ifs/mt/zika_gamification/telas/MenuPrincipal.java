@@ -46,39 +46,6 @@ public class MenuPrincipal extends AppCompatActivity  implements View.OnTouchLis
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
         tv_usuario_logado.setTypeface(font);
 
-        /*textViewTreinamento = (TextView) findViewById(R.id.textViewTreinamento);
-        textViewTreinamento.setTypeface(font);
-        textViewStatus = (TextView) findViewById(R.id.textViewStatus);
-        textViewStatus.setTypeface(font);
-        textViewRanking = (TextView) findViewById(R.id.textViewRanking);
-        textViewRanking.setTypeface(font);
-
-
-        imageViewTreinamento = (ImageView) findViewById(R.id.imageViewTreinamento);
-        imageViewTreinamento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MenuPrincipal.this, Treinamento.class));
-            }
-        });
-
-        imageViewStatus = (ImageView) findViewById(R.id.imageViewStatus);
-        imageViewStatus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MenuPrincipal.this, "imageViewStatus", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        imageViewRanking = (ImageView) findViewById(R.id.imageViewRanking);
-        imageViewRanking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MenuPrincipal.this, "imageViewRanking", Toast.LENGTH_SHORT).show();
-            }
-        });*/
-
-
 
         ImageView iv = (ImageView) findViewById(R.id.iv_menu_principal_back);
         if (iv != null) {
@@ -140,7 +107,7 @@ public class MenuPrincipal extends AppCompatActivity  implements View.OnTouchLis
                 else if (ct.closeMatch(Color.BLUE, touchColor, tolerance))
                     toast("Ranking");
                 else if (ct.closeMatch(Color.YELLOW, touchColor, tolerance))
-                    toast("Status");
+                    startActivity(new Intent(MenuPrincipal.this, Status.class));
                /* else if (ct.closeMatch(Color.WHITE, touchColor, tolerance))
                     toast("Branco");*/
 

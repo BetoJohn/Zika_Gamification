@@ -37,6 +37,10 @@
             android:label="@string/title_activity_menu_principal"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".telas.Status"
+            android:label="@string/title_activity_menu_principal"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".telas.MenuPrincipal"
             android:label="@string/title_activity_menu_principal"
             android:screenOrientation="portrait" />
@@ -68,7 +72,10 @@
         <activity
             android:name=".telas.treinamento_modulo1.etapa_2.P5M1E2_Video"
             android:label="" />
-        <activity android:name=".telas.Ranking"></activity>
+        <activity
+            android:name=".telas.Ranking"
+            android:label="@string/title_activity_menu_principal"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

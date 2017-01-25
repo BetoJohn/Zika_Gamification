@@ -8,88 +8,122 @@
     android:background="#D14841"
     tools:context="com.ifs.mt.zika_gamification.telas.Status">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_status"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#D14841"
+        android:elevation="4dp"
+        android:fitsSystemWindows="true"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <ImageView
+            android:id="@+id/iv_voltar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_reply_white_24dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/zika" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/iv_logo"
+                android:text="Status"
+                android:id="@+id/tv_tb_status"
+                android:textColor="#FEFEFE"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.Toolbar>
+
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp"
-        android:src="@drawable/ic_account_circle_white_48dp" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_account_circle_white_48dp"
+        android:layout_below="@+id/tb_status" />
 
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv_experiencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="14dp"
-        android:text="Experiência: "
         android:textColor="@android:color/white"
-        android:textSize="20sp"
+        android:textSize="30sp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/imageView"
         android:layout_alignStart="@+id/linearLayout" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_nivel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:text="Nível: "
         android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:layout_below="@+id/textView1"
-        android:layout_alignStart="@+id/textView1" />
+        android:textSize="30sp"
+        android:layout_below="@+id/tv_experiencia"
+        android:layout_alignStart="@+id/tv_experiencia" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_pontos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:text="Pontos: "
         android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:layout_below="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
+        android:textSize="30sp"
+        android:layout_below="@+id/tv_nivel"
+        android:layout_alignStart="@+id/tv_nivel" />
+
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:orientation="horizontal"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="70dp"
         android:id="@+id/linearLayout"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/tv_pontos"
         android:layout_centerHorizontal="true">
 
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="6dp"
-            android:src="@drawable/modulo_01_c" />
-
-
 
         <ImageView
             android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="6dp"
-            android:src="@drawable/modulo_02_i" />
+            android:src="@drawable/modulo_01_i"
+            android:id="@+id/iv_m1" />
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/modulo_02_i"
+            android:id="@+id/iv_m2" />
 
         <ImageView
             android:layout_width="70dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/modulo_03_i" />
+            android:src="@drawable/modulo_03_i"
+            android:id="@+id/iv_m3" />
 
         <ImageView
             android:layout_width="70dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/modulo_04_i" />
+            android:src="@drawable/modulo_04_i"
+            android:id="@+id/iv_m4" />
     </LinearLayout>
 
 

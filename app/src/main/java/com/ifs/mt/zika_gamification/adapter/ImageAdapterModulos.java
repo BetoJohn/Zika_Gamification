@@ -37,7 +37,7 @@ public class ImageAdapterModulos extends BaseAdapter {
 
         mySharedPreferencesController = MySharedPreferencesController.getInstance(mContext);
         if (mySharedPreferencesController.getData(MySharedPreferencesController.M2)) {
-            mThumbIds[1] = R.drawable.b_a;
+          //  mThumbIds[1] = R.drawable.b_a;
         }
 
         imageView.setImageResource(mThumbIds[position]);
@@ -47,8 +47,8 @@ public class ImageAdapterModulos extends BaseAdapter {
 
     // references to our images
     public Integer[] mThumbIds = {
-            R.drawable.a_a, R.drawable.b_i,
-            R.drawable.c_i, R.drawable.d_i
+           /* R.drawable.a_a, R.drawable.b_i,
+            R.drawable.c_i, R.drawable.d_i*/
 
 
     };
