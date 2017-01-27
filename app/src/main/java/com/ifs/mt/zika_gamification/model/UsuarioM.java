@@ -6,9 +6,9 @@ package com.ifs.mt.zika_gamification.model;
 public class UsuarioM {
 
     private int usuario_id;
+    private String usuario_uid;
     private String usuario_nome;
     private String usuario_login;
-  /*  private String usuario_email;*/
     private String usuario_senha;
     private String usuario_tipo;
 
@@ -18,6 +18,15 @@ public class UsuarioM {
     public void setUsuario_id(int usuario_id) {
         this.usuario_id = usuario_id;
     }
+
+    public String getUsuario_uid() {
+        return usuario_uid;
+    }
+
+    public void setUsuario_uid(String usuario_uid) {
+        this.usuario_uid = usuario_uid;
+    }
+
     public String getUsuario_nome() {
         return usuario_nome;
     }

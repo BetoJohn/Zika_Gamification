@@ -18,6 +18,7 @@
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:gravity="top"
+            android:theme="@style/MyThemeRadioButton"
             android:orientation="vertical">
 
             <ImageView

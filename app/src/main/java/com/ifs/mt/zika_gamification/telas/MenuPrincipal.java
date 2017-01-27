@@ -1,9 +1,15 @@
 package com.ifs.mt.zika_gamification.telas;
 
+import android.app.AlertDialog;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -25,12 +31,10 @@ import com.ifs.mt.zika_gamification.dao.StatusDao;
 import com.ifs.mt.zika_gamification.model.StatusM;
 import com.ifs.mt.zika_gamification.util.ColorTool;
 
-public class MenuPrincipal extends AppCompatActivity  implements View.OnTouchListener {
+public class MenuPrincipal extends AppCompatActivity implements View.OnTouchListener {
 
     private Toolbar tb;
-    private ImageView imageViewTreinamento, imageViewStatus, imageViewRanking;
-    private TextView tv_usuario_logado, textViewTreinamento, textViewStatus, textViewRanking;
-    private Banco banco;
+    private TextView tv_usuario_logado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +109,35 @@ public class MenuPrincipal extends AppCompatActivity  implements View.OnTouchLis
                 if (ct.closeMatch(Color.RED, touchColor, tolerance))
                     startActivity(new Intent(MenuPrincipal.this, Treinamento.class));
                 else if (ct.closeMatch(Color.BLUE, touchColor, tolerance))
-                    startActivity(new Intent(MenuPrincipal.this, Ranking.class));
+                    if (verificaConexao()) {
+                        startActivity(new Intent(MenuPrincipal.this, Ranking.class));
+                    } else {
+                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MenuPrincipal.this);
+                        alertDialog.setTitle("Sua internet não está ativa!");
+                        alertDialog.setMessage("Escolha a rede para ser Ativada!");
+                        // On pressing Settings button
+                        alertDialog.setPositiveButton("Rede de Dados", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                try {
+                                    Intent intent = new Intent();
+                                    intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.Settings$DataUsageSummaryActivity"));
+                                    startActivity(intent);
+
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                }
+                            }
+                        });
+                        alertDialog.setNegativeButton("Wifi", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                setMobileWifiEnabled(MenuPrincipal.this);
+                                dialog.cancel();
+                            }
+                        });
+                        alertDialog.setIcon(R.drawable.icone_zika);
+                        alertDialog.show();
+
+                    }
                 else if (ct.closeMatch(Color.YELLOW, touchColor, tolerance))
                     startActivity(new Intent(MenuPrincipal.this, Status.class));
                /* else if (ct.closeMatch(Color.WHITE, touchColor, tolerance))
@@ -165,6 +197,7 @@ public class MenuPrincipal extends AppCompatActivity  implements View.OnTouchLis
     public void toast(String msg) {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     } // end toast
+
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
@@ -198,5 +231,23 @@ public class MenuPrincipal extends AppCompatActivity  implements View.OnTouchLis
     @Override
     public void onBackPressed() {
 
+    }
+
+    public boolean verificaConexao() {
+        boolean conectado;
+        ConnectivityManager conectivtyManager = (ConnectivityManager) getSystemService(Login.CONNECTIVITY_SERVICE);
+        if (conectivtyManager.getActiveNetworkInfo() != null
+                && conectivtyManager.getActiveNetworkInfo().isAvailable()
+                && conectivtyManager.getActiveNetworkInfo().isConnected()) {
+            conectado = true;
+        } else {
+            conectado = false;
+        }
+        return conectado;
+    }
+
+    private void setMobileWifiEnabled(Context context) {
+        WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        wifiManager.setWifiEnabled(true);
     }
 }

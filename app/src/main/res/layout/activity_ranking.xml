@@ -1,20 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_ranking"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#D14841"
     tools:context="com.ifs.mt.zika_gamification.telas.Ranking">
 
-
-    <ListView
-        android:id="@+id/listView"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_ranking"
         android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#D14841"
+        android:elevation="4dp"
+        android:fitsSystemWindows="true"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <ImageView
+            android:id="@+id/iv_voltar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_reply_white_24dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/zika" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/iv_logo"
+                android:text="Ranking"
+                android:id="@+id/tv_tb_ranking"
+                android:textColor="#FEFEFE"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <ExpandableListView
+        android:layout_below="@+id/tb_ranking"
+        android:id="@+id/expandableListView"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true" />
+        android:divider="@android:color/white"
+        android:dividerHeight="1.3dp"
+        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
+        android:headerDividersEnabled="false"
+        android:footerDividersEnabled="false"
+        android:transcriptMode="normal"
+        android:listSelector="@color/colorPrimaryDark"
+        />
 
 </RelativeLayout>

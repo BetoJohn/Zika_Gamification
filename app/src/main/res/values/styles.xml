@@ -19,6 +19,12 @@
 
     </style>
 
+    <!--Utilizado nos android:theme="@style/MyThemeRadioButton" dos Layouts, para os radiobutton-->
+    <style name="MyThemeRadioButton" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">#009688</item>
+        <item name="android:textColorSecondary">#000000</item>
+    </style>
+
 
     <style name="Theme.MyThemeBottom" parent="AppTheme">
         <!-- colorPrimary is used for the default action bar background -->

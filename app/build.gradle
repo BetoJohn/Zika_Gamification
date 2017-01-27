@@ -34,7 +34,7 @@ dependencies {
     compile 'com.google.firebase:firebase-database:9.6.1'
 
     //Necessario para o FirebaseListAdapter
-    compile 'com.firebaseui:firebase-ui-database:0.6.1'
+    compile 'com.firebaseui:firebase-ui:0.6.1'
 }
 
 apply plugin: 'com.google.gms.google-services'

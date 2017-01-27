@@ -4,7 +4,7 @@ package com.ifs.mt.zika_gamification.model;
  * Created by Betto Silva on 23/01/2017.
  */
 
-public class StatusM {
+public class StatusM implements Comparable<StatusM>{
 
     /*"status_id", "usuario_id",
     "modulo_01_status", "modulo_02_status",
@@ -21,6 +21,21 @@ public class StatusM {
     private boolean modulo_03_status;
     private boolean modulo_04_status;
 
+    //Necessário para ordenar a expandablelistview
+    @Override
+    public int compareTo(StatusM o) {
+        int compareExp = ((StatusM) o).getExperiencia();
+
+        //Se tiverem mesma experiencia verifica pelos pontos
+        if(compareExp == this.experiencia){
+            int comparePontuacao = ((StatusM) o).getPontuacao();
+            return comparePontuacao - this.pontuacao;
+        }
+        //descending order
+        return compareExp - this.experiencia;
+        //ascending order
+        //return this.experiencia - compareExp;
+    }
 
     public int getStatus_id() {
         return status_id;

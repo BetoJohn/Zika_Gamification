@@ -3,12 +3,20 @@ package com.ifs.mt.zika_gamification.telas;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -46,6 +54,9 @@ import com.ifs.mt.zika_gamification.model.UsuarioM;
 import com.ifs.mt.zika_gamification.validacao.AutenticarCadastro;
 import com.ifs.mt.zika_gamification.validacao.AutenticarLogin;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,6 +84,8 @@ public class Login extends Activity {
     private DatabaseReference mDatabase;
     private UsuarioM usuarioLoginFirebase;
     private UsuarioM usuarioCadastroFirebase;
+
+    private UsuarioM usuarioM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,19 +156,23 @@ public class Login extends Activity {
         textViewTipoUsuario = (TextView) findViewById(R.id.textViewTipoUsuario);
         textViewTipoUsuario.setVisibility(View.INVISIBLE);
 
+
         clickCadastro = (TextView) findViewById(R.id.clickCadastro);
+        clickCadastro.setPaintFlags(clickCadastro.getPaintFlags() |  Paint.UNDERLINE_TEXT_FLAG);
         clickCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 scrollLogin.post(new Runnable() {
                     public void run() {
-                        scrollLogin.smoothScrollTo(0, tv_cadastro.getTop());
+                        scrollLogin.smoothScrollTo(0, btnLogin.getBottom());
                     }
                 });
                 setVisible();
                 editNomeCadastro.requestFocus();
             }
         });
+
+
         clickCadastro.setTypeface(font);
         String tipoUsuario = String.valueOf(spinnerTipoUsuario.getSelectedItem());
         System.out.println("Tipo usuário: " + tipoUsuario);
@@ -178,102 +195,144 @@ public class Login extends Activity {
         boolean senha = AutenticarLogin.validarSenha(editSenha,
                 "Insira uma senha válida!");
 
+
         if (login && senha) {
-            try {
-                LoginThread loginThread = new LoginThread();
-                UsuarioM usuario = new UsuarioM();
-                usuario.setUsuario_login(editLogin.getText().toString().trim());
-                usuario.setUsuario_senha(editSenha.getText().toString().trim());
 
-                //loginThread.execute(usuario);
+            if (verificaConexao()) {
 
+                progressDialog.setMessage("Entrando...");
+                progressDialog.setCancelable(false);
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.show();
 
-                bancoUsuario = new Banco(getApplicationContext());
-                UsuarioDao dao = new UsuarioDao(bancoUsuario);
-                usuario = dao.autenticacao(usuario);
-                if (null != usuario) {
+                try {
+                    LoginThread loginThread = new LoginThread();
+                    usuarioM = new UsuarioM();
+                    usuarioM.setUsuario_login(editLogin.getText().toString().trim());
+                    usuarioM.setUsuario_senha(editSenha.getText().toString().trim());
 
-                    System.out.println("Usuario result: " + usuario.getUsuario_login() + " - " + usuario.getUsuario_senha());
+                    //loginThread.execute(usuario);
+                    //TENTO PELO BANCO LOCAL AQUI SE VIER NULO EU APRESENTO A MENSAGEM
+                    bancoUsuario = new Banco(getApplicationContext());
+                    UsuarioDao dao = new UsuarioDao(bancoUsuario);
+                    UsuarioM usuarioBanco = dao.autenticacao(usuarioM);
 
-                    Intent intent = new Intent();
-                    Bundle bundle = new Bundle();
+                    if (null != usuarioBanco) {
+                        System.out.println("Usuario result: " + usuarioBanco.getUsuario_login() + " - " + usuarioBanco.getUsuario_senha());
 
-                    setUsuarioLogado(usuario);
-                    intent.putExtra("dados", bundle);
-                    // se deu tudo certo chama a classe MenuApp
-                    intent.setClass(Login.this, MenuPrincipal.class);
-                    startActivity(intent);
-
-
-                } else {
-
-                    progressDialog.setMessage("Entrando...");
-                    progressDialog.setCancelable(false);
-                    progressDialog.setCanceledOnTouchOutside(false);
-                    progressDialog.show();
-
-                    mAuth.signInWithEmailAndPassword(editLogin.getText().toString().trim(), editSenha.getText().toString().trim())
-                            .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        String userId = task.getResult().getUser().getUid();
-                                        mDatabase.child("usuarios").child(userId).addListenerForSingleValueEvent(
-                                                new ValueEventListener() {
-                                                    @Override
-                                                    public void onDataChange(DataSnapshot dataSnapshot) {
-                                                        final UsuarioM usuarioM;
-                                                        usuarioM = dataSnapshot.getValue(UsuarioM.class);
-                                                        setUsuarioLogado(usuarioM);
-                                                        System.out.println("User: " + usuarioM.getUsuario_login() + " - " + usuarioM.getUsuario_nome());
-                                                        progressDialog.dismiss();
-                                                        startActivity(new Intent(Login.this, MenuPrincipal.class));
-                                                    }
-
-                                                    @Override
-                                                    public void onCancelled(DatabaseError databaseError) {
-                                                        Log.w("CAncelled", "getUser:onCancelled", databaseError.toException());
-                                                        // ...
-                                                    }
-                                                });
-
-                                    } else {
-                                        progressDialog.dismiss();
-                                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Login.this);
-                                        alertDialog.setTitle("Erro!");
-                                        alertDialog.setMessage("Não foi encontrado nenhum usuário com esse Login e Senha. Deseja efetuar um cadastro?");
-                                        alertDialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int which) {
-
-                                                scrollLogin.post(new Runnable() {
-                                                    public void run() {
-                                                        scrollLogin.smoothScrollTo(0, btnLogin.getBottom());
-                                                    }
-                                                });
-
-                                                editLoginCadastro.setText(editLogin.getText().toString());
-                                                setVisible();
-                                                editNomeCadastro.requestFocus();
-
-                                            }
-                                        });
-                                        alertDialog.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.cancel();
-                                            }
-                                        });
-                                        // alertDialog.setIcon(R.drawable.dengue_10dp);
-                                        alertDialog.show();
-
+                        Intent intent = new Intent();
+                        Bundle bundle = new Bundle();
+                        //Só para colocar o usuário novamente na seção;
+                        mAuth.signInWithEmailAndPassword(usuarioBanco.getUsuario_login(), usuarioBanco.getUsuario_senha())
+                                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
                                     }
-                                }
-                            });
+                                });
+                        setUsuarioLogado(usuarioBanco);
+                        intent.putExtra("dados", bundle);
+                        progressDialog.dismiss();
+                        // se deu tudo certo chama a classe MenuApp
+                        intent.setClass(Login.this, MenuPrincipal.class);
+                        startActivity(intent);
+                    } else {
+
+                        mAuth.signInWithEmailAndPassword(editLogin.getText().toString().trim(), editSenha.getText().toString().trim())
+                                .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
+                                            String userId = task.getResult().getUser().getUid();
+                                            mDatabase.child("usuarios").child(userId).addListenerForSingleValueEvent(
+                                                    new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                                            final UsuarioM usuarioM;
+                                                            usuarioM = dataSnapshot.getValue(UsuarioM.class);
+                                                            setUsuarioLogado(usuarioM);
+                                                            //se ocorrer do usúario desinstalar a app mais o remoto ter o usúario
+                                                            //então ele será armazenado localmente, novamente;
+                                                            UsuarioDao dao = new UsuarioDao(bancoUsuario);
+                                                            dao.insert(usuarioM);
+
+                                                            System.out.println("User: " + usuarioM.getUsuario_login() + " - " + usuarioM.getUsuario_nome());
+                                                            progressDialog.dismiss();
+                                                            startActivity(new Intent(Login.this, MenuPrincipal.class));
+                                                        }
+
+                                                        @Override
+                                                        public void onCancelled(DatabaseError databaseError) {
+                                                            Log.w("CAncelled", "getUser:onCancelled", databaseError.toException());
+                                                            // ...
+                                                        }
+                                                    });
+
+                                        } else {
+
+                                            progressDialog.dismiss();
+                                            AlertDialog.Builder alertDialog = new AlertDialog.Builder(Login.this);
+                                            alertDialog.setTitle("Erro!");
+                                            alertDialog.setMessage("Não foi encontrado nenhum usuário com esse Login e Senha. Deseja efetuar um cadastro?");
+                                            alertDialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which) {
+
+                                                    scrollLogin.post(new Runnable() {
+                                                        public void run() {
+                                                            scrollLogin.smoothScrollTo(0, btnLogin.getBottom());
+                                                        }
+                                                    });
+
+                                                    editLoginCadastro.setText(editLogin.getText().toString());
+                                                    setVisible();
+                                                    editNomeCadastro.requestFocus();
+
+                                                }
+                                            });
+                                            alertDialog.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    dialog.cancel();
+                                                }
+                                            });
+                                            // alertDialog.setIcon(R.drawable.dengue_10dp);
+                                            alertDialog.show();
 
 
+                                        }
+                                    }
+                                });
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+
+            } else {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(Login.this);
+                alertDialog.setTitle("Sua internet não está ativa!");
+                alertDialog.setMessage("Escolha a rede para ser Ativada!");
+                // On pressing Settings button
+                alertDialog.setPositiveButton("Rede de Dados", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        try {
+                            Intent intent = new Intent();
+                            intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.Settings$DataUsageSummaryActivity"));
+                            startActivity(intent);
+
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                });
+                alertDialog.setNegativeButton("Wifi", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        setMobileWifiEnabled(Login.this);
+                        dialog.cancel();
+                    }
+                });
+                alertDialog.setIcon(R.drawable.icone_zika);
+                alertDialog.show();
             }
+
+
         }
 
 
@@ -295,62 +354,111 @@ public class Login extends Activity {
 
 
         if (login && senha) {
-            CadastroThread cadastroThread = new CadastroThread();
-            final UsuarioM usuario = new UsuarioM();
-            usuario.setUsuario_nome(editNomeCadastro.getText().toString());
-            usuario.setUsuario_login(editLoginCadastro.getText().toString());
-            usuario.setUsuario_senha(editSenhaCadastro.getText().toString());
-            usuario.setUsuario_tipo(tipoUsuario);
+            if (verificaConexao()) {
+                try {
+                    CadastroThread cadastroThread = new CadastroThread();
+                    final UsuarioM usuario = new UsuarioM();
+                    usuario.setUsuario_nome(editNomeCadastro.getText().toString());
+                    usuario.setUsuario_login(editLoginCadastro.getText().toString());
+                    usuario.setUsuario_senha(editSenhaCadastro.getText().toString());
+                    usuario.setUsuario_tipo(tipoUsuario);
 
-            //cadastroThread.execute(usuario);
+                    //cadastroThread.execute(usuario);
 
-            progressDialog.setMessage("Registrando Usuário...");
-            progressDialog.setCancelable(false);
-            progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.show();
-            //creating a new user
-            mAuth.createUserWithEmailAndPassword(usuario.getUsuario_login(), usuario.getUsuario_senha())
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            //checking if success
-                            if (task.isSuccessful()) {
-                                //display some message here
+                    progressDialog.setMessage("Registrando Usuário...");
+                    progressDialog.setCancelable(false);
+                    progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.show();
+                    //creating a new user
+                    mAuth.createUserWithEmailAndPassword(usuario.getUsuario_login(), usuario.getUsuario_senha())
+                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    //checking if success
+                                    if (task.isSuccessful()) {
+                                        //display some message here
+                                        String userId = task.getResult().getUser().getUid();
+                                        //-------------- Teste de Inserção do Usuario -----------
+                                        bancoUsuario = new Banco(Login.this);
+                                        UsuarioDao dao = new UsuarioDao(bancoUsuario);
+                                        usuario.setUsuario_uid(userId);
+                                        usuario.setUsuario_id(dao.insert(usuario));
 
-                                //-------------- Teste de Inserção do Usuario -----------
-                                bancoUsuario = new Banco(Login.this);
-                                UsuarioDao dao = new UsuarioDao(bancoUsuario);
-                                usuario.setUsuario_id(dao.insert(usuario));
 
-                                String userId = task.getResult().getUser().getUid();
-                                mDatabase.child("usuarios").child(userId).setValue(usuario);
-                                StatusM statusM = new StatusM();
+                                        mDatabase.child("usuarios").child(userId).setValue(usuario);
+                                        StatusM statusM = new StatusM();
 
-                                StatusDao statusDao = new StatusDao(bancoUsuario);
-                                statusM.setUsuario_id(usuario.getUsuario_id());
-                                statusM.setUsuario_nome(usuario.getUsuario_nome());
-                                statusM.setExperiencia(0);
-                                statusM.setNivel(0);
-                                statusM.setPontuacao(0);
-                                statusM.setStatus_id(statusDao.insert(statusM));
-                                mDatabase.child("usuarios-status").child(userId).setValue(statusM);
+                                        StatusDao statusDao = new StatusDao(bancoUsuario);
+                                        statusM.setUsuario_id(usuario.getUsuario_id());
+                                        statusM.setUsuario_nome(usuario.getUsuario_nome());
+                                        statusM.setExperiencia(0);
+                                        statusM.setNivel(0);
+                                        statusM.setPontuacao(0);
+                                        statusM.setStatus_id(statusDao.insert(statusM));
+                                        mDatabase.child("usuarios-status").child(userId).setValue(statusM);
 
-                                setUsuarioLogado(usuario);
-                                Toast.makeText(Login.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
-                                progressDialog.dismiss();
-                                startActivity(new Intent(Login.this, MenuPrincipal.class));
-                            } else {
-                                //display some message here
-                                Toast.makeText(Login.this, "Erro ao cadastrar usuário, email já cadastrado, tente novamente mais tarde!", Toast.LENGTH_LONG).show();
-                            }
-                            progressDialog.dismiss();
+                                        setUsuarioLogado(usuario);
+                                        Toast.makeText(Login.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
+                                        progressDialog.dismiss();
+                                        startActivity(new Intent(Login.this, MenuPrincipal.class));
+                                    } else {
+                                        //display some message here
+                                        Toast.makeText(Login.this, "Erro ao cadastrar usuário, email já cadastrado, tente novamente mais tarde!", Toast.LENGTH_LONG).show();
+                                    }
+                                    progressDialog.dismiss();
+                                }
+                            });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            } else {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(Login.this);
+                alertDialog.setTitle("Sua internet não está ativa!");
+                alertDialog.setMessage("Escolha a rede para ser Ativada!");
+                // On pressing Settings button
+                alertDialog.setPositiveButton("Rede de Dados", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        try {
+                            Intent intent = new Intent();
+                            intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.Settings$DataUsageSummaryActivity"));
+                            startActivity(intent);
+
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
                         }
-                    });
+                    }
+                });
+                alertDialog.setNegativeButton("Wifi", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        setMobileWifiEnabled(Login.this);
+                        dialog.cancel();
+                    }
+                });
+                alertDialog.setIcon(R.drawable.icone_zika);
+                alertDialog.show();
+            }
+
         }
-
-
     }
 
+    public boolean verificaConexao() {
+        boolean conectado;
+        ConnectivityManager conectivtyManager = (ConnectivityManager) getSystemService(Login.CONNECTIVITY_SERVICE);
+        if (conectivtyManager.getActiveNetworkInfo() != null
+                && conectivtyManager.getActiveNetworkInfo().isAvailable()
+                && conectivtyManager.getActiveNetworkInfo().isConnected()) {
+            conectado = true;
+        } else {
+            conectado = false;
+        }
+        return conectado;
+    }
+
+    private void setMobileWifiEnabled(Context context) {
+        WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        wifiManager.setWifiEnabled(true);
+    }
 
     class LoginThread extends AsyncTask<UsuarioM, Void, UsuarioM> {
 

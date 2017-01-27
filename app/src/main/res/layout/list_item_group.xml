@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/expandedListItem1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_marginRight="10dp"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:id="@+id/expandedListItem2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:id="@+id/expandedListItem3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:paddingTop="10dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/iv_m1"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/modulo_01_i" />
+
+        <ImageView
+            android:id="@+id/iv_m2"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/modulo_02_i" />
+
+        <ImageView
+            android:id="@+id/iv_m3"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/modulo_03_i" />
+
+        <ImageView
+            android:id="@+id/iv_m4"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/modulo_04_i" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -19,8 +19,8 @@ public class Banco extends SQLiteOpenHelper {
 
     //UsuarioM
     public final static String TB_USUARIO = "usuario";
-    public final static String CREATE_TB_USUARIO = "create table IF NOT EXISTS usuario (usuario_id integer PRIMARY KEY AUTOINCREMENT, usuario_nome text, usuario_login text,   usuario_senha text,  usuario_tipo text)";
-    public final static String[] COLUMNS_USUARIO = {"usuario_id", "usuario_nome", "usuario_login",  "usuario_senha", "usuario_tipo"};
+    public final static String CREATE_TB_USUARIO = "create table IF NOT EXISTS usuario (usuario_id integer PRIMARY KEY AUTOINCREMENT, usuario_uid text, usuario_nome text, usuario_login text,   usuario_senha text,  usuario_tipo text)";
+    public final static String[] COLUMNS_USUARIO = {"usuario_id", "usuario_uid", "usuario_nome", "usuario_login",  "usuario_senha", "usuario_tipo"};
 
 
     //HistoricoM

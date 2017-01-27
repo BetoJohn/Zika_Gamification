@@ -206,9 +206,12 @@ public class P5M1E1 extends Fragment {
 
                         mDatabase = FirebaseDatabase.getInstance().getReference();
                         StatusM statusM = new StatusM();
-                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        if (user != null) {
-                            String userId = user.getUid();
+                        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        //String userId = user.getUid();
+                        String userUid = Login.getUsuarioLogado().getUsuario_uid();
+                        System.out.println("UserUid: "+userUid);
+
+                        if (userUid != null) {
                             statusM.setUsuario_id(Login.getUsuarioLogado().getUsuario_id());
                             StatusM statusBanco = statusDao.getStatusByUsuario(statusM.getUsuario_id());
                             statusM.setPontuacao(numAcertos + statusBanco.getPontuacao());
@@ -220,7 +223,7 @@ public class P5M1E1 extends Fragment {
                             //Atualização local
                             statusM.setStatus_id(statusDao.update(statusM));
 
-                            DatabaseReference ref = mDatabase.child("usuarios-status").child(userId);
+                            DatabaseReference ref = mDatabase.child("usuarios-status").child(userUid);
                             Map<String, Object> updates = new HashMap<>();
                             updates.put("pontuacao", statusM.getPontuacao());
                             updates.put("nivel", statusM.getNivel());

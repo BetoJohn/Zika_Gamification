@@ -33,6 +33,7 @@ public class UsuarioDao {
          *
          **/
         ContentValues valores = new ContentValues();
+        valores.put("usuario_uid", usu.getUsuario_uid());
         valores.put("usuario_nome", usu.getUsuario_nome());
         valores.put("usuario_login", usu.getUsuario_login());
        /* valores.put("usuario_email", usu.getUsuario_email());*/
@@ -69,11 +70,11 @@ public class UsuarioDao {
         while (!rs.isAfterLast()) {
             UsuarioM usu = new UsuarioM();
             usu.setUsuario_id(rs.getInt(0));
-            usu.setUsuario_nome(rs.getString(1));
-            usu.setUsuario_login(rs.getString(2));
-           /* usu.setUsuario_email(rs.getString(3));*/
-            usu.setUsuario_senha(rs.getString(3));
-            usu.setUsuario_tipo(rs.getString(4));
+            usu.setUsuario_uid(rs.getString(1));
+            usu.setUsuario_nome(rs.getString(2));
+            usu.setUsuario_login(rs.getString(3));
+            usu.setUsuario_senha(rs.getString(4));
+            usu.setUsuario_tipo(rs.getString(5));
             list.add(usu);
             rs.moveToNext();
         }
