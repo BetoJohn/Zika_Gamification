@@ -242,7 +242,7 @@ public class Login extends Activity {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
-                                            String userId = task.getResult().getUser().getUid();
+                                            final String userId = task.getResult().getUser().getUid();
                                             mDatabase.child("usuarios").child(userId).addListenerForSingleValueEvent(
                                                     new ValueEventListener() {
                                                         @Override
@@ -252,8 +252,36 @@ public class Login extends Activity {
                                                             setUsuarioLogado(usuarioM);
                                                             //se ocorrer do usúario desinstalar a app mais o remoto ter o usúario
                                                             //então ele será armazenado localmente, novamente;
-                                                            UsuarioDao dao = new UsuarioDao(bancoUsuario);
-                                                            dao.insert(usuarioM);
+                                                            UsuarioDao usuarioDao = new UsuarioDao(bancoUsuario);
+                                                            usuarioDao.insert(usuarioM);
+                                                            final StatusDao statusDao = new StatusDao(bancoUsuario);
+                                                            StatusM statusBanco = statusDao.getStatusByUsuario(usuarioM.getUsuario_id());
+                                                            if(statusBanco != null){
+                                                                mDatabase.child("usuarios-status").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                                                                    @Override
+                                                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                                                        StatusM statusM = dataSnapshot.getValue(StatusM.class);
+                                                                        statusDao.update(statusM);
+                                                                    }
+                                                                    @Override
+                                                                    public void onCancelled(DatabaseError databaseError) {
+
+                                                                    }
+                                                                });
+
+                                                            }else{
+                                                                mDatabase.child("usuarios-status").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                                                                    @Override
+                                                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                                                        StatusM statusM = dataSnapshot.getValue(StatusM.class);
+                                                                        statusDao.insert(statusM);
+                                                                    }
+                                                                    @Override
+                                                                    public void onCancelled(DatabaseError databaseError) {
+
+                                                                    }
+                                                                });
+                                                            }
 
                                                             System.out.println("User: " + usuarioM.getUsuario_login() + " - " + usuarioM.getUsuario_nome());
                                                             progressDialog.dismiss();
