@@ -49,13 +49,11 @@
             android:label="@string/title_activity_treinamento"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".telas.treinamento_modulo3.C"
-            android:label="@string/title_activity_c1" />
-        <activity
-            android:name=".telas.treinamento_modulo2.B"
-            android:label="@string/title_activity_b" />
-        <activity
             android:name=".telas.treinamento_modulo1.M1"
+            android:label="@string/title_activity_m1_e1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".telas.treinamento_modulo2.M2"
             android:label="@string/title_activity_m1_e1"
             android:screenOrientation="portrait" />
         <activity
@@ -72,6 +70,31 @@
         <activity
             android:name=".telas.treinamento_modulo1.etapa_2.P5M1E2_Video"
             android:label="" />
+
+        <activity
+            android:name=".telas.treinamento_modulo2.etapa_1.M2E1"
+            android:label="@string/title_activity_m1_e1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".telas.treinamento_modulo2.etapa_1.P5M2E1_Video"
+            android:label="@string/title_activity_m1_e1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".telas.treinamento_modulo2.etapa_2.M2E2"
+            android:label="@string/title_activity_m1_e1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".telas.treinamento_modulo2.etapa_2.P5M2E2_Video"
+            android:label="@string/title_activity_m1_e1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".telas.treinamento_modulo2.etapa_3.M2E3"
+            android:label="@string/title_activity_m1_e1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".telas.treinamento_modulo2.etapa_3.P5M2E3_Video"
+            android:label="@string/title_activity_m1_e1"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".telas.Ranking"
             android:label="@string/title_activity_menu_principal"

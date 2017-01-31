@@ -15,6 +15,7 @@ import com.ifs.mt.zika_gamification.telas.Login;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.M1;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_2.M1E2;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo2.M2;
 
 /**
  * Created by Betto Silva on 14/12/2016.
@@ -24,12 +25,10 @@ public class ModulosViewHolders extends RecyclerView.ViewHolder {
     private Banco banco;
     public ImageView countryPhoto;
     public int currentItem;
-    //private boolean m1 = true, m2 = false, m3 = false, m4 = false;
 
     public ModulosViewHolders(View v) {
         super(v);
         view = v;
-        // countryName = (TextView) itemView.findViewById(R.id.country_name);
         countryPhoto = (ImageView) view.findViewById(R.id.imageView);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +45,15 @@ public class ModulosViewHolders extends RecyclerView.ViewHolder {
                             break;
                         } else {
                             Toast.makeText(v.getContext(), "Módulo 01 Concluído", Toast.LENGTH_SHORT).show();
+                            break;
+                        }
+                    case 1:
+                        int statusModulo02 = moduloDao.getStatusModuloByUsuario(Login.getUsuarioLogado().getUsuario_id(), "M2");
+                        if (statusModulo02 != 1) {
+                            v.getContext().startActivity(new Intent(v.getContext(), M2.class));
+                            break;
+                        } else {
+                            Toast.makeText(v.getContext(), "Módulo 02 Concluído", Toast.LENGTH_SHORT).show();
                             break;
                         }
 

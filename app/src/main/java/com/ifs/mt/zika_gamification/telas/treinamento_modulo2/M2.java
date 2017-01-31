@@ -1,4 +1,4 @@
-package com.ifs.mt.zika_gamification.telas.treinamento_modulo1;
+package com.ifs.mt.zika_gamification.telas.treinamento_modulo2;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -13,14 +13,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ifs.mt.zika_gamification.R;
-import com.ifs.mt.zika_gamification.adapter.EtapasM1RecyclerViewAdapter;
+import com.ifs.mt.zika_gamification.adapter.EtapasM2RecyclerViewAdapter;
 import com.ifs.mt.zika_gamification.telas.Treinamento;
 import com.ifs.mt.zika_gamification.util.MySharedPreferencesController;
 
-public class M1 extends AppCompatActivity {
+public class M2 extends AppCompatActivity {
     private Toolbar tb_etapa;
     private TextView tv_treinamento;
-    private boolean A = false, B = false;
     private StaggeredGridLayoutManager gaggeredGridLayoutManager;
     private MySharedPreferencesController mySharedPreferencesController;
 
@@ -39,41 +38,10 @@ public class M1 extends AppCompatActivity {
         tb_etapa.findViewById(R.id.iv_voltar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(M1.this, Treinamento.class));
+                startActivity(new Intent(M2.this, Treinamento.class));
             }
         });
 
-       /* GridView gridview = (GridView) findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapterEtapasM1(this));
-
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
-                *//*Toast.makeText(M1.this, "" + position,
-                        Toast.LENGTH_SHORT).show();*//*
-
-                mySharedPreferencesController = MySharedPreferencesController.getInstance(getApplicationContext());
-               // mySharedPreferencesController.clearData();
-
-                A = true;
-                B = mySharedPreferencesController.getData(MySharedPreferencesController.M1_E2);
-
-                switch(position){
-                    case 0:
-                        if (A)
-                            startActivity(new Intent(M1.this, M1E1.class));
-                        break;
-                    case 1:
-                        if (B)
-                            startActivity(new Intent(M1.this, M1E2.class));
-                        break;
-
-
-                }
-
-
-            }
-        });*/
 
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler_view_etapa);
         gaggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
@@ -81,13 +49,13 @@ public class M1 extends AppCompatActivity {
         recyclerView.setLayoutManager(gaggeredGridLayoutManager);
         recyclerView.setHasFixedSize(true);
         //Apresenta os icones das etapas
-        EtapasM1RecyclerViewAdapter rcAdapter = new EtapasM1RecyclerViewAdapter(M1.this);
+        EtapasM2RecyclerViewAdapter rcAdapter = new EtapasM2RecyclerViewAdapter(M2.this);
         recyclerView.setAdapter(rcAdapter);
     }
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(M1.this, Treinamento.class));
+        startActivity(new Intent(M2.this, Treinamento.class));
     }
 
     @Override

@@ -22,12 +22,7 @@
             android:layout_marginRight="10dp"
             android:src="@drawable/ic_reply_white_24dp" />
 
-        <!--    <ImageView
-                android:id="@+id/iv_logo_menu_principal"
-                android:layout_width="95dp"
-                android:layout_height="50dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/zika" />-->
+
 
         <RelativeLayout
             android:layout_width="wrap_content"

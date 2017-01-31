@@ -9,41 +9,41 @@ import android.view.ViewGroup;
 import com.ifs.mt.zika_gamification.R;
 import com.ifs.mt.zika_gamification.dao.Banco;
 import com.ifs.mt.zika_gamification.dao.EtapaDao;
-import com.ifs.mt.zika_gamification.dao.HistoricoDao;
-import com.ifs.mt.zika_gamification.dao.ModuloDao;
 import com.ifs.mt.zika_gamification.telas.Login;
 import com.ifs.mt.zika_gamification.util.MySharedPreferencesController;
 
 /**
  * Created by Betto Silva on 14/12/2016.
  */
-public class EtapasM1RecyclerViewAdapter extends RecyclerView.Adapter<EtapasM1ViewHolders> {
+public class EtapasM2RecyclerViewAdapter extends RecyclerView.Adapter<EtapasM2ViewHolders> {
 
     private Context context;
     private Banco banco;
-    private MySharedPreferencesController mySharedPreferencesController;
 
-    public EtapasM1RecyclerViewAdapter(Context context) {
+    public EtapasM2RecyclerViewAdapter(Context context) {
         this.context = context;
     }
 
     @Override
-    public EtapasM1ViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
+    public EtapasM2ViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.etapas_list_card, null);
         //Faz as chamadas dos cliques
-        EtapasM1ViewHolders rcv = new EtapasM1ViewHolders(layoutView);
+        EtapasM2ViewHolders rcv = new EtapasM2ViewHolders(layoutView);
         return rcv;
     }
 
     @Override
-    public void onBindViewHolder(EtapasM1ViewHolders holder, int position) {
-        mySharedPreferencesController = MySharedPreferencesController.getInstance(context);
+    public void onBindViewHolder(EtapasM2ViewHolders holder, int position) {
         banco = new Banco(context);
         EtapaDao etapaDao = new EtapaDao(banco);
-        int statusEtapa01 = etapaDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E1M1", "M1");
+        int statusEtapa01 = etapaDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E1M2", "M2");
         if(statusEtapa01 == 1){
             mThumbIds[1] = R.drawable.emblema2_a;
+        }
+        int statusEtapa02 = etapaDao.getStatusEtapaByUsuario(Login.getUsuarioLogado().getUsuario_id(), "E2M2", "M2");
+        if(statusEtapa02 == 1){
+            mThumbIds[2] = R.drawable.emblema3_a;
         }
 
         holder.currentItem = position;
@@ -52,7 +52,7 @@ public class EtapasM1RecyclerViewAdapter extends RecyclerView.Adapter<EtapasM1Vi
 
     // references to our images
     public Integer[] mThumbIds = {
-            R.drawable.emblema1_a, R.drawable.emblema2_i
+            R.drawable.emblema1_a, R.drawable.emblema2_i, R.drawable.emblema3_i
     };
 
     @Override
