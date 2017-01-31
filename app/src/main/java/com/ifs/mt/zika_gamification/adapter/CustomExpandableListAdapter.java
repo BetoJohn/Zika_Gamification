@@ -55,17 +55,17 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         TextView expandedListTextView1 = (TextView) convertView
                 .findViewById(R.id.expandedListItem1);
 
-        expandedListTextView1.setText("Experiência: "+ String.valueOf(expandedListText.getExperiencia()));
+        expandedListTextView1.setText("Experiência: "+ String.valueOf(expandedListText.getExperiencia())+"");
 
         TextView expandedListTextView2 = (TextView) convertView
                 .findViewById(R.id.expandedListItem2);
 
-        expandedListTextView2.setText("Pontos: "+ String.valueOf(expandedListText.getPontuacao()));
+        expandedListTextView2.setText("Acertos: "+ String.valueOf(expandedListText.getPontuacao())+"");
 
         TextView expandedListTextView3 = (TextView) convertView
                 .findViewById(R.id.expandedListItem3);
 
-        expandedListTextView3.setText("Nível: "+ String.valueOf(expandedListText.getNivel()));
+        expandedListTextView3.setText("Nível: "+ String.valueOf(expandedListText.getNivel())+"");
 
         ImageView iv_m1 = (ImageView)convertView.findViewById(R.id.iv_m1);
         if(expandedListText.isModulo_01_status()){

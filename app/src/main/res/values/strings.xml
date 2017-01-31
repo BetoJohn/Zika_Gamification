@@ -78,6 +78,7 @@
     <string name="app_name">Zika_Gamification</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_sair">Sair</string>
+    <string name="action_help">Ajuda</string>
     <string name="title_activity_menu_principal"></string>
     <string name="title_activity_treinamento">Treinamento</string>
     <string name="action_settings">Settings</string>
