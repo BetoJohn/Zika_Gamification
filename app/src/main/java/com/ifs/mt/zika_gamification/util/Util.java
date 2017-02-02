@@ -128,6 +128,8 @@ public class Util {
          Etapa 01:D/D/D/B/A
          Etapa 02:D/C/A/D/C
          Etapa 03:A/D/B/A/D
+
+         DA PARA APRIMORAR VERIFICANDO ANTES DE INSERIR EM QUAL MÓDULO ESTA, ASSIM SÓ INSERE NO LISTA O GABARITO DO MÓDULO EM QUESTÃO
          **/
 
         //=============== Módulo 01 Etapa 01 =============
@@ -157,7 +159,7 @@ public class Util {
         m1e1p5.setResposta_Item("D");
         list.add(m1e1p5);
 
-        //=============== Módulo 02 Etapa 02 =============
+        //=============== Módulo 01 Etapa 02 =============
         RespostaM m1e2p1 = new RespostaM();
         m1e2p1.setIdent("R1P1M1E2");
         m1e2p1.setResposta_Item("B");
@@ -182,6 +184,214 @@ public class Util {
         m1e2p5.setIdent("R5P5M1E2");
         m1e2p5.setResposta_Item("C");
         list.add(m1e2p5);
+
+        //=============== Módulo 02 Etapa 01 =============
+        RespostaM m2e1p1 = new RespostaM();
+        m2e1p1.setIdent("R1P1M2E1");
+        m2e1p1.setResposta_Item("A");
+        list.add(m2e1p1);
+
+        RespostaM m2e1p2 = new RespostaM();
+        m2e1p2.setIdent("R2P2M2E1");
+        m2e1p2.setResposta_Item("A");
+        list.add(m2e1p2);
+
+        RespostaM m2e1p3 = new RespostaM();
+        m2e1p3.setIdent("R3P3M2E1");
+        m2e1p3.setResposta_Item("B");
+        list.add(m2e1p3);
+
+        RespostaM m2e1p4 = new RespostaM();
+        m2e1p4.setIdent("R4P4M2E1");
+        m2e1p4.setResposta_Item("C");
+        list.add(m2e1p4);
+
+        RespostaM m2e1p5 = new RespostaM();
+        m2e1p5.setIdent("R5P5M2E1");
+        m2e1p5.setResposta_Item("A");
+        list.add(m2e1p5);
+
+        //=============== Módulo 02 Etapa 02 =============
+        RespostaM m2e2p1 = new RespostaM();
+        m2e2p1.setIdent("R1P1M2E2");
+        m2e2p1.setResposta_Item("A");
+        list.add(m2e2p1);
+
+        RespostaM m2e2p2 = new RespostaM();
+        m2e2p2.setIdent("R2P2M2E2");
+        m2e2p2.setResposta_Item("D");
+        list.add(m2e2p2);
+
+        RespostaM m2e2p3 = new RespostaM();
+        m2e2p3.setIdent("R3P3M2E2");
+        m2e2p3.setResposta_Item("A");
+        list.add(m2e2p3);
+
+        RespostaM m2e2p4 = new RespostaM();
+        m2e2p4.setIdent("R4P4M2E2");
+        m2e2p4.setResposta_Item("A");
+        list.add(m2e2p4);
+
+        RespostaM m2e2p5 = new RespostaM();
+        m2e2p5.setIdent("R5P5M2E2");
+        m2e2p5.setResposta_Item("D");
+        list.add(m2e2p5);
+
+        //=============== Módulo 02 Etapa 03 =============
+        RespostaM m2e3p1 = new RespostaM();
+        m2e3p1.setIdent("R1P1M2E3");
+        m2e3p1.setResposta_Item("C");
+        list.add(m2e3p1);
+
+        RespostaM m2e3p2 = new RespostaM();
+        m2e3p2.setIdent("R2P2M2E3");
+        m2e3p2.setResposta_Item("C");
+        list.add(m2e3p2);
+
+        RespostaM m2e3p3 = new RespostaM();
+        m2e3p3.setIdent("R3P3M2E3");
+        m2e3p3.setResposta_Item("D");
+        list.add(m2e3p3);
+
+        RespostaM m2e3p4 = new RespostaM();
+        m2e3p4.setIdent("R4P4M2E3");
+        m2e3p4.setResposta_Item("D");
+        list.add(m2e3p4);
+
+        RespostaM m2e3p5 = new RespostaM();
+        m2e3p5.setIdent("R5P5M2E3");
+        m2e3p5.setResposta_Item("D");
+        list.add(m2e3p5);
+
+        //=============== Módulo 03 Etapa 01 =============
+        RespostaM m3e1p1 = new RespostaM();
+        m3e1p1.setIdent("R1P1M3E1");
+        m3e1p1.setResposta_Item("C");
+        list.add(m3e1p1);
+
+        RespostaM m3e1p2 = new RespostaM();
+        m3e1p2.setIdent("R2P2M3E1");
+        m3e1p2.setResposta_Item("D");
+        list.add(m3e1p2);
+
+        RespostaM m3e1p3 = new RespostaM();
+        m3e1p3.setIdent("R3P3M3E1");
+        m3e1p3.setResposta_Item("C");
+        list.add(m3e1p3);
+
+        RespostaM m3e1p4 = new RespostaM();
+        m3e1p4.setIdent("R4P4M3E1");
+        m3e1p4.setResposta_Item("D");
+        list.add(m3e1p4);
+
+        RespostaM m3e1p5 = new RespostaM();
+        m3e1p5.setIdent("R5P5M3E1");
+        m3e1p5.setResposta_Item("B");
+        list.add(m3e1p5);
+
+        //=============== Módulo 03 Etapa 02 =============
+        RespostaM m3e2p1 = new RespostaM();
+        m3e2p1.setIdent("R1P1M3E2");
+        m3e2p1.setResposta_Item("A");
+        list.add(m3e2p1);
+
+        RespostaM m3e2p2 = new RespostaM();
+        m3e2p2.setIdent("R2P2M3E2");
+        m3e2p2.setResposta_Item("D");
+        list.add(m3e2p2);
+
+        RespostaM m3e2p3 = new RespostaM();
+        m3e2p3.setIdent("R3P3M3E2");
+        m3e2p3.setResposta_Item("A");
+        list.add(m3e2p3);
+
+        RespostaM m3e2p4 = new RespostaM();
+        m3e2p4.setIdent("R4P4M3E2");
+        m3e2p4.setResposta_Item("D");
+        list.add(m3e2p4);
+
+        RespostaM m3e2p5 = new RespostaM();
+        m3e2p5.setIdent("R5P5M3E2");
+        m3e2p5.setResposta_Item("A");
+        list.add(m3e2p5);
+
+        //=============== Módulo 04 Etapa 01 =============
+        RespostaM m4e1p1 = new RespostaM();
+        m4e1p1.setIdent("R1P1M4E1");
+        m4e1p1.setResposta_Item("D");
+        list.add(m4e1p1);
+
+        RespostaM m4e1p2 = new RespostaM();
+        m4e1p2.setIdent("R2P2M4E1");
+        m4e1p2.setResposta_Item("D");
+        list.add(m4e1p2);
+
+        RespostaM m4e1p3 = new RespostaM();
+        m4e1p3.setIdent("R3P3M4E1");
+        m4e1p3.setResposta_Item("D");
+        list.add(m4e1p3);
+
+        RespostaM m4e1p4 = new RespostaM();
+        m4e1p4.setIdent("R4P4M4E1");
+        m4e1p4.setResposta_Item("B");
+        list.add(m4e1p4);
+
+        RespostaM m4e1p5 = new RespostaM();
+        m4e1p5.setIdent("R5P5M4E1");
+        m4e1p5.setResposta_Item("A");
+        list.add(m4e1p5);
+
+        //=============== Módulo 04 Etapa 02 =============
+        RespostaM m4e2p1 = new RespostaM();
+        m4e2p1.setIdent("R1P1M4E2");
+        m4e2p1.setResposta_Item("D");
+        list.add(m4e2p1);
+
+        RespostaM m4e2p2 = new RespostaM();
+        m4e2p2.setIdent("R2P2M4E2");
+        m4e2p2.setResposta_Item("C");
+        list.add(m4e2p2);
+
+        RespostaM m4e2p3 = new RespostaM();
+        m4e2p3.setIdent("R3P3M4E2");
+        m4e2p3.setResposta_Item("A");
+        list.add(m4e2p3);
+
+        RespostaM m4e2p4 = new RespostaM();
+        m4e2p4.setIdent("R4P4M4E2");
+        m4e2p4.setResposta_Item("D");
+        list.add(m4e2p4);
+
+        RespostaM m4e2p5 = new RespostaM();
+        m4e2p5.setIdent("R5P5M4E2");
+        m4e2p5.setResposta_Item("C");
+        list.add(m4e2p5);
+
+        //=============== Módulo 04 Etapa 03 =============
+        RespostaM m4e3p1 = new RespostaM();
+        m4e3p1.setIdent("R1P1M4E3");
+        m4e3p1.setResposta_Item("A");
+        list.add(m4e3p1);
+
+        RespostaM m4e3p2 = new RespostaM();
+        m4e3p2.setIdent("R2P2M4E3");
+        m4e3p2.setResposta_Item("D");
+        list.add(m4e3p2);
+
+        RespostaM m4e3p3 = new RespostaM();
+        m4e3p3.setIdent("R3P3M4E3");
+        m4e3p3.setResposta_Item("B");
+        list.add(m4e3p3);
+
+        RespostaM m4e3p4 = new RespostaM();
+        m4e3p4.setIdent("R4P4M4E3");
+        m4e3p4.setResposta_Item("A");
+        list.add(m4e3p4);
+
+        RespostaM m4e3p5 = new RespostaM();
+        m4e3p5.setIdent("R5P5M4E3");
+        m4e3p5.setResposta_Item("D");
+        list.add(m4e3p5);
 
         return list;
 

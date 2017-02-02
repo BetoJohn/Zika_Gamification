@@ -13,6 +13,7 @@ import com.ifs.mt.zika_gamification.model.PerguntaM;
 import com.ifs.mt.zika_gamification.model.RespostaM;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_2.M1E2;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo2.etapa_2.M2E2;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo2.etapa_3.M2E3;
 import com.ifs.mt.zika_gamification.util.Util;
 import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
 
@@ -35,7 +36,7 @@ public class P1M2E3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View fragment = inflater.inflate(R.layout.fragment_pergunta1_modulo1_etapa2,
+        View fragment = inflater.inflate(R.layout.fragment_pergunta1_modulo2_etapa3,
                 container, false);
 
         perguntaM = new PerguntaM();
@@ -44,7 +45,7 @@ public class P1M2E3 extends Fragment {
         perguntaM.setPergunta_Status(true);
 
         resposta = new RespostaM();
-        resposta.setIdent("R1P1M1E2");
+        resposta.setIdent("R1P1M2E3");
 
         radioGroupP1M1E2 = (RadioGroup) fragment.findViewById(R.id.radioGroupP1M1E2);
         radioGroupP1M1E2
@@ -91,7 +92,7 @@ public class P1M2E3 extends Fragment {
                     perguntaM.setRespostaM(resposta);
                     getListPergunta().add(0, perguntaM);
                     P2M2E3.setListPergunta(listPerguntaResposta);
-                    ((M2E2) getActivity()).trocarPagina(1);
+                    ((M2E3) getActivity()).trocarPagina(1);
 
                 }
 

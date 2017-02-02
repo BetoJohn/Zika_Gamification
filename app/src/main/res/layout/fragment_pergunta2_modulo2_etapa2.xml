@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/fragment_quarteirao"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/footer"
+        android:layout_alignParentTop="false"
+        tools:context="com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_2.P2M1E2">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:theme="@style/MyThemeRadioButton"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tb"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:scaleType="fitXY"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/m1_e2" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:text="@string/p2m1e2"/>
+
+
+             <RadioGroup
+                 android:id="@+id/radioGroupP2M1E2"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="15dp"
+                 android:layout_marginRight="30dp"
+                 android:layout_marginLeft="30dp"
+                 android:layout_marginBottom="30dp"
+                 android:orientation="vertical">
+
+                 <RadioButton
+                     android:id="@+id/rbOpAP2M1E2"
+                     android:textSize="18sp"
+                     android:button="@drawable/abc_btn_check_material"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/op1p2m1e2" />
+
+                 <RadioButton
+                     android:id="@+id/rbOpBP2M1E2"
+                     android:textSize="18sp"
+                     android:button="@drawable/abc_btn_check_material"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/op2p2m1e2" />
+
+                 <RadioButton
+                     android:id="@+id/rbOpCP2M1E2"
+                     android:textSize="18sp"
+                     android:button="@drawable/abc_btn_check_material"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/op3p2m1e2" />
+
+                 <RadioButton
+                     android:id="@+id/rbOpDP2M1E2"
+                     android:textSize="18sp"
+                     android:button="@drawable/abc_btn_check_material"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/op4p2m1e2" />
+
+             </RadioGroup>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+
+        <include
+            android:id="@+id/tb_bottom_next"
+            layout="@layout/toolbar_bottom_avancar_voltar" />
+    </LinearLayout>
+</RelativeLayout>
+
+
+

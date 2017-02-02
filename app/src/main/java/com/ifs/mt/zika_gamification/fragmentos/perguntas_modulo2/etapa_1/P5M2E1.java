@@ -68,25 +68,23 @@ public class P5M2E1 extends Fragment {
     private EtapaM etapa;
     private Typeface font;
     private Banco banco;
-    private MySharedPreferencesController mySharedPreferencesController;
     private DatabaseReference mDatabase;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View fragment = inflater.inflate(R.layout.fragment_pergunta5_modulo1_etapa1,
+        final View fragment = inflater.inflate(R.layout.fragment_pergunta5_modulo2_etapa1,
                 container, false);
         font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/agency_fb.ttf");
 
         perguntaM = new PerguntaM();
-       //perguntaM.setPergunta_Id("P5M1E1");
         perguntaM.setPergunta_Nome("Pergunta 05");
         perguntaM.setPergunta_Status(true);
 
 
         resposta = new RespostaM();
-        resposta.setIdent("R5P5M1E1");
+        resposta.setIdent("R5P5M2E1");
 
         radioGroupP5M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP5M1E1);
         radioGroupP5M1E1
@@ -139,16 +137,11 @@ public class P5M2E1 extends Fragment {
                         getListPergunta().add(4, perguntaM);
                         //==========================================================
                         modulo = new ModuloM();
-                        //modulo.setModulo_Id("M1");
                         modulo.setModulo_Desricao("História do Aedes Aegypti no Brasil");
-                        modulo.setModulo_Nome("M1");
-                        //Só irei setar true na última etapa
-                        //modulo.setModulo_Status(true);
+                        modulo.setModulo_Nome("M2");
 
                         etapa = new EtapaM();
-                        //alterar para E1M1
-                        //etapa.setEtapa_Id("E1M1");
-                        etapa.setEtapa_Nome("E1M1");
+                        etapa.setEtapa_Nome("E1M2");
                         etapa.setEtapa_Descricao("Introdução");
 
                         int numAcertos = 0;
@@ -159,13 +152,6 @@ public class P5M2E1 extends Fragment {
                         }
                         etapa.setEtapa_Pontuacao(numAcertos);
                         etapa.setEtapa_Status(true);
-                        //  etapa.setPerguntas(perguntas);
-
-
-                        //FAÇO A INSERÇÃO NO BANCO
-                        //==========================================================
-                        //A inserção vai seguir essa sequencia: Carrego aqui o Objeto HistoricoM passando o id do usuario logado,
-                        //depois o id do modulo. ModuloM tem dependencia de EtapaM que dependa da PerguntaM e assim por diante
 
                         banco = new Banco(getActivity().getApplicationContext());
                         ModuloDao moduloDao = new ModuloDao(banco);
@@ -175,9 +161,6 @@ public class P5M2E1 extends Fragment {
                         PerguntaDao perguntaDao = new PerguntaDao(banco);
                         StatusDao statusDao = new StatusDao(banco);
 
-
-                        //TESTES
-                        //historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado(), etapa, modulo);
 
                         int rowIdInsertEtapa = etapaDao.insert(etapa);
                         etapa.setEtapa_Id(rowIdInsertEtapa);
@@ -202,8 +185,6 @@ public class P5M2E1 extends Fragment {
 
                         mDatabase = FirebaseDatabase.getInstance().getReference();
                         StatusM statusM = new StatusM();
-                        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        //String userId = user.getUid();
                         String userUid = Login.getUsuarioLogado().getUsuario_uid();
                         System.out.println("UserUid: "+userUid);
 
@@ -213,9 +194,9 @@ public class P5M2E1 extends Fragment {
                             statusM.setPontuacao(numAcertos + statusBanco.getPontuacao());
                             statusM.setNivel(util.getNivel(numAcertos + statusBanco.getNivel()));
                             int experiencia = util.getExperiencia(numAcertos, etapa);
-                            System.out.println("Experiencia no P5M1E1: "+experiencia);
+                            System.out.println("Experiencia no P5M2E1: "+experiencia);
                             statusM.setExperiencia( experiencia + statusBanco.getExperiencia());
-                            System.out.println("Experiencia atualizada no P5M1E1: "+statusM.getExperiencia());
+                            System.out.println("Experiencia atualizada no P5M2E1: "+statusM.getExperiencia());
                             //Atualização local
                             statusM.setStatus_id(statusDao.update(statusM));
 
@@ -227,16 +208,6 @@ public class P5M2E1 extends Fragment {
                             //Atualização remota
                             ref.updateChildren(updates);
                         }
-
-                        //etapaDao.getStatus(etapa);
-                        //==========================================================
-                        //============== Adiciono valores no SharePreferences =======
-                        //mySharedPreferencesController = MySharedPreferencesController.getInstance(getActivity());
-                        //Etapa 01 concluida desbloqueio a Etapa 02
-                        //mySharedPreferencesController.saveData(MySharedPreferencesController.M1_E2, true);
-
-
-
 
 
                         //APRESENTO O RESULTADO

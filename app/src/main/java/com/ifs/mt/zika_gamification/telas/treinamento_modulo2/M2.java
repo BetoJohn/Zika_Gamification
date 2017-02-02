@@ -21,7 +21,6 @@ public class M2 extends AppCompatActivity {
     private Toolbar tb_etapa;
     private TextView tv_treinamento;
     private StaggeredGridLayoutManager gaggeredGridLayoutManager;
-    private MySharedPreferencesController mySharedPreferencesController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -34,7 +34,7 @@ public class P4M2E2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View fragment = inflater.inflate(R.layout.fragment_pergunta4_modulo1_etapa2,
+        View fragment = inflater.inflate(R.layout.fragment_pergunta4_modulo2_etapa2,
                 container, false);
 
         perguntaM = new PerguntaM();
@@ -43,7 +43,7 @@ public class P4M2E2 extends Fragment {
         perguntaM.setPergunta_Status(true);
 
         resposta = new RespostaM();
-        resposta.setIdent("R4P4M1E2");
+        resposta.setIdent("R4P4M2E2");
 
         radioGroupP4M1E2 = (RadioGroup) fragment.findViewById(R.id.radioGroupP4M1E2);
         radioGroupP4M1E2

@@ -34,7 +34,7 @@ public class P1M2E1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View fragment = inflater.inflate(R.layout.fragment_pergunta1_modulo1_etapa1,
+        View fragment = inflater.inflate(R.layout.fragment_pergunta1_modulo2_etapa1,
                 container, false);
 
         perguntaM = new PerguntaM();

@@ -64,12 +64,11 @@ public class P5M2E2 extends Fragment {
     private DatabaseReference mDatabase;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View fragment = inflater.inflate(R.layout.fragment_pergunta5_modulo1_etapa2,
+        final View fragment = inflater.inflate(R.layout.fragment_pergunta5_modulo2_etapa2,
                 container, false);
         font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/agency_fb.ttf");
 
@@ -79,7 +78,7 @@ public class P5M2E2 extends Fragment {
         perguntaM.setPergunta_Status(true);
 
         resposta = new RespostaM();
-        resposta.setIdent("R5P5M1E2");
+        resposta.setIdent("R5P5M2E2");
 
         radioGroupP5M1E2 = (RadioGroup) fragment.findViewById(R.id.radioGroupP5M1E2);
         radioGroupP5M1E2
@@ -134,14 +133,11 @@ public class P5M2E2 extends Fragment {
                     getListPergunta().add(4, perguntaM);
                     //==========================================================
                     modulo = new ModuloM();
-                    //modulo.setModulo_Id("M1");
                     modulo.setModulo_Desricao("História do Aedes Aegypti no Brasil");
-                    modulo.setModulo_Nome("M1");
-                    //Ja coloco true porque é a ultima etapa do modulo
-                    modulo.setModulo_Status(true);
+                    modulo.setModulo_Nome("M2");
 
                     etapa = new EtapaM();
-                    etapa.setEtapa_Nome("E2M1");
+                    etapa.setEtapa_Nome("E2M2");
                     etapa.setEtapa_Descricao("História");
 
                     int numAcertos = 0;
@@ -152,18 +148,6 @@ public class P5M2E2 extends Fragment {
                     }
                     etapa.setEtapa_Pontuacao(numAcertos);
                     etapa.setEtapa_Status(true);
-                    // etapa.setPerguntas(perguntas);
-
-
-                    //============== Adiciono valores no SharePreferences =======
-                    //mySharedPreferencesController = MySharedPreferencesController.getInstance(getActivity());
-                    //Etapa 02 concluída, desbloqueio o Módulo 2 já que é a última etapa do Módulo 01
-                    //mySharedPreferencesController.saveData(MySharedPreferencesController.M2, true);
-
-                    //FAÇO A INSERÇÃO NO BANCO
-                    //==========================================================
-                    //A inserção vai seguir essa sequencia: Carrego aqui o Objeto HistoricoM passando o id do usuario logado,
-                    //depois o id do modulo. ModuloM tem dependencia de EtapaM que dependa da PerguntaM e assim por diante
 
                     banco = new Banco(getActivity().getApplicationContext());
                     ModuloDao moduloDao = new ModuloDao(banco);
@@ -172,10 +156,6 @@ public class P5M2E2 extends Fragment {
                     RespostaDao respostaDao = new RespostaDao(banco);
                     PerguntaDao perguntaDao = new PerguntaDao(banco);
                     StatusDao statusDao = new StatusDao(banco);
-
-
-                    //TESTES
-                    //historicoDao.getStatusEtapaByUsuario(Login.getUsuarioLogado(), etapa, modulo);
 
                     int rowIdInsertEtapa = etapaDao.insert(etapa);
                     etapa.setEtapa_Id(rowIdInsertEtapa);
@@ -198,21 +178,20 @@ public class P5M2E2 extends Fragment {
 
                     int rowIdInsertHistorico = historicoDao.insert(historicoM);
 
+                    mDatabase = FirebaseDatabase.getInstance().getReference();
                     StatusM statusM = new StatusM();
-                    //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    //String userId = user.getUid();
                     String userUid = Login.getUsuarioLogado().getUsuario_uid();
                     System.out.println("UserUid: "+userUid);
+
                     if (userUid != null) {
                         statusM.setUsuario_id(Login.getUsuarioLogado().getUsuario_id());
                         StatusM statusBanco = statusDao.getStatusByUsuario(statusM.getUsuario_id());
                         statusM.setPontuacao(numAcertos + statusBanco.getPontuacao());
                         statusM.setNivel(util.getNivel(numAcertos + statusBanco.getNivel()));
                         int experiencia = util.getExperiencia(numAcertos, etapa);
-                        System.out.println("Experiencia no P5M1E2: "+experiencia);
+                        System.out.println("Experiencia no P5M2E2: "+experiencia);
                         statusM.setExperiencia( experiencia + statusBanco.getExperiencia());
-                        System.out.println("Experiencia atualizada no P5M1E1: "+statusM.getExperiencia());
-                        statusM.setModulo_01_status(true);
+                        System.out.println("Experiencia atualizada no P5M2E2: "+statusM.getExperiencia());
                         //Atualização local
                         statusM.setStatus_id(statusDao.update(statusM));
 
@@ -221,13 +200,9 @@ public class P5M2E2 extends Fragment {
                         updates.put("pontuacao", statusM.getPontuacao());
                         updates.put("nivel", statusM.getNivel());
                         updates.put("experiencia", statusM.getExperiencia());
-                        //Somente na última etapa do módulo que atualiza o módulo
-                        updates.put("modulo_01_status", statusM.isModulo_01_status());
                         //Atualização remota
                         ref.updateChildren(updates);
                     }
-
-
 
                     //APRESENTO O RESULTADO DA ETAPA
                     //==========================================================
@@ -271,8 +246,6 @@ public class P5M2E2 extends Fragment {
                 ((M2E2) getActivity()).trocarPagina(3);
             }
         });
-
-
 
 
         return fragment;

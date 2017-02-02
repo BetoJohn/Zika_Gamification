@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
-    android:theme="@style/MyThemeRadioButton"
     android:orientation="vertical">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,9 +12,10 @@
         android:layout_height="fill_parent"
         android:layout_above="@+id/footer"
         android:layout_alignParentTop="false"
-        tools:context="com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_1.P1M1E1">
+        tools:context="com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo1.etapa_2.P5M1E2">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/ll"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:gravity="top"
@@ -28,28 +28,37 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tb"
                 android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
                 android:layout_marginLeft="80dp"
                 android:layout_marginRight="80dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
                 android:scaleType="fitXY"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/m1_e1" />
-
+                android:src="@drawable/m1_e2" />
 
             <TextView
-                android:id="@+id/tvP1M1E1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:labelFor="@id/a_input"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="@string/p1m1e1"
+                android:text="@string/p5m1e2"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/radioGroupP1M1E1"
+
+            <ImageView
+                android:id="@+id/imageViewPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/play_video" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupP5M1E2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
@@ -59,41 +68,36 @@
                 android:orientation="vertical">
 
                 <RadioButton
-                    android:id="@+id/rbOpAP1M1E1"
+                    android:id="@+id/rbOpAP5M1E2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/op1p1m1e1"
-                    android:textColor="@android:color/black"
                     android:button="@drawable/abc_btn_check_material"
+                    android:text="@string/op1p5m1e2"
                     android:textSize="18sp" />
 
                 <RadioButton
-                    android:id="@+id/rbOpBP1M1E1"
+                    android:id="@+id/rbOpBP5M1E2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@drawable/abc_btn_check_material"
-                    android:text="@string/op2p1m1e1"
-                    android:textColor="@android:color/black"
+                    android:text="@string/op2p5m1e2"
                     android:textSize="18sp" />
 
                 <RadioButton
-                    android:id="@+id/rbOpCP1M1E1"
+                    android:id="@+id/rbOpCP5M1E2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@drawable/abc_btn_check_material"
-                    android:text="@string/op3p1m1e1"
-                    android:textColor="@android:color/black"
+                    android:text="@string/op3p5m1e2"
                     android:textSize="18sp" />
 
                 <RadioButton
-                    android:id="@+id/rbOpDP1M1E1"
+                    android:id="@+id/rbOpDP5M1E2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@drawable/abc_btn_check_material"
-                    android:text="@string/op4p1m1e1"
-                    android:textColor="@android:color/black"
+                    android:text="@string/op4p5m1e2"
                     android:textSize="18sp" />
-
 
             </RadioGroup>
 
@@ -110,7 +114,7 @@
 
         <include
             android:id="@+id/tb_bottom_next"
-            layout="@layout/toolbar_bottom_avancar" />
+            layout="@layout/toolbar_bottom_voltar_concluir" />
     </LinearLayout>
 
 

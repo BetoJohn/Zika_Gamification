@@ -25,7 +25,6 @@ import java.util.List;
  */
 public class P4M2E1 extends Fragment {
     private Toolbar tb_bottom_next;
-    TextView b_received;
     private RadioGroup radioGroupP4M1E1;
     private static List<PerguntaM> listPerguntaResposta;
     private RespostaM resposta;
@@ -36,16 +35,15 @@ public class P4M2E1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View fragment = inflater.inflate(R.layout.fragment_pergunta4_modulo1_etapa1,
+        View fragment = inflater.inflate(R.layout.fragment_pergunta4_modulo2_etapa1,
                 container, false);
 
         perguntaM = new PerguntaM();
-        //perguntaM.setPergunta_Id("P4M1E1");
         perguntaM.setPergunta_Nome("Pergunta 04");
         perguntaM.setPergunta_Status(true);
 
         resposta = new RespostaM();
-        resposta.setIdent("R4P4M1E1");
+        resposta.setIdent("R4P4M2E1");
 
         radioGroupP4M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP4M1E1);
         radioGroupP4M1E1
