@@ -33,8 +33,6 @@ public class P2M1E1 extends Fragment {
 
 
 
-    EditText A_input;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

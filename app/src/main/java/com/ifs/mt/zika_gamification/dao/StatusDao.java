@@ -55,10 +55,18 @@ public class StatusDao {
             valores.put("pontuacao", statusM.getPontuacao());
             valores.put("nivel", statusM.getNivel());
             valores.put("experiencia", statusM.getExperiencia());
-            valores.put("modulo_01_status", statusM.isModulo_01_status() ? 1 : 0);
-            valores.put("modulo_02_status", statusM.isModulo_02_status() ? 1 : 0);
-            valores.put("modulo_03_status", statusM.isModulo_03_status() ? 1 : 0);
-            valores.put("modulo_04_status", statusM.isModulo_04_status() ? 1 : 0);
+            if(statusM.isModulo_01_status()){
+                valores.put("modulo_01_status", statusM.isModulo_01_status() ? 1 : 0);
+            }
+            if(statusM.isModulo_02_status()){
+                valores.put("modulo_02_status", statusM.isModulo_02_status() ? 1 : 0);
+            }
+            if(statusM.isModulo_03_status()){
+                valores.put("modulo_03_status", statusM.isModulo_03_status() ? 1 : 0);
+            }
+            if(statusM.isModulo_04_status()){
+                valores.put("modulo_04_status", statusM.isModulo_04_status() ? 1 : 0);
+            }
 
             int updatedCount = db.getWritableDatabase().update(Banco.TB_STATUS, valores,
                     "usuario_id = ?", parametros);

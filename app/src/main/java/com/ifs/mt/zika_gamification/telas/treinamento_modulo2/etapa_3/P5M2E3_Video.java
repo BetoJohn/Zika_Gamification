@@ -18,7 +18,7 @@ public class P5M2E3_Video extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_p5_m1_e2_video);
+        setContentView(R.layout.activity_p5_m2_e3_video);
         MediaController mc= new MediaController(this);
         VideoView view = (VideoView)findViewById(R.id.videoView);
         String path = "android.resource://" + getPackageName() + "/raw/m1e2p5";// + R.raw.m1e1p5;
@@ -36,25 +36,4 @@ public class P5M2E3_Video extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_p5_m1_e1__video, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

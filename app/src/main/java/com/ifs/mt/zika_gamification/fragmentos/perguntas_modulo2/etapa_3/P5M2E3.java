@@ -35,6 +35,7 @@ import com.ifs.mt.zika_gamification.telas.Treinamento;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_2.M1E2;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_2.P5M1E2_Video;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo2.etapa_2.M2E2;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo2.etapa_3.P5M2E3_Video;
 import com.ifs.mt.zika_gamification.util.Util;
 import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
 
@@ -50,7 +51,7 @@ import java.util.Map;
 public class P5M2E3 extends Fragment {
     private Toolbar tb_bottom_next;
     private TextView textViewResultado;
-    private RadioGroup radioGroupP5M1E2;
+    private RadioGroup radioGroupP5M2E3;
     private static final String TAG = "VideoPlayer";
     private ImageView imageViewPlay, imageViewEmblema;
     private static List<PerguntaM> listPerguntaResposta;
@@ -81,25 +82,25 @@ public class P5M2E3 extends Fragment {
         resposta = new RespostaM();
         resposta.setIdent("R5P5M2E3");
 
-        radioGroupP5M1E2 = (RadioGroup) fragment.findViewById(R.id.radioGroupP5M1E2);
-        radioGroupP5M1E2
+        radioGroupP5M2E3 = (RadioGroup) fragment.findViewById(R.id.radioGroupP5M2E3);
+        radioGroupP5M2E3
                 .setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
                         switch (checkedId) {
-                            case R.id.rbOpAP5M1E2:
+                            case R.id.rbOpAP5M2E3:
                                 System.out.println("Opção A");
                                 resposta.setResposta_Item("A");
                                 break;
-                            case R.id.rbOpBP5M1E2:
+                            case R.id.rbOpBP5M2E3:
                                 System.out.println("Opção B");
                                 resposta.setResposta_Item("B");
                                 break;
-                            case R.id.rbOpCP5M1E2:
+                            case R.id.rbOpCP5M2E3:
                                 System.out.println("Opção C");
                                 resposta.setResposta_Item("C");
                                 break;
-                            case R.id.rbOpDP5M1E2:
+                            case R.id.rbOpDP5M2E3:
                                 System.out.println("Opção D");
                                 resposta.setResposta_Item("D");
                                 break;
@@ -113,7 +114,7 @@ public class P5M2E3 extends Fragment {
         imageViewPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), P5M1E2_Video.class));
+                startActivity(new Intent(getActivity(), P5M2E3_Video.class));
             }
         });
 
@@ -125,7 +126,7 @@ public class P5M2E3 extends Fragment {
             @Override
             public void onClick(View v) {
 
-                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP5M1E2, "Selecione uma resposta!", getActivity().getApplicationContext());
+                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP5M2E3, "Selecione uma resposta!", getActivity().getApplicationContext());
                 if (ok) {
                    /* Toast.makeText(getActivity().getApplicationContext(), "Concluir", Toast.LENGTH_SHORT).show();*/
                     Util util = new Util();

@@ -34,7 +34,9 @@ import com.ifs.mt.zika_gamification.telas.Login;
 import com.ifs.mt.zika_gamification.telas.Treinamento;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_2.M1E2;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_2.P5M1E2_Video;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo2.M2;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo2.etapa_2.M2E2;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo2.etapa_2.P5M2E2_Video;
 import com.ifs.mt.zika_gamification.util.Util;
 import com.ifs.mt.zika_gamification.validacao.AutenticarResposta;
 
@@ -112,7 +114,7 @@ public class P5M2E2 extends Fragment {
         imageViewPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), P5M1E2_Video.class));
+                startActivity(new Intent(getActivity(), P5M2E2_Video.class));
             }
         });
 
@@ -224,7 +226,7 @@ public class P5M2E2 extends Fragment {
                         @Override
                         public void onClick(View v) {
                             dialog.dismiss();
-                            startActivity(new Intent(getActivity(), Treinamento.class));
+                            startActivity(new Intent(getActivity(), M2.class));
                         }
                     });
                     dialog.setCanceledOnTouchOutside(false);

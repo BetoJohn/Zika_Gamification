@@ -40,7 +40,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:labelFor="@id/a_input"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="@string/p5m1e2"

@@ -27,6 +27,11 @@ import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.etapa_2.P2M2E2;
 import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.etapa_2.P3M2E2;
 import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.etapa_2.P4M2E2;
 import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.etapa_2.P5M2E2;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.etapa_3.P1M2E3;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.etapa_3.P2M2E3;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.etapa_3.P3M2E3;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.etapa_3.P4M2E3;
+import com.ifs.mt.zika_gamification.fragmentos.perguntas_modulo2.etapa_3.P5M2E3;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo2.M2;
 
 import java.util.ArrayList;
@@ -79,11 +84,11 @@ public class M2E3 extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragments = new ArrayList<>();
-        fragments.add(new P1M2E2());
-        fragments.add(new P2M2E2());
-        fragments.add(new P3M2E2());
-        fragments.add(new P4M2E2());
-        fragments.add(new P5M2E2());
+        fragments.add(new P1M2E3());
+        fragments.add(new P2M2E3());
+        fragments.add(new P3M2E3());
+        fragments.add(new P4M2E3());
+        fragments.add(new P5M2E3());
         mViewPager.setAdapter(new FragmentCustomPagerAdapter(fragmentManager, fragments));
     }
 

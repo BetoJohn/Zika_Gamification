@@ -57,7 +57,7 @@
                 android:textSize="18sp"
                 android:textColor="@android:color/black"
                 android:text="@string/p4m1e1"
-                android:labelFor="@id/a_input"/>
+                />
 
             <ImageView
                 android:id="@+id/imageView3"

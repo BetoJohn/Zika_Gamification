@@ -44,7 +44,7 @@
                 android:textSize="18sp"
                 android:textColor="@android:color/black"
                 android:text="@string/p3m1e1"
-                android:labelFor="@id/a_input"/>
+                />
 
            <!-- <com.bluejamesbond.text.DocumentView
                 xmlns:ext="http://schemas.android.com/apk/res-auto"

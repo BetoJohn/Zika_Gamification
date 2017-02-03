@@ -18,7 +18,7 @@ public class P5M2E1_Video extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_p5_m1_e1_video);
+        setContentView(R.layout.activity_p5_m2_e1_video);
         MediaController mc= new MediaController(this);
         VideoView view = (VideoView)findViewById(R.id.videoView);
         String path = "android.resource://" + getPackageName() + "/raw/m1e1p5";// + R.raw.m1e1p5;

@@ -45,7 +45,7 @@
                 android:textSize="18sp"
                 android:textColor="@android:color/black"
                 android:text="@string/p2m1e1"
-                android:labelFor="@id/a_input"/>
+               />
 
 
            <!-- <com.bluejamesbond.text.DocumentView

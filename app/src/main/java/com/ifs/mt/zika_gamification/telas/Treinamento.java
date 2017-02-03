@@ -18,7 +18,6 @@ public class Treinamento extends AppCompatActivity {
     private Toolbar tb_treinamento;
     private TextView tv_treinamento;
     private StaggeredGridLayoutManager gaggeredGridLayoutManager;
-    private boolean m1 = true, m2 = false, m3 = false, m4 = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
