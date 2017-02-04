@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class P4M2E1 extends Fragment {
     private Toolbar tb_bottom_next;
-    private RadioGroup radioGroupP4M1E1;
+    private RadioGroup radioGroupP4M2E1;
     private static List<PerguntaM> listPerguntaResposta;
     private RespostaM resposta;
     private PerguntaM perguntaM;
@@ -45,25 +45,25 @@ public class P4M2E1 extends Fragment {
         resposta = new RespostaM();
         resposta.setIdent("R4P4M2E1");
 
-        radioGroupP4M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP4M1E1);
-        radioGroupP4M1E1
+        radioGroupP4M2E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP4M2E1);
+        radioGroupP4M2E1
                 .setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
                         switch (checkedId) {
-                            case R.id.rbOpAP4M1E1:
+                            case R.id.rbOpAP4M2E1:
                                 System.out.println("Opção A");
                                 resposta.setResposta_Item("A");
                                 break;
-                            case R.id.rbOpBP4M1E1:
+                            case R.id.rbOpBP4M2E1:
                                 System.out.println("Opção B");
                                 resposta.setResposta_Item("B");
                                 break;
-                            case R.id.rbOpCP4M1E1:
+                            case R.id.rbOpCP4M2E1:
                                 System.out.println("Opção C");
                                 resposta.setResposta_Item("C");
                                 break;
-                            case R.id.rbOpDP4M1E1:
+                            case R.id.rbOpDP4M2E1:
                                 System.out.println("Opção D");
                                 resposta.setResposta_Item("D");
                                 break;
@@ -78,7 +78,7 @@ public class P4M2E1 extends Fragment {
             @Override
             public void onClick(View v) {
 
-                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP4M1E1, "Selecione uma resposta!", getActivity().getApplicationContext());
+                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP4M2E1, "Selecione uma resposta!", getActivity().getApplicationContext());
                 if (ok) {
 
                     if (getListPergunta().size() == 4){

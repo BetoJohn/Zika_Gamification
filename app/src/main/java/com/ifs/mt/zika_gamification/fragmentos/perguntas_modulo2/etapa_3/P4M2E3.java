@@ -39,7 +39,6 @@ public class P4M2E3 extends Fragment {
                 container, false);
 
         perguntaM = new PerguntaM();
-        //perguntaM.setPergunta_Id("P4M1E2");
         perguntaM.setPergunta_Nome("Pergunta 04");
         perguntaM.setPergunta_Status(true);
 

@@ -34,7 +34,7 @@
                 android:layout_marginBottom="20dp"
                 android:scaleType="fitXY"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/m1_e1" />
+                android:src="@drawable/m3_e1" />
 
 
             <TextView

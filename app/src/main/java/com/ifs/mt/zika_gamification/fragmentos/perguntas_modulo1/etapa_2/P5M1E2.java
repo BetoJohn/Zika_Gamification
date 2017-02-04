@@ -208,15 +208,13 @@ public class P5M1E2 extends Fragment {
                     int rowIdInsertHistorico = historicoDao.insert(historicoM);
 
                     StatusM statusM = new StatusM();
-                    //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    //String userId = user.getUid();
                     String userUid = Login.getUsuarioLogado().getUsuario_uid();
                     System.out.println("UserUid: "+userUid);
                     if (userUid != null) {
                         statusM.setUsuario_id(Login.getUsuarioLogado().getUsuario_id());
                         StatusM statusBanco = statusDao.getStatusByUsuario(statusM.getUsuario_id());
                         statusM.setPontuacao(numAcertos + statusBanco.getPontuacao());
-                        statusM.setNivel(util.getNivel(numAcertos + statusBanco.getNivel()));
+                        statusM.setNivel(util.getNivel(statusM.getPontuacao()));
                         int experiencia = util.getExperiencia(numAcertos, etapa);
                         System.out.println("Experiencia no P5M1E2: "+experiencia);
                         statusM.setExperiencia( experiencia + statusBanco.getExperiencia());

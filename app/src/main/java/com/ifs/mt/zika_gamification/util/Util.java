@@ -42,7 +42,12 @@ public class Util {
         if (pontos > 35 && pontos <= 40) {
             nivel = 8;
         }
-
+        if(pontos > 40 && pontos <= 45){
+            nivel = 9;
+        }
+        if(pontos > 45 ){
+            nivel = 10;
+        }
         return nivel;
     }
 

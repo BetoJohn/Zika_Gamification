@@ -57,12 +57,9 @@ public class P5M2E1 extends Fragment {
     private Toolbar tb_bottom_next;
     private VideoView videoView;
     private TextView textViewResultado;
-    private RadioGroup radioGroupP5M1E1;
+    private RadioGroup radioGroupP5M2E1;
     private static final String TAG = "VideoPlayer";
     private ImageView imageViewPlay, imageViewEmblema;
-    private MediaPlayer mMediaPlayer;
-    private SurfaceHolder mActiveSurface;
-    private int mPosition;
     private static List<PerguntaM> listPerguntaResposta;
     private RespostaM resposta;
     private PerguntaM perguntaM;
@@ -88,25 +85,25 @@ public class P5M2E1 extends Fragment {
         resposta = new RespostaM();
         resposta.setIdent("R5P5M2E1");
 
-        radioGroupP5M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP5M1E1);
-        radioGroupP5M1E1
+        radioGroupP5M2E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP5M2E1);
+        radioGroupP5M2E1
                 .setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
                         switch (checkedId) {
-                            case R.id.rbOpAP5M1E1:
+                            case R.id.rbOpAP5M2E1:
                                 System.out.println("Opção A");
                                 resposta.setResposta_Item("A");
                                 break;
-                            case R.id.rbOpBP5M1E1:
+                            case R.id.rbOpBP5M2E1:
                                 System.out.println("Opção B");
                                 resposta.setResposta_Item("B");
                                 break;
-                            case R.id.rbOpCP5M1E1:
+                            case R.id.rbOpCP5M2E1:
                                 System.out.println("Opção C");
                                 resposta.setResposta_Item("C");
                                 break;
-                            case R.id.rbOpDP5M1E1:
+                            case R.id.rbOpDP5M2E1:
                                 System.out.println("Opção D");
                                 resposta.setResposta_Item("D");
                                 break;
@@ -131,7 +128,7 @@ public class P5M2E1 extends Fragment {
             public void onClick(View v) {
 
                 try {
-                    boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP5M1E1, "Selecione uma resposta!", getActivity().getApplicationContext());
+                    boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP5M2E1, "Selecione uma resposta!", getActivity().getApplicationContext());
                     if (ok) {
                         Util util = new Util();
                         resposta.setResposta_Correta(util.validaSingleResposta(resposta));
@@ -194,7 +191,7 @@ public class P5M2E1 extends Fragment {
                             statusM.setUsuario_id(Login.getUsuarioLogado().getUsuario_id());
                             StatusM statusBanco = statusDao.getStatusByUsuario(statusM.getUsuario_id());
                             statusM.setPontuacao(numAcertos + statusBanco.getPontuacao());
-                            statusM.setNivel(util.getNivel(numAcertos + statusBanco.getNivel()));
+                            statusM.setNivel(util.getNivel(statusM.getPontuacao()));
                             int experiencia = util.getExperiencia(numAcertos, etapa);
                             System.out.println("Experiencia no P5M2E1: "+experiencia);
                             statusM.setExperiencia( experiencia + statusBanco.getExperiencia());

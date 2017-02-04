@@ -71,7 +71,7 @@ public class P5M4E1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View fragment = inflater.inflate(R.layout.fragment_pergunta5_modulo2_etapa1,
+        final View fragment = inflater.inflate(R.layout.fragment_pergunta5_modulo4_etapa1,
                 container, false);
         font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/agency_fb.ttf");
 
@@ -189,7 +189,7 @@ public class P5M4E1 extends Fragment {
                             statusM.setUsuario_id(Login.getUsuarioLogado().getUsuario_id());
                             StatusM statusBanco = statusDao.getStatusByUsuario(statusM.getUsuario_id());
                             statusM.setPontuacao(numAcertos + statusBanco.getPontuacao());
-                            statusM.setNivel(util.getNivel(numAcertos + statusBanco.getNivel()));
+                            statusM.setNivel(util.getNivel(statusM.getPontuacao()));
                             int experiencia = util.getExperiencia(numAcertos, etapa);
                             System.out.println("Experiencia no P5M2E1: "+experiencia);
                             statusM.setExperiencia( experiencia + statusBanco.getExperiencia());

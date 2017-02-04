@@ -189,7 +189,7 @@ public class P5M3E2 extends Fragment {
                         statusM.setUsuario_id(Login.getUsuarioLogado().getUsuario_id());
                         StatusM statusBanco = statusDao.getStatusByUsuario(statusM.getUsuario_id());
                         statusM.setPontuacao(numAcertos + statusBanco.getPontuacao());
-                        statusM.setNivel(util.getNivel(numAcertos + statusBanco.getNivel()));
+                        statusM.setNivel(util.getNivel(statusM.getPontuacao()));
                         int experiencia = util.getExperiencia(numAcertos, etapa);
                         System.out.println("Experiencia no P5M3E2: "+experiencia);
                         statusM.setExperiencia( experiencia + statusBanco.getExperiencia());

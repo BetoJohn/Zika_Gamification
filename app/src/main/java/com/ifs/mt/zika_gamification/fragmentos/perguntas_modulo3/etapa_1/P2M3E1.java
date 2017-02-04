@@ -26,7 +26,6 @@ import java.util.List;
  */
 public class P2M3E1 extends Fragment {
     private Toolbar tb_bottom_next;
-    static TextView b_received;
     private RadioGroup radioGroupP2M3E1;
     private static List<PerguntaM> listPerguntaResposta;
     private RespostaM resposta;

@@ -33,20 +33,8 @@
                 android:layout_marginBottom="20dp"
                 android:scaleType="fitXY"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/m1_e1"/>
+                android:src="@drawable/m2_e1"/>
 
-
-            <!--<com.bluejamesbond.text.DocumentView
-                xmlns:ext="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/dvText"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                ext:documentView_textSize="20sp"
-                ext:documentView_textAlignment="justified"
-                ext:documentView_insetPaddingLeft="10dp"
-                ext:documentView_insetPaddingRight="10dp"
-                ext:documentView_text="Qual das imagens abaixo não é um sintoma da dengue?"
-                />-->
 
             <TextView
                 android:layout_width="match_parent"

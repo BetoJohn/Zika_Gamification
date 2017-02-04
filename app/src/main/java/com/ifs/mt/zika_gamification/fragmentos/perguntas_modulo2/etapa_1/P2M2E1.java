@@ -27,14 +27,11 @@ import java.util.List;
 public class P2M2E1 extends Fragment {
     private Toolbar tb_bottom_next;
     static TextView b_received;
-    private RadioGroup radioGroupP2M1E1;
+    private RadioGroup radioGroupP2M2E1;
     private static List<PerguntaM> listPerguntaResposta;
     private RespostaM resposta;
     private PerguntaM perguntaM;
 
-
-
-    EditText A_input;
 
 
     @Override
@@ -55,25 +52,25 @@ public class P2M2E1 extends Fragment {
         String myTag = getTag();
         ((M2E1) getActivity()).setTagFragmentP2(myTag);
 
-        radioGroupP2M1E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP2M1E1);
-        radioGroupP2M1E1
+        radioGroupP2M2E1 = (RadioGroup) fragment.findViewById(R.id.radioGroupP2M2E1);
+        radioGroupP2M2E1
                 .setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
                         switch (checkedId) {
-                            case R.id.rbOpAP2M1E1:
+                            case R.id.rbOpAP2M2E1:
                                 System.out.println("Opção A");
                                 resposta.setResposta_Item("A");
                                 break;
-                            case R.id.rbOpBP2M1E1:
+                            case R.id.rbOpBP2M2E1:
                                 System.out.println("Opção B");
                                 resposta.setResposta_Item("B");
                                 break;
-                            case R.id.rbOpCP2M1E1:
+                            case R.id.rbOpCP2M2E1:
                                 System.out.println("Opção C");
                                 resposta.setResposta_Item("C");
                                 break;
-                            case R.id.rbOpDP2M1E1:
+                            case R.id.rbOpDP2M2E1:
                                 System.out.println("Opção D");
                                 resposta.setResposta_Item("D");
                                 break;
@@ -89,7 +86,7 @@ public class P2M2E1 extends Fragment {
         tb_bottom_next.findViewById(R.id.iv_avancar_pergunta).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP2M1E1, "Selecione uma resposta!", getActivity().getApplicationContext());
+                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP2M2E1, "Selecione uma resposta!", getActivity().getApplicationContext());
                 if (ok) {
                     if (getListPergunta().size() == 2){
                         getListPergunta().remove(1);
@@ -108,9 +105,6 @@ public class P2M2E1 extends Fragment {
             @Override
             public void onClick(View v) {
 
-               /* if (null != resposta.getResposta_Item()) {
-                    getListResposta().remove(1);
-                }*/
 
                 if (getListPergunta().size() == 2){
                     getListPergunta().remove(1);

@@ -34,7 +34,7 @@
                 android:layout_marginBottom="20dp"
                 android:scaleType="fitXY"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/m1_e1" />
+                android:src="@drawable/m4_e1" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,17 +45,7 @@
                 android:text="@string/p5m1e1"
                 android:textSize="18sp"/>
 
-           <!-- <com.bluejamesbond.text.DocumentView
-                xmlns:ext="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/dvText"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                ext:documentView_textSize="20sp"
-                ext:documentView_textAlignment="justified"
-                ext:documentView_insetPaddingLeft="10dp"
-                ext:documentView_insetPaddingRight="10dp"
-                ext:documentView_text="De acordo com o vídeo selecione a opção correta."
-                />-->
+
 
             <ImageView
                 android:id="@+id/imageViewPlay"
@@ -67,7 +57,7 @@
                 android:src="@drawable/play_video" />
 
             <RadioGroup
-                android:id="@+id/radioGroupP5M1E1"
+                android:id="@+id/radioGroupP5M4E1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -77,7 +67,7 @@
                 android:orientation="vertical">
 
                 <RadioButton
-                    android:id="@+id/rbOpAP5M1E1"
+                    android:id="@+id/rbOpAP5M4E1"
                     android:textSize="18sp"
                     android:button="@drawable/abc_btn_check_material"
                     android:layout_width="wrap_content"
@@ -85,7 +75,7 @@
                     android:text="@string/op1p5m1e1" />
 
                 <RadioButton
-                    android:id="@+id/rbOpBP5M1E1"
+                    android:id="@+id/rbOpBP5M4E1"
                     android:textSize="18sp"
                     android:button="@drawable/abc_btn_check_material"
                     android:layout_width="wrap_content"
@@ -93,7 +83,7 @@
                     android:text="@string/op2p5m1e1" />
 
                 <RadioButton
-                    android:id="@+id/rbOpCP5M1E1"
+                    android:id="@+id/rbOpCP5M4E1"
                     android:textSize="18sp"
                     android:button="@drawable/abc_btn_check_material"
                     android:layout_width="wrap_content"
@@ -101,7 +91,7 @@
                     android:text="@string/op3p5m1e1" />
 
                 <RadioButton
-                    android:id="@+id/rbOpDP5M1E1"
+                    android:id="@+id/rbOpDP5M4E1"
                     android:textSize="18sp"
                     android:button="@drawable/abc_btn_check_material"
                     android:layout_width="wrap_content"

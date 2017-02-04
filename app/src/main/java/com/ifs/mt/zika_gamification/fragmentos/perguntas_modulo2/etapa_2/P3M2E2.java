@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class P3M2E2 extends Fragment {
     private Toolbar tb_bottom_next;
-    private RadioGroup radioGroupP3M1E2;
+    private RadioGroup radioGroupP3M2E2;
     private static List<PerguntaM> listPerguntaResposta;
     private RespostaM resposta;
     private PerguntaM perguntaM;
@@ -45,25 +45,25 @@ public class P3M2E2 extends Fragment {
         resposta = new RespostaM();
         resposta.setIdent("R3P3M2E2");
 
-        radioGroupP3M1E2 = (RadioGroup) fragment.findViewById(R.id.radioGroupP3M1E2);
-        radioGroupP3M1E2
+        radioGroupP3M2E2 = (RadioGroup) fragment.findViewById(R.id.radioGroupP3M2E2);
+        radioGroupP3M2E2
                 .setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
                         switch (checkedId) {
-                            case R.id.rbOpAP3M1E2:
+                            case R.id.rbOpAP3M2E2:
                                 System.out.println("Opção A");
                                 resposta.setResposta_Item("A");
                                 break;
-                            case R.id.rbOpBP3M1E2:
+                            case R.id.rbOpBP3M2E2:
                                 System.out.println("Opção B");
                                 resposta.setResposta_Item("B");
                                 break;
-                            case R.id.rbOpCP3M1E2:
+                            case R.id.rbOpCP3M2E2:
                                 System.out.println("Opção C");
                                 resposta.setResposta_Item("C");
                                 break;
-                            case R.id.rbOpDP3M1E2:
+                            case R.id.rbOpDP3M2E2:
                                 System.out.println("Opção D");
                                 resposta.setResposta_Item("D");
                                 break;
@@ -77,7 +77,7 @@ public class P3M2E2 extends Fragment {
             @Override
             public void onClick(View v) {
 
-                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP3M1E2, "Selecione uma resposta!", getActivity().getApplicationContext());
+                boolean ok = AutenticarResposta.validarRadioGroup(radioGroupP3M2E2, "Selecione uma resposta!", getActivity().getApplicationContext());
                 if (ok) {
 
                     if (getListPergunta().size() == 3){
