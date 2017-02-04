@@ -46,7 +46,7 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnTouchList
 
         tv_usuario_logado = (TextView) findViewById(R.id.tv_usuario_logado);
         //Posso esta recperando o usuário da sessão com o Firebase
-        tv_usuario_logado.setText("Bem Vindo, " + Login.getUsuarioLogado().getUsuario_nome()+"");
+        tv_usuario_logado.setText("Bem Vindo(a), " + Login.getUsuarioLogado().getUsuario_nome()+"");
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
         tv_usuario_logado.setTypeface(font);
 

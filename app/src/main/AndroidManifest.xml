@@ -61,6 +61,10 @@
             android:label="@string/title_activity_m1_e1"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".telas.treinamento_modulo4.M4"
+            android:label="@string/title_activity_m1_e1"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".telas.treinamento_modulo1.etapa_1.M1E1"
             android:label="@string/title_activity_m1_e1"
             android:screenOrientation="portrait" />
@@ -110,11 +114,38 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".telas.treinamento_modulo3.etapa_2.M3E2"
+        android:name=".telas.treinamento_modulo3.etapa_2.M3E2"
+        android:label="@string/title_activity_m1_e1"
+        android:screenOrientation="portrait" />
+        <activity
+            android:name=".telas.treinamento_modulo3.etapa_2.P5M3E2_Video"
+            android:label="@string/title_activity_m1_e1"
+            android:screenOrientation="portrait" />
+
+        <activity
+        android:name=".telas.treinamento_modulo4.etapa_1.M4E1"
+        android:label="@string/title_activity_m1_e1"
+        android:screenOrientation="portrait" />
+        <activity
+            android:name=".telas.treinamento_modulo4.etapa_1.P5M4E1_Video"
+            android:label="@string/title_activity_m1_e1"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".telas.treinamento_modulo4.etapa_2.M4E2"
             android:label="@string/title_activity_m1_e1"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".telas.treinamento_modulo3.etapa_2.P5M3E2_Video"
+            android:name=".telas.treinamento_modulo4.etapa_2.P5M4E2_Video"
+            android:label="@string/title_activity_m1_e1"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".telas.treinamento_modulo4.etapa_3.M4E3"
+            android:label="@string/title_activity_m1_e1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".telas.treinamento_modulo4.etapa_3.P5M4E3_Video"
             android:label="@string/title_activity_m1_e1"
             android:screenOrientation="portrait" />
 

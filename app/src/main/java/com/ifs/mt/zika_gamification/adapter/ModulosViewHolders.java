@@ -17,6 +17,7 @@ import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_1.M1E1;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo1.etapa_2.M1E2;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo2.M2;
 import com.ifs.mt.zika_gamification.telas.treinamento_modulo3.M3;
+import com.ifs.mt.zika_gamification.telas.treinamento_modulo4.M4;
 
 /**
  * Created by Betto Silva on 14/12/2016.
@@ -64,6 +65,16 @@ public class ModulosViewHolders extends RecyclerView.ViewHolder {
                             break;
                         } else {
                             Toast.makeText(v.getContext(), "Módulo 03 Concluído", Toast.LENGTH_SHORT).show();
+                            break;
+                        }
+
+                    case 3:
+                        int statusModulo04 = moduloDao.getStatusModuloByUsuario(Login.getUsuarioLogado().getUsuario_id(), "M4");
+                        if (statusModulo04 != 1) {
+                            v.getContext().startActivity(new Intent(v.getContext(), M4.class));
+                            break;
+                        } else {
+                            Toast.makeText(v.getContext(), "Módulo 04 Concluído", Toast.LENGTH_SHORT).show();
                             break;
                         }
 

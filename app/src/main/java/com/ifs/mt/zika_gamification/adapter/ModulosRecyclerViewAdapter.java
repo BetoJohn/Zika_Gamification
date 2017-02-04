@@ -53,6 +53,10 @@ public class ModulosRecyclerViewAdapter extends RecyclerView.Adapter<ModulosView
             mThumbIds[3] = R.drawable.modulo_04_a;
             mThumbIds[2] = R.drawable.modulo_03_c;
         }
+        int statusModulo04 = moduloDao.getStatusModuloByUsuario(Login.getUsuarioLogado().getUsuario_id(),  "M4");
+        if(statusModulo04 == 1){
+            mThumbIds[3] = R.drawable.modulo_04_c;
+        }
 
         holder.currentItem = position;
         holder.countryPhoto.setImageResource(mThumbIds[position]);
